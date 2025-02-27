@@ -9,16 +9,18 @@ namespace DeckScaler
     {
         private static ScopeContext<Game> Context => Contexts.Instance.Get<Game>();
 
+        private static IGameConfig Configs => ServiceLocator.Resolve<IGameConfig>();
+
         public void Initialize()
         {
-            var viewPrefab = Resources.Load<EntityBehaviour>("Tmp/Unit");
+            var id = Configs.TestUnitID;
 
-            var view = Object.Instantiate(viewPrefab);
+            var view = Object.Instantiate(Configs.Units.UnitViewPrefab);
             var entity = Context.CreateEntity()
-                .Add<UnitID, string>("crook");
+                .Add<UnitID, string>(id);
 
             view.Register(entity);
-            entity.Get<SpriteView>().Value.sprite = Resources.Load<Sprite>("Tmp/crook_head_small");
+            entity.Get<SpriteView>().Value.sprite = Configs.Units.GetConfig(id).Head;
         }
     }
 }

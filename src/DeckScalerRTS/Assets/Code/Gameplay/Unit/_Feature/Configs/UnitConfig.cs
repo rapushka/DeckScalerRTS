@@ -1,0 +1,11 @@
+using UnityEngine;
+
+namespace DeckScaler
+{
+    [CreateAssetMenu(menuName = "375/DeckScaler/Unit Config")]
+    public class UnitConfig : ScriptableObject
+    {
+        [field: SerializeField] public UnitIDRef ID   { get; private set; }
+        [field: SerializeField] public Sprite    Head { get; private set; }
+    }
+}
