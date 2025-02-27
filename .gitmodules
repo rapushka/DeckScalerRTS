@@ -1,0 +1,4 @@
+[submodule "src/DeckScalerRTS/Assets/Plugins/Entitas.Generic"]
+	path = src/DeckScalerRTS/Assets/Plugins/Entitas.Generic
+	url = https://github.com/rapushka/Entitas.Generic.git
+	branch = unity-package
