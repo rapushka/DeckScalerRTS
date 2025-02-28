@@ -4,7 +4,7 @@ using SmartIdTable;
 namespace DeckScaler
 {
     [Serializable]
-    public struct UnitIDRef
+    public struct UnitIDRef : IEquatable<UnitIDRef>
     {
         [IdRef(startsWith: Constants.TableID.Units)]
         public string Value;
@@ -14,5 +14,15 @@ namespace DeckScaler
 
         public static bool operator ==(UnitIDRef lhs, UnitIDRef rhs) => lhs.Value == rhs.Value;
         public static bool operator !=(UnitIDRef lhs, UnitIDRef rhs) => !(lhs == rhs);
+
+#region Boilerplate
+
+        public bool Equals(UnitIDRef other) => Value == other.Value;
+
+        public override bool Equals(object obj) => obj is UnitIDRef other && Equals(other);
+
+        public override int GetHashCode() => (Value != null ? Value.GetHashCode() : 0);
+
+#endregion
     }
 }
