@@ -4,5 +4,11 @@ using UnityEngine;
 
 namespace DeckScaler
 {
-    public class SpriteViewComponentBehaviour : ComponentBehaviour<Game, SpriteView, SpriteRenderer> { } // TODO: MOVE TO BOILERPLATE?
+    public class SpriteViewComponentBehaviour : BaseListener<Game, HeadSprite>
+    {
+        [SerializeField] private SpriteRenderer _spriteRenderer;
+
+        public override void OnValueChanged(Entity<Game> entity, HeadSprite component)
+            => _spriteRenderer.sprite = component.Value;
+    }
 }

@@ -1,5 +1,6 @@
 using DeckScaler.Scope;
 using Entitas.Generic;
+using UnityEngine;
 
 namespace DeckScaler
 {
@@ -17,13 +18,11 @@ namespace DeckScaler
         public Entity<Game> Create(UnitIDRef id)
         {
             var unitConfig = Configs.Units.GetConfig(id);
-            var entity = EntityBehaviourFactory.CreateUnitView().Entity;
 
-            entity
-                .Add<UnitID, string>(id)
-                .Get<SpriteView>().Value.sprite = unitConfig.Head;
-
-            return entity;
+            return EntityBehaviourFactory.CreateUnitView().Entity
+                    .Add<UnitID, string>(id)
+                    .Set<HeadSprite, Sprite>(unitConfig.Head)
+                ;
         }
     }
 }
