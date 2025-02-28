@@ -6,7 +6,7 @@ namespace DeckScaler
 {
     public interface IUnitFactory : IService
     {
-        Entity<Game> Create(UnitIDRef id);
+        Entity<GameScope> Create(UnitIDRef id);
     }
 
     public class UnitFactory : IUnitFactory
@@ -15,7 +15,7 @@ namespace DeckScaler
 
         private static IEntityBehaviourFactory EntityBehaviourFactory => ServiceLocator.Resolve<IEntityBehaviourFactory>();
 
-        public Entity<Game> Create(UnitIDRef id)
+        public Entity<GameScope> Create(UnitIDRef id)
         {
             var unitConfig = Configs.Units.GetConfig(id);
 

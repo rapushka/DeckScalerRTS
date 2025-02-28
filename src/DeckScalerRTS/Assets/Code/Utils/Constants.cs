@@ -6,5 +6,12 @@ namespace DeckScaler
         {
             public const string Units = "Unit/";
         }
+
+        public static class InputBindings
+        {
+            public const MouseButton SelectClick = MouseButton.Left;
+            public const MouseButton OrderClick = MouseButton.Right;
+            public const MouseButton PanClick = MouseButton.Middle;
+        }
     }
 }
