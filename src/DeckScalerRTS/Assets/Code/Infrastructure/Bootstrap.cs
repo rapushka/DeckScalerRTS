@@ -8,6 +8,7 @@ namespace DeckScaler
     {
         [SerializeField] private GameConfig _gameConfig;
         [SerializeField] private Camera _mainCamera;
+        [SerializeField] private AstarPath _pathfinding;
 
         private void Awake()
         {
@@ -17,6 +18,7 @@ namespace DeckScaler
             ServiceLocator.Register<IInputService>(new InputService());
             ServiceLocator.Register<ICameraService>(new CameraService(_mainCamera));
             ServiceLocator.Register<IIdentifiesService>(new SimplestIdentifiesService());
+            ServiceLocator.Register<IPathfindingService>(new AStarPathfindingService(_pathfinding));
 
             // Factories
             ServiceLocator.Register<IEntityBehaviourFactory>(new EntityBehaviourFactory());
