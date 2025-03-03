@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace DeckScaler
 {
-    public class SpriteViewComponentBehaviour : BaseListener<GameScope, HeadSprite>
+    public class HeadSpriteView : BaseListener<GameScope, HeadSprite>
     {
         [SerializeField] private SpriteRenderer _spriteRenderer;
 

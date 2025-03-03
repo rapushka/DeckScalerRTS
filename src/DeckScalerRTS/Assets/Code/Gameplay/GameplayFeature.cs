@@ -12,7 +12,8 @@ namespace DeckScaler
             Add(new TestSpawnUnitSystem());
 
             // # Update
-            Add(new UpdateMousePositionSystem());
+            Add(new EmitMouseInputSystem());
+            Add(new ReadClicksOnEntitySystem());
 
             // # Boilerplate
             var contexts = Contexts.Instance;

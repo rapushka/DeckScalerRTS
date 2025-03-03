@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace DeckScaler
 {
-    public sealed class UpdateMousePositionSystem : IExecuteSystem
+    public sealed class EmitMouseInputSystem : IExecuteSystem
     {
         private readonly IGroup<Entity<InputScope>> _input
             = GroupBuilder<InputScope>
@@ -28,6 +28,7 @@ namespace DeckScaler
                 inputEntity
                     .Set<MouseWorldPosition, Vector2>(mouseWorldPosition)
                     .Set<AccumulatedMouseMovement, Vector2>(Input.MouseMovementDelta)
+                    .Is<JustClickedSelect>(Input.JustClickedSelect)
                     ;
             }
         }

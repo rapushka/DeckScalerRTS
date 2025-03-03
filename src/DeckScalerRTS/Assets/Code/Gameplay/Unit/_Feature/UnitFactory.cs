@@ -22,6 +22,7 @@ namespace DeckScaler
             return EntityBehaviourFactory.CreateUnitView().Entity
                     .Add<UnitID, string>(id)
                     .Set<HeadSprite, Sprite>(unitConfig.Head)
+                    .Is<Clickable>(true)
                 ;
         }
     }
