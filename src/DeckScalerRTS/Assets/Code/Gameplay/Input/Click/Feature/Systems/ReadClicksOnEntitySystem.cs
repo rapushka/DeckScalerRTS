@@ -1,7 +1,6 @@
 using DeckScaler.Scope;
 using Entitas;
 using Entitas.Generic;
-using UnityEngine;
 
 namespace DeckScaler
 {
@@ -29,7 +28,7 @@ namespace DeckScaler
                 var overlaps = entityCollider.OverlapPoint(mouseWorldPosition);
 
                 if (overlaps)
-                    Debug.Log("overlaps");
+                    clickable.Is<Clicked>(true);
             }
         }
     }

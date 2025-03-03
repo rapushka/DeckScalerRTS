@@ -14,10 +14,12 @@ namespace DeckScaler
             // # Update
             Add(new EmitMouseInputSystem());
             Add(new ReadClicksOnEntitySystem());
+            Add(new LogClickedUnitSystem());
 
             // # Boilerplate
             var contexts = Contexts.Instance;
             Add(new SelfEventSystem<GameScope, HeadSprite>(contexts));
+            Add(new RemoveComponentsSystem<GameScope, Clicked>(contexts));
         }
     }
 }
