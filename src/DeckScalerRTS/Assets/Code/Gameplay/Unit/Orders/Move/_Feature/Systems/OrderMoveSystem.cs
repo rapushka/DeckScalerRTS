@@ -27,7 +27,7 @@ namespace DeckScaler
             foreach (var unit in _selectedUnits)
             {
                 var mouseWorldPosition = mouse.Get<MouseWorldPosition, Vector2>();
-                unit.Add<OrderMoveToPosition, Vector2>(mouseWorldPosition);
+                unit.Set<MoveToPosition, Vector2>(mouseWorldPosition);
             }
         }
     }

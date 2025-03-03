@@ -28,6 +28,7 @@ namespace DeckScaler
                     .Set<HeadSprite, Sprite>(unitConfig.Head)
                     .Is<Clickable>(true)
                     .Add<WorldPosition, Vector2>(position)
+                    .Add<MovementSpeed, float>(2f)
                 ;
         }
     }
