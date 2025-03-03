@@ -19,6 +19,8 @@ MonoBehaviour:
     - {fileID: 11400000, guid: c9fa2fd62804212fda4473072e77f4a7, type: 2}
     <Common>k__BackingField:
       <AttackTriggerRadius>k__BackingField: 3
+    <UI>k__BackingField:
+      <TargetView>k__BackingField: {fileID: 658107085581909783, guid: a43b7e46c2cef95cd9b1399bf0256827, type: 3}
   <TestUnitID>k__BackingField:
     Value: Unit/Crook
   <TestEnemyID>k__BackingField:

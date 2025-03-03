@@ -27,6 +27,7 @@ namespace DeckScaler
 
             // orders
             Add(new OrderMoveSystem());
+            Add(new CreateOrderTargetViewSystem());
 
             Add(new MoveToPositionSystem());
 
@@ -37,6 +38,7 @@ namespace DeckScaler
             // ---
 
             // # Cleanups
+            Add(new DestroyEntitiesAfterDelaySystem());
             Add(new DestroyEntitiesSystem());
 
             // ---
