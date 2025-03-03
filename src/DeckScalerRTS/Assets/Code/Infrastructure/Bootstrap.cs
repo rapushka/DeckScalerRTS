@@ -16,6 +16,7 @@ namespace DeckScaler
             // Services
             ServiceLocator.Register<IInputService>(new InputService());
             ServiceLocator.Register<ICameraService>(new CameraService(_mainCamera));
+            ServiceLocator.Register<IIdentifiesService>(new SimplestIdentifiesService());
 
             // Factories
             ServiceLocator.Register<IEntityBehaviourFactory>(new EntityBehaviourFactory());

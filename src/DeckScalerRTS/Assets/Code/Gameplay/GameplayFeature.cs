@@ -16,7 +16,12 @@ namespace DeckScaler
             Add(new ReadClicksOnEntitySystem());
             Add(new OnDragCameraStartedSystem());
             Add(new DragCameraSystem());
-            Add(new LogClickedUnitSystem());
+
+            // selection
+            Add(new OnUnitClickedSystem());
+
+            // # Cleanups
+            Add(new DestroyEntitiesSystem());
 
             // # Boilerplate
             var contexts = Contexts.Instance;
