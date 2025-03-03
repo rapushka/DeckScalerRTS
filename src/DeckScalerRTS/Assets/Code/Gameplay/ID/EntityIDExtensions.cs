@@ -1,4 +1,3 @@
-using DeckScaler.Scope;
 using Entitas.Generic;
 using JetBrains.Annotations;
 

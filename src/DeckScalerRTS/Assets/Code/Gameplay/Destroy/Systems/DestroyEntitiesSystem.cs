@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using DeckScaler.Scope;
 using Entitas;
 using Entitas.Generic;
 
