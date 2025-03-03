@@ -6,7 +6,7 @@ namespace DeckScaler
 {
     public interface IUnitFactory : IService
     {
-        Entity<GameScope> Create(UnitIDRef id);
+        Entity<GameScope> Create(UnitIDRef id, Vector2 position);
     }
 
     public class UnitFactory : IUnitFactory
@@ -15,11 +15,11 @@ namespace DeckScaler
 
         private static IEntityBehaviourFactory EntityBehaviourFactory => ServiceLocator.Resolve<IEntityBehaviourFactory>();
 
-        public Entity<GameScope> Create(UnitIDRef id)
+        public Entity<GameScope> Create(UnitIDRef id, Vector2 position)
         {
             var unitConfig = Configs.Units.GetConfig(id);
 
-            return EntityBehaviourFactory.CreateUnitView().Entity
+            return EntityBehaviourFactory.CreateUnitView(position).Entity
                     .Add<UnitID, string>(id)
                     .Set<HeadSprite, Sprite>(unitConfig.Head)
                     .Is<Clickable>(true)
