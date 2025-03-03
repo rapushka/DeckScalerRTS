@@ -5,12 +5,11 @@ using UnityEngine;
 
 namespace DeckScaler
 {
-    public sealed class EmitMouseInputSystem : IExecuteSystem
+    public sealed class EmitMousePositionSystem : IExecuteSystem
     {
-        private readonly IGroup<Entity<InputScope>> _input
+        private readonly IGroup<Entity<InputScope>> _inputs
             = GroupBuilder<InputScope>
                 .With<PlayerInput>()
-                .And<AccumulatedMouseMovement>()
                 .And<MouseWorldPosition>()
                 .Build();
 
@@ -20,14 +19,13 @@ namespace DeckScaler
 
         public void Execute()
         {
-            foreach (var inputEntity in _input)
+            foreach (var inputEntity in _inputs)
             {
                 var mouseScreenPosition = Input.MouseScreenPosition;
                 var mouseWorldPosition = MainCamera.ScreenToWorldPoint(mouseScreenPosition);
 
                 inputEntity
-                    .Set<MouseWorldPosition, Vector2>(mouseWorldPosition)
-                    .Set<AccumulatedMouseMovement, Vector2>(Input.MouseMovementDelta)
+                    .Set<MouseWorldPosition, Vector2>(mouseWorldPosition.Truncate())
                     .Is<JustClickedSelect>(Input.JustClickedSelect)
                     ;
             }

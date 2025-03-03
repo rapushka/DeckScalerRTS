@@ -4,17 +4,25 @@ namespace DeckScaler
 {
     public interface IInputService : IService
     {
-        bool    JustClickedSelect   { get; }
-        Vector3 MouseScreenPosition { get; }
-        Vector3 MouseMovementDelta  { get; }
+        bool JustClickedSelect       { get; }
+        bool IsDragButtonPressed     { get; }
+        bool IsDragButtonJustPressed { get; }
+
+        Vector2 MouseScreenPosition { get; }
     }
 
     public class InputService : IInputService
     {
-        public bool JustClickedSelect => Input.GetMouseButtonDown((int)Constants.InputBindings.SelectClick);
+        public bool JustClickedSelect => Input.GetMouseButtonDown(SelectClick);
 
-        public Vector3 MouseScreenPosition => Input.mousePosition;
+        public bool IsDragButtonJustPressed => Input.GetMouseButtonDown(DragClick);
 
-        public Vector3 MouseMovementDelta => Input.mousePositionDelta;
+        public bool IsDragButtonPressed => Input.GetMouseButton(DragClick);
+
+        public Vector2 MouseScreenPosition => Input.mousePosition;
+
+        private static int SelectClick => (int)Constants.InputBindings.SelectClick;
+
+        private static int DragClick => (int)Constants.InputBindings.DragClick;
     }
 }
