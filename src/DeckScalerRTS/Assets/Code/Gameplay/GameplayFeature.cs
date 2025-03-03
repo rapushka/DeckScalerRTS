@@ -7,10 +7,19 @@ namespace DeckScaler
     {
         public GameplayFeature()
         {
+            // # Initialize
+            Add(new InitializeInputSystem());
             Add(new TestSpawnUnitSystem());
 
+            // # Update
+            Add(new EmitMouseInputSystem());
+            Add(new ReadClicksOnEntitySystem());
+            Add(new LogClickedUnitSystem());
+
+            // # Boilerplate
             var contexts = Contexts.Instance;
-            Add(new SelfEventSystem<Game, HeadSprite>(contexts));
+            Add(new SelfEventSystem<GameScope, HeadSprite>(contexts));
+            Add(new RemoveComponentsSystem<GameScope, Clicked>(contexts));
         }
     }
 }

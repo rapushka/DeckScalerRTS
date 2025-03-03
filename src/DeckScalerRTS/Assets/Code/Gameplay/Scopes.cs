@@ -2,5 +2,7 @@ using Entitas.Generic;
 
 namespace DeckScaler.Scope
 {
-    public class Game : IScope { }
+    public class GameScope : IScope { }
+
+    public class InputScope : IScope { }
 }
