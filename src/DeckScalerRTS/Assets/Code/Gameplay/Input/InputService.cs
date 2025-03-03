@@ -5,7 +5,6 @@ namespace DeckScaler
     public interface IInputService : IService
     {
         bool JustClickedSelect       { get; }
-        bool JustClickedOrder        { get; }
         bool IsDragButtonPressed     { get; }
         bool IsDragButtonJustPressed { get; }
 
@@ -16,18 +15,14 @@ namespace DeckScaler
     {
         public bool JustClickedSelect => Input.GetMouseButtonDown(SelectClick);
 
-        public bool JustClickedOrder => Input.GetMouseButtonDown(OrderClick);
+        public bool IsDragButtonJustPressed => Input.GetMouseButtonDown(DragClick);
 
-        public bool IsDragButtonJustPressed => Input.GetMouseButtonDown(DragCameraClick);
-
-        public bool IsDragButtonPressed => Input.GetMouseButton(DragCameraClick);
+        public bool IsDragButtonPressed => Input.GetMouseButton(DragClick);
 
         public Vector2 MouseScreenPosition => Input.mousePosition;
 
         private static int SelectClick => (int)Constants.InputBindings.SelectClick;
 
-        private static int OrderClick => (int)Constants.InputBindings.OrderClick;
-
-        private static int DragCameraClick => (int)Constants.InputBindings.DragClick;
+        private static int DragClick => (int)Constants.InputBindings.DragClick;
     }
 }

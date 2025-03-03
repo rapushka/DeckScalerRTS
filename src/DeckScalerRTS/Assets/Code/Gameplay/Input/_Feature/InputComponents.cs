@@ -9,6 +9,4 @@ namespace DeckScaler
     public sealed class MouseWorldPosition : ValueComponent<Vector2>, IInScope<InputScope> { }
 
     public sealed class JustClickedSelect : FlagComponent, IInScope<InputScope> { }
-
-    public sealed class JustClickedOrder : FlagComponent, IInScope<InputScope> { }
 }
