@@ -36,6 +36,8 @@ namespace DeckScaler
                     .Add<WorldPosition, Vector2>(position)
                     .Add<MovementSpeed, float>(unitConfig.MovementSpeed)
                     .Add<AttackTriggerRadius, float>(UnitsConfig.Common.AttackTriggerRadius)
+                    .Add<AttackRange, float>(unitConfig.AttackRange)
+                    .Add<AttackCooldown, float>(unitConfig.AttackCooldown)
                     .Add<InAutoAttackState>()
                 ;
         }
