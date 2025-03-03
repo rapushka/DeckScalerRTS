@@ -1,9 +1,8 @@
-using DeckScaler;
 using DeckScaler.Scope;
 using Entitas.Generic;
 using UnityEngine;
 
-namespace Code.Gameplay.Unit.Selection.View
+namespace DeckScaler
 {
     public class SelectedUnitView : BaseFlagListener<GameScope, SelectedUnit>
     {
