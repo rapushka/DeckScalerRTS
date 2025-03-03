@@ -12,10 +12,14 @@ namespace DeckScaler
         private void Awake()
         {
             ServiceLocator.Register<IGameConfig>(_gameConfig);
-            ServiceLocator.Register<IEntityBehaviourFactory>(new EntityBehaviourFactory());
-            ServiceLocator.Register<IUnitFactory>(new UnitFactory());
+
+            // Services
             ServiceLocator.Register<IInputService>(new InputService());
             ServiceLocator.Register<ICameraService>(new CameraService(_mainCamera));
+
+            // Factories
+            ServiceLocator.Register<IEntityBehaviourFactory>(new EntityBehaviourFactory());
+            ServiceLocator.Register<IUnitFactory>(new UnitFactory());
 
             Contexts.Instance.InitializeScope<GameScope>();
             Contexts.Instance.InitializeScope<InputScope>();
