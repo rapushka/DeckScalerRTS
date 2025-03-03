@@ -5,12 +5,12 @@ using UnityEngine;
 
 namespace DeckScaler
 {
-    public sealed class EmitMouseInputSystem : IExecuteSystem
+    public sealed class EmitMousePositionSystem : IExecuteSystem
     {
-        private readonly IGroup<Entity<InputScope>> _input
+        private readonly IGroup<Entity<InputScope>> _inputs
             = GroupBuilder<InputScope>
                 .With<PlayerInput>()
-                .And<AccumulatedMouseMovement>()
+                .And<MouseDelta>()
                 .And<MouseWorldPosition>()
                 .Build();
 
@@ -20,15 +20,22 @@ namespace DeckScaler
 
         public void Execute()
         {
-            foreach (var inputEntity in _input)
+            foreach (var inputEntity in _inputs)
             {
+                var lastMousePosition = inputEntity.Get<MouseScreenPosition, Vector2>();
+
                 var mouseScreenPosition = Input.MouseScreenPosition;
                 var mouseWorldPosition = MainCamera.ScreenToWorldPoint(mouseScreenPosition);
 
+                var currentMousePosition = mouseWorldPosition.Truncate();
+
+                var delta = (mouseScreenPosition - lastMousePosition) / 50;
                 inputEntity
-                    .Set<MouseWorldPosition, Vector2>(mouseWorldPosition)
-                    .Set<AccumulatedMouseMovement, Vector2>(Input.MouseMovementDelta)
+                    .Set<MouseScreenPosition, Vector2>(mouseScreenPosition)
+                    .Set<MouseWorldPosition, Vector2>(currentMousePosition)
+                    .Set<MouseDelta, Vector2>(delta)
                     .Is<JustClickedSelect>(Input.JustClickedSelect)
+                    .Is<DraggingCamera>(Input.IsDragButtonPressed)
                     ;
             }
         }

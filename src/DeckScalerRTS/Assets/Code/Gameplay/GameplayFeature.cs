@@ -12,8 +12,10 @@ namespace DeckScaler
             Add(new TestSpawnUnitSystem());
 
             // # Update
-            Add(new EmitMouseInputSystem());
+            Add(new EmitMousePositionSystem());
+            Add(new OnDragCameraStartedSystem());
             Add(new ReadClicksOnEntitySystem());
+            Add(new DragCameraSystem());
             Add(new LogClickedUnitSystem());
 
             // # Boilerplate

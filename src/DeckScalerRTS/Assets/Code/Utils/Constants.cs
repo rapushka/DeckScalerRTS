@@ -11,7 +11,7 @@ namespace DeckScaler
         {
             public const MouseButton SelectClick = MouseButton.Left;
             public const MouseButton OrderClick = MouseButton.Right;
-            public const MouseButton PanClick = MouseButton.Middle;
+            public const MouseButton DragClick = MouseButton.Middle;
         }
     }
 }
