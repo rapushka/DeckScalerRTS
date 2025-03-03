@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using DeckScaler.Scope;
 using Entitas;
 using Entitas.Generic;
 
@@ -17,7 +16,15 @@ namespace DeckScaler
         public void Cleanup()
         {
             foreach (var entity in _entities.GetEntities(_buffer))
+            {
+                if (entity.TryGet<View, EntityBehaviour>(out var view))
+                {
+                    view.Unregister();
+                    view.DestroyObject();
+                }
+
                 entity.Destroy();
+            }
         }
     }
 }

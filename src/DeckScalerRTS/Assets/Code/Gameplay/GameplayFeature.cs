@@ -1,4 +1,3 @@
-using DeckScaler.Scope;
 using Entitas.Generic;
 
 namespace DeckScaler
@@ -28,11 +27,18 @@ namespace DeckScaler
 
             // orders
             Add(new OrderMoveSystem());
+            Add(new CreateOrderTargetViewSystem());
 
             Add(new MoveToPositionSystem());
+
+            Add(new TriggerAutoAttackSystem());
+            Add(new RemoveOpponentIfOutOfRangeSystem());
+
+            Add(new MoveToOpponentSystem());
             // ---
 
             // # Cleanups
+            Add(new DestroyEntitiesAfterDelaySystem());
             Add(new DestroyEntitiesSystem());
 
             // ---

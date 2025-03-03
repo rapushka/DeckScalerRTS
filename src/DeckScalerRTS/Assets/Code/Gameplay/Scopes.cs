@@ -1,6 +1,6 @@
 using Entitas.Generic;
 
-namespace DeckScaler.Scope
+namespace DeckScaler
 {
     public class GameScope : IScope { }
 

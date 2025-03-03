@@ -16,5 +16,12 @@ MonoBehaviour:
     <UnitViewPrefab>k__BackingField: {fileID: 2754210279313262322, guid: 4b50cfeb98dbde15eb0232e559d9ba16, type: 3}
     <Units>k__BackingField:
     - {fileID: 11400000, guid: 3c9e935fa8ccf985c8a1f53d61758ef7, type: 2}
+    - {fileID: 11400000, guid: c9fa2fd62804212fda4473072e77f4a7, type: 2}
+    <Common>k__BackingField:
+      <AttackTriggerRadius>k__BackingField: 3
+    <UI>k__BackingField:
+      <TargetView>k__BackingField: {fileID: 658107085581909783, guid: a43b7e46c2cef95cd9b1399bf0256827, type: 3}
   <TestUnitID>k__BackingField:
     Value: Unit/Crook
+  <TestEnemyID>k__BackingField:
+    Value: Unit/Rat

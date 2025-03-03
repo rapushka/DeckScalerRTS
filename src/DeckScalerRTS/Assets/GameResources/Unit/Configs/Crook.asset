@@ -15,3 +15,6 @@ MonoBehaviour:
   <ID>k__BackingField:
     Value: Unit/Crook
   <Head>k__BackingField: {fileID: 1911333983645447072, guid: ed1312ed5b072d1e69dc9a820bf3d546, type: 3}
+  <MovementSpeed>k__BackingField: 2
+  <AttackRange>k__BackingField: 1
+  <AttackCooldown>k__BackingField: 1
