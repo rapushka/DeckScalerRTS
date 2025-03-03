@@ -15,6 +15,7 @@ MonoBehaviour:
   _idList:
   - Unit
   - Unit/Crook
+  - Unit/Rat
   _idDefinitions:
   - _id: Unit
     _assetRefs: []
@@ -28,3 +29,13 @@ MonoBehaviour:
       _targetRefType: 0
       _apiVersion: 1
       _propertyPath: <TestUnitID>k__BackingField.Value
+  - _id: Unit/Rat
+    _assetRefs:
+    - _objectPath: c9fa2fd62804212fda4473072e77f4a7||11400000
+      _targetRefType: 0
+      _apiVersion: 1
+      _propertyPath: <ID>k__BackingField.Value
+    - _objectPath: 7d5c0f68a26302bbcaf14c09218b17a6||11400000
+      _targetRefType: 0
+      _apiVersion: 1
+      _propertyPath: <TestEnemyID>k__BackingField.Value

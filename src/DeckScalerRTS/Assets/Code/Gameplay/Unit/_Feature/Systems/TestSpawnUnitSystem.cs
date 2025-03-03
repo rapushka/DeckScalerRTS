@@ -12,6 +12,8 @@ namespace DeckScaler
         {
             UnitFactory.CreateOnPlayerSide(Configs.TestUnitID, new(-2f, -2f));
             UnitFactory.CreateOnPlayerSide(Configs.TestUnitID, new(2f, -2f));
+
+            UnitFactory.CreateOnEnemySide(Configs.TestEnemyID, new(0f, 2f));
         }
     }
 }

@@ -6,6 +6,7 @@ namespace DeckScaler
     public interface IUnitFactory : IService
     {
         Entity<GameScope> CreateOnPlayerSide(UnitIDRef id, Vector2 position);
+        Entity<GameScope> CreateOnEnemySide(UnitIDRef id, Vector2 position);
     }
 
     public class UnitFactory : IUnitFactory
@@ -16,7 +17,13 @@ namespace DeckScaler
 
         public Entity<GameScope> CreateOnPlayerSide(UnitIDRef id, Vector2 position)
             => CreateUnit(id, position)
+                .Add<OnSide, Side>(Side.Player)
                 .Add<OnPlayerSide>();
+
+        public Entity<GameScope> CreateOnEnemySide(UnitIDRef id, Vector2 position)
+            => CreateUnit(id, position)
+                .Add<OnSide, Side>(Side.Enemy)
+                .Add<OnEnemySide>();
 
         private static Entity<GameScope> CreateUnit(UnitIDRef id, Vector2 position)
         {
@@ -28,6 +35,7 @@ namespace DeckScaler
                     .Is<Clickable>(true)
                     .Add<WorldPosition, Vector2>(position)
                     .Add<MovementSpeed, float>(2f)
+                    .Add<InAutoAttackState>()
                 ;
         }
     }
