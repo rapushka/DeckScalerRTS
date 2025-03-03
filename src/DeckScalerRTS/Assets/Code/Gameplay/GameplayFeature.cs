@@ -19,6 +19,8 @@ namespace DeckScaler
 
             // selection
             Add(new OnUnitClickedSystem());
+            Add(new UnselectAllUnitsSystem());
+            Add(new SelectUnitsSystem());
 
             // # Cleanups
             Add(new DestroyEntitiesSystem());
@@ -26,6 +28,7 @@ namespace DeckScaler
             // # Boilerplate
             var contexts = Contexts.Instance;
             Add(new SelfEventSystem<GameScope, HeadSprite>(contexts));
+            Add(new SelfFlagEventSystem<GameScope, SelectedUnit>(contexts));
             Add(new RemoveComponentsSystem<GameScope, Clicked>(contexts));
         }
     }

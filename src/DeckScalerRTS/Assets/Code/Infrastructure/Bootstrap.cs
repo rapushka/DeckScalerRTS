@@ -25,6 +25,8 @@ namespace DeckScaler
             Contexts.Instance.InitializeScope<GameScope>();
             Contexts.Instance.InitializeScope<InputScope>();
 
+            Contexts.Instance.EntityIDIndex().Initialize();
+
             new GameObject(nameof(GameplayFeatureAdapter))
                 .AddComponent<GameplayFeatureAdapter>();
         }
