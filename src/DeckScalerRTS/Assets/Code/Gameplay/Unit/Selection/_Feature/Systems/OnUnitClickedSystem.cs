@@ -1,11 +1,10 @@
 using DeckScaler.Scope;
 using Entitas;
 using Entitas.Generic;
-using UnityEngine;
 
 namespace DeckScaler
 {
-    public class LogClickedUnitSystem : IExecuteSystem
+    public class OnUnitClickedSystem : IExecuteSystem
     {
         private readonly IGroup<Entity<GameScope>> _clickedUnits
             = GroupBuilder<GameScope>
@@ -17,7 +16,8 @@ namespace DeckScaler
         {
             foreach (var unit in _clickedUnits)
             {
-                Debug.Log($"{unit} was just clicked");
+                CreateEntity.OneFrame()
+                    .Add<SelectUnitEvent, EntityID>(unit.ID());
             }
         }
     }

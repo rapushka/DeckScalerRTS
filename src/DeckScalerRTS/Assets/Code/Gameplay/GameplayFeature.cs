@@ -16,11 +16,19 @@ namespace DeckScaler
             Add(new ReadClicksOnEntitySystem());
             Add(new OnDragCameraStartedSystem());
             Add(new DragCameraSystem());
-            Add(new LogClickedUnitSystem());
+
+            // selection
+            Add(new OnUnitClickedSystem());
+            Add(new UnselectAllUnitsSystem());
+            Add(new SelectUnitsSystem());
+
+            // # Cleanups
+            Add(new DestroyEntitiesSystem());
 
             // # Boilerplate
             var contexts = Contexts.Instance;
             Add(new SelfEventSystem<GameScope, HeadSprite>(contexts));
+            Add(new SelfFlagEventSystem<GameScope, SelectedUnit>(contexts));
             Add(new RemoveComponentsSystem<GameScope, Clicked>(contexts));
         }
     }

@@ -10,7 +10,8 @@ namespace DeckScaler
 
         public void Initialize()
         {
-            UnitFactory.Create(Configs.TestUnitID);
+            UnitFactory.Create(Configs.TestUnitID, new(-2f, -2f));
+            UnitFactory.Create(Configs.TestUnitID, new(2f, -2f));
         }
     }
 }

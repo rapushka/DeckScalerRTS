@@ -16,6 +16,7 @@ namespace DeckScaler
             // Services
             ServiceLocator.Register<IInputService>(new InputService());
             ServiceLocator.Register<ICameraService>(new CameraService(_mainCamera));
+            ServiceLocator.Register<IIdentifiesService>(new SimplestIdentifiesService());
 
             // Factories
             ServiceLocator.Register<IEntityBehaviourFactory>(new EntityBehaviourFactory());
@@ -23,6 +24,8 @@ namespace DeckScaler
 
             Contexts.Instance.InitializeScope<GameScope>();
             Contexts.Instance.InitializeScope<InputScope>();
+
+            Contexts.Instance.EntityIDIndex().Initialize();
 
             new GameObject(nameof(GameplayFeatureAdapter))
                 .AddComponent<GameplayFeatureAdapter>();
