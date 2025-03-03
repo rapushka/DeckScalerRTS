@@ -31,7 +31,6 @@ namespace DeckScaler
                 var cameraWorldPosition = MainCamera.transform.position.Truncate();
                 var delta = mouseWorldPosition - cameraWorldPosition;
 
-                // inputEntity.Set<DragCameraOrigin, Vector2>(mouseWorldPosition);
                 MainCamera.transform.position = (origin - delta).Extend(-10);
             }
         }

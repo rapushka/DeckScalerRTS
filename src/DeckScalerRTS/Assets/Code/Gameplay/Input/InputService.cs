@@ -9,7 +9,6 @@ namespace DeckScaler
         bool IsDragButtonJustPressed { get; }
 
         Vector2 MouseScreenPosition { get; }
-        Vector2 MouseMovementDelta  { get; }
     }
 
     public class InputService : IInputService
@@ -21,8 +20,6 @@ namespace DeckScaler
         public bool IsDragButtonPressed => Input.GetMouseButton(DragClick);
 
         public Vector2 MouseScreenPosition => Input.mousePosition;
-
-        public Vector2 MouseMovementDelta => Input.mousePositionDelta;
 
         private static int SelectClick => (int)Constants.InputBindings.SelectClick;
 

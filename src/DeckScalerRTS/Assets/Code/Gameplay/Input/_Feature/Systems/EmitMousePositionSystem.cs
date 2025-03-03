@@ -10,7 +10,6 @@ namespace DeckScaler
         private readonly IGroup<Entity<InputScope>> _inputs
             = GroupBuilder<InputScope>
                 .With<PlayerInput>()
-                .And<MouseDelta>()
                 .And<MouseWorldPosition>()
                 .Build();
 
@@ -22,20 +21,12 @@ namespace DeckScaler
         {
             foreach (var inputEntity in _inputs)
             {
-                var lastMousePosition = inputEntity.Get<MouseScreenPosition, Vector2>();
-
                 var mouseScreenPosition = Input.MouseScreenPosition;
                 var mouseWorldPosition = MainCamera.ScreenToWorldPoint(mouseScreenPosition);
 
-                var currentMousePosition = mouseWorldPosition.Truncate();
-
-                var delta = (mouseScreenPosition - lastMousePosition) / 50;
                 inputEntity
-                    .Set<MouseScreenPosition, Vector2>(mouseScreenPosition)
-                    .Set<MouseWorldPosition, Vector2>(currentMousePosition)
-                    .Set<MouseDelta, Vector2>(delta)
+                    .Set<MouseWorldPosition, Vector2>(mouseWorldPosition.Truncate())
                     .Is<JustClickedSelect>(Input.JustClickedSelect)
-                    .Is<DraggingCamera>(Input.IsDragButtonPressed)
                     ;
             }
         }
