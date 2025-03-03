@@ -29,6 +29,8 @@ namespace DeckScaler
             Add(new OrderMoveSystem());
 
             Add(new MoveToPositionSystem());
+            Add(new TriggerAutoAttackSystem());
+            Add(new RemoveOpponentIfOutOfRangeSystem());
             // ---
 
             // # Cleanups

@@ -11,7 +11,7 @@ namespace DeckScaler
 
     public class UnitFactory : IUnitFactory
     {
-        private static IGameConfig Configs => ServiceLocator.Resolve<IGameConfig>();
+        private static UnitsConfig UnitsConfig => ServiceLocator.Resolve<IGameConfig>().Units;
 
         private static IEntityBehaviourFactory EntityBehaviourFactory => ServiceLocator.Resolve<IEntityBehaviourFactory>();
 
@@ -27,14 +27,15 @@ namespace DeckScaler
 
         private static Entity<GameScope> CreateUnit(UnitIDRef id, Vector2 position)
         {
-            var unitConfig = Configs.Units.GetConfig(id);
+            var unitConfig = UnitsConfig.GetConfig(id);
 
             return EntityBehaviourFactory.CreateUnitView(position).Entity
                     .Add<UnitID, string>(id)
                     .Set<HeadSprite, Sprite>(unitConfig.Head)
                     .Is<Clickable>(true)
                     .Add<WorldPosition, Vector2>(position)
-                    .Add<MovementSpeed, float>(2f)
+                    .Add<MovementSpeed, float>(unitConfig.MovementSpeed)
+                    .Add<AttackTriggerRadius, float>(UnitsConfig.Common.AttackTriggerRadius)
                     .Add<InAutoAttackState>()
                 ;
         }
