@@ -41,6 +41,9 @@ namespace DeckScaler
             // ability
             Add(new CoolDownAbilitiesSystem());
             Add(new UseCooledDownAbilitiesOnOpponentSystem());
+
+            Add(new ApplyDealDamageAffects());
+
             Add(new ResetUsedAbilitiesSystem());
             // ---
 

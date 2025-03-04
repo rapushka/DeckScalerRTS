@@ -22,6 +22,7 @@ namespace DeckScaler
             ServiceLocator.Register<IEntityBehaviourFactory>(new EntityBehaviourFactory());
             ServiceLocator.Register<IUnitFactory>(new UnitFactory());
             ServiceLocator.Register<IAbilityFactory>(new AbilityFactory());
+            ServiceLocator.Register<IAffectFactory>(new AffectFactory());
 
             Contexts.Instance.InitializeScope<GameScope>();
             Contexts.Instance.InitializeScope<InputScope>();

@@ -1,6 +1,5 @@
 using Entitas;
 using Entitas.Generic;
-using UnityEngine;
 
 namespace DeckScaler
 {
@@ -13,6 +12,8 @@ namespace DeckScaler
                 .And<UseOnOpponent>()
                 .Build();
 
+        private static IAffectFactory AffectFactory => ServiceLocator.Resolve<IAffectFactory>();
+
         public void Execute()
         {
             foreach (var ability in _abilities)
@@ -22,7 +23,10 @@ namespace DeckScaler
                 if (!owner.TryGet<Opponent, EntityID>(out var opponentID))
                     continue;
 
-                Debug.Log($"TODO: ability {ability} used on {opponentID.GetEntity()} by {owner}");
+                var opponent = opponentID.GetEntity();
+                var affectConfig = ability.Get<AbilityAffectConfig, AffectConfig>();
+                AffectFactory.Create(affectConfig, owner, opponent);
+
                 ability.Is<Used>(true);
             }
         }
