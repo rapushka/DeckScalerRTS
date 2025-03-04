@@ -22,4 +22,4 @@ MonoBehaviour:
   - <TargetType>k__BackingField: 1
     <BaseValue>k__BackingField: 1
     <Range>k__BackingField: 1
-    <Cooldown>k__BackingField: 1
+    <Cooldown>k__BackingField: 3

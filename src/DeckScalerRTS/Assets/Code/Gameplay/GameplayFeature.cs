@@ -37,6 +37,11 @@ namespace DeckScaler
             Add(new RemoveOpponentIfOutOfRangeSystem());
 
             Add(new MoveToOpponentSystem());
+
+            // ability
+            Add(new CoolDownAbilitiesSystem());
+            Add(new UseCooledDownAbilitiesOnOpponentSystem());
+            Add(new ResetUsedAbilitiesSystem());
             // ---
 
             // # Cleanups
