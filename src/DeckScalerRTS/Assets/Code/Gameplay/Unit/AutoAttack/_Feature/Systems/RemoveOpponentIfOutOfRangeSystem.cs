@@ -11,7 +11,7 @@ namespace DeckScaler
             = GroupBuilder<GameScope>
                 .With<UnitID>()
                 .And<InAutoAttackState>()
-                .And<AttackTriggerRadius>()
+                .And<AgroTriggerRadius>()
                 .And<WorldPosition>()
                 .And<Opponent>()
                 .Build();
@@ -22,7 +22,7 @@ namespace DeckScaler
         {
             foreach (var attackerUnit in _attackingUnits.GetEntities(_buffer))
             {
-                var maxDistance = attackerUnit.Get<AttackTriggerRadius, float>();
+                var maxDistance = attackerUnit.Get<AgroTriggerRadius, float>();
                 var attackerPosition = attackerUnit.Get<WorldPosition, Vector2>();
 
                 var opponent = attackerUnit.Get<Opponent, EntityID>().GetEntity();
