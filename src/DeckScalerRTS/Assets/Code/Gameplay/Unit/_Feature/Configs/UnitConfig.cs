@@ -10,5 +10,7 @@ namespace DeckScaler
         [field: SerializeField] public float     MovementSpeed  { get; private set; }
         [field: SerializeField] public float     AttackRange    { get; private set; }
         [field: SerializeField] public float     AttackCooldown { get; private set; }
+
+        [field: SerializeField] public AbilityConfig[] Abilities { get; private set; }
     }
 }

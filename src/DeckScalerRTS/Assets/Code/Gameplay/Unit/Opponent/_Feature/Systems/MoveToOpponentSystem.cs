@@ -11,14 +11,14 @@ namespace DeckScaler
                 .With<UnitID>()
                 .And<Opponent>()
                 .And<WorldPosition>()
-                .And<AttackTriggerRadius>()
+                .And<EffectiveRange>()
                 .Build();
 
         public void Execute()
         {
             foreach (var unit in _units)
             {
-                var maxDistance = unit.Get<AttackRange, float>();
+                var maxDistance = unit.Get<EffectiveRange, float>();
                 var attackerPosition = unit.Get<WorldPosition, Vector2>();
 
                 var opponent = unit.Get<Opponent, EntityID>().GetEntity();

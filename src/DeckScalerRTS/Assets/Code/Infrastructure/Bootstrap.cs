@@ -21,11 +21,13 @@ namespace DeckScaler
             // Factories
             ServiceLocator.Register<IEntityBehaviourFactory>(new EntityBehaviourFactory());
             ServiceLocator.Register<IUnitFactory>(new UnitFactory());
+            ServiceLocator.Register<IAbilityFactory>(new AbilityFactory());
 
             Contexts.Instance.InitializeScope<GameScope>();
             Contexts.Instance.InitializeScope<InputScope>();
 
-            Contexts.Instance.EntityIDIndex().Initialize();
+            Contexts.Instance.Get<GameScope>().GetPrimaryIndex<ID, EntityID>().Initialize();
+            Contexts.Instance.Get<GameScope>().GetIndex<AbilityOf, EntityID>().Initialize();
 
             new GameObject(nameof(GameplayFeatureAdapter))
                 .AddComponent<GameplayFeatureAdapter>();

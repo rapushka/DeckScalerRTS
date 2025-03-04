@@ -18,3 +18,8 @@ MonoBehaviour:
   <MovementSpeed>k__BackingField: 2
   <AttackRange>k__BackingField: 1
   <AttackCooldown>k__BackingField: 1
+  <Abilities>k__BackingField:
+  - <TargetType>k__BackingField: 1
+    <BaseValue>k__BackingField: 1
+    <Range>k__BackingField: 1
+    <Cooldown>k__BackingField: 1
