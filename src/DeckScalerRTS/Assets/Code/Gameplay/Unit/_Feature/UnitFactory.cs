@@ -27,13 +27,13 @@ namespace DeckScaler
                 .Add<OnSide, Side>(Side.Enemy)
                 .Add<OnEnemySide>();
 
-        private static Entity<GameScope> CreateUnit(UnitIDRef id, Vector2 position)
+        private Entity<GameScope> CreateUnit(UnitIDRef id, Vector2 position)
         {
             var unitConfig = UnitsConfig.GetConfig(id);
 
             var unit = EntityBehaviourFactory.CreateUnitView(position).Entity;
             unit
-                .Add<DebugName, string>($"unit {id.Value}")
+                .Add<DebugName, string>($"unit {TrimUniID(id.Value)}")
                 .Add<UnitID, string>(id)
                 .Set<HeadSprite, Sprite>(unitConfig.Head)
                 .Is<Clickable>(true)
@@ -56,6 +56,15 @@ namespace DeckScaler
                 unit.Add<EffectiveRange, float>(shortestRange.Value);
 
             return unit;
+        }
+
+        private string TrimUniID(string source)
+        {
+#if UNITY_EDITOR
+            source = source.Remove(Constants.TableID.Units);
+#endif
+
+            return source;
         }
     }
 }

@@ -17,10 +17,10 @@ namespace DeckScaler
         {
             foreach (var affect in _affects)
             {
-                var sender = affect.Get<AffectSender, EntityID>().GetEntity();
-                var target = affect.Get<AffectTarget, EntityID>().GetEntity();
+                var senderID = affect.Get<AffectSender, EntityID>();
+                var targetID = affect.Get<AffectTarget, EntityID>();
 
-                Debug.Log($"TODO: {sender} deals damage to {target}");
+                Debug.Log($"TODO: {senderID} deals damage to {targetID}");
             }
         }
     }

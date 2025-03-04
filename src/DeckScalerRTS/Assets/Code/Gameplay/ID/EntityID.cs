@@ -15,7 +15,7 @@ namespace DeckScaler
         public static bool operator !=(EntityID lhs, EntityID rhs) => !(lhs == rhs);
 
         public override string ToString()
-            => $"{ID}"; // TODO: EntityName
+            => this.TryGetEntity(out var entity) ? $"{ID} {entity.GetName()}" : "DESTROYED";
 
 #region Boilerplate
 
