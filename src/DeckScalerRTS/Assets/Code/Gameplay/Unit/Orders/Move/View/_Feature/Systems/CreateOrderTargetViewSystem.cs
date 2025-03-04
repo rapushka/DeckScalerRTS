@@ -6,27 +6,36 @@ namespace DeckScaler
 {
     public sealed class CreateOrderTargetViewSystem : IExecuteSystem
     {
-        private readonly IGroup<Entity<InputScope>> _inputs
-            = GroupBuilder<InputScope>
-                .With<PlayerInput>()
-                .And<JustClickedOrder>()
-                .And<MouseWorldPosition>()
+        private readonly IGroup<Entity<GameScope>> _events
+            = GroupBuilder<GameScope>
+                .With<OrderOnPositionEvent>()
+                .And<OrderListener>()
+                .And<Processed>()
                 .Build();
 
         private static IEntityBehaviourFactory Factory => ServiceLocator.Resolve<IEntityBehaviourFactory>();
 
         public void Execute()
         {
-            foreach (var mouse in _inputs)
+            foreach (var e in _events)
             {
-                var mouseWorldPosition = mouse.Get<MouseWorldPosition, Vector2>();
+                var isAttack = e.Is<ProcessedAsAttackOrder>();
 
-                var view = Factory.CreateOrderView(mouseWorldPosition);
+                var targetPosition = isAttack
+                    ? GetOpponentPosition(e)
+                    : e.Get<OrderOnPositionEvent, Vector2>();
+
+                var view = Factory.CreateOrderView(targetPosition);
                 var animation = view.GetComponent<OrderTargetViewAnimation>();
                 view.Entity.Add<DestroyAfterDelay, Timer>(new(animation.WholeAnimationDuration));
 
-                animation.Play();
+                animation.Play(isAttack);
             }
         }
+
+        private static Vector2 GetOpponentPosition(Entity<GameScope> eventEntity)
+            => eventEntity.Get<OrderListener, EntityID>().GetEntity()
+                .Get<Opponent, EntityID>().GetEntity()
+                .Get<WorldPosition, Vector2>();
     }
 }

@@ -26,7 +26,9 @@ namespace DeckScaler
             Add(new SelectUnitsSystem());
 
             // orders
-            Add(new OrderMoveSystem());
+            Add(new EmitUnitOrderSystem());
+            Add(new HandleAttackUnitOrderSystem());
+            Add(new HandleMoveToPositionOrderSystem());
             Add(new CreateOrderTargetViewSystem());
 
             Add(new MoveToPositionSystem());
