@@ -9,7 +9,6 @@ namespace DeckScaler
         private readonly IGroup<Entity<GameScope>> _units
             = GroupBuilder<GameScope>
                 .With<UnitID>()
-                .And<InAutoAttackState>()
                 .And<Opponent>()
                 .And<WorldPosition>()
                 .And<AttackTriggerRadius>()

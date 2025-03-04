@@ -152,8 +152,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 7487274178357327987}
   _sprite: {fileID: 297742266145946668}
+  _positionOrderColor: {r: 0.29376745, g: 1, b: 0, a: 1}
+  _attackUnitOrderColor: {r: 1, g: 0, b: 0.09737444, a: 1}
+  _appearDuration: 0.4
   _fromScale: 1
   _toScale: 0
-  _appearDuration: 0.4
   _pause: 0.1
+  _disappearOffset: {x: 0, y: 0.25, z: 0}
   _disappearDuration: 0.1
