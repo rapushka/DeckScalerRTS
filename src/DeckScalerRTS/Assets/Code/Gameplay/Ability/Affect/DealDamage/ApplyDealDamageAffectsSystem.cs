@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace DeckScaler
 {
-    public sealed class ApplyDealDamageAffects : IExecuteSystem
+    public sealed class ApplyDealDamageAffectsSystem : IExecuteSystem
     {
         private readonly IGroup<Entity<GameScope>> _affects
             = GroupBuilder<GameScope>
