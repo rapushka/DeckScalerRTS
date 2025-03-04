@@ -33,6 +33,7 @@ namespace DeckScaler
 
             var unit = EntityBehaviourFactory.CreateUnitView(position).Entity;
             unit
+                .Add<DebugName, string>($"unit {id.Value}")
                 .Add<UnitID, string>(id)
                 .Set<HeadSprite, Sprite>(unitConfig.Head)
                 .Is<Clickable>(true)

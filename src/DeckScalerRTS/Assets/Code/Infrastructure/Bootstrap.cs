@@ -29,6 +29,10 @@ namespace DeckScaler
             Contexts.Instance.Get<GameScope>().GetPrimaryIndex<ID, EntityID>().Initialize();
             Contexts.Instance.Get<GameScope>().GetIndex<AbilityOf, EntityID>().Initialize();
 
+#if UNITY_EDITOR
+            Entity<GameScope>.Formatter = new GameEntityFormatter();
+#endif
+
             new GameObject(nameof(GameplayFeatureAdapter))
                 .AddComponent<GameplayFeatureAdapter>();
         }
