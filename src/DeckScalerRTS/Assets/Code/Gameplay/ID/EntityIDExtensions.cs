@@ -20,6 +20,8 @@ namespace DeckScaler
 
         public static bool TryGetEntity(this EntityID @this, out Entity<GameScope> entity) => Index.TryGetEntity(@this, out entity);
 
+        public static bool HasEntity(this EntityID @this) => Index.HasEntity(@this);
+
         public static Entity<GameScope> GetByID<TComponent>(this Entity<GameScope> @this)
             where TComponent : ValueComponent<EntityID>, IInScope<GameScope>, new()
             => @this.Get<TComponent, EntityID>().GetEntity();

@@ -41,6 +41,8 @@ namespace DeckScaler
                 .Add<MovementSpeed, float>(unitConfig.MovementSpeed)
                 .Add<AgroTriggerRadius, float>(UnitsConfig.Common.AttackTriggerRadius)
                 .Add<InAutoAttackState>()
+                .Add<MaxHealth, float>(unitConfig.MaxHealth)
+                .Add<Health, float>(unitConfig.MaxHealth)
                 ;
 
             var shortestRange = (float?)null;

@@ -16,6 +16,7 @@ MonoBehaviour:
     Value: Unit/Rat
   <Head>k__BackingField: {fileID: 6716381713595682443, guid: 8edc4f2926b69b00bae4598b73da7a96, type: 3}
   <MovementSpeed>k__BackingField: 2
+  <MaxHealth>k__BackingField: 5
   <Abilities>k__BackingField:
   - <TargetType>k__BackingField: 1
     <Range>k__BackingField: 1

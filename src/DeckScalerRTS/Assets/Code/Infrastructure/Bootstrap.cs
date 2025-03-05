@@ -24,11 +24,14 @@ namespace DeckScaler
             ServiceLocator.Register<IAbilityFactory>(new AbilityFactory());
             ServiceLocator.Register<IAffectFactory>(new AffectFactory());
 
+            // Scopes
             Contexts.Instance.InitializeScope<GameScope>();
             Contexts.Instance.InitializeScope<InputScope>();
 
+            // Indexes
             Contexts.Instance.Get<GameScope>().GetPrimaryIndex<ID, EntityID>().Initialize();
             Contexts.Instance.Get<GameScope>().GetIndex<AbilityOf, EntityID>().Initialize();
+            Contexts.Instance.Get<GameScope>().GetIndex<ChildOf, EntityID>().Initialize();
 
 #if UNITY_EDITOR
             Entity<GameScope>.Formatter = new GameEntityFormatter();
