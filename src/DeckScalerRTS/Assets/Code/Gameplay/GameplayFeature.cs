@@ -67,6 +67,8 @@ namespace DeckScaler
             Add(new SelfEventSystem<GameScope, HeadSprite>(contexts));
             Add(new SelfFlagEventSystem<GameScope, SelectedUnit>(contexts));
             Add(new SelfEventSystem<GameScope, WorldPosition>(contexts));
+            Add(new SelfEventSystem<GameScope, MaxHealth>(contexts));
+            Add(new SelfEventSystem<GameScope, Health>(contexts));
             Add(new RemoveComponentsSystem<GameScope, Clicked>(contexts));
         }
     }
