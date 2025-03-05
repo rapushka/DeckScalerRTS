@@ -27,7 +27,7 @@ namespace DeckScaler
                     : e.Get<OrderOnPositionEvent, Vector2>();
 
                 var view = Factory.CreateOrderView(targetPosition).Entity;
-                var animation = view.Get<Animatior>().Value;
+                var animation = (BaseEntityAnimation)view.Get<Animator>().Value;
 
                 var tween = animation.Play(e);
                 view.Add<DestroyAfterDelay, Timer>(new(tween.Duration()));

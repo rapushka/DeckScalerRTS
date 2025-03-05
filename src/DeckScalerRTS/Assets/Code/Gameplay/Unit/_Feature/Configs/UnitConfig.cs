@@ -5,11 +5,9 @@ namespace DeckScaler
     [CreateAssetMenu(menuName = "375/DeckScaler/Unit Config")]
     public class UnitConfig : ScriptableObject
     {
-        [field: SerializeField] public UnitIDRef ID             { get; private set; }
-        [field: SerializeField] public Sprite    Head           { get; private set; }
-        [field: SerializeField] public float     MovementSpeed  { get; private set; }
-        [field: SerializeField] public float     AttackRange    { get; private set; }
-        [field: SerializeField] public float     AttackCooldown { get; private set; }
+        [field: SerializeField] public UnitIDRef ID            { get; private set; }
+        [field: SerializeField] public Sprite    Head          { get; private set; }
+        [field: SerializeField] public float     MovementSpeed { get; private set; }
 
         [field: SerializeField] public AbilityConfig[] Abilities { get; private set; }
     }

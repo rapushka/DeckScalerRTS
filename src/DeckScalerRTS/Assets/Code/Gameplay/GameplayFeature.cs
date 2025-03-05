@@ -43,6 +43,7 @@ namespace DeckScaler
             Add(new UseCooledDownAbilitiesOnOpponentSystem());
 
             Add(new ApplyDealDamageAffects());
+            Add(new PlayUnitAttackAnimationSystem());
 
             Add(new ResetUsedAbilitiesSystem());
             // ---
