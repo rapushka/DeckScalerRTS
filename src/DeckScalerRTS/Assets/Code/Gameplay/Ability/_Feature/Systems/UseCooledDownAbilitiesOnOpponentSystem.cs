@@ -1,6 +1,5 @@
 using Entitas;
 using Entitas.Generic;
-using UnityEngine;
 
 namespace DeckScaler
 {
@@ -11,7 +10,6 @@ namespace DeckScaler
                 .With<AbilityOf>()
                 .And<CooldownUp>()
                 .And<UseOnOpponent>()
-                .And<Range>()
                 .Build();
 
         private static IAffectFactory AffectFactory => ServiceLocator.Resolve<IAffectFactory>();
@@ -26,14 +24,6 @@ namespace DeckScaler
                     continue;
 
                 var opponent = opponentID.GetEntity();
-                var opponentPosition = opponent.Get<WorldPosition, Vector2>();
-                var ownerPosition = owner.Get<WorldPosition, Vector2>();
-
-                var distance = opponentPosition.DistanceTo(ownerPosition);
-
-                if (ability.Get<Range, float>() < distance)
-                    continue;
-
                 var affectConfig = ability.Get<AbilityAffectConfig, AffectConfig>();
                 AffectFactory.Create(affectConfig, owner, opponent);
 

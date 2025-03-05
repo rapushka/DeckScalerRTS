@@ -42,9 +42,7 @@ namespace DeckScaler
             Add(new CoolDownAbilitiesSystem());
             Add(new UseCooledDownAbilitiesOnOpponentSystem());
 
-            Add(new ApplyDealDamageAffectsSystem());
-
-            Add(new PlayDealDamageAnimationsSystem());
+            Add(new ApplyDealDamageAffects());
 
             Add(new ResetUsedAbilitiesSystem());
             // ---
@@ -59,7 +57,6 @@ namespace DeckScaler
             Add(new SelfEventSystem<GameScope, HeadSprite>(contexts));
             Add(new SelfFlagEventSystem<GameScope, SelectedUnit>(contexts));
             Add(new SelfEventSystem<GameScope, WorldPosition>(contexts));
-            Add(new SelfEventSystem<GameScope, SpriteColor>(contexts));
             Add(new RemoveComponentsSystem<GameScope, Clicked>(contexts));
         }
     }

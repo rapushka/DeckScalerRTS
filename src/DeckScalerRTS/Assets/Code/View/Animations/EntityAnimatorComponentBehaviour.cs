@@ -8,15 +8,9 @@ namespace DeckScaler
         [SerializeField] private BaseEntityAnimation _animation;
 
         public override void Add(ref Entity<GameScope> entity)
-        {
-            entity.Add<Animatior, IEntityAnimation>(_animation);
-            _animation.Register(entity);
-        }
+            => entity.Add<Animatior, IEntityAnimation>(_animation);
 
         public override void Remove(ref Entity<GameScope> entity)
-        {
-            entity.Remove<Animatior>();
-            _animation.Unregister();
-        }
+            => entity.Remove<Animatior>();
     }
 }
