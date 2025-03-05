@@ -57,6 +57,8 @@ namespace DeckScaler
 
             // # Cleanups
             Add(new DestroyEntitiesAfterDelaySystem());
+
+            Add(new DestroyWithChildrenSystem());
             Add(new DestroyEntitiesSystem());
 
             // ---
