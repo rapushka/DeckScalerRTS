@@ -8,6 +8,7 @@ namespace DeckScaler
         [field: SerializeField] public UnitIDRef ID            { get; private set; }
         [field: SerializeField] public Sprite    Head          { get; private set; }
         [field: SerializeField] public float     MovementSpeed { get; private set; }
+        [field: SerializeField] public float     MaxHealth     { get; private set; }
 
         [field: SerializeField] public AbilityConfig[] Abilities { get; private set; }
     }
