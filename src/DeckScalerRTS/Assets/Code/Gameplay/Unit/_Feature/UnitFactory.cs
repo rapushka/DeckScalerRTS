@@ -6,7 +6,7 @@ namespace DeckScaler
     public interface IUnitFactory : IService
     {
         Entity<GameScope> CreateOnPlayerSide(UnitIDRef id, Vector2 position);
-        Entity<GameScope> CreateOnEnemySide(UnitIDRef id, Vector2 position);
+        Entity<GameScope> CreateOnEnemySide(UnitIDRef id, Vector2 position, EntityID tent);
     }
 
     public class UnitFactory : IUnitFactory
@@ -22,10 +22,12 @@ namespace DeckScaler
                 .Add<OnSide, Side>(Side.Player)
                 .Add<OnPlayerSide>();
 
-        public Entity<GameScope> CreateOnEnemySide(UnitIDRef id, Vector2 position)
+        public Entity<GameScope> CreateOnEnemySide(UnitIDRef id, Vector2 position, EntityID tent)
             => CreateUnit(id, position)
                 .Add<OnSide, Side>(Side.Enemy)
-                .Add<OnEnemySide>();
+                .Add<OnEnemySide>()
+                .Add<OnTent, EntityID>(tent)
+                .Add<ChildOf, EntityID>(tent);
 
         private Entity<GameScope> CreateUnit(UnitIDRef id, Vector2 position)
         {

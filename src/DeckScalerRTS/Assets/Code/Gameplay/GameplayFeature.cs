@@ -54,6 +54,7 @@ namespace DeckScaler
             Add(new CleanupDeadOpponentsSystem());
 
             Add(new DestroyDeadUnitsSystem());
+            Add(new FreeTentOnAllEnemiesDeadSystem());
 
             // # Cleanups
             Add(new DestroyEntitiesAfterDelaySystem());
@@ -69,6 +70,8 @@ namespace DeckScaler
             Add(new SelfEventSystem<GameScope, WorldPosition>(contexts));
             Add(new SelfEventSystem<GameScope, MaxHealth>(contexts));
             Add(new SelfEventSystem<GameScope, Health>(contexts));
+            Add(new SelfFlagEventSystem<GameScope, OnEnemySide>(contexts));
+
             Add(new RemoveComponentsSystem<GameScope, Clicked>(contexts));
         }
     }
