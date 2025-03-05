@@ -54,6 +54,7 @@ namespace DeckScaler
             Add(new CleanupDeadOpponentsSystem());
 
             Add(new DestroyDeadUnitsSystem());
+            Add(new FreeTentOnAllEnemiesDeadSystem());
 
             // # Cleanups
             Add(new DestroyEntitiesAfterDelaySystem());

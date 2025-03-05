@@ -26,7 +26,8 @@ namespace DeckScaler
             => CreateUnit(id, position)
                 .Add<OnSide, Side>(Side.Enemy)
                 .Add<OnEnemySide>()
-                .Add<OnBase, EntityID>(tent);
+                .Add<OnTent, EntityID>(tent)
+                .Add<ChildOf, EntityID>(tent);
 
         private Entity<GameScope> CreateUnit(UnitIDRef id, Vector2 position)
         {
