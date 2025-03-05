@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: 00c2b5028f9129215856488314a12957, type: 3}
+  m_Sprite: {fileID: 2816084972377260578, guid: f50102818434e83abb573458269945cb, type: 3}
   m_Color: {r: 0.14792144, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 7487274178357327987}
   - component: {fileID: 658107085581909783}
   - component: {fileID: 5914871402430494646}
+  - component: {fileID: 6974001082716616965}
   m_Layer: 0
   m_Name: Order Target View
   m_TagString: Untagged
@@ -133,7 +134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 778066341db241ccbb7c0bde32a3e331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentBehaviours: []
+  _componentBehaviours:
+  - {fileID: 6974001082716616965}
   _listeners: []
   _subEntities: []
   _ensureComponentsCountOnAwake: 1
@@ -154,9 +156,23 @@ MonoBehaviour:
   _sprite: {fileID: 297742266145946668}
   _positionOrderColor: {r: 0.29376745, g: 1, b: 0, a: 1}
   _attackUnitOrderColor: {r: 1, g: 0, b: 0.09737444, a: 1}
-  _appearDuration: 0.4
-  _fromScale: 1
-  _toScale: 0
+  _appearDuration: 0.1
+  _fadeInDuration: 0.4
+  _fromScale: 1.5
+  _toScale: 0.5
   _pause: 0.1
-  _disappearOffset: {x: 0, y: 0.25, z: 0}
-  _disappearDuration: 0.1
+  _disappearOffset: {x: 0, y: -0.1, z: 0}
+  _disappearDuration: 0.3
+--- !u!114 &6974001082716616965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6800018838248771274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 184b0662798844618dc1c61fcc7184c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animation: {fileID: 5914871402430494646}

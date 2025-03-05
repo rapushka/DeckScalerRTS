@@ -1,3 +1,4 @@
+using DG.Tweening;
 using Entitas;
 using Entitas.Generic;
 using UnityEngine;
@@ -25,11 +26,11 @@ namespace DeckScaler
                     ? GetOpponentPosition(e)
                     : e.Get<OrderOnPositionEvent, Vector2>();
 
-                var view = Factory.CreateOrderView(targetPosition);
-                var animation = view.GetComponent<OrderTargetViewAnimation>();
-                view.Entity.Add<DestroyAfterDelay, Timer>(new(animation.WholeAnimationDuration));
+                var view = Factory.CreateOrderView(targetPosition).Entity;
+                var animation = (BaseEntityAnimation)view.Get<Animator>().Value;
 
-                animation.Play(isAttack);
+                var tween = animation.Play(e);
+                view.Add<DestroyAfterDelay, Timer>(new(tween.Duration()));
             }
         }
 
