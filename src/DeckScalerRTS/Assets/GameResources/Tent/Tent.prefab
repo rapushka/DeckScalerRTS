@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5637180698722428718}
   - component: {fileID: 2506919300539760825}
+  - component: {fileID: 1731507206652630115}
   m_Layer: 0
   m_Name: Tent
   m_TagString: Untagged
@@ -46,10 +47,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _componentBehaviours: []
-  _listeners: []
+  _listeners:
+  - {fileID: 1731507206652630115}
   _subEntities: []
   _ensureComponentsCountOnAwake: 1
   _forceSubEntitiesAutoCollect: 1
+--- !u!114 &1731507206652630115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2271542831996587555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d90cbd4d51d44534963766a3e0ebdf91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sprite: {fileID: 1871103316883812796}
+  _onEnemySideColor: {r: 1, g: 0, b: 0, a: 1}
+  _neutralColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &4666339509967620627
 GameObject:
   m_ObjectHideFlags: 0
