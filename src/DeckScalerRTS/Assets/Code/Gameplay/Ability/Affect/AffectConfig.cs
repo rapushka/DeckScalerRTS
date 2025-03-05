@@ -4,9 +4,9 @@ using UnityEngine;
 namespace DeckScaler
 {
     [Serializable]
-    public class AffectConfig
+    public struct AffectConfig
     {
-        [field: SerializeField] public float      Value  { get; private set; }
-        [field: SerializeField] public AffectType Type { get; private set; }
+        [field: SerializeField] public float      Value { get; private set; }
+        [field: SerializeField] public AffectType Type  { get; private set; }
     }
 }
