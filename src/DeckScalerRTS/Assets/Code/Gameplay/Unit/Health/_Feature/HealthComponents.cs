@@ -5,4 +5,6 @@ namespace DeckScaler
     public sealed class MaxHealth : ValueComponent<float>, IInScope<GameScope> { }
 
     public sealed class Health : ValueComponent<float>, IInScope<GameScope> { }
+
+    public sealed class Dead : FlagComponent, IInScope<GameScope> { }
 }

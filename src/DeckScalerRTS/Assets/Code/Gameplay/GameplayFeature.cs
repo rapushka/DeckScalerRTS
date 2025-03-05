@@ -42,11 +42,18 @@ namespace DeckScaler
             Add(new CoolDownAbilitiesSystem());
             Add(new UseCooledDownAbilitiesOnOpponentSystem());
 
-            Add(new ApplyDealDamageAffects());
+            Add(new ApplyDealDamageAffectsSystem());
             Add(new PlayUnitAttackAnimationSystem());
 
             Add(new ResetUsedAbilitiesSystem());
             // ---
+
+            // health
+            Add(new MarkDeadUnitsWithZeroHpSystem());
+
+            Add(new CleanupDeadOpponentsSystem());
+
+            Add(new DestroyDeadUnitsSystem());
 
             // # Cleanups
             Add(new DestroyEntitiesAfterDelaySystem());
