@@ -13,16 +13,12 @@ namespace DeckScaler
 
     public class InputService : IInputService, IUpdatable
     {
-        private static float _globalHoldDurationForClick; // TODO: static is workaround here
+        // 300ms is optimal separation between clicks and holds
+        private const float HoldDurationForClick = 0.3f;
 
         private readonly Button _selectButton = new(Constants.InputBindings.SelectClick);
         private readonly Button _orderButton = new(Constants.InputBindings.OrderClick);
         private readonly Button _dragButton = new(Constants.InputBindings.DragClick);
-
-        public InputService(float globalHoldDurationForClick)
-        {
-            _globalHoldDurationForClick = globalHoldDurationForClick;
-        }
 
         public ButtonState SelectButton     => _selectButton.State;
         public ButtonState OrderButton      => _orderButton.State;
@@ -57,11 +53,8 @@ namespace DeckScaler
                 var justPressed = Input.GetMouseButtonDown(_button);
                 var justReleased = Input.GetMouseButtonUp(_button);
 
-                if (justPressed && justReleased) // ChatGPT says it's impossible
-                {
-                    Debug.LogError("THIS IS THE MOMENT IN HISTORY, TAKE A PICTURE!!!");
+                if (justPressed && justReleased) // ChatGPT says it's not possible, but it kinda is
                     return ButtonState.Clicked;
-                }
 
                 if (justPressed)
                 {
@@ -75,7 +68,7 @@ namespace DeckScaler
                 {
                     _isHolding = false;
 
-                    var currentState = _holdTime < _globalHoldDurationForClick
+                    var currentState = _holdTime < HoldDurationForClick
                         ? ButtonState.Clicked
                         : ButtonState.JustUp;
                     return currentState;

@@ -16,7 +16,7 @@ namespace DeckScaler
         {
             foreach (var inputEntity in _inputs)
             {
-                inputEntity.Is<JustClickedOrder>(Input.OrderButton is ButtonState.Clicked);
+                inputEntity.Is<OrderClicked>(Input.OrderButton is ButtonState.Clicked);
             }
         }
     }

@@ -17,7 +17,6 @@ namespace DeckScaler
             = GroupBuilder<GameScope>
                 .With<SelectionRect>()
                 .And<Selecting>()
-                .And<SelectionWorldOrigin>()
                 .Build();
 
         private static Camera UiCamera => ServiceLocator.Resolve<ICameraService>().UiCamera;
@@ -28,7 +27,6 @@ namespace DeckScaler
             foreach (var selection in _selectionViews)
             {
                 var mouseWorldPosition = cursor.Get<MouseWorldPosition, Vector2>();
-                // var mouseScreenPosition = mouseWorldPosition;
                 var mouseScreenPosition = UiCamera.WorldToScreenPoint(mouseWorldPosition);
 
                 var view = selection.Get<SelectionRect>().Value;

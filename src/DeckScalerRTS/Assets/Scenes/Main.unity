@@ -607,7 +607,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameConfig: {fileID: 11400000, guid: 7d5c0f68a26302bbcaf14c09218b17a6, type: 2}
-  _holdDurationForClick: 1
+  _holdDurationForClick: 0.3
   _mainCamera: {fileID: 519420031}
   _uiCamera: {fileID: 251136470}
   _canvas: {fileID: 1225734768}

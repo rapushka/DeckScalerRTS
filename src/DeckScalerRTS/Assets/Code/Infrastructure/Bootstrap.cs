@@ -7,9 +7,6 @@ namespace DeckScaler
     {
         [SerializeField] private GameConfig _gameConfig;
 
-        [NaughtyAttributes.BoxGroup("Input")]
-        [SerializeField] private float _holdDurationForClick;
-
         [NaughtyAttributes.BoxGroup("Cameras")]
         [SerializeField] private Camera _mainCamera;
         [NaughtyAttributes.BoxGroup("Cameras")]
@@ -25,7 +22,7 @@ namespace DeckScaler
             ServiceLocator.Register<IGameConfig>(_gameConfig);
 
             // Services
-            _inputService = new(_holdDurationForClick);
+            _inputService = new();
             ServiceLocator.Register<IInputService>(_inputService);
             ServiceLocator.Register<ICameraService>(new CameraService(_mainCamera, _uiCamera));
             ServiceLocator.Register<IIdentifiesService>(new SimplestIdentifiesService());

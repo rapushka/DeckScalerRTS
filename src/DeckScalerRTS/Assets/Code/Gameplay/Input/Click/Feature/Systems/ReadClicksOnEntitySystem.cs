@@ -8,7 +8,7 @@ namespace DeckScaler
         private readonly IGroup<Entity<InputScope>> _inputs
             = GroupBuilder<InputScope>
                 .With<PlayerInput>()
-                .And<JustClickedSelect>()
+                .And<SelectClicked>()
                 .Build();
 
         private readonly IGroup<Entity<GameScope>> _clickables

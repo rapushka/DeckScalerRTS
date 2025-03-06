@@ -17,7 +17,6 @@ namespace DeckScaler
             var selection = EntityBehaviourFactory.CreateSelectionView().Entity
                     .Add<DebugName, string>("selection view")
                     .Add<WorldPosition, Vector2>(Vector2.zero)
-                    .Add<SelectionWorldOrigin, Vector2>(Vector2.zero)
                 ;
 
             var rect = selection.Get<SelectionRect>().Value;

@@ -9,7 +9,7 @@ namespace DeckScaler
         private readonly IGroup<Entity<InputScope>> _inputs
             = GroupBuilder<InputScope>
                 .With<PlayerInput>()
-                .And<JustClickedOrder>()
+                .And<OrderClicked>()
                 .And<MouseWorldPosition>()
                 .Build();
 

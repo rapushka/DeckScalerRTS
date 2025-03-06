@@ -26,12 +26,9 @@ namespace DeckScaler
             foreach (var selection in _selectionViews)
             {
                 var mouseWorldPosition = cursor.Get<MouseWorldPosition>().Value;
-                // var mouseScreenPosition = mouseWorldPosition;
                 var mouseScreenPosition = UiCamera.WorldToScreenPoint(mouseWorldPosition);
 
-                selection
-                    .Is<Selecting>(true)
-                    .Set<SelectionWorldOrigin, Vector2>(mouseScreenPosition);
+                selection.Is<Selecting>(true);
 
                 var view = selection.Get<SelectionRect>().Value;
                 view.Show(mouseScreenPosition);
