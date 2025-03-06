@@ -17,7 +17,7 @@ namespace DeckScaler
             Add(new EmitMousePositionSystem());
             Add(new EmitMouseOrdersSystem());
             Add(new ReadClicksOnEntitySystem());
-            Add(new OnDragCameraStartedSystem());
+            Add(new StartDraggingCameraSystem());
             Add(new DragCameraSystem());
 
             // selection

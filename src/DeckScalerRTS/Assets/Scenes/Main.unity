@@ -216,7 +216,6 @@ GameObject:
   m_Component:
   - component: {fileID: 251136473}
   - component: {fileID: 251136470}
-  - component: {fileID: 251136472}
   - component: {fileID: 251136471}
   m_Layer: 0
   m_Name: UI Camera
@@ -320,14 +319,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &251136472
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 251136469}
-  m_Enabled: 1
 --- !u!4 &251136473
 Transform:
   m_ObjectHideFlags: 0
@@ -614,6 +605,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameConfig: {fileID: 11400000, guid: 7d5c0f68a26302bbcaf14c09218b17a6, type: 2}
+  _holdDurationForClick: 1
   _mainCamera: {fileID: 519420031}
   _uiCamera: {fileID: 251136470}
   _canvas: {fileID: 1225734768}

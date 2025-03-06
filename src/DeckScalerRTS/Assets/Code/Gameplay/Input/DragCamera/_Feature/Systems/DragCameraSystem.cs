@@ -19,7 +19,7 @@ namespace DeckScaler
 
         public void Execute()
         {
-            if (!Input.IsDragButtonPressed)
+            if (Input.DragCameraButton is not ButtonState.Down)
                 return;
 
             foreach (var inputEntity in _inputs)

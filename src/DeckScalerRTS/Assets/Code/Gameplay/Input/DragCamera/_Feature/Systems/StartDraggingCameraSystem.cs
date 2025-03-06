@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace DeckScaler
 {
-    public sealed class OnDragCameraStartedSystem : IExecuteSystem
+    public sealed class StartDraggingCameraSystem : IExecuteSystem
     {
         private readonly IGroup<Entity<InputScope>> _inputs
             = GroupBuilder<InputScope>
@@ -16,7 +16,7 @@ namespace DeckScaler
 
         public void Execute()
         {
-            if (!Input.IsDragButtonJustPressed)
+            if (Input.DragCameraButton is not ButtonState.JustDown)
                 return;
 
             foreach (var inputEntity in _inputs)

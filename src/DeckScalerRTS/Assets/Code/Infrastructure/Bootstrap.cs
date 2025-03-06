@@ -7,6 +7,9 @@ namespace DeckScaler
     {
         [SerializeField] private GameConfig _gameConfig;
 
+        [NaughtyAttributes.BoxGroup("Input")]
+        [SerializeField] private float _holdDurationForClick;
+
         [NaughtyAttributes.BoxGroup("Cameras")]
         [SerializeField] private Camera _mainCamera;
         [NaughtyAttributes.BoxGroup("Cameras")]
@@ -15,12 +18,15 @@ namespace DeckScaler
         [NaughtyAttributes.BoxGroup("UI")]
         [SerializeField] private Canvas _canvas;
 
+        private InputService _inputService;
+
         private void Awake()
         {
             ServiceLocator.Register<IGameConfig>(_gameConfig);
 
             // Services
-            ServiceLocator.Register<IInputService>(new InputService());
+            _inputService = new(_holdDurationForClick);
+            ServiceLocator.Register<IInputService>(_inputService);
             ServiceLocator.Register<ICameraService>(new CameraService(_mainCamera));
             ServiceLocator.Register<IIdentifiesService>(new SimplestIdentifiesService());
             ServiceLocator.Register<ITimeService>(new TimeService());
@@ -50,7 +56,12 @@ namespace DeckScaler
             new GameObject(nameof(GameplayFeatureAdapter))
                 .AddComponent<GameplayFeatureAdapter>();
         }
-    }
 
-    public class GameplayFeatureAdapter : FeatureAdapterBase<GameplayFeature> { }
+        private void Update()
+        {
+            var deltaTime = ServiceLocator.Resolve<ITimeService>().Delta;
+
+            ((IUpdatable)_inputService).OnUpdate(deltaTime);
+        }
+    }
 }
