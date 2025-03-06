@@ -7,5 +7,6 @@ namespace DeckScaler
 
     public sealed class SelectUnitEvent : ValueComponent<EntityID>, IInScope<GameScope> { }
 
-    public sealed class SelectionOrigin : ValueComponent<Vector2>, IInScope<GameScope> { }
+    /// TODO: in theory this isn't needed anymore
+    public sealed class SelectionWorldOrigin : ValueComponent<Vector2>, IInScope<GameScope> { }
 }

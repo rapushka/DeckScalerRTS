@@ -12,5 +12,8 @@ namespace DeckScaler
 
         public static bool Approximately(this float @this, float other)
             => Mathf.Approximately(@this, other);
+
+        public static float Abs(this float @this)
+            => Mathf.Abs(@this);
     }
 }

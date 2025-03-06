@@ -4,16 +4,16 @@ namespace DeckScaler
 {
     public interface IUiService : IService
     {
-        RectTransform UiRoot { get; }
+        RectTransform Canvas { get; }
     }
 
     public class UiService : IUiService
     {
         public UiService(Canvas canvas)
         {
-            UiRoot = (RectTransform)canvas.transform;
+            Canvas = (RectTransform)canvas.transform;
         }
 
-        public RectTransform UiRoot { get; }
+        public RectTransform Canvas { get; }
     }
 }

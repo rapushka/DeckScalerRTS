@@ -75,9 +75,10 @@ namespace DeckScaler
                 {
                     _isHolding = false;
 
-                    return _holdTime < _globalHoldDurationForClick
+                    var currentState = _holdTime < _globalHoldDurationForClick
                         ? ButtonState.Clicked
                         : ButtonState.JustUp;
+                    return currentState;
                 }
 
                 if (_isHolding)

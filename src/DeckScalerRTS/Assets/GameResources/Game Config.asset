@@ -20,7 +20,8 @@ MonoBehaviour:
     <Common>k__BackingField:
       <AttackTriggerRadius>k__BackingField: 3
     <UI>k__BackingField:
-      <TargetView>k__BackingField: {fileID: 658107085581909783, guid: a43b7e46c2cef95cd9b1399bf0256827, type: 3}
+      <TargetViewPrefab>k__BackingField: {fileID: 658107085581909783, guid: a43b7e46c2cef95cd9b1399bf0256827, type: 3}
+      <SelectionViewPrefab>k__BackingField: {fileID: 2268241796083505887, guid: 3467df2c3fe40b2f49f6983eaa9e356d, type: 3}
   <Levels>k__BackingField:
     <TentView>k__BackingField: {fileID: 2506919300539760825, guid: 501b2cdfc5df39498b66353d5356ed76, type: 3}
   <TestUnitID>k__BackingField:

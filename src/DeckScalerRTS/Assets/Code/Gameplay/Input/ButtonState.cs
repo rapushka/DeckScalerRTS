@@ -6,7 +6,7 @@ namespace DeckScaler
         JustUp = 1,
         Up = 2,
         Clicked = 3,
-        JustDown = 1,
-        Down = 4,
+        JustDown = 4,
+        Down = 5,
     }
 }

@@ -10,4 +10,10 @@ namespace DeckScaler
     public sealed class JustClickedSelect : FlagComponent, IInScope<InputScope> { }
 
     public sealed class JustClickedOrder : FlagComponent, IInScope<InputScope> { }
+
+    public sealed class SelectJustDown : FlagComponent, IInScope<InputScope> { }
+
+    public sealed class SelectDown : FlagComponent, IInScope<InputScope> { }
+
+    public sealed class SelectJustUp : FlagComponent, IInScope<InputScope> { }
 }

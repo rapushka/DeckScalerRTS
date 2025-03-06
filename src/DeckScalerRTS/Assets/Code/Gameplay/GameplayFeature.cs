@@ -10,12 +10,17 @@ namespace DeckScaler
             // ---
             // # Initialize
             Add(new InitializeInputSystem());
+            Add(new InitializeSelectionRectViewSystem());
             Add(new TestSpawnUnitSystem());
 
             // ---
             // # Update
             Add(new EmitMousePositionSystem());
             Add(new EmitMouseOrdersSystem());
+
+            Add(new StartSelectionSystem());
+            Add(new DrawSelectionRectSystem());
+            Add(new StopSelectionSystem());
             Add(new ReadClicksOnEntitySystem());
             Add(new StartDraggingCameraSystem());
             Add(new DragCameraSystem());

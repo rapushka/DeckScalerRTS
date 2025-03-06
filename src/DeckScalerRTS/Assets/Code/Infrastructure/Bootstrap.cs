@@ -27,7 +27,7 @@ namespace DeckScaler
             // Services
             _inputService = new(_holdDurationForClick);
             ServiceLocator.Register<IInputService>(_inputService);
-            ServiceLocator.Register<ICameraService>(new CameraService(_mainCamera));
+            ServiceLocator.Register<ICameraService>(new CameraService(_mainCamera, _uiCamera));
             ServiceLocator.Register<IIdentifiesService>(new SimplestIdentifiesService());
             ServiceLocator.Register<ITimeService>(new TimeService());
             ServiceLocator.Register<IUiService>(new UiService(_canvas));
@@ -38,6 +38,7 @@ namespace DeckScaler
             ServiceLocator.Register<IAbilityFactory>(new AbilityFactory());
             ServiceLocator.Register<IAffectFactory>(new AffectFactory());
             ServiceLocator.Register<ITentFactory>(new TentFactory());
+            ServiceLocator.Register<IUiFactory>(new UiFactory());
 
             // Scopes
             Contexts.Instance.InitializeScope<GameScope>();
