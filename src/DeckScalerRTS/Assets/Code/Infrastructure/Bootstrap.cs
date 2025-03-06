@@ -6,7 +6,14 @@ namespace DeckScaler
     public class Bootstrap : MonoBehaviour
     {
         [SerializeField] private GameConfig _gameConfig;
+
+        [NaughtyAttributes.BoxGroup("Cameras")]
         [SerializeField] private Camera _mainCamera;
+        [NaughtyAttributes.BoxGroup("Cameras")]
+        [SerializeField] private Camera _uiCamera;
+
+        [NaughtyAttributes.BoxGroup("UI")]
+        [SerializeField] private Canvas _canvas;
 
         private void Awake()
         {
@@ -17,6 +24,7 @@ namespace DeckScaler
             ServiceLocator.Register<ICameraService>(new CameraService(_mainCamera));
             ServiceLocator.Register<IIdentifiesService>(new SimplestIdentifiesService());
             ServiceLocator.Register<ITimeService>(new TimeService());
+            ServiceLocator.Register<IUiService>(new UiService(_canvas));
 
             // Factories
             ServiceLocator.Register<IEntityBehaviourFactory>(new EntityBehaviourFactory());
