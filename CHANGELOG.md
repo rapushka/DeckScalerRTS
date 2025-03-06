@@ -6,6 +6,7 @@
 - [unit's attack](https://github.com/rapushka/DeckScalerRTS/issues/13)
 - [health](https://github.com/rapushka/DeckScalerRTS/pull/32)
 - [enemies's Base (Tent)](https://github.com/rapushka/DeckScalerRTS/pull/36)
+- [multi-selection view](https://github.com/rapushka/DeckScalerRTS/pull/41)
 
 # v0.0.23
 - unity project created (again)
