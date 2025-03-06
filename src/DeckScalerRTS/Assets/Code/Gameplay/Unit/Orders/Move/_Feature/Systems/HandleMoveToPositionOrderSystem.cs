@@ -30,7 +30,6 @@ namespace DeckScaler
                     ;
 
                 e.Is<Processed>(true);
-                break;
             }
         }
     }
