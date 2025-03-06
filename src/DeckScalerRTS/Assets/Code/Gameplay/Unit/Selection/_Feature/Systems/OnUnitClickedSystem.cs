@@ -14,10 +14,7 @@ namespace DeckScaler
         public void Execute()
         {
             foreach (var unit in _clickedUnits)
-            {
-                CreateEntity.OneFrame()
-                    .Add<SelectUnitEvent, EntityID>(unit.ID());
-            }
+                UnitUtils.Select(unit);
         }
     }
 }

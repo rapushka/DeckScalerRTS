@@ -4,7 +4,7 @@ using Entitas.Generic;
 
 namespace DeckScaler
 {
-    public sealed class StopSelectionSystem : IExecuteSystem
+    public sealed class CleanupSelectionEndedSystem : ICleanupSystem
     {
         private readonly IGroup<Entity<GameScope>> _selectionViews
             = GroupBuilder<GameScope>
@@ -14,10 +14,10 @@ namespace DeckScaler
 
         private readonly List<Entity<GameScope>> _buffer = new(2);
 
-        public void Execute()
+        public void Cleanup()
         {
             foreach (var selection in _selectionViews.GetEntities(_buffer))
-                selection.Get<SelectionView>().Value.Hide();
+                selection.Is<SelectionDragEnded>(false);
         }
     }
 }

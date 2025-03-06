@@ -6,6 +6,9 @@ namespace DeckScaler
     {
         Camera MainCamera { get; }
         Camera UiCamera   { get; }
+
+        Vector2 WorldToScreen(Vector2 worldPosition);
+        Vector2 ScreenToWorld(Vector2 screenPosition);
     }
 
     public class CameraService : ICameraService
@@ -18,5 +21,9 @@ namespace DeckScaler
 
         public Camera MainCamera { get; }
         public Camera UiCamera   { get; }
+
+        public Vector2 WorldToScreen(Vector2 worldPosition) => MainCamera.WorldToScreenPoint(worldPosition);
+
+        public Vector2 ScreenToWorld(Vector2 screenPosition) => MainCamera.ScreenToWorldPoint(screenPosition);
     }
 }

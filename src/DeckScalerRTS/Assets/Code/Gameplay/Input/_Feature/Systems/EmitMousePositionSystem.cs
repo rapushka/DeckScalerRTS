@@ -14,17 +14,17 @@ namespace DeckScaler
 
         private static IInputService Input => ServiceLocator.Resolve<IInputService>();
 
-        private static Camera MainCamera => ServiceLocator.Resolve<ICameraService>().MainCamera;
+        private static ICameraService Camera => ServiceLocator.Resolve<ICameraService>();
 
         public void Execute()
         {
             foreach (var inputEntity in _inputs)
             {
                 var mouseScreenPosition = Input.MouseScreenPosition;
-                var mouseWorldPosition = MainCamera.ScreenToWorldPoint(mouseScreenPosition);
+                var mouseWorldPosition = Camera.ScreenToWorld(mouseScreenPosition);
 
                 inputEntity
-                    .Set<MouseWorldPosition, Vector2>(mouseWorldPosition.Truncate())
+                    .Set<MouseWorldPosition, Vector2>(mouseWorldPosition)
                     .Is<SelectClicked>(Input.SelectButton is ButtonState.Clicked)
                     .Is<SelectJustDown>(Input.SelectButton is ButtonState.JustDown)
                     .Is<SelectDown>(Input.SelectButton is ButtonState.Down)
