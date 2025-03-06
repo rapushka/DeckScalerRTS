@@ -1,16 +1,15 @@
-using System.Collections.Generic;
 using Entitas;
 using Entitas.Generic;
 
 namespace DeckScaler
 {
-    public sealed class StopSelectionSystem : IExecuteSystem
+    public sealed class DrawSelectionAreaViewSystem : IExecuteSystem
     {
         private readonly IGroup<Entity<InputScope>> _cursors
             = GroupBuilder<InputScope>
                 .With<PlayerInput>()
-                .Or<SelectJustUp>()
-                .Or<SelectClicked>()
+                .And<MouseWorldPosition>()
+                .And<SelectDown>()
                 .Build();
 
         private readonly IGroup<Entity<GameScope>> _selectionViews
@@ -19,17 +18,15 @@ namespace DeckScaler
                 .And<Selecting>()
                 .Build();
 
-        private readonly List<Entity<GameScope>> _buffer = new(2);
-
         public void Execute()
         {
             foreach (var _ in _cursors)
-            foreach (var selection in _selectionViews.GetEntities(_buffer))
+            foreach (var selection in _selectionViews)
             {
-                var view = selection.Get<SelectionView>().Value;
-                view.Hide();
+                var rect = selection.Get<SelectionRect>();
 
-                selection.Is<Selecting>(false);
+                var view = selection.Get<SelectionView>().Value;
+                view.UpdatePositions(rect.Value);
             }
         }
     }

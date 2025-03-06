@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace DeckScaler
 {
-    public sealed class DrawSelectionRectSystem : IExecuteSystem
+    public sealed class CalculateSelectionRectSystem : IExecuteSystem
     {
         private readonly IGroup<Entity<InputScope>> _cursors
             = GroupBuilder<InputScope>
@@ -15,7 +15,7 @@ namespace DeckScaler
 
         private readonly IGroup<Entity<GameScope>> _selectionViews
             = GroupBuilder<GameScope>
-                .With<SelectionRect>()
+                .With<SelectionView>()
                 .And<Selecting>()
                 .Build();
 
@@ -27,10 +27,19 @@ namespace DeckScaler
             foreach (var selection in _selectionViews)
             {
                 var mouseWorldPosition = cursor.Get<MouseWorldPosition, Vector2>();
-                var mouseScreenPosition = UiCamera.WorldToScreenPoint(mouseWorldPosition);
+                var cursorPosition = UiCamera.WorldToScreenPoint(mouseWorldPosition).Truncate();
 
-                var view = selection.Get<SelectionRect>().Value;
-                view.UpdatePositions(mouseScreenPosition);
+                var origin = selection.Get<SelectionOrigin>().Value;
+
+                var rect = new Rect
+                {
+                    size = new(
+                        x: (origin.x - cursorPosition.x).Abs(),
+                        y: (origin.y - cursorPosition.y).Abs()
+                    ),
+                    center = (origin + cursorPosition) / 2,
+                };
+                selection.Set<SelectionRect, Rect>(rect);
             }
         }
     }

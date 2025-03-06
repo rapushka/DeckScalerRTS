@@ -20,7 +20,8 @@ namespace DeckScaler
 
             // selection area view
             Add(new StartSelectionSystem());
-            Add(new DrawSelectionRectSystem());
+            Add(new CalculateSelectionRectSystem());
+            Add(new DrawSelectionAreaViewSystem());
             Add(new StopSelectionSystem());
 
             Add(new ReadClicksOnEntitySystem());

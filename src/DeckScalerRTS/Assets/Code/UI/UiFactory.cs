@@ -16,10 +16,10 @@ namespace DeckScaler
         {
             var selection = EntityBehaviourFactory.CreateSelectionView().Entity
                     .Add<DebugName, string>("selection view")
-                    .Add<WorldPosition, Vector2>(Vector2.zero)
+                    .Add<SelectionRect, Rect>(new())
                 ;
 
-            var rect = selection.Get<SelectionRect>().Value;
+            var rect = selection.Get<SelectionView>().Value;
             rect.Hide();
 
             return selection;

@@ -6,25 +6,17 @@ namespace DeckScaler
     {
         [SerializeField] private RectTransform _target;
 
-        private Vector2 _start;
-
-        public void Show(Vector2 start)
+        public void Show()
         {
-            _start = start;
-
-            UpdatePositions(start);
+            UpdatePositions(new(Vector2.zero, Vector2.zero));
             _target.gameObject.SetActive(true);
         }
 
-        public void UpdatePositions(Vector2 end)
+        public void UpdatePositions(Rect rect)
         {
-            var center = (_start + end) / 2;
+            var center = rect.center;
             _target.anchoredPosition = center;
-
-            _target.sizeDelta = new(
-                x: (_start.x - end.x).Abs(),
-                y: (_start.y - end.y).Abs()
-            );
+            _target.sizeDelta = rect.size;
         }
 
         public void Hide()

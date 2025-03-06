@@ -15,7 +15,8 @@ namespace DeckScaler
 
         private readonly IGroup<Entity<GameScope>> _selectionViews
             = GroupBuilder<GameScope>
-                .With<SelectionRect>()
+                .With<SelectionView>()
+                .And<SelectionRect>()
                 .Build();
 
         private static Camera UiCamera => ServiceLocator.Resolve<ICameraService>().UiCamera;
@@ -28,10 +29,13 @@ namespace DeckScaler
                 var mouseWorldPosition = cursor.Get<MouseWorldPosition>().Value;
                 var mouseScreenPosition = UiCamera.WorldToScreenPoint(mouseWorldPosition);
 
-                selection.Is<Selecting>(true);
+                selection
+                    .Is<Selecting>(true)
+                    .Set<SelectionOrigin, Vector2>(mouseScreenPosition)
+                    ;
 
-                var view = selection.Get<SelectionRect>().Value;
-                view.Show(mouseScreenPosition);
+                var view = selection.Get<SelectionView>().Value;
+                view.Show();
             }
         }
     }
