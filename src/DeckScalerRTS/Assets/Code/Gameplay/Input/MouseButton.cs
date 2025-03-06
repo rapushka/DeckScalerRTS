@@ -2,8 +2,9 @@ namespace DeckScaler
 {
     public enum MouseButton
     {
-        Left,
-        Right,
-        Middle,
+        Unknown = -1,
+        Left = 0,
+        Right = 1,
+        Middle = 2,
     }
 }

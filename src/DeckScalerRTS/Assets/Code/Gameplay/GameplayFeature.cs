@@ -10,20 +10,35 @@ namespace DeckScaler
             // ---
             // # Initialize
             Add(new InitializeInputSystem());
+            Add(new InitializeSelectionRectViewSystem());
             Add(new TestSpawnUnitSystem());
 
-            // ---
+            // #---
             // # Update
             Add(new EmitMousePositionSystem());
             Add(new EmitMouseOrdersSystem());
+
             Add(new ReadClicksOnEntitySystem());
-            Add(new OnDragCameraStartedSystem());
+            Add(new StartDraggingCameraSystem());
             Add(new DragCameraSystem());
 
-            // selection
+            // ## Selection
             Add(new OnUnitClickedSystem());
+
+            // selection area & view
+            Add(new StartSelectionSystem());
+            Add(new CalculateSelectionRectSystem());
+            Add(new DrawSelectionAreaViewSystem());
+
+            Add(new OnSelectionEndedSystem());
+            Add(new SelectUnitsInRectSystem());
+            Add(new StopSelectionSystem());
+
             Add(new UnselectAllUnitsSystem());
             Add(new SelectUnitsSystem());
+
+            Add(new CleanupSelectionEndedSystem());
+            // ##---
 
             // orders
             Add(new EmitUnitOrderSystem());
@@ -46,7 +61,6 @@ namespace DeckScaler
             Add(new PlayUnitAttackAnimationSystem());
 
             Add(new ResetUsedAbilitiesSystem());
-            // ---
 
             // health
             Add(new MarkDeadUnitsWithZeroHpSystem());
@@ -56,13 +70,14 @@ namespace DeckScaler
             Add(new DestroyDeadUnitsSystem());
             Add(new FreeTentOnAllEnemiesDeadSystem());
 
+            // #---
             // # Cleanups
             Add(new DestroyEntitiesAfterDelaySystem());
 
             Add(new DestroyWithChildrenSystem());
             Add(new DestroyEntitiesSystem());
 
-            // ---
+            // #---
             // # Boilerplate
             var contexts = Contexts.Instance;
             Add(new SelfEventSystem<GameScope, HeadSprite>(contexts));

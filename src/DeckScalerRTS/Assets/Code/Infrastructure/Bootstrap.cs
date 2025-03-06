@@ -6,17 +6,28 @@ namespace DeckScaler
     public class Bootstrap : MonoBehaviour
     {
         [SerializeField] private GameConfig _gameConfig;
+
+        [NaughtyAttributes.BoxGroup("Cameras")]
         [SerializeField] private Camera _mainCamera;
+        [NaughtyAttributes.BoxGroup("Cameras")]
+        [SerializeField] private Camera _uiCamera;
+
+        [NaughtyAttributes.BoxGroup("UI")]
+        [SerializeField] private Canvas _canvas;
+
+        private InputService _inputService;
 
         private void Awake()
         {
             ServiceLocator.Register<IGameConfig>(_gameConfig);
 
             // Services
-            ServiceLocator.Register<IInputService>(new InputService());
-            ServiceLocator.Register<ICameraService>(new CameraService(_mainCamera));
+            _inputService = new();
+            ServiceLocator.Register<IInputService>(_inputService);
+            ServiceLocator.Register<ICameraService>(new CameraService(_mainCamera, _uiCamera));
             ServiceLocator.Register<IIdentifiesService>(new SimplestIdentifiesService());
             ServiceLocator.Register<ITimeService>(new TimeService());
+            ServiceLocator.Register<IUiService>(new UiService(_canvas));
 
             // Factories
             ServiceLocator.Register<IEntityBehaviourFactory>(new EntityBehaviourFactory());
@@ -24,6 +35,7 @@ namespace DeckScaler
             ServiceLocator.Register<IAbilityFactory>(new AbilityFactory());
             ServiceLocator.Register<IAffectFactory>(new AffectFactory());
             ServiceLocator.Register<ITentFactory>(new TentFactory());
+            ServiceLocator.Register<IUiFactory>(new UiFactory());
 
             // Scopes
             Contexts.Instance.InitializeScope<GameScope>();
@@ -42,7 +54,12 @@ namespace DeckScaler
             new GameObject(nameof(GameplayFeatureAdapter))
                 .AddComponent<GameplayFeatureAdapter>();
         }
-    }
 
-    public class GameplayFeatureAdapter : FeatureAdapterBase<GameplayFeature> { }
+        private void Update()
+        {
+            var deltaTime = ServiceLocator.Resolve<ITimeService>().Delta;
+
+            ((IUpdatable)_inputService).OnUpdate(deltaTime);
+        }
+    }
 }

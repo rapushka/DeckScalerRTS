@@ -23,7 +23,8 @@ namespace DeckScaler
         [Serializable]
         public class UiConfig
         {
-            [field: SerializeField] public EntityBehaviour TargetView { get; private set; }
+            [field: SerializeField] public EntityBehaviour TargetViewPrefab    { get; private set; }
+            [field: SerializeField] public EntityBehaviour SelectionViewPrefab { get; private set; }
         }
     }
 }
