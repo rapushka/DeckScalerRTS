@@ -1,4 +1,3 @@
-using Entitas.Generic;
 using UnityEngine;
 
 namespace DeckScaler
@@ -19,15 +18,23 @@ namespace DeckScaler
 
         private void Awake()
         {
-            ServiceLocator.Register<IGameConfig>(_gameConfig);
+            RegisterServices();
+            Game.Instance.Start();
+        }
 
+        private void RegisterServices()
+        {
             // Services
+            ServiceLocator.Register<IGameStateMachine>(new GameStateMachine());
+            ServiceLocator.Register<IGameConfig>(_gameConfig);
             _inputService = new();
             ServiceLocator.Register<IInputService>(_inputService);
             ServiceLocator.Register<ICameraService>(new CameraService(_mainCamera, _uiCamera));
             ServiceLocator.Register<IIdentifiesService>(new SimplestIdentifiesService());
             ServiceLocator.Register<ITimeService>(new TimeService());
             ServiceLocator.Register<IUiService>(new UiService(_canvas));
+            ServiceLocator.Register<IUiMediator>(new UiMediator());
+            ServiceLocator.Register<IPagesService>(new PagesService());
 
             // Factories
             ServiceLocator.Register<IEntityBehaviourFactory>(new EntityBehaviourFactory());
@@ -36,23 +43,6 @@ namespace DeckScaler
             ServiceLocator.Register<IAffectFactory>(new AffectFactory());
             ServiceLocator.Register<ITentFactory>(new TentFactory());
             ServiceLocator.Register<IUiFactory>(new UiFactory());
-
-            // Scopes
-            Contexts.Instance.InitializeScope<GameScope>();
-            Contexts.Instance.InitializeScope<InputScope>();
-
-            // Indexes
-            Contexts.Instance.Get<GameScope>().GetPrimaryIndex<ID, EntityID>().Initialize();
-            Contexts.Instance.Get<GameScope>().GetIndex<AbilityOf, EntityID>().Initialize();
-            Contexts.Instance.Get<GameScope>().GetIndex<ChildOf, EntityID>().Initialize();
-            Contexts.Instance.Get<GameScope>().GetIndex<OnTent, EntityID>().Initialize();
-
-#if UNITY_EDITOR
-            Entity<GameScope>.Formatter = new GameEntityFormatter();
-#endif
-
-            new GameObject(nameof(GameplayFeatureAdapter))
-                .AddComponent<GameplayFeatureAdapter>();
         }
 
         private void Update()
