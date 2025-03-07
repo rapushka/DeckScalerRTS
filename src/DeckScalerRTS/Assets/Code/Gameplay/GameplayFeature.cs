@@ -66,6 +66,8 @@ namespace DeckScaler
             Add(new MarkDeadUnitsWithZeroHpSystem());
 
             Add(new CleanupDeadOpponentsSystem());
+            Add(new OnAnyFellaDiedStartLooseTimerSystem());
+            Add(new LooseSystem());
 
             Add(new DestroyDeadUnitsSystem());
             Add(new FreeTentOnAllEnemiesDeadSystem());

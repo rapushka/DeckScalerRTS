@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 453013506660610802}
   - component: {fileID: 8640632802740627007}
   m_Layer: 5
-  m_Name: Gameplay HUD
+  m_Name: 2 - Gameplay HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

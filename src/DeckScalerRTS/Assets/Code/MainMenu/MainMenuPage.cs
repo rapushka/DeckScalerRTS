@@ -8,8 +8,6 @@ namespace DeckScaler
         [SerializeField] private Button _playButton;
         [SerializeField] private Button _quitButton;
 
-        private static IUiMediator UiMediator => ServiceLocator.Resolve<IUiMediator>();
-
         public override void Initialize()
         {
             _playButton.onClick.AddListener(StartNewRun);
