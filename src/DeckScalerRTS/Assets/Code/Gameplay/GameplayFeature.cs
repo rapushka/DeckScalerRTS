@@ -37,6 +37,8 @@ namespace DeckScaler
             Add(new UnselectAllUnitsSystem());
             Add(new SelectUnitsSystem());
 
+            Add(new UpdateSelectedUnitsUISystem());
+
             Add(new CleanupSelectionEndedSystem());
             // ##---
 

@@ -7,7 +7,8 @@ namespace DeckScaler
     {
         void Initialize();
 
-        void OpenPage<TPage>() where TPage : BasePage;
+        void  OpenPage<TPage>() where TPage : BasePage;
+        TPage GetPage<TPage>() where TPage : BasePage;
     }
 
     public class PagesService : IPagesService
@@ -34,6 +35,12 @@ namespace DeckScaler
             _currentPage = _loadedPagesMap.GetOrAdd(CreateNewPage<TPage>);
 
             _currentPage.Show();
+        }
+
+        public TPage GetPage<TPage>()
+            where TPage : BasePage
+        {
+            return _loadedPagesMap.Get<TPage>();
         }
 
         private TPage CreateNewPage<TPage>()

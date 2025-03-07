@@ -13,7 +13,7 @@ namespace DeckScaler
 
         public void OnEnter(GameStateMachine stateMachine)
         {
-            UiMediator.OpenPage<GameplayPage>();
+            UiMediator.OpenPage<GameplayHUDPage>();
 
             _ecsRunner = new GameObject(nameof(GameplayFeatureRunner))
                 .AddComponent<GameplayFeatureRunner>();

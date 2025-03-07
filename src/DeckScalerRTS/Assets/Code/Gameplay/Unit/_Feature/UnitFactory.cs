@@ -37,7 +37,7 @@ namespace DeckScaler
             var unit = EntityBehaviourFactory.CreateUnitView(position).Entity;
             unit
                 .Add<DebugName, string>($"unit {TrimUniID(id.Value)}")
-                .Add<UnitID, string>(id)
+                .Add<UnitID, UnitIDRef>(id)
                 .Set<HeadSprite, Sprite>(unitConfig.Head)
                 .Is<Clickable>(true)
                 .Add<WorldPosition, Vector2>(position)
