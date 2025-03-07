@@ -3,16 +3,16 @@ using UnityEngine.UI;
 
 namespace DeckScaler
 {
-    public class GameplayPage : BasePage
+    public class LooseScreenPage : BasePage
     {
-        [SerializeField] private Button _leaveGameButton;
+        [SerializeField] private Button _backToMainMenu;
 
         public override void Initialize()
         {
-            _leaveGameButton.onClick.AddListener(LeftGame);
+            _backToMainMenu.onClick.AddListener(BackToMainMenu);
         }
 
-        private void LeftGame()
+        private void BackToMainMenu()
         {
             UiMediator.ToGameState<MainMenuGameState>();
         }
