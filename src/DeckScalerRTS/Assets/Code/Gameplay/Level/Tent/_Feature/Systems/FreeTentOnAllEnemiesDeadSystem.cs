@@ -29,7 +29,10 @@ namespace DeckScaler
                 if (!hasAnyAliveEnemy)
                 {
                     var tent = tentID.GetEntity();
-                    tent.Is<OnEnemySide>(false);
+                    tent
+                        .Is<OnEnemySide>(false)
+                        .Set<OnSide, Side>(Side.Player)
+                        ;
                 }
             }
         }

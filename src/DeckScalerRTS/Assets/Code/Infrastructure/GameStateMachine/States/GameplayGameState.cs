@@ -8,7 +8,8 @@ namespace DeckScaler
 
         private static IUiMediator UiMediator => ServiceLocator.Resolve<IUiMediator>();
 
-        private static Camera MainCamera => ServiceLocator.Resolve<ICameraService>().MainCamera;
+        private static Camera             MainCamera => ServiceLocator.Resolve<ICameraService>().MainCamera;
+        private static IIdentifiesService IdService  => ServiceLocator.Resolve<IIdentifiesService>();
 
         public void OnEnter(GameStateMachine stateMachine)
         {
@@ -22,6 +23,7 @@ namespace DeckScaler
         {
             _ecsRunner.DestroyObject();
             MainCamera.transform.SetPosition(x: 0f, y: 0f);
+            IdService.Reset();
         }
     }
 }
