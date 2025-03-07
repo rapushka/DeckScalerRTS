@@ -4,9 +4,11 @@ namespace DeckScaler
 {
     public class GameplayGameState : IState, IExitState
     {
+        private GameplayFeatureRunner _ecsRunner;
+
         private static IUiMediator UiMediator => ServiceLocator.Resolve<IUiMediator>();
 
-        private GameplayFeatureRunner _ecsRunner;
+        private static Camera MainCamera => ServiceLocator.Resolve<ICameraService>().MainCamera;
 
         public void OnEnter(GameStateMachine stateMachine)
         {
@@ -19,6 +21,7 @@ namespace DeckScaler
         public void OnExit()
         {
             _ecsRunner.DestroyObject();
+            MainCamera.transform.SetPosition(x: 0f, y: 0f);
         }
     }
 }
