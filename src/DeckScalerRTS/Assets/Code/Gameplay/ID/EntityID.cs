@@ -3,9 +3,9 @@ using System;
 namespace DeckScaler
 {
     [Serializable]
-    public struct EntityID : IEquatable<EntityID>
+    public readonly struct EntityID : IEquatable<EntityID>
     {
-        public int ID { get; private set; }
+        public int ID { get; }
 
         public EntityID(int id) => ID = id;
 
