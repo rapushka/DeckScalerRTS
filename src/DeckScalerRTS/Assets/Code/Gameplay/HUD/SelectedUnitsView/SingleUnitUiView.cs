@@ -35,7 +35,8 @@ namespace DeckScaler
 
         public override void OnAutoAttackButtonClick()
         {
-            Debug.Log("TODO: change state");
+            var wasInAutoAttack = _unit.Is<InAutoAttackState>();
+            _unit.Is<InAutoAttackState>(!wasInAutoAttack);
         }
 
         public override void Dispose()
