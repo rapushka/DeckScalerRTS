@@ -6,8 +6,8 @@ namespace DeckScaler
     {
         [SerializeField] private GameObject _root;
 
-        public abstract int MaxHealth { get; }
-        public abstract int Health    { get; }
+        public abstract float  HealthPercent { get; }
+        public abstract string HealthText    { get; }
 
         public abstract AutoAttackState AutoAttackState { get; }
 
@@ -16,5 +16,7 @@ namespace DeckScaler
         public virtual void Show() => _root.SetActive(true);
 
         public virtual void Hide() => _root.SetActive(false);
+
+        public abstract void Dispose();
     }
 }

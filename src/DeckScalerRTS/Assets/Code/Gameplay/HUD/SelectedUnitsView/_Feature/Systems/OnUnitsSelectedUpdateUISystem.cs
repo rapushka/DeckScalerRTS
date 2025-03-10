@@ -3,7 +3,7 @@ using Entitas.Generic;
 
 namespace DeckScaler
 {
-    public sealed class UpdateSelectedUnitsUISystem : IExecuteSystem
+    public sealed class OnUnitsSelectedUpdateUISystem : IExecuteSystem
     {
         private readonly IGroup<Entity<GameScope>> _events
             = GroupBuilder<GameScope>
@@ -18,12 +18,13 @@ namespace DeckScaler
 
         private static IUiMediator UiMediator => ServiceLocator.Resolve<IUiMediator>();
 
+        private static SelectedUnitsUiView SelectionUI => UiMediator.GetPage<GameplayHUDPage>().SelectedUnitView;
+
         public void Execute()
         {
             foreach (var _ in _events)
             {
-                var hud = UiMediator.GetPage<GameplayHUDPage>();
-                hud.SelectedUnitView.UpdateUnits(_selectedUnits);
+                SelectionUI.OnSelectionChanged(_selectedUnits);
             }
         }
     }

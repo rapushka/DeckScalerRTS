@@ -3,14 +3,12 @@ using Entitas.Generic;
 
 namespace DeckScaler
 {
-    public sealed class LooseSystem : IExecuteSystem
+    public sealed class TickLooseTimersSystem : IExecuteSystem
     {
         private readonly IGroup<Entity<GameScope>> _looseTimers
             = GroupBuilder<GameScope>
                 .With<LooseAfterTimer>()
                 .Build();
-
-        private static IGameStateMachine StateMachine => ServiceLocator.Resolve<IGameStateMachine>();
 
         private static ITimeService Time => ServiceLocator.Resolve<ITimeService>();
 
@@ -24,8 +22,10 @@ namespace DeckScaler
                 if (!timer.IsElapsed)
                     continue;
 
-                StateMachine.ToState<LooseGameState>();
-                entity.Add<Destroy>();
+                entity
+                    .Add<GameLostEvent>()
+                    .Add<Destroy>()
+                    ;
                 break;
             }
         }

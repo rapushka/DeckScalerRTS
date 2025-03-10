@@ -5,23 +5,25 @@ namespace DeckScaler
 {
     public class MultipleUnitsUiView : BaseUnitView
     {
-        private int _maxHealth;
-        private int _health;
         private AutoAttackState _autoAttackState;
 
-        public override int MaxHealth => _maxHealth;
-        public override int Health    => _health;
-
-        public override AutoAttackState AutoAttackState => _autoAttackState;
+        public override float           HealthPercent   { get; }             // TODO:
+        public override string          HealthText      { get; }             // TODO:
+        public override AutoAttackState AutoAttackState => _autoAttackState; // TODO:
 
         public void SetUnits(IGroup<Entity<GameScope>> units)
         {
-            throw new System.NotImplementedException();
+            // TODO: implement
         }
 
         public override void OnAutoAttackButtonClick()
         {
-            throw new System.NotImplementedException();
+            // TODO: implement
+        }
+
+        public override void Dispose()
+        {
+            // TODO: implement
         }
     }
 }
