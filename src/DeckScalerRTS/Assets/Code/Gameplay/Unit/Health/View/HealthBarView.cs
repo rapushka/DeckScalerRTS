@@ -31,6 +31,9 @@ namespace DeckScaler
 
         private void UpdateValue(Entity<GameScope> entity)
         {
+            if (_entity != entity)
+                return;
+
             var currentHP = entity.Get<Health>().Value;
             var maxHP = entity.Get<MaxHealth>().Value;
 
