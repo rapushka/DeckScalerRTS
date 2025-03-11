@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 
@@ -35,6 +36,11 @@ namespace DeckScaler
 
             _tween = _headTransform.DOPunchPosition(punch, _duration, _vibrato, _elasticity)
                 .SetEase(_ease);
+        }
+
+        private void OnDestroy()
+        {
+            _tween?.Kill();
         }
     }
 }

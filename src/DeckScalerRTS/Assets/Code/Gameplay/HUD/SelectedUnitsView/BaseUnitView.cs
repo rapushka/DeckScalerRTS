@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace DeckScaler
@@ -6,8 +7,9 @@ namespace DeckScaler
     {
         [SerializeField] private GameObject _root;
 
-        public abstract float  HealthPercent { get; }
-        public abstract string HealthText    { get; }
+        public event Action ForceHideRequested;
+
+        public abstract HpData HpData { get; }
 
         public abstract AutoAttackState AutoAttackState { get; }
 
@@ -17,6 +19,11 @@ namespace DeckScaler
 
         public virtual void Hide() => _root.SetActive(false);
 
+        public abstract void UpdateValues();
+
         public abstract void Dispose();
+
+        protected void ForceHide()
+            => ForceHideRequested?.Invoke();
     }
 }

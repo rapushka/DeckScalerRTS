@@ -24,7 +24,7 @@ namespace DeckScaler
             foreach (var enemy in _deadEnemies.GetEntities(_buffer))
             {
                 var tentID = enemy.Get<OnTent, EntityID>();
-                var hasAnyAliveEnemy = Index.GetEntities(tentID).Any(e => !e.Is<Dead>());
+                var hasAnyAliveEnemy = Index.GetEntities(tentID).Any(e => e.IsAlive());
 
                 if (!hasAnyAliveEnemy)
                 {

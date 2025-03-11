@@ -41,12 +41,6 @@ namespace DeckScaler
             Add(new UnselectAllUnitsSystem());
             Add(new SelectUnitsSystem());
 
-#region UI
-            Add(new InitSelectionUiSystem());
-            Add(new OnUnitsSelectedUpdateUISystem());
-            Add(new UpdateSelectionUISystem());
-#endregion
-
             Add(new CleanupSelectionEndedSystem());
 #endregion
 
@@ -83,6 +77,12 @@ namespace DeckScaler
 
             Add(new DestroyDeadUnitsSystem());
             Add(new FreeTentOnAllEnemiesDeadSystem());
+
+#region Selection UI
+            Add(new InitSelectionUiSystem());
+            Add(new OnUnitsSelectedUpdateUISystem());
+            Add(new UpdateSelectionUISystem());
+#endregion
 #endregion
 
 #region Cleanups

@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace DeckScaler
 {
-    public class HealthBarView
+    public class UniHealthView
         : BaseListener<GameScope>,
           IRegistrableListener<GameScope, Health>,
           IRegistrableListener<GameScope, MaxHealth>
     {
-        [SerializeField] private ProgressBar _progressBar;
+        [SerializeField] private SpriteProgressBar _progressBar;
         [SerializeField] private TMP_Text _text;
 
         private Entity<GameScope> _entity;

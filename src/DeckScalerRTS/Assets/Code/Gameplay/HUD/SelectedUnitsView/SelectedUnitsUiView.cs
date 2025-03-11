@@ -7,30 +7,19 @@ using UnityEngine.UI;
 
 namespace DeckScaler
 {
-    public enum AutoAttackState
-    {
-        Unknown = 0,
-        Attacking = 1,
-        Ignore = 2,
-        Mixed = 3,
-    }
-
     public class SelectedUnitsUiView : MonoBehaviour
     {
         [SerializeField] private SingleUnitUiView _singleView;
         [SerializeField] private MultipleUnitsUiView _multipleView;
 
         [Header("Health Bar")]
-        [SerializeField] private Image _healthBar;
-        [SerializeField] private TMP_Text _healthTextMesh;
+        [SerializeField] private ProgressBar _healthBar;
 
         [Header("Auto-Attack State Button")]
         [SerializeField] private Button _autoAttackButton;
         [SerializeField] private TMP_Text _autoAttackTextMesh;
 
         private BaseUnitView _currentView;
-
-        private float HealthBarFill { set => _healthBar.fillAmount = value; }
 
         private AutoAttackState AutoAttackState
         {
@@ -41,7 +30,7 @@ namespace DeckScaler
                 {
                     AutoAttackState.Attacking => "Auto-Attack Mode",
                     AutoAttackState.Ignore    => "Defence Mode",
-                    AutoAttackState.Mixed     => "———",
+                    AutoAttackState.Mixed     => Constants.LongDash,
                     _                         => throw new ArgumentOutOfRangeException(nameof(value), value, null),
                 };
             }
@@ -50,26 +39,22 @@ namespace DeckScaler
         private void Awake()
         {
             _autoAttackButton.onClick.AddListener(OnAutoAttackButtonClick);
+            _singleView.ForceHideRequested += Hide;
+            _multipleView.ForceHideRequested += Hide;
         }
 
         public void Hide()
         {
-            _singleView.Hide();
-            _multipleView.Hide();
-
-            _currentView?.Dispose();
-            _currentView = HideAllStas();
+            Dispose();
+            _currentView = null;
         }
 
         public void OnSelectionChanged(IGroup<Entity<GameScope>> units)
         {
-            _singleView.Hide();
-            _multipleView.Hide();
-
-            _currentView?.Dispose();
+            Dispose();
             _currentView = units.count switch
             {
-                0 => HideAllStas(),
+                0 => null,
                 1 => ShowForSingle(units.First()),
                 _ => ShowForMultiple(units),
             };
@@ -80,26 +65,30 @@ namespace DeckScaler
 
         public void UpdateValue()
         {
+            _currentView?.UpdateValues();
+
+            // view can Force Hide
             if (_currentView is null)
                 return;
 
-            HealthBarFill = _currentView.HealthPercent;
-            _healthTextMesh.text = _currentView.HealthText;
-
+            _healthBar.HpData = _currentView.HpData;
             AutoAttackState = _currentView.AutoAttackState;
+        }
+
+        private void Dispose()
+        {
+            _singleView.Hide();
+            _multipleView.Hide();
+
+            _currentView?.Dispose();
+
+            _healthBar.HpData = HpData.Empty();
+            AutoAttackState = AutoAttackState.Mixed;
         }
 
         private void OnAutoAttackButtonClick()
         {
             _currentView?.OnAutoAttackButtonClick();
-        }
-
-        private BaseUnitView HideAllStas()
-        {
-            HealthBarFill = 0f;
-            _healthTextMesh.text = string.Empty;
-
-            return null;
         }
 
         private BaseUnitView ShowForSingle(Entity<GameScope> unit)

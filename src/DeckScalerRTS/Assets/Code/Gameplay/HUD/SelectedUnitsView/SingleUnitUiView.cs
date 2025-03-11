@@ -10,15 +10,12 @@ namespace DeckScaler
 
         private Entity<GameScope> _unit;
 
-        public override float  HealthPercent => (float)Health / MaxHealth;
-        public override string HealthText    => $"{Health}/{MaxHealth}";
+        public override HpData HpData => new(Health, MaxHealth);
 
-        private int MaxHealth => _unit.Get<MaxHealth, float>().FloorToInt();
-        private int Health    => _unit.Get<Health, float>().FloorToInt();
+        private float MaxHealth => _unit.Get<MaxHealth, float>();
+        private float Health    => _unit.Get<Health, float>();
 
-        public override AutoAttackState AutoAttackState => _unit.Is<InAutoAttackState>()
-            ? AutoAttackState.Attacking
-            : AutoAttackState.Ignore;
+        public override AutoAttackState AutoAttackState => _unit.GetAutoAttackState();
 
         private static UnitsConfig UnitsConfig => ServiceLocator.Resolve<IGameConfig>().Units;
 
@@ -37,6 +34,15 @@ namespace DeckScaler
         {
             var wasInAutoAttack = _unit.Is<InAutoAttackState>();
             _unit.Is<InAutoAttackState>(!wasInAutoAttack);
+        }
+
+        public override void UpdateValues()
+        {
+            if (_unit.IsAlive())
+                return;
+
+            Dispose();
+            ForceHide();
         }
 
         public override void Dispose()

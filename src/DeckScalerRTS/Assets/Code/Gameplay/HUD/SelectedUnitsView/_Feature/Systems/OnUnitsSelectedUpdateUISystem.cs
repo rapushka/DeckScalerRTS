@@ -22,10 +22,10 @@ namespace DeckScaler
 
         public void Execute()
         {
-            foreach (var _ in _events)
-            {
-                SelectionUI.OnSelectionChanged(_selectedUnits);
-            }
+            if (!_events.Any())
+                return;
+
+            SelectionUI.OnSelectionChanged(_selectedUnits);
         }
     }
 }

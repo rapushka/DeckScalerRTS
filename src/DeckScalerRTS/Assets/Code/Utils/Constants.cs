@@ -2,6 +2,8 @@ namespace DeckScaler
 {
     public static class Constants
     {
+        public const string LongDash = "———";
+
         public static class TableID
         {
             public const string Units = "Unit/";
@@ -12,6 +14,8 @@ namespace DeckScaler
             public const MouseButton SelectClick = MouseButton.Left;
             public const MouseButton OrderClick = MouseButton.Right;
             public const MouseButton DragClick = MouseButton.Middle;
+
+            public const float HoldDurationForClick = 0.3f;
         }
     }
 }

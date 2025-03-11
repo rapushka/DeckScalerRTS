@@ -1,4 +1,5 @@
 using UnityEngine;
+using InputConstants = DeckScaler.Constants.InputBindings;
 
 namespace DeckScaler
 {
@@ -13,12 +14,9 @@ namespace DeckScaler
 
     public class InputService : IInputService, IUpdatable
     {
-        // 300ms is optimal separation between clicks and holds
-        private const float HoldDurationForClick = 0.3f;
-
-        private readonly Button _selectButton = new(Constants.InputBindings.SelectClick);
-        private readonly Button _orderButton = new(Constants.InputBindings.OrderClick);
-        private readonly Button _dragButton = new(Constants.InputBindings.DragClick);
+        private readonly Button _selectButton = new(InputConstants.SelectClick);
+        private readonly Button _orderButton = new(InputConstants.OrderClick);
+        private readonly Button _dragButton = new(InputConstants.DragClick);
 
         public ButtonState SelectButton     => _selectButton.State;
         public ButtonState OrderButton      => _orderButton.State;
@@ -68,7 +66,7 @@ namespace DeckScaler
                 {
                     _isHolding = false;
 
-                    var currentState = _holdTime < HoldDurationForClick
+                    var currentState = _holdTime < InputConstants.HoldDurationForClick
                         ? ButtonState.Clicked
                         : ButtonState.JustUp;
                     return currentState;

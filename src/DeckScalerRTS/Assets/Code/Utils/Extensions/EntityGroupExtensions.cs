@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Entitas;
 using Entitas.Generic;
 
@@ -17,6 +18,17 @@ namespace DeckScaler
                 return entity;
 
             throw new InvalidOperationException("The group is empty");
+        }
+
+        public static string JoinToString<TEntity>(this IGroup<TEntity> @this, string separator = ", ")
+            where TEntity : class, IEntity
+            => string.Join(separator, @this);
+
+        public static IEnumerable<TResult> Select<TEntity, TResult>(this IGroup<TEntity> @this, Func<TEntity, TResult> selector)
+            where TEntity : class, IEntity
+        {
+            foreach (var entity in @this)
+                yield return selector.Invoke(entity);
         }
     }
 }
