@@ -52,7 +52,14 @@ namespace DeckScaler
             _autoAttackButton.onClick.AddListener(OnAutoAttackButtonClick);
         }
 
-        public void Hide() => HideCurrentView();
+        public void Hide()
+        {
+            _singleView.Hide();
+            _multipleView.Hide();
+
+            _currentView?.Dispose();
+            _currentView = HideAllStas();
+        }
 
         public void OnSelectionChanged(IGroup<Entity<GameScope>> units)
         {
@@ -62,7 +69,7 @@ namespace DeckScaler
             _currentView?.Dispose();
             _currentView = units.count switch
             {
-                0 => HideCurrentView(),
+                0 => HideAllStas(),
                 1 => ShowForSingle(units.First()),
                 _ => ShowForMultiple(units),
             };
@@ -87,7 +94,7 @@ namespace DeckScaler
             _currentView?.OnAutoAttackButtonClick();
         }
 
-        private BaseUnitView HideCurrentView()
+        private BaseUnitView HideAllStas()
         {
             HealthBarFill = 0f;
             _healthTextMesh.text = string.Empty;

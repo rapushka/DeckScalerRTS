@@ -41,7 +41,8 @@ namespace DeckScaler
 
         public override void Dispose()
         {
-            _unit.Release(this);
+            _unit?.Release(this);
+            _unit = null;
         }
     }
 }

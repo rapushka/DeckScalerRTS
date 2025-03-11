@@ -45,7 +45,6 @@ namespace DeckScaler
             Add(new InitSelectionUiSystem());
             Add(new OnUnitsSelectedUpdateUISystem());
             Add(new UpdateSelectionUISystem());
-            Add(new DisposeSelectionUIOnGameLostSystem());
 #endregion
 
             Add(new CleanupSelectionEndedSystem());
