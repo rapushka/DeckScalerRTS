@@ -22,7 +22,7 @@ namespace DeckScaler
         public ProgressBar HealthBar          => _healthBar;
         public TMP_Text    AutoAttackTextMesh => _autoAttackTextMesh;
 
-        private AutoAttackState AutoAttackState
+        public AutoAttackState AutoAttackState
         {
             set
             {
@@ -45,7 +45,7 @@ namespace DeckScaler
         private void OnAutoAttackButtonClick()
         {
             CreateEntity.OneFrame()
-                // .Add<FlipSelectedUnitAttackStateEvent>() TODO:
+                .Add<FlipSelectedUnitAttackStateEvent>()
                 ;
         }
 

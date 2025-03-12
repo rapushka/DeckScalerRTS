@@ -53,6 +53,7 @@ namespace DeckScaler
             Add(new MoveToPositionSystem());
 
             Add(new TriggerAutoAttackSystem());
+            Add(new FlipAutoAttackOnSelectedUnitsSystem());
             Add(new RemoveOpponentIfOutOfRangeSystem());
 
             Add(new MoveToOpponentSystem());
@@ -89,6 +90,7 @@ namespace DeckScaler
             // single
             Add(new LoadSingleSelectedUnitPortraitSystem());
             Add(new UpdateSingleSelectedUnitHealthBarSystem());
+            Add(new UpdateSingleSelectedUnitAutoAttackStateSystem());
 
             // multiple
 
