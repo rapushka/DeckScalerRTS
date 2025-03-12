@@ -2,7 +2,7 @@ using Entitas;
 
 namespace DeckScaler
 {
-    public sealed class InitSelectionUiSystem : IInitializeSystem
+    public class InitSelectionUiSystem : IInitializeSystem
     {
         private static IUiMediator UiMediator => ServiceLocator.Resolve<IUiMediator>();
 
@@ -10,7 +10,10 @@ namespace DeckScaler
 
         public void Initialize()
         {
-            SelectionUI.Hide();
+            CreateUiEntity.Empty()
+                .Add<DebugName>()
+                .Add<SelectedUnitUi, SelectedUnitsUiView>(SelectionUI)
+                ;
         }
     }
 }

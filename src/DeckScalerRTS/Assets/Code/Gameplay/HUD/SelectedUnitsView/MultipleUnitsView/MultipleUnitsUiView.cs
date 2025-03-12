@@ -6,14 +6,14 @@ using Entitas.Generic;
 
 namespace DeckScaler
 {
-    public class MultipleUnitsUiView : BaseUnitView
+    public class MultipleUnitsUiView : BaseUnitView // TODO: remove old shi
     {
         private List<Entity<GameScope>> _retainedUnits;
         private Entity<GameScope>[] _allSelectedUnits;
 
-        public override HpData HpData => GetMinHealth().WithFormat("min HP: {0}");
+        public HpData HpData => GetMinHealth().WithFormat("min HP: {0}");
 
-        public override AutoAttackState AutoAttackState
+        public AutoAttackState AutoAttackState
         {
             get
             {
@@ -41,7 +41,7 @@ namespace DeckScaler
             // TODO: implement grid units view
         }
 
-        public override void OnAutoAttackButtonClick()
+        public void OnAutoAttackButtonClick()
         {
             var commonState = AutoAttackState;
             Action<Entity<GameScope>> changeState = commonState is AutoAttackState.Mixed
@@ -57,13 +57,13 @@ namespace DeckScaler
                 => unit.Is<InAutoAttackState>(!unit.Is<InAutoAttackState>());
         }
 
-        public override void Dispose()
+        public void Dispose()
         {
             ForEachUnit(u => u.Release(this));
             _retainedUnits = null;
         }
 
-        public override void UpdateValues()
+        public void UpdateValues()
         {
             FlushInvalidUnits();
         }
@@ -80,7 +80,9 @@ namespace DeckScaler
             }
 
             if (!_retainedUnits.Any())
-                ForceHide();
+            {
+                // ForceHide();
+            }
         }
 
         private void ForEachUnit(Action<Entity<GameScope>> action)

@@ -11,6 +11,9 @@ namespace DeckScaler
 
             foreach (var entity in Contexts.Instance.Get<InputScope>().GetEntities())
                 entity.Destroy();
+
+            foreach (var entity in Contexts.Instance.Get<UiScope>().GetEntities())
+                entity.Destroy();
         }
     }
 }

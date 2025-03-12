@@ -602,7 +602,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _root: {fileID: 8045855140505718669}
-  _portraitView: {fileID: 8113096820900613949}
+  <PortraitView>k__BackingField: {fileID: 8113096820900613949}
 --- !u!1001 &5189494231090530847
 PrefabInstance:
   m_ObjectHideFlags: 0

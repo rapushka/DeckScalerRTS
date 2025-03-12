@@ -70,18 +70,23 @@ namespace DeckScaler
 
 #region Health
             Add(new MarkDeadUnitsWithZeroHpSystem());
-#endregion
 
+#region Death
             Add(new CleanupDeadOpponentsSystem());
             Add(new OnAnyFellaDiedStartLooseTimerSystem());
 
             Add(new DestroyDeadUnitsSystem());
             Add(new FreeTentOnAllEnemiesDeadSystem());
+#endregion
+#endregion
 
 #region Selection UI
             Add(new InitSelectionUiSystem());
-            Add(new OnUnitsSelectedUpdateUISystem());
-            Add(new UpdateSelectionUISystem());
+            Add(new HideSelectionUiIfNoUnitsSelectedSystem());
+            Add(new UpdateSelectionUiPartVisibilitySystem());
+
+            Add(new LoadSelectedUnitPortraitSystem());
+            Add(new ShowSelectionUiPartSystem());
 #endregion
 #endregion
 
