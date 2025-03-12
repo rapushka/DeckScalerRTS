@@ -11,7 +11,7 @@ namespace DeckScaler
         public void Initialize()
         {
             CreateUiEntity.Empty()
-                .Add<DebugName>()
+                .Add<DebugName, string>("Selected Unit HUD")
                 .Add<SelectedUnitUi, SelectedUnitsUiView>(SelectionUI)
                 ;
         }

@@ -3,17 +3,11 @@ using Entitas.Generic;
 
 namespace DeckScaler
 {
-    public sealed class UpdateSelectionUiPartVisibilitySystem : IExecuteSystem
+    public sealed class UpdateSelectionUiPartVisibilityOnUnitsSelectedSystem : IExecuteSystem
     {
         private readonly IGroup<Entity<GameScope>> _events
             = GroupBuilder<GameScope>
                 .With<SelectUnitEvent>()
-                .Build();
-
-        private readonly IGroup<Entity<GameScope>> _selectedUnits
-            = GroupBuilder<GameScope>
-                .With<UnitID>()
-                .And<SelectedUnit>()
                 .Build();
 
         private readonly IGroup<Entity<UiScope>> _uiEntities
@@ -28,7 +22,12 @@ namespace DeckScaler
 
             foreach (var uiEntity in _uiEntities)
             {
-                _selectedUnits.count.SwitchUnitsCount(
+                uiEntity
+                    .Is<DisplayingSingleUnitSelected>(false)
+                    .Is<DisplayingMultipleUnitsSelected>(false)
+                    ;
+
+                _events.count.SwitchUnitsCount(
                     onSingle: () => uiEntity.Is<DisplayingSingleUnitSelected>(true),
                     onMultiple: () => uiEntity.Is<DisplayingMultipleUnitsSelected>(true)
                 );

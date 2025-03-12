@@ -16,8 +16,6 @@ namespace DeckScaler
         [SerializeField] private Button _autoAttackButton;
         [SerializeField] private TMP_Text _autoAttackTextMesh;
 
-        private bool _isVisible;
-
         public SingleUnitUiView    SingleView   => _singleView;
         public MultipleUnitsUiView MultipleView => _multipleView;
 
@@ -38,35 +36,20 @@ namespace DeckScaler
 
         public void ShowSingle()
         {
-            if (_isVisible)
-                return;
-
-            _isVisible = true;
-
             _multipleView.Hide();
             _singleView.Show();
         }
 
         public void ShowMultiple()
         {
-            if (_isVisible)
-                return;
-
-            _isVisible = true;
-
             _singleView.Hide();
             _multipleView.Show();
         }
 
         public void Hide()
         {
-            if (!_isVisible)
-                return;
-
             _singleView.Hide();
             _multipleView.Hide();
-
-            _isVisible = false;
         }
     }
 }

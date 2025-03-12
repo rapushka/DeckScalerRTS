@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Entitas;
 using Entitas.Generic;
 
@@ -5,11 +6,6 @@ namespace DeckScaler
 {
     public sealed class ShowSelectionUiPartSystem : IExecuteSystem
     {
-        private readonly IGroup<Entity<GameScope>> _events
-            = GroupBuilder<GameScope>
-                .With<SelectUnitEvent>()
-                .Build();
-
         private readonly IGroup<Entity<GameScope>> _selectedUnits
             = GroupBuilder<GameScope>
                 .With<UnitID>()
@@ -19,18 +15,19 @@ namespace DeckScaler
         private readonly IGroup<Entity<UiScope>> _uiEntities
             = GroupBuilder<UiScope>
                 .With<SelectedUnitUi>()
+                .Without<Visible>()
                 .Build();
+
+        private readonly List<Entity<UiScope>> _buffer = new(2);
 
         public void Execute()
         {
-            if (!_events.Any())
-                return;
-
-            foreach (var uiEntity in _uiEntities)
+            foreach (var uiEntity in _uiEntities.GetEntities(_buffer))
             {
                 _selectedUnits.count.SwitchUnitsCount(
                     onSingle: uiEntity.Get<SelectedUnitUi>().Value.ShowSingle,
-                    onMultiple: uiEntity.Get<SelectedUnitUi>().Value.ShowMultiple
+                    onMultiple: uiEntity.Get<SelectedUnitUi>().Value.ShowMultiple,
+                    onNone: () => { }
                 );
                 uiEntity.Is<Visible>(true);
             }

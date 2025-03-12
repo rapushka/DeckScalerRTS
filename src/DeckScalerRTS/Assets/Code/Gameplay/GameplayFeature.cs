@@ -82,10 +82,12 @@ namespace DeckScaler
 
 #region Selection UI
             Add(new InitSelectionUiSystem());
+
             Add(new HideSelectionUiIfNoUnitsSelectedSystem());
-            Add(new UpdateSelectionUiPartVisibilitySystem());
+            Add(new UpdateSelectionUiPartVisibilityOnUnitsSelectedSystem());
 
             Add(new LoadSelectedUnitPortraitSystem());
+
             Add(new ShowSelectionUiPartSystem());
 #endregion
 #endregion
