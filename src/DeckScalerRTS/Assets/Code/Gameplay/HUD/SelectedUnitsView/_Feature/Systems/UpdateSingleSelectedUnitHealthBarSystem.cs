@@ -3,13 +3,12 @@ using Entitas.Generic;
 
 namespace DeckScaler
 {
-    public sealed class LoadSelectedUnitPortraitSystem : IExecuteSystem
+    public sealed class UpdateSingleSelectedUnitHealthBarSystem : IExecuteSystem
     {
         private readonly IGroup<Entity<UiScope>> _uiEntities
             = GroupBuilder<UiScope>
                 .With<SelectedUnitUi>()
                 .And<DisplayingSingleUnitSelected>()
-                .Without<Visible>()
                 .Build();
 
         private readonly IGroup<Entity<GameScope>> _selectedUnits
@@ -18,18 +17,14 @@ namespace DeckScaler
                 .And<SelectedUnit>()
                 .Build();
 
-        private static UnitsConfig UnitsConfig => ServiceLocator.Resolve<IGameConfig>().Units;
-
         public void Execute()
         {
             foreach (var uiEntity in _uiEntities)
             {
                 var unit = _selectedUnits.GetSingleEntity();
-                var id = unit.Get<UnitID, UnitIDRef>();
-                var unitConfig = UnitsConfig.GetConfig(id);
 
-                var selectedUnitsUiView = uiEntity.Get<SelectedUnitUi>().Value;
-                selectedUnitsUiView.SingleView.PortraitView.sprite = unitConfig.Portrait;
+                var view = uiEntity.Get<SelectedUnitUi>().Value;
+                view.HealthBar.HpData = unit.GetHpData();
             }
         }
     }

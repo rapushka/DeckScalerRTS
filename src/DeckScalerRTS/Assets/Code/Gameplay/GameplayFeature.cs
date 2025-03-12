@@ -86,7 +86,11 @@ namespace DeckScaler
             Add(new HideSelectionUiIfNoUnitsSelectedSystem());
             Add(new UpdateSelectionUiPartVisibilityOnUnitsSelectedSystem());
 
-            Add(new LoadSelectedUnitPortraitSystem());
+            // single
+            Add(new LoadSingleSelectedUnitPortraitSystem());
+            Add(new UpdateSingleSelectedUnitHealthBarSystem());
+
+            // multiple
 
             Add(new ShowSelectionUiPartSystem());
 #endregion
