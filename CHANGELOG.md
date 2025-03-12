@@ -1,3 +1,6 @@
+# v0.0.25
+- [(WIP) Selected Units UI](https://github.com/rapushka/DeckScalerRTS/issues/24) 
+
 # v0.0.24
 - [input](https://github.com/rapushka/DeckScalerRTS/issues/1)
   - [read mouse click](https://github.com/rapushka/DeckScalerRTS/pull/4)
