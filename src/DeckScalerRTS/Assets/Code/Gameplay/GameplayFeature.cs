@@ -93,6 +93,8 @@ namespace DeckScaler
             Add(new UpdateSingleSelectedUnitAutoAttackStateSystem());
 
             // multiple
+            Add(new UpdateMultipleSelectedUnitsHealthBarSystem());
+            Add(new UpdateMultipleSelectedUnitsAutoAttackStateSystem());
 
             Add(new ShowSelectionUiPartSystem());
 #endregion
