@@ -13,6 +13,10 @@ namespace DeckScaler
 
         public int Next() => _counter++;
 
-        public void Reset() => _counter = 0;
+        public void Reset()
+        {
+            if (_counter >= 1_000_000_000)
+                _counter = 0;
+        }
     }
 }

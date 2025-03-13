@@ -10,6 +10,9 @@ namespace DeckScaler
         [field: NaughtyAttributes.ShowAssetPreview]
         [field: SerializeField] public Sprite Head { get; private set; }
 
+        [field: NaughtyAttributes.ShowAssetPreview]
+        [field: SerializeField] public Sprite Portrait { get; private set; }
+
         [field: SerializeField] public float MovementSpeed { get; private set; }
         [field: SerializeField] public float MaxHealth     { get; private set; }
 

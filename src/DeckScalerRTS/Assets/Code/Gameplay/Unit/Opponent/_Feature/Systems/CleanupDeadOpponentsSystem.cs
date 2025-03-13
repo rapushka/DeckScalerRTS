@@ -18,9 +18,7 @@ namespace DeckScaler
         {
             foreach (var unit in _units.GetEntities(_buffer))
             {
-                var hasValidOpponent = unit.TryGet<Opponent>(out var opponentID)
-                    && opponentID.Value.TryGetEntity(out var opponent)
-                    && !(opponent.Is<Dead>() || opponent.Is<Destroy>());
+                var hasValidOpponent = unit.TryGet<Opponent>(out var opponentID) && opponentID.IsAlive();
 
                 if (!hasValidOpponent)
                     unit.Remove<Opponent>();

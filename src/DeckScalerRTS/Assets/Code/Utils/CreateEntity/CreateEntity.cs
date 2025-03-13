@@ -2,10 +2,9 @@ using Entitas.Generic;
 
 namespace DeckScaler
 {
-    public class CreateEntity
+    public static class CreateEntity
     {
-        private static ScopeContext<GameScope>  GameContext  => Contexts.Instance.Get<GameScope>();
-        private static ScopeContext<InputScope> InputContext => Contexts.Instance.Get<InputScope>();
+        private static ScopeContext<GameScope> Context => Contexts.Instance.Get<GameScope>();
 
         private static IIdentifiesService Identifies => ServiceLocator.Resolve<IIdentifiesService>();
 
@@ -13,9 +12,21 @@ namespace DeckScaler
             => Empty().Add<Destroy>();
 
         public static Entity<GameScope> Empty()
-            => GameContext.CreateEntity()
+            => Context.CreateEntity()
                 .Add<ID, EntityID>(new(Identifies.Next()));
+    }
 
-        public static Entity<InputScope> EmptyInput() => InputContext.CreateEntity();
+    public static class CreateInputEntity
+    {
+        private static ScopeContext<InputScope> Context => Contexts.Instance.Get<InputScope>();
+
+        public static Entity<InputScope> Empty() => Context.CreateEntity();
+    }
+
+    public static class CreateUiEntity
+    {
+        private static ScopeContext<UiScope> Context => Contexts.Instance.Get<UiScope>();
+
+        public static Entity<UiScope> Empty() => Context.CreateEntity();
     }
 }

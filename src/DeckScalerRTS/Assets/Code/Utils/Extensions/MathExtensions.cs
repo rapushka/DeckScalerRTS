@@ -15,5 +15,8 @@ namespace DeckScaler
 
         public static float Abs(this float @this)
             => Mathf.Abs(@this);
+
+        public static int FloorToInt(this float @this)
+            => Mathf.FloorToInt(@this);
     }
 }

@@ -7,7 +7,7 @@ namespace DeckScaler
     {
         public void Initialize()
         {
-            CreateEntity.EmptyInput()
+            CreateInputEntity.Empty()
                 .Add<PlayerInput>()
                 .Add<MouseWorldPosition, Vector2>(Vector2.zero)
                 ;

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace DeckScaler
 {
-    public class ProgressBar : MonoBehaviour
+    public class SpriteProgressBar : MonoBehaviour
     {
         [SerializeField] private Transform _background;
         [SerializeField] private Transform _fill;

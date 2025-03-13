@@ -9,6 +9,7 @@ namespace DeckScaler
             // Scopes
             Contexts.Instance.InitializeScope<GameScope>();
             Contexts.Instance.InitializeScope<InputScope>();
+            Contexts.Instance.InitializeScope<UiScope>();
 
             // Indexes
             Contexts.Instance.Get<GameScope>().GetPrimaryIndex<ID, EntityID>().Initialize();
@@ -18,6 +19,7 @@ namespace DeckScaler
 
 #if UNITY_EDITOR
             Entity<GameScope>.Formatter = new GameEntityFormatter();
+            Entity<UiScope>.Formatter = new UiEntityFormatter();
 #endif
 
             ServiceLocator.Resolve<IPagesService>().Initialize();
