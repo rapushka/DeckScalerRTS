@@ -1,5 +1,5 @@
 # v0.0.25
-- [(WIP) Selected Units UI](https://github.com/rapushka/DeckScalerRTS/issues/24) 
+- [Selected Units UI](https://github.com/rapushka/DeckScalerRTS/issues/24) 
 
 # v0.0.24
 - [input](https://github.com/rapushka/DeckScalerRTS/issues/1)
