@@ -106,7 +106,7 @@ namespace EnlitGames.ScriptableObjectTable
             for(int i = 0; i < scriptableObjectData.fields.Count; i++)
             {
                 
-                Label fieldHeader = new Label(scriptableObjectData.fields[i].Name);
+                Label fieldHeader = new Label(scriptableObjectData.fields[i].Name.ToColumnName());
                 fieldHeader.style.width = columnWidths[i];
 
                 headerRow.Add(fieldHeader);

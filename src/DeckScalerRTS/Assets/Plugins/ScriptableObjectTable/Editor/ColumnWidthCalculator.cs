@@ -52,7 +52,7 @@ namespace EnlitGames.ScriptableObjectTable
 
         public static float ConvertToColumnWidth(string text)
         {
-            return text.Length * 6f + 30;
+            return text.ToColumnName().Length * 6f + 30;
         }
     }
 }
