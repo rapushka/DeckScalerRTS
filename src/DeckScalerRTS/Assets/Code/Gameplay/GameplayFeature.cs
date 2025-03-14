@@ -10,7 +10,7 @@ namespace DeckScaler
 #region Initialize
             Add(new InitializeInputSystem());
             Add(new InitializeSelectionRectViewSystem());
-            Add(new TestSpawnUnitSystem());
+            Add(new GenerateLevelSystem());
 #endregion
 
 #region Update

@@ -4,6 +4,9 @@ namespace DeckScaler
 {
     public class Bootstrap : MonoBehaviour
     {
+        [UnitID]
+        [SerializeField] private int _invalid;
+
         [SerializeField] private GameConfig _gameConfig;
 
         [NaughtyAttributes.BoxGroup("Cameras")]
@@ -13,6 +16,9 @@ namespace DeckScaler
 
         [NaughtyAttributes.BoxGroup("UI")]
         [SerializeField] private Canvas _canvas;
+
+        [NaughtyAttributes.BoxGroup("Level")]
+        [SerializeField] private LevelData _levelData;
 
         private InputService _inputService;
 
@@ -35,6 +41,7 @@ namespace DeckScaler
             ServiceLocator.Register<IUiService>(new UiService(_canvas));
             ServiceLocator.Register<IUiMediator>(new UiMediator());
             ServiceLocator.Register<IPagesService>(new PagesService());
+            ServiceLocator.Register<ILevelGenerator>(new TemporaryLevelGenerator(_levelData));
 
             // Factories
             ServiceLocator.Register<IEntityBehaviourFactory>(new EntityBehaviourFactory());
@@ -43,6 +50,7 @@ namespace DeckScaler
             ServiceLocator.Register<IAffectFactory>(new AffectFactory());
             ServiceLocator.Register<ITentFactory>(new TentFactory());
             ServiceLocator.Register<IUiFactory>(new UiFactory());
+            ServiceLocator.Register<ILevelFactory>(new LevelFactory());
         }
 
         private void Update()

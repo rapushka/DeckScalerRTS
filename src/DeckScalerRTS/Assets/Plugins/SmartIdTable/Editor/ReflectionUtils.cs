@@ -35,7 +35,8 @@ namespace SmartIdTable.Editor
 				else
 				{
 					FieldInfo field = current.GetType().GetField(propertyName, flags);
-					current = field!.GetValue(current);
+					if (field is not null)
+						current = field.GetValue(current);
 				}
 			}
 

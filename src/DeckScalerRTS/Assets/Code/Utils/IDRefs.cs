@@ -1,5 +1,10 @@
 using System;
 using SmartIdTable;
+using UnityEngine;
+
+/// Lil Attribute for cases where I need <c>UnitIDRef</c> but can't use it:)
+[AttributeUsage(AttributeTargets.Field)]
+public class UnitIDAttribute : PropertyAttribute { }
 
 namespace DeckScaler
 {

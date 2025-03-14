@@ -40,6 +40,10 @@ MonoBehaviour:
       _targetRefType: 0
       _apiVersion: 1
       _propertyPath: <TestLeadUnitID>k__BackingField.Value
+    - _objectPath: '||0'
+      _targetRefType: 3
+      _apiVersion: 1
+      _propertyPath: _levelData.<UnitSpawnsTMP>k__BackingField.Array.data[0].<UnitID>k__BackingField.Value
   - _id: Unit/Rat
     _assetRefs:
     - _objectPath: c9fa2fd62804212fda4473072e77f4a7||11400000
@@ -50,3 +54,7 @@ MonoBehaviour:
       _targetRefType: 0
       _apiVersion: 1
       _propertyPath: <TestEnemyID>k__BackingField.Value
+    - _objectPath: '||0'
+      _targetRefType: 3
+      _apiVersion: 1
+      _propertyPath: _levelData.<UnitSpawnsTMP>k__BackingField.Array.data[0].<UnitID>k__BackingField.Value
