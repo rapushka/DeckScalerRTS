@@ -7,6 +7,8 @@ namespace DeckScaler
     {
         [field: SerializeField] public UnitIDRef ID { get; private set; }
 
+        [field: SerializeField] public bool IsLead { get; private set; }
+
         [field: NaughtyAttributes.ShowAssetPreview]
         [field: SerializeField] public Sprite Head { get; private set; }
 

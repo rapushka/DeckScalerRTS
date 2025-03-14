@@ -16,13 +16,13 @@ namespace DeckScaler
         public static bool operator !=(UnitIDRef lhs, UnitIDRef rhs) => !(lhs == rhs);
 
 #region Boilerplate
-
         public bool Equals(UnitIDRef other) => Value == other.Value;
 
         public override bool Equals(object obj) => obj is UnitIDRef other && Equals(other);
 
         public override int GetHashCode() => (Value != null ? Value.GetHashCode() : 0);
-
 #endregion
+
+        public override string ToString() => Value;
     }
 }
