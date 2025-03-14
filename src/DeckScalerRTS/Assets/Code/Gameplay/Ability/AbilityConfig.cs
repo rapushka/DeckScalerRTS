@@ -10,5 +10,11 @@ namespace DeckScaler
         [field: SerializeField] public float              Range      { get; private set; }
         [field: SerializeField] public float              Cooldown   { get; private set; }
         [field: SerializeField] public AffectConfig       Affect     { get; private set; }
+
+        public override string ToString()
+            => $"target: {TargetType}, "
+                + $"range: {Range}, "
+                + $"cd: {Cooldown}, "
+                + $"affect: {{{Affect}}}";
     }
 }

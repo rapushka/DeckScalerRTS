@@ -60,6 +60,9 @@ namespace DeckScaler
             if (shortestRange.HasValue)
                 unit.Add<EffectiveRange, float>(shortestRange.Value);
 
+            if (unitConfig.IsLead)
+                unit.Add<Lead>();
+
             return unit;
         }
 
