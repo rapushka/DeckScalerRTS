@@ -1,6 +1,7 @@
 # v0.0.25
 - [Selected Units UI](https://github.com/rapushka/DeckScalerRTS/issues/24) 
 - [Spawn Lead](https://github.com/rapushka/DeckScalerRTS/pull/46)
+- [Level](https://github.com/rapushka/DeckScalerRTS/pull/49)
 
 # v0.0.24
 - [input](https://github.com/rapushka/DeckScalerRTS/issues/1)
