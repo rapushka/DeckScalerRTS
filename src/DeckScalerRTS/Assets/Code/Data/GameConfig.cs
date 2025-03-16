@@ -7,10 +7,6 @@ namespace DeckScaler
         UnitsConfig  Units  { get; }
         LevelsConfig Levels { get; }
         UiConfig     UI     { get; }
-
-        UnitIDRef TestLeadUnitID { get; }
-        UnitIDRef TestUnitID     { get; }
-        UnitIDRef TestEnemyID    { get; }
     }
 
     [CreateAssetMenu(menuName = "375/DeckScaler/GameConfig", order = -100)]
@@ -24,14 +20,5 @@ namespace DeckScaler
 
         [field: NaughtyAttributes.BoxGroup(nameof(UI))]
         [field: SerializeField] public UiConfig UI { get; private set; }
-
-        [field: NaughtyAttributes.BoxGroup("TMP")]
-        [field: SerializeField] public UnitIDRef TestLeadUnitID { get; private set; }
-
-        [field: NaughtyAttributes.BoxGroup("TMP")]
-        [field: SerializeField] public UnitIDRef TestUnitID { get; private set; }
-
-        [field: NaughtyAttributes.BoxGroup("TMP")]
-        [field: SerializeField] public UnitIDRef TestEnemyID { get; private set; }
     }
 }

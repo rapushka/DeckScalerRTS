@@ -4,6 +4,9 @@ namespace DeckScaler
 {
     public class Bootstrap : MonoBehaviour
     {
+        [UnitID]
+        [SerializeField] private int _invalid;
+
         [SerializeField] private GameConfig _gameConfig;
 
         [NaughtyAttributes.BoxGroup("Cameras")]
@@ -14,7 +17,17 @@ namespace DeckScaler
         [NaughtyAttributes.BoxGroup("UI")]
         [SerializeField] private Canvas _canvas;
 
+        [NaughtyAttributes.BoxGroup("Level")]
+        [SerializeField] private TemporaryLevelGenerator _levelGenerator;
+
         private InputService _inputService;
+
+        [NaughtyAttributes.Button]
+        public void CollectSpawnMarkers()
+        {
+            _levelGenerator.Tents = FindObjectsByType<TentSpawnMarker>(FindObjectsSortMode.None);
+            _levelGenerator.Units = FindObjectsByType<UnitSpawnMarker>(FindObjectsSortMode.None);
+        }
 
         private void Awake()
         {
@@ -35,6 +48,7 @@ namespace DeckScaler
             ServiceLocator.Register<IUiService>(new UiService(_canvas));
             ServiceLocator.Register<IUiMediator>(new UiMediator());
             ServiceLocator.Register<IPagesService>(new PagesService());
+            ServiceLocator.Register<ILevelGenerator>(_levelGenerator);
 
             // Factories
             ServiceLocator.Register<IEntityBehaviourFactory>(new EntityBehaviourFactory());
@@ -43,6 +57,7 @@ namespace DeckScaler
             ServiceLocator.Register<IAffectFactory>(new AffectFactory());
             ServiceLocator.Register<ITentFactory>(new TentFactory());
             ServiceLocator.Register<IUiFactory>(new UiFactory());
+            ServiceLocator.Register<ILevelFactory>(new LevelFactory());
         }
 
         private void Update()
