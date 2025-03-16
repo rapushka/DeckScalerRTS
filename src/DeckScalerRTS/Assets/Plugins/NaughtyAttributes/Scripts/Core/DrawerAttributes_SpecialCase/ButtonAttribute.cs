@@ -19,6 +19,7 @@ namespace NaughtyAttributes
     }
 
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
+    [JetBrains.Annotations.MeansImplicitUse]
     public class ButtonAttribute : SpecialCaseDrawerAttribute
     {
         public string Text { get; private set; }

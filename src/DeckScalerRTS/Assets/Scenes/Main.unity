@@ -128,6 +128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 34464079}
+  - component: {fileID: 34464080}
   m_Layer: 0
   m_Name: Enemy 3
   m_TagString: Untagged
@@ -150,6 +151,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1460566457}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &34464080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 34464078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7af6d01c72d45f485283b9efb6188c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <UnitID>k__BackingField: Unit/Rat
+  <Side>k__BackingField: 2
+  <Tent>k__BackingField: {fileID: 280286664}
 --- !u!1 &52030975
 GameObject:
   m_ObjectHideFlags: 0
@@ -159,6 +175,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 52030976}
+  - component: {fileID: 52030977}
   m_Layer: 0
   m_Name: Enemy 2
   m_TagString: Untagged
@@ -181,6 +198,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1460566457}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &52030977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52030975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7af6d01c72d45f485283b9efb6188c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <UnitID>k__BackingField: Unit/Rat
+  <Side>k__BackingField: 2
+  <Tent>k__BackingField: {fileID: 280286664}
 --- !u!1 &241468266
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,6 +437,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 280286663}
+  - component: {fileID: 280286664}
   m_Layer: 0
   m_Name: Tent 1
   m_TagString: Untagged
@@ -427,6 +460,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1460566457}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &280286664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280286662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 770d825cd7304749a8bae53ef0adac76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Index>k__BackingField: 1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -659,6 +705,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1150441982}
+  - component: {fileID: 1150441983}
   m_Layer: 0
   m_Name: Enemy 4
   m_TagString: Untagged
@@ -681,6 +728,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1460566457}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1150441983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1150441981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7af6d01c72d45f485283b9efb6188c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <UnitID>k__BackingField: Unit/Rat
+  <Side>k__BackingField: 2
+  <Tent>k__BackingField: {fileID: 280286664}
 --- !u!1 &1178542413
 GameObject:
   m_ObjectHideFlags: 0
@@ -690,6 +752,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1178542414}
+  - component: {fileID: 1178542415}
   m_Layer: 0
   m_Name: Enemy 1
   m_TagString: Untagged
@@ -712,6 +775,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1460566457}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1178542415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178542413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7af6d01c72d45f485283b9efb6188c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <UnitID>k__BackingField: Unit/Rat
+  <Side>k__BackingField: 2
+  <Tent>k__BackingField: {fileID: 280286664}
 --- !u!1 &1198492530
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,6 +799,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1198492531}
+  - component: {fileID: 1198492532}
   m_Layer: 0
   m_Name: Fella 2
   m_TagString: Untagged
@@ -743,6 +822,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1460566457}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1198492532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198492530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7af6d01c72d45f485283b9efb6188c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <UnitID>k__BackingField: Unit/Crook
+  <Side>k__BackingField: 1
+  <Tent>k__BackingField: {fileID: 0}
 --- !u!223 &1225734768 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 5182427534522590161, guid: 792eece0c56c4a6658d26cc691f524df, type: 3}
@@ -797,39 +891,17 @@ MonoBehaviour:
   _mainCamera: {fileID: 519420031}
   _uiCamera: {fileID: 251136470}
   _canvas: {fileID: 1225734768}
-  _levelData:
-    <TentSpawnsTMP>k__BackingField:
-    - <TentIndex>k__BackingField: 1
-      <SpawnPoint>k__BackingField: {fileID: 280286663}
-    <UnitSpawnsTMP>k__BackingField:
-    - <UnitID>k__BackingField: Unit/HeartsLead
-      <Side>k__BackingField: 1
-      <SpawnPoint>k__BackingField: {fileID: 1451960809}
-      <TentIndex>k__BackingField: 0
-    - <UnitID>k__BackingField: Unit/Crook
-      <Side>k__BackingField: 1
-      <SpawnPoint>k__BackingField: {fileID: 1824043785}
-      <TentIndex>k__BackingField: 0
-    - <UnitID>k__BackingField: Unit/Crook
-      <Side>k__BackingField: 1
-      <SpawnPoint>k__BackingField: {fileID: 1198492531}
-      <TentIndex>k__BackingField: 0
-    - <UnitID>k__BackingField: Unit/Rat
-      <Side>k__BackingField: 2
-      <SpawnPoint>k__BackingField: {fileID: 1178542414}
-      <TentIndex>k__BackingField: 1
-    - <UnitID>k__BackingField: Unit/Rat
-      <Side>k__BackingField: 2
-      <SpawnPoint>k__BackingField: {fileID: 52030976}
-      <TentIndex>k__BackingField: 1
-    - <UnitID>k__BackingField: Unit/Rat
-      <Side>k__BackingField: 2
-      <SpawnPoint>k__BackingField: {fileID: 34464079}
-      <TentIndex>k__BackingField: 1
-    - <UnitID>k__BackingField: Unit/Rat
-      <Side>k__BackingField: 2
-      <SpawnPoint>k__BackingField: {fileID: 1150441982}
-      <TentIndex>k__BackingField: 1
+  _levelGenerator:
+    _tents:
+    - {fileID: 280286664}
+    _units:
+    - {fileID: 1178542415}
+    - {fileID: 52030977}
+    - {fileID: 1824043786}
+    - {fileID: 1198492532}
+    - {fileID: 1451960810}
+    - {fileID: 1150441983}
+    - {fileID: 34464080}
 --- !u!1 &1424068381
 GameObject:
   m_ObjectHideFlags: 0
@@ -872,6 +944,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1451960809}
+  - component: {fileID: 1451960810}
   m_Layer: 0
   m_Name: Lead
   m_TagString: Untagged
@@ -894,6 +967,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1460566457}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1451960810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1451960808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7af6d01c72d45f485283b9efb6188c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <UnitID>k__BackingField: Unit/HeartsLead
+  <Side>k__BackingField: 1
+  <Tent>k__BackingField: {fileID: 0}
 --- !u!1 &1460566456
 GameObject:
   m_ObjectHideFlags: 0
@@ -942,6 +1030,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1824043785}
+  - component: {fileID: 1824043786}
   m_Layer: 0
   m_Name: Fella 1
   m_TagString: Untagged
@@ -964,6 +1053,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1460566457}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1824043786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1824043784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7af6d01c72d45f485283b9efb6188c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <UnitID>k__BackingField: Unit/Crook
+  <Side>k__BackingField: 1
+  <Tent>k__BackingField: {fileID: 0}
 --- !u!1 &1838587495
 GameObject:
   m_ObjectHideFlags: 0

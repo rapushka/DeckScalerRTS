@@ -1,3 +1,6 @@
+using System;
+using UnityEngine;
+
 namespace DeckScaler
 {
     public interface ILevelGenerator : IService
@@ -5,15 +8,15 @@ namespace DeckScaler
         LevelData GenerateLevel();
     }
 
+    [Serializable]
     public class TemporaryLevelGenerator : ILevelGenerator
     {
-        private readonly LevelData _data;
+        [SerializeField] private TentSpawnMarker[] _tents;
+        [SerializeField] private UnitSpawnMarker[] _units;
 
-        public TemporaryLevelGenerator(LevelData data)
-        {
-            _data = data;
-        }
+        public TentSpawnMarker[] Tents { set => _tents = value; }
+        public UnitSpawnMarker[] Units { set => _units = value; }
 
-        public LevelData GenerateLevel() => _data;
+        public LevelData GenerateLevel() => new(_tents, _units);
     }
 }

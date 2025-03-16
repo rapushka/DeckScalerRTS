@@ -22,7 +22,7 @@ namespace DeckScaler
 
             var tents = new Dictionary<int, EntityID>();
 
-            foreach (var setup in data.TentSpawnsTMP)
+            foreach (var setup in data.TentSpawns)
             {
                 var tentID = TentFactory.Create(setup.SpawnPoint.position)
                     .Add<ChildOf, EntityID>(levelID)
@@ -31,7 +31,7 @@ namespace DeckScaler
                 tents.Add(setup.TentIndex, tentID);
             }
 
-            foreach (var setup in data.UnitSpawnsTMP)
+            foreach (var setup in data.UnitSpawns)
             {
                 var unitID = setup.UnitID;
                 var spawnPosition = setup.SpawnPoint.position;

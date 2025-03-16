@@ -18,9 +18,16 @@ namespace DeckScaler
         [SerializeField] private Canvas _canvas;
 
         [NaughtyAttributes.BoxGroup("Level")]
-        [SerializeField] private LevelData _levelData;
+        [SerializeField] private TemporaryLevelGenerator _levelGenerator;
 
         private InputService _inputService;
+
+        [NaughtyAttributes.Button]
+        public void CollectSpawnMarkers()
+        {
+            _levelGenerator.Tents = FindObjectsByType<TentSpawnMarker>(FindObjectsSortMode.None);
+            _levelGenerator.Units = FindObjectsByType<UnitSpawnMarker>(FindObjectsSortMode.None);
+        }
 
         private void Awake()
         {
@@ -41,7 +48,7 @@ namespace DeckScaler
             ServiceLocator.Register<IUiService>(new UiService(_canvas));
             ServiceLocator.Register<IUiMediator>(new UiMediator());
             ServiceLocator.Register<IPagesService>(new PagesService());
-            ServiceLocator.Register<ILevelGenerator>(new TemporaryLevelGenerator(_levelData));
+            ServiceLocator.Register<ILevelGenerator>(_levelGenerator);
 
             // Factories
             ServiceLocator.Register<IEntityBehaviourFactory>(new EntityBehaviourFactory());
