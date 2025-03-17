@@ -1,5 +1,5 @@
 # v0.0.26
-- [Zoom Camera (WIP)](https://github.com/rapushka/DeckScalerRTS/issues/48)
+- [Zoom Camera](https://github.com/rapushka/DeckScalerRTS/issues/48)
 
 # v0.0.25
 - [Selected Units UI](https://github.com/rapushka/DeckScalerRTS/issues/24) 
