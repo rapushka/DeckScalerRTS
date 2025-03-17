@@ -1,3 +1,6 @@
+# v0.0.26
+- [Zoom Camera (WIP)](https://github.com/rapushka/DeckScalerRTS/issues/48)
+
 # v0.0.25
 - [Selected Units UI](https://github.com/rapushka/DeckScalerRTS/issues/24) 
 - [Spawn Lead](https://github.com/rapushka/DeckScalerRTS/pull/46)
