@@ -21,6 +21,7 @@ namespace DeckScaler
             Add(new ReadClicksOnEntitySystem());
             Add(new StartDraggingCameraSystem());
             Add(new DragCameraSystem());
+            Add(new ZoomCameraSystem());
 #endregion
 
             Add(new TickLooseTimersSystem());

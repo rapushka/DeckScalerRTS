@@ -10,6 +10,7 @@ namespace DeckScaler
         ButtonState DragCameraButton { get; }
 
         Vector2 MouseScreenPosition { get; }
+        float   WheelScroll         { get; }
     }
 
     public class InputService : IInputService, IUpdatable
@@ -23,6 +24,8 @@ namespace DeckScaler
         public ButtonState DragCameraButton => _dragButton.State;
 
         public Vector2 MouseScreenPosition => Input.mousePosition;
+
+        public float WheelScroll => Input.mouseScrollDelta.y;
 
         void IUpdatable.OnUpdate(float deltaTime)
         {
