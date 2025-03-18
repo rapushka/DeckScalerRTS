@@ -25,6 +25,7 @@ namespace DeckScaler
         {
             _ecsRunner.DestroyObject();
             MainCamera.transform.SetPosition(x: 0f, y: 0f);
+            MainCamera.orthographicSize = 5f;
             IdService.Reset();
 
             SelectedUnitView.Hide();
