@@ -87,6 +87,9 @@ namespace DeckScaler
 
 #region Money
             Add(new InitializePlayerMoneySystem());
+            Add(new GainMoneyOnTentFreedSystem());
+
+            // view
             Add(new UpdatePlayerMoneySystem());
 #endregion
 
@@ -109,7 +112,8 @@ namespace DeckScaler
 #endregion
 
 #region Cleanups
-            Add(new OnGameLostSystem());
+            Add(new RemoveSystem<TentJustFreed>());
+
             Add(new OnGameLostSystem());
             Add(new DestroyEntitiesAfterDelaySystem());
 

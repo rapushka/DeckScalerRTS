@@ -30,3 +30,6 @@ MonoBehaviour:
     - {fileID: 39772490486460207, guid: dbe0d902fb998167fb12058ca5238a3f, type: 3}
     - {fileID: 8640632802740627007, guid: 137f9d21bdd71152eb770abf976ff97e, type: 3}
     - {fileID: -6036214573096637568, guid: c73b518fa198af4aa9fa14f62c8ff30d, type: 3}
+  <Economy>k__BackingField:
+    <MoneyAtStart>k__BackingField: 5
+    <MoneyGainForFreedTent>k__BackingField: 7

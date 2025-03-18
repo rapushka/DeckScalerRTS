@@ -32,6 +32,7 @@ namespace DeckScaler
                     tent
                         .Is<OnEnemySide>(false)
                         .Set<OnSide, Side>(Side.Player)
+                        .Add<TentJustFreed>()
                         ;
                 }
             }

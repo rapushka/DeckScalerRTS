@@ -3,7 +3,7 @@ using Entitas.Generic;
 
 namespace DeckScaler
 {
-    public class UpdatePlayerMoneySystem : IExecuteSystem
+    public sealed class UpdatePlayerMoneySystem : IExecuteSystem
     {
         private readonly IGroup<Entity<UiScope>> _hudEntities
             = GroupBuilder<UiScope>
