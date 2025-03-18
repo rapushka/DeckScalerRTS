@@ -26,6 +26,7 @@ namespace DeckScaler
                 ability
                     .Set<CooldownTimer, Timer>(new(baseCooldown))
                     .Is<CooldownUp>(false)
+                    .Is<Used>(false)
                     ;
             }
         }
