@@ -4,9 +4,10 @@ namespace DeckScaler
 {
     public interface IGameConfig : IService
     {
-        UnitsConfig  Units  { get; }
-        LevelsConfig Levels { get; }
-        UiConfig     UI     { get; }
+        UnitsConfig   Units   { get; }
+        LevelsConfig  Levels  { get; }
+        UiConfig      UI      { get; }
+        EconomyConfig Economy { get; }
     }
 
     [CreateAssetMenu(menuName = "375/DeckScaler/GameConfig", order = -100)]
@@ -20,5 +21,8 @@ namespace DeckScaler
 
         [field: NaughtyAttributes.BoxGroup(nameof(UI))]
         [field: SerializeField] public UiConfig UI { get; private set; }
+
+        [field: NaughtyAttributes.BoxGroup(nameof(Economy))]
+        [field: SerializeField] public EconomyConfig Economy { get; private set; }
     }
 }

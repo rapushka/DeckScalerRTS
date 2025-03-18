@@ -82,9 +82,18 @@ namespace DeckScaler
 #endregion
 #endregion
 
-#region Selection UI
-            Add(new InitSelectionUiSystem());
+#region HUD
+            Add(new InitializeHudEntitySystem());
 
+#region Money
+            Add(new InitializePlayerMoneySystem());
+            Add(new GainMoneyOnTentFreedSystem());
+
+            // view
+            Add(new UpdatePlayerMoneySystem());
+#endregion
+
+#region Selection UI
             Add(new HideSelectionUiIfNoUnitsSelectedSystem());
             Add(new UpdateSelectionUiPartVisibilityOnUnitsSelectedSystem());
 
@@ -100,9 +109,11 @@ namespace DeckScaler
             Add(new ShowSelectionUiPartSystem());
 #endregion
 #endregion
+#endregion
 
 #region Cleanups
-            Add(new OnGameLostSystem());
+            Add(new RemoveSystem<TentJustFreed>());
+
             Add(new OnGameLostSystem());
             Add(new DestroyEntitiesAfterDelaySystem());
 
