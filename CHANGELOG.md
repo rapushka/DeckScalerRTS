@@ -1,7 +1,8 @@
 # v0.0.26
 - [Zoom Camera](https://github.com/rapushka/DeckScalerRTS/issues/48)
 - [gain gold for freed tents](https://github.com/rapushka/DeckScalerRTS/issues/51) 
-- [fix bug with cooldowns](https://github.com/rapushka/DeckScalerRTS/tree/38-bug-cooldown-constantly-resets) 
+- [fix bug with cooldowns](https://github.com/rapushka/DeckScalerRTS/tree/38-bug-cooldown-constantly-resets)
+- [auto-select lead on start](https://github.com/rapushka/DeckScalerRTS/pull/56)
 
 # v0.0.25
 - [Selected Units UI](https://github.com/rapushka/DeckScalerRTS/issues/24) 
