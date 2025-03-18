@@ -27,6 +27,7 @@ namespace DeckScaler
             Add(new TickLooseTimersSystem());
 
 #region Selection
+            Add(new SelectLeaderOnStartSystem());
             Add(new OnUnitClickedSystem());
 
 #region Area
