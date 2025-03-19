@@ -9,14 +9,16 @@ namespace DeckScaler
     {
         public LevelData() { }
 
-        public LevelData(TentSpawnMarker[] tentSpawns, UnitSpawnMarker[] unitSpawns)
+        public LevelData(TentSpawnMarker[] tents, UnitSpawnMarker[] units, ShopSpawnMarker[] shops)
         {
-            TentSpawns = tentSpawns.Select(m => new TentSpawnSetup(m)).ToArray();
-            UnitSpawns = unitSpawns.Select(m => new UnitSpawnSetup(m)).ToArray();
+            TentSpawns = tents.Select(m => new TentSpawnSetup(m)).ToArray();
+            UnitSpawns = units.Select(m => new UnitSpawnSetup(m)).ToArray();
+            ShopSpawns = shops.Select(m => new ShopSpawnSetup(m)).ToArray();
         }
 
         [field: SerializeField] public TentSpawnSetup[] TentSpawns { get; private set; }
         [field: SerializeField] public UnitSpawnSetup[] UnitSpawns { get; private set; }
+        [field: SerializeField] public ShopSpawnSetup[] ShopSpawns { get; private set; }
     }
 
     [Serializable]

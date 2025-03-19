@@ -11,8 +11,8 @@ namespace DeckScaler
     public class LevelFactory : ILevelFactory
     {
         private static IUnitFactory UnitFactory => ServiceLocator.Resolve<IUnitFactory>();
-
         private static ITentFactory TentFactory => ServiceLocator.Resolve<ITentFactory>();
+        private static IShopFactory ShopFactory => ServiceLocator.Resolve<IShopFactory>();
 
         public Entity<GameScope> Create(LevelData data)
         {
@@ -20,6 +20,15 @@ namespace DeckScaler
                 .Add<DebugName, string>("Level");
             var levelID = levelEntity.ID();
 
+            var tents = SpawnTents(data, levelID);
+            SpawnUnits(data, levelID, tents);
+            SpawnShops(data, levelID);
+
+            return levelEntity;
+        }
+
+        private Dictionary<int, EntityID> SpawnTents(LevelData data, EntityID levelID)
+        {
             var tents = new Dictionary<int, EntityID>();
 
             foreach (var setup in data.TentSpawns)
@@ -31,6 +40,11 @@ namespace DeckScaler
                 tents.Add(setup.TentIndex, tentID);
             }
 
+            return tents;
+        }
+
+        private void SpawnUnits(LevelData data, EntityID levelID, Dictionary<int, EntityID> tents)
+        {
             foreach (var setup in data.UnitSpawns)
             {
                 var unitID = setup.UnitID;
@@ -49,8 +63,16 @@ namespace DeckScaler
                 else
                     throw new("Side is Unknown!");
             }
+        }
 
-            return levelEntity;
+        private void SpawnShops(LevelData data, EntityID levelID)
+        {
+            foreach (var setup in data.ShopSpawns)
+            {
+                var spawnPosition = setup.SpawnPoint.position;
+                ShopFactory.Create(spawnPosition)
+                    .Add<ChildOf, EntityID>(levelID);
+            }
         }
     }
 }
