@@ -32,12 +32,6 @@ namespace DeckScaler
                 var unitID = ShopConfig.IssueRandomUnit();
                 var unitPosition = unitSlotsRoot.Add(x: i * 1.5f);
 
-                Debug.Log(
-                    $"view = {view.transform.position}"
-                    + $"| unitPosition = {unitPosition}"
-                    + $"| unitSlotsRoot = {unitSlotsRoot}"
-                );
-
                 CreateUnitInShop(unitID, unitPosition, shopID);
             }
 
