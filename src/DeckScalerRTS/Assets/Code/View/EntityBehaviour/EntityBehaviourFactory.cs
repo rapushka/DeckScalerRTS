@@ -53,7 +53,7 @@ namespace DeckScaler
             => CreateUiView(Configs.Units.UI.SelectionViewPrefab, Vector2.zero);
 
         public EntityBehaviour CreateShopView(Vector2 position)
-            => CreateWorldView(Configs.Economy.View.ShopViewPrefab, position);
+            => CreateWorldView(Configs.Economy.Shop.ViewPrefab, position);
 
         private EntityBehaviour CreateUiView(EntityBehaviour prefab, Vector2 position)
             => CreateBehaviour(prefab, position, _uiRoot);

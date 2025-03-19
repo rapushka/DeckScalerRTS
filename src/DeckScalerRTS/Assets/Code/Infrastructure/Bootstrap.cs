@@ -50,6 +50,7 @@ namespace DeckScaler
             ServiceLocator.Register<IUiMediator>(new UiMediator());
             ServiceLocator.Register<IPagesService>(new PagesService());
             ServiceLocator.Register<ILevelGenerator>(_levelGenerator);
+            ServiceLocator.Register<IRandomService>(new RandomService());
 
             // Factories
             ServiceLocator.Register<IEntityBehaviourFactory>(new EntityBehaviourFactory());

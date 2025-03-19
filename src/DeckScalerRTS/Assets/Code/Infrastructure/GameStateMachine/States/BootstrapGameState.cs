@@ -16,6 +16,7 @@ namespace DeckScaler
             Contexts.Instance.Get<GameScope>().GetIndex<AbilityOf, EntityID>().Initialize();
             Contexts.Instance.Get<GameScope>().GetIndex<ChildOf, EntityID>().Initialize();
             Contexts.Instance.Get<GameScope>().GetIndex<OnTent, EntityID>().Initialize();
+            Contexts.Instance.Get<GameScope>().GetIndex<ItemInShop, EntityID>().Initialize();
 
 #if UNITY_EDITOR
             Entity<GameScope>.Formatter = new GameEntityFormatter();

@@ -18,6 +18,8 @@ namespace DeckScaler
         [field: SerializeField] public float MovementSpeed { get; private set; }
         [field: SerializeField] public float MaxHealth     { get; private set; }
 
+        [field: SerializeField] public int Price { get; private set; }
+
         [field: SerializeField] public AbilityConfig[] Abilities { get; private set; }
     }
 }
