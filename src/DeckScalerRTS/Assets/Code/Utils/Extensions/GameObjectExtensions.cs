@@ -4,6 +4,12 @@ namespace DeckScaler
 {
     public static class GameObjectExtensions
     {
+        public static void DestroyObject(this Transform @this)
+        {
+            if (@this != null)
+                @this.gameObject.DestroyObject();
+        }
+
         public static void DestroyObject(this MonoBehaviour @this)
         {
             if (@this != null)

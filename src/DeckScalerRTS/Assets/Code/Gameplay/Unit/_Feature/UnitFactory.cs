@@ -7,6 +7,8 @@ namespace DeckScaler
     {
         Entity<GameScope> CreateOnPlayerSide(UnitIDRef id, Vector2 position);
         Entity<GameScope> CreateOnEnemySide(UnitIDRef id, Vector2 position, EntityID tent);
+
+        Entity<GameScope> CreateInShop(UnitIDRef id, Vector2 position);
     }
 
     public class UnitFactory : IUnitFactory
@@ -30,6 +32,9 @@ namespace DeckScaler
                 .Add<OnTent, EntityID>(tent)
                 .Add<ChildOf, EntityID>(tent);
 
+        public Entity<GameScope> CreateInShop(UnitIDRef id, Vector2 position)
+            => CreateUnit(id, position);
+
         private Entity<GameScope> CreateUnit(UnitIDRef id, Vector2 position)
         {
             var unitConfig = UnitsConfig.GetConfig(id);
@@ -46,6 +51,7 @@ namespace DeckScaler
                 .Add<InAutoAttackState>()
                 .Add<MaxHealth, float>(unitConfig.MaxHealth)
                 .Add<Health, float>(unitConfig.MaxHealth)
+                .Add<Price, int>(unitConfig.Price)
                 ;
 
             var shortestRange = (float?)null;

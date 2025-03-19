@@ -27,6 +27,7 @@ namespace DeckScaler
         {
             _levelGenerator.Tents = FindObjectsByType<TentSpawnMarker>(FindObjectsSortMode.None);
             _levelGenerator.Units = FindObjectsByType<UnitSpawnMarker>(FindObjectsSortMode.None);
+            _levelGenerator.Shops = FindObjectsByType<ShopSpawnMarker>(FindObjectsSortMode.None);
         }
 
         private void Awake()
@@ -49,6 +50,7 @@ namespace DeckScaler
             ServiceLocator.Register<IUiMediator>(new UiMediator());
             ServiceLocator.Register<IPagesService>(new PagesService());
             ServiceLocator.Register<ILevelGenerator>(_levelGenerator);
+            ServiceLocator.Register<IRandomService>(new RandomService());
 
             // Factories
             ServiceLocator.Register<IEntityBehaviourFactory>(new EntityBehaviourFactory());
@@ -58,6 +60,7 @@ namespace DeckScaler
             ServiceLocator.Register<ITentFactory>(new TentFactory());
             ServiceLocator.Register<IUiFactory>(new UiFactory());
             ServiceLocator.Register<ILevelFactory>(new LevelFactory());
+            ServiceLocator.Register<IShopFactory>(new ShopFactory());
         }
 
         private void Update()

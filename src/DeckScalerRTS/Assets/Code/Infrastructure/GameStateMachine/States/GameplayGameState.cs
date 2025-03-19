@@ -13,8 +13,11 @@ namespace DeckScaler
 
         private static SelectedUnitsUiView SelectedUnitView => UiMediator.GetPage<GameplayHUDPage>().SelectedUnitView;
 
+        private static IEntityBehaviourFactory ViewFactory => ServiceLocator.Resolve<IEntityBehaviourFactory>();
+
         public void OnEnter(GameStateMachine stateMachine)
         {
+            ViewFactory.Init();
             UiMediator.OpenPage<GameplayHUDPage>();
 
             _ecsRunner = new GameObject(nameof(GameplayFeatureRunner))
@@ -29,6 +32,7 @@ namespace DeckScaler
             IdService.Reset();
 
             SelectedUnitView.Hide();
+            ViewFactory.Dispose();
         }
     }
 }

@@ -9,5 +9,13 @@ namespace DeckScaler
         public static Vector2 Truncate(this Vector3 @this) => new(@this.x, @this.y);
 
         public static float DistanceTo(this Vector2 @this, Vector2 other) => Vector2.Distance(@this, other);
+
+        public static Vector3 Add(this Vector3 @this, float? x = null, float? y = null, float? z = null)
+            => new()
+            {
+                x = @this.x + (x ?? 0),
+                y = @this.y + (y ?? 0),
+                z = @this.z + (z ?? 0),
+            };
     }
 }

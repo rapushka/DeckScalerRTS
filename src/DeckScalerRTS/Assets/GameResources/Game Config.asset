@@ -33,3 +33,9 @@ MonoBehaviour:
   <Economy>k__BackingField:
     <MoneyAtStart>k__BackingField: 5
     <MoneyGainForFreedTent>k__BackingField: 7
+    <Shop>k__BackingField:
+      _possibleUnitsInShop:
+      - Value: Unit/Crook
+      - Value: Unit/Rat
+      <ViewPrefab>k__BackingField: {fileID: 2847599483410041787, guid: d8227b357189dfd2cb393e1dcd732d87, type: 3}
+      <UnitSlots>k__BackingField: 2
