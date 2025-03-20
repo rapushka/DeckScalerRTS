@@ -14,4 +14,6 @@ namespace DeckScaler
     public sealed class IssuedItem : IndexComponent<EntityID>, IInScope<GameScope> { }
 
     public sealed class Price : ValueComponent<int>, IInScope<GameScope>, IEvent<Self> { }
+
+    public sealed class JustPurchased : FlagComponent, IInScope<GameScope> { }
 }

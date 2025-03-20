@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <ID>k__BackingField:
     Value: Unit/Crook
+  <IsLead>k__BackingField: 0
   <Head>k__BackingField: {fileID: 21300000, guid: ed1312ed5b072d1e69dc9a820bf3d546, type: 3}
   <Portrait>k__BackingField: {fileID: 21300000, guid: e82c0045bd6eba4eeb9426ff706787d8, type: 3}
   <MovementSpeed>k__BackingField: 2
   <MaxHealth>k__BackingField: 10
+  <Price>k__BackingField: 5
   <Abilities>k__BackingField:
   - <TargetType>k__BackingField: 1
     <Range>k__BackingField: 1.5

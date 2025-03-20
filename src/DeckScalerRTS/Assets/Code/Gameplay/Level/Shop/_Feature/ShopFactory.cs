@@ -52,6 +52,7 @@ namespace DeckScaler
             return ViewFactory.CreateShopStockView(position).Entity
                     .Add<DebugName, string>("shop stock")
                     .Add<BuyStockButton>()
+                    .Add<Clickable>()
                     .Add<Price, int>(price)
                     .Add<Visible, bool>(true)
                     .Add<StockInShop, EntityID>(shopID)
