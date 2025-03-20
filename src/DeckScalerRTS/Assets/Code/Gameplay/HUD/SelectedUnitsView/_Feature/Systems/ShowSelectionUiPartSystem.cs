@@ -15,7 +15,7 @@ namespace DeckScaler
         private readonly IGroup<Entity<UiScope>> _uiEntities
             = GroupBuilder<UiScope>
                 .With<SelectedUnitUi>()
-                .Without<Visible>()
+                .Without<UiVisible>()
                 .Build();
 
         private readonly List<Entity<UiScope>> _buffer = new(2);
@@ -29,7 +29,7 @@ namespace DeckScaler
                     onMultiple: uiEntity.Get<SelectedUnitUi>().Value.ShowMultiple,
                     onNone: () => { }
                 );
-                uiEntity.Is<Visible>(true);
+                uiEntity.Is<UiVisible>(true);
             }
         }
     }

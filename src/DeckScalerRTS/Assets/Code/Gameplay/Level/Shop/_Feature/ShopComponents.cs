@@ -7,7 +7,11 @@ namespace DeckScaler
 
     public sealed class ShopSlotsRoot : ValueComponent<Transform>, IInScope<GameScope> { }
 
-    public sealed class ItemInShop : IndexComponent<EntityID>, IInScope<GameScope> { }
+    /// Slot -> Shop
+    public sealed class StockInShop : IndexComponent<EntityID>, IInScope<GameScope> { }
 
-    public sealed class Price : ValueComponent<int>, IInScope<GameScope> { }
+    /// Slot -> Item (Unit or Trinket)
+    public sealed class IssuedItem : IndexComponent<EntityID>, IInScope<GameScope> { }
+
+    public sealed class Price : ValueComponent<int>, IInScope<GameScope>, IEvent<Self> { }
 }

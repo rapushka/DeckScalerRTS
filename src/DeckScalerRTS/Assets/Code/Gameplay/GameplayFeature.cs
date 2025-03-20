@@ -127,8 +127,10 @@ namespace DeckScaler
             Add(new SelfEventSystem<GameScope, HeadSprite>(contexts));
             Add(new SelfFlagEventSystem<GameScope, SelectedUnit>(contexts));
             Add(new SelfEventSystem<GameScope, WorldPosition>(contexts));
-            Add(new AnyEventSystem<GameScope, MaxHealth>(contexts));
-            Add(new AnyEventSystem<GameScope, Health>(contexts));
+            Add(new SelfEventSystem<GameScope, Price>(contexts));
+            Add(new SelfEventSystem<GameScope, Visible>(contexts));
+            Add(new AnyEventSystem<GameScope, MaxHealth>(contexts)); // TODO: are these needed??
+            Add(new AnyEventSystem<GameScope, Health>(contexts));    // TODO: are these needed??
             Add(new SelfFlagEventSystem<GameScope, OnEnemySide>(contexts));
 
             Add(new RemoveComponentsSystem<GameScope, Clicked>(contexts));

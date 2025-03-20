@@ -31,7 +31,7 @@ namespace DeckScaler
                     onSingle: () => uiEntity.Is<DisplayingSingleUnitSelected>(true),
                     onMultiple: () => uiEntity.Is<DisplayingMultipleUnitsSelected>(true)
                 );
-                uiEntity.Is<Visible>(false);
+                uiEntity.Is<UiVisible>(false);
             }
         }
     }

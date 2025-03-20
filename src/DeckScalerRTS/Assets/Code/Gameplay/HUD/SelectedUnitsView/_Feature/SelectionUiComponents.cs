@@ -7,6 +7,6 @@ namespace DeckScaler
     public sealed class DisplayingSingleUnitSelected : FlagComponent, IInScope<UiScope> { }
 
     public sealed class DisplayingMultipleUnitsSelected : FlagComponent, IInScope<UiScope> { }
-    
-    public sealed class Visible : FlagComponent, IInScope<UiScope> { }
+
+    public sealed class UiVisible : FlagComponent, IInScope<UiScope> { }
 }
