@@ -3,7 +3,8 @@
 - [gain gold for freed tents](https://github.com/rapushka/DeckScalerRTS/issues/51) 
 - [auto-select lead on start](https://github.com/rapushka/DeckScalerRTS/pull/56)
 - shops:
-  - [spawn units in shops](https://github.com/rapushka/DeckScalerRTS/pull/59) 
+  - [spawn units in shops](https://github.com/rapushka/DeckScalerRTS/pull/59)
+  - [you can hire units in shop! yay!!](https://github.com/rapushka/DeckScalerRTS/pull/63)
 - bugfix:
   - [fix cooldowns – now they won't constantly reset themselves](https://github.com/rapushka/DeckScalerRTS/tree/38-bug-cooldown-constantly-resetsz)
 
