@@ -39,3 +39,4 @@ MonoBehaviour:
       - Value: Unit/Rat
       <ViewPrefab>k__BackingField: {fileID: 2847599483410041787, guid: d8227b357189dfd2cb393e1dcd732d87, type: 3}
       <UnitSlots>k__BackingField: 2
+      <StockViewPrefab>k__BackingField: {fileID: 2829874252000347537, guid: 1bb75c037f53754439df3c241ec04cd9, type: 3}

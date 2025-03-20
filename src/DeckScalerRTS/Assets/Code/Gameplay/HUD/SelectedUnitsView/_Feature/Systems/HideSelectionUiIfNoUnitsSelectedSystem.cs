@@ -26,7 +26,7 @@ namespace DeckScaler
                 ui
                     .Is<DisplayingSingleUnitSelected>(false)
                     .Is<DisplayingMultipleUnitsSelected>(false)
-                    .Is<Visible>(false)
+                    .Is<UiVisible>(false)
                     .Get<SelectedUnitUi>().Value.Hide()
                     ;
             }

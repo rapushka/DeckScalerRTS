@@ -20,10 +20,7 @@ namespace DeckScaler
         private static IAbilityFactory AbilityFactory => ServiceLocator.Resolve<IAbilityFactory>();
 
         public Entity<GameScope> CreateOnPlayerSide(UnitIDRef id, Vector2 position)
-            => CreateUnit(id, position)
-                .Add<OnSide, Side>(Side.Player)
-                .Add<OnPlayerSide>()
-                .Add<Fella>();
+            => UnitUtils.Hire(CreateUnit(id, position));
 
         public Entity<GameScope> CreateOnEnemySide(UnitIDRef id, Vector2 position, EntityID tent)
             => CreateUnit(id, position)

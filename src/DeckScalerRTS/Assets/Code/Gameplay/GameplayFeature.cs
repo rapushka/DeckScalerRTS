@@ -90,6 +90,15 @@ namespace DeckScaler
             Add(new InitializePlayerMoneySystem());
             Add(new GainMoneyOnTentFreedSystem());
 
+#region Shop
+            Add(new UpdateBuyStockButtonEnabledSystem());
+            Add(new OnBuyStockButtonClickedSystem());
+
+            Add(new OnUnitJustPurchasedSystem());
+#endregion
+
+            Add(new SpendMoneySystem());
+
             // view
             Add(new UpdatePlayerMoneySystem());
 #endregion
@@ -113,7 +122,8 @@ namespace DeckScaler
 #endregion
 
 #region Cleanups
-            Add(new RemoveSystem<TentJustFreed>());
+            Add(new RemoveComponentSystem<TentJustFreed>());
+            Add(new RemoveComponentSystem<JustPurchased>());
 
             Add(new OnGameLostSystem());
             Add(new DestroyEntitiesAfterDelaySystem());
@@ -127,8 +137,11 @@ namespace DeckScaler
             Add(new SelfEventSystem<GameScope, HeadSprite>(contexts));
             Add(new SelfFlagEventSystem<GameScope, SelectedUnit>(contexts));
             Add(new SelfEventSystem<GameScope, WorldPosition>(contexts));
-            Add(new AnyEventSystem<GameScope, MaxHealth>(contexts));
-            Add(new AnyEventSystem<GameScope, Health>(contexts));
+            Add(new SelfEventSystem<GameScope, Price>(contexts));
+            Add(new SelfEventSystem<GameScope, Visible>(contexts));
+            Add(new SelfFlagEventSystem<GameScope, Disabled>(contexts));
+            Add(new AnyEventSystem<GameScope, MaxHealth>(contexts)); // TODO: are these need to be Any??
+            Add(new AnyEventSystem<GameScope, Health>(contexts));    // TODO: are these need to be Any??
             Add(new SelfFlagEventSystem<GameScope, OnEnemySide>(contexts));
 
             Add(new RemoveComponentsSystem<GameScope, Clicked>(contexts));

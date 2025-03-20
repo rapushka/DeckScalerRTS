@@ -21,7 +21,7 @@ namespace DeckScaler
             var levelID = levelEntity.ID();
 
             var tents = SpawnTents(data, levelID);
-            SpawnUnits(data, levelID, tents);
+            SpawnUnits(data, tents);
             SpawnShops(data, levelID);
 
             return levelEntity;
@@ -43,7 +43,7 @@ namespace DeckScaler
             return tents;
         }
 
-        private void SpawnUnits(LevelData data, EntityID levelID, Dictionary<int, EntityID> tents)
+        private void SpawnUnits(LevelData data, Dictionary<int, EntityID> tents)
         {
             foreach (var setup in data.UnitSpawns)
             {
@@ -52,8 +52,7 @@ namespace DeckScaler
 
                 if (setup.Side is Side.Player)
                 {
-                    UnitFactory.CreateOnPlayerSide(unitID, spawnPosition)
-                        .Add<ChildOf, EntityID>(levelID);
+                    UnitFactory.CreateOnPlayerSide(unitID, spawnPosition);
                 }
                 else if (setup.Side is Side.Enemy)
                 {

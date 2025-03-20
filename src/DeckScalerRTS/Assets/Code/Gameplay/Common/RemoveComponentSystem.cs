@@ -4,7 +4,7 @@ using Entitas.Generic;
 
 namespace DeckScaler
 {
-    public sealed class RemoveSystem<TComponent> : ICleanupSystem
+    public sealed class RemoveComponentSystem<TComponent> : ICleanupSystem
         where TComponent : IComponent, IInScope<GameScope>, new()
     {
         private readonly IGroup<Entity<GameScope>> _entities

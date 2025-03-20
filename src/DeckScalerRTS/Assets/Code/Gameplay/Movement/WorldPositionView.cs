@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace DeckScaler
 {
-    public class PositionView : BaseListener<GameScope, WorldPosition>
+    public class WorldPositionView : BaseListener<GameScope, WorldPosition>
     {
         [SerializeField] private Transform _transform;
 

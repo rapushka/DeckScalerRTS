@@ -30,9 +30,12 @@ namespace DeckScaler
             for (var i = 0; i < ShopConfig.UnitSlots; i++)
             {
                 var unitID = ShopConfig.IssueRandomUnit();
-                var unitPosition = unitSlotsRoot.Add(x: i * 1.5f);
+                var stockPosition = unitSlotsRoot.Add(x: i * 1.5f);
 
-                CreateUnitInShop(unitID, unitPosition, shopID);
+                var item = CreateUnitInShop(unitID, stockPosition, shopID);
+                var stock = CreateShopStock(stockPosition, shopID, item);
+                var itemInStockPosition = stock.Get<ShopStockItemRoot>().Value.position;
+                item.Set<WorldPosition, Vector2>(itemInStockPosition);
             }
 
             return shop;
@@ -40,7 +43,22 @@ namespace DeckScaler
 
         public Entity<GameScope> CreateUnitInShop(UnitIDRef unitID, Vector2 position, EntityID shopID)
             => UnitFactory.CreateInShop(unitID, position)
-                .Add<ItemInShop, EntityID>(shopID)
                 .Add<ChildOf, EntityID>(shopID);
+
+        private Entity<GameScope> CreateShopStock(Vector2 position, EntityID shopID, Entity<GameScope> item)
+        {
+            var price = item.Get<Price>().Value;
+
+            return ViewFactory.CreateShopStockView(position).Entity
+                    .Add<DebugName, string>("shop stock")
+                    .Add<BuyStockButton>()
+                    .Add<Clickable>()
+                    .Add<Price, int>(price)
+                    .Add<Visible, bool>(true)
+                    .Add<StockInShop, EntityID>(shopID)
+                    .Add<ChildOf, EntityID>(shopID)
+                    .Add<IssuedItem, EntityID>(item.ID())
+                ;
+        }
     }
 }
