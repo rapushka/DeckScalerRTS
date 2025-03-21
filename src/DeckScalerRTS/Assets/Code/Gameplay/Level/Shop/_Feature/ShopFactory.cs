@@ -32,11 +32,8 @@ namespace DeckScaler
             var shopID = shop.ID();
 
             var stocksRoot = shop.Get<ShopSlotsRoot, Transform>().position;
-            for (var i = 0; i < ShopConfig.UnitSlots; i++)
-            {
-                var stockPosition = stocksRoot.Add(x: i * 1.5f);
-                CreateShopStock(stockPosition, shopID);
-            }
+            SetupStocks(stocksRoot, shopID);
+            SetupRestockButton(position, shopID);
 
             return shop;
         }
@@ -58,5 +55,22 @@ namespace DeckScaler
 
         private Entity<GameScope> CreateUnitInShop(UnitIDRef unitID)
             => UnitFactory.CreateInShop(unitID, new());
+
+        private void SetupStocks(Vector2 rootPosition, EntityID shopID)
+        {
+            for (var i = 0; i < ShopConfig.UnitSlots; i++)
+            {
+                var stockPosition = rootPosition.Add(x: i * 1.5f);
+                CreateShopStock(stockPosition, shopID);
+            }
+        }
+
+        private static void SetupRestockButton(Vector2 shopPosition, EntityID shopID)
+        {
+            var restockButtonPosition = shopPosition.Add(x: -1.8f, y: 2.17f);
+            ViewFactory.CreateShopRestockButtonPrefab(restockButtonPosition).Entity
+                .Add<RestockButton, EntityID>(shopID)
+                ;
+        }
     }
 }

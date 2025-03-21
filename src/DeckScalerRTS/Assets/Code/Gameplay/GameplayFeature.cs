@@ -91,6 +91,8 @@ namespace DeckScaler
             Add(new GainMoneyOnTentFreedSystem());
 
 #region Shop
+            Add(new RequestShopRestockOnRestockButtonClickedSystem());
+
             Add(new RestockShopsSystem());
             Add(new MakeStocksVisibleOnShopRestock());
 

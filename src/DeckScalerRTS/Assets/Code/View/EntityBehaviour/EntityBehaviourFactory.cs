@@ -16,8 +16,8 @@ namespace DeckScaler
         EntityBehaviour CreateSelectionView();
 
         EntityBehaviour CreateShopView(Vector2 position);
-
         EntityBehaviour CreateShopStockView(Vector2 position);
+        EntityBehaviour CreateShopRestockButtonPrefab(Vector2 position);
     }
 
     public class EntityBehaviourFactory : IEntityBehaviourFactory
@@ -59,6 +59,9 @@ namespace DeckScaler
 
         public EntityBehaviour CreateShopStockView(Vector2 position)
             => CreateWorldView(Configs.Economy.Shop.StockViewPrefab, position);
+
+        public EntityBehaviour CreateShopRestockButtonPrefab(Vector2 position)
+            => CreateWorldView(Configs.Economy.Shop.RestockButtonPrefab, position);
 
         private EntityBehaviour CreateUiView(EntityBehaviour prefab, Vector2 position)
             => CreateBehaviour(prefab, position, _uiRoot);
