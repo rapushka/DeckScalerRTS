@@ -91,6 +91,11 @@ namespace DeckScaler
             Add(new GainMoneyOnTentFreedSystem());
 
 #region Shop
+            Add(new RequestShopRestockOnRestockButtonClickedSystem());
+
+            Add(new RestockShopsSystem());
+            Add(new MakeStocksVisibleOnShopRestock());
+
             Add(new UpdateBuyStockButtonEnabledSystem());
             Add(new OnBuyStockButtonClickedSystem());
 
@@ -124,6 +129,7 @@ namespace DeckScaler
 #region Cleanups
             Add(new RemoveComponentSystem<TentJustFreed>());
             Add(new RemoveComponentSystem<JustPurchased>());
+            Add(new RemoveComponentSystem<Restock>());
 
             Add(new OnGameLostSystem());
             Add(new DestroyEntitiesAfterDelaySystem());

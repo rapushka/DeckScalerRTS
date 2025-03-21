@@ -6,58 +6,70 @@ namespace DeckScaler
     public interface IShopFactory : IService
     {
         Entity<GameScope> Create(Vector2 position);
-        Entity<GameScope> CreateUnitInShop(UnitIDRef unitID, Vector2 position, EntityID shopID);
+        Entity<GameScope> CreateShopStock(Vector2 position, EntityID shopID);
+
+        Entity<GameScope> CreateRandomItem();
     }
 
     public class ShopFactory : IShopFactory
     {
         private static IEntityBehaviourFactory ViewFactory => ServiceLocator.Resolve<IEntityBehaviourFactory>();
 
-        private static EconomyConfig.ShopConfig ShopConfig => ServiceLocator.Resolve<IGameConfig>().Economy.Shop;
-
         private static IUnitFactory UnitFactory => ServiceLocator.Resolve<IUnitFactory>();
+
+        private static EconomyConfig.ShopConfig ShopConfig => ServiceLocator.Resolve<IGameConfig>().Economy.Shop;
 
         public Entity<GameScope> Create(Vector2 position)
         {
             var view = ViewFactory.CreateShopView(position);
             var shop = view.Entity
-                .Add<DebugName, string>("Shop")
-                .Add<Shop>()
-                .Add<WorldPosition, Vector2>(position);
+                    .Add<DebugName, string>("Shop")
+                    .Add<Shop>()
+                    .Add<WorldPosition, Vector2>(position)
+                    .Add<Restock>()
+                ;
+
             var shopID = shop.ID();
 
-            var unitSlotsRoot = shop.Get<ShopSlotsRoot, Transform>().position;
-            for (var i = 0; i < ShopConfig.UnitSlots; i++)
-            {
-                var unitID = ShopConfig.IssueRandomUnit();
-                var stockPosition = unitSlotsRoot.Add(x: i * 1.5f);
-
-                var item = CreateUnitInShop(unitID, stockPosition, shopID);
-                var stock = CreateShopStock(stockPosition, shopID, item);
-                var itemInStockPosition = stock.Get<ShopStockItemRoot>().Value.position;
-                item.Set<WorldPosition, Vector2>(itemInStockPosition);
-            }
+            var stocksRoot = shop.Get<ShopSlotsRoot, Transform>().position;
+            SetupStocks(stocksRoot, shopID);
+            SetupRestockButton(position, shopID);
 
             return shop;
         }
 
-        public Entity<GameScope> CreateUnitInShop(UnitIDRef unitID, Vector2 position, EntityID shopID)
-            => UnitFactory.CreateInShop(unitID, position)
+        public Entity<GameScope> CreateRandomItem()
+        {
+            var unitID = ShopConfig.IssueRandomUnit();
+            return CreateUnitInShop(unitID);
+        }
+
+        public Entity<GameScope> CreateShopStock(Vector2 position, EntityID shopID)
+            => ViewFactory.CreateShopStockView(position).Entity
+                .Add<DebugName, string>("shop stock")
+                .Add<BuyStockButton>()
+                .Add<Clickable>()
+                .Add<Visible, bool>(true)
+                .Add<StockInShop, EntityID>(shopID)
                 .Add<ChildOf, EntityID>(shopID);
 
-        private Entity<GameScope> CreateShopStock(Vector2 position, EntityID shopID, Entity<GameScope> item)
-        {
-            var price = item.Get<Price>().Value;
+        private Entity<GameScope> CreateUnitInShop(UnitIDRef unitID)
+            => UnitFactory.CreateInShop(unitID, new());
 
-            return ViewFactory.CreateShopStockView(position).Entity
-                    .Add<DebugName, string>("shop stock")
-                    .Add<BuyStockButton>()
-                    .Add<Clickable>()
-                    .Add<Price, int>(price)
-                    .Add<Visible, bool>(true)
-                    .Add<StockInShop, EntityID>(shopID)
-                    .Add<ChildOf, EntityID>(shopID)
-                    .Add<IssuedItem, EntityID>(item.ID())
+        private void SetupStocks(Vector2 rootPosition, EntityID shopID)
+        {
+            for (var i = 0; i < ShopConfig.UnitSlots; i++)
+            {
+                var stockPosition = rootPosition.Add(x: i * 1.5f);
+                CreateShopStock(stockPosition, shopID);
+            }
+        }
+
+        private static void SetupRestockButton(Vector2 shopPosition, EntityID shopID)
+        {
+            var restockButtonPosition = shopPosition.Add(x: -1.8f, y: 2.17f);
+            ViewFactory.CreateShopRestockButtonPrefab(restockButtonPosition).Entity
+                .Add<RestockButton, EntityID>(shopID)
                 ;
         }
     }
