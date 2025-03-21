@@ -92,6 +92,8 @@ namespace DeckScaler
 
 #region Shop
             Add(new RestockShopsSystem());
+            Add(new MakeStocksVisibleOnShopRestock());
+
             Add(new UpdateBuyStockButtonEnabledSystem());
             Add(new OnBuyStockButtonClickedSystem());
 
