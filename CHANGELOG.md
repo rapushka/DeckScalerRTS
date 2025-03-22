@@ -10,6 +10,7 @@
 - [added Ewe Unit: gain for player $1 after they killed the enemy](https://github.com/rapushka/DeckScalerRTS/pull/74)
 - bugfix:
   - [fix cooldowns – now they won't constantly reset themselves](https://github.com/rapushka/DeckScalerRTS/tree/38-bug-cooldown-constantly-resetsz)
+  - [bug: money was spending after each unit selection](https://github.com/rapushka/DeckScalerRTS/pull/76)
 
 
 # v0.0.25
