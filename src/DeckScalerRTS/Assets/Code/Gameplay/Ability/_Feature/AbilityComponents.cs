@@ -19,6 +19,8 @@ namespace DeckScaler
     /// The shortest range of all offencive abilities of the Unit
     public sealed class EffectiveRange : ValueComponent<float>, IInScope<GameScope> { }
 
-    // # Target Types
-    public sealed class UseOnOpponent : FlagComponent, IInScope<GameScope> { }
+    // # Trigger Types
+    public sealed class CastOnOpponent : FlagComponent, IInScope<GameScope> { }
+
+    public sealed class CastWhenKilledUnit : FlagComponent, IInScope<GameScope> { }
 }

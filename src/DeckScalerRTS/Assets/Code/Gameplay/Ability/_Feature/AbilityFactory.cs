@@ -23,8 +23,11 @@ namespace DeckScaler
                     .Add<CooldownTimer, Timer>(new(0f))
                 ;
 
-            if (config.TargetType is AbilityTriggerType.HasOpponent)
-                entity.Add<UseOnOpponent>();
+            if (config.TriggerType is AbilityTriggerType.HasOpponent)
+                entity.Add<CastOnOpponent>();
+
+            if (config.TriggerType is AbilityTriggerType.OnKilledUnit)
+                entity.Add<CastWhenKilledUnit>();
 
             return entity;
         }

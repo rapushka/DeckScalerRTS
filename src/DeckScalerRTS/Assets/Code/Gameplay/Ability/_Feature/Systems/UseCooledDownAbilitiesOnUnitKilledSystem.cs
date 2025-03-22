@@ -4,14 +4,13 @@ using UnityEngine;
 
 namespace DeckScaler
 {
-    public sealed class UseCooledDownAbilitiesOnOpponentSystem : IExecuteSystem
+    public sealed class UseCooledDownAbilitiesOnUnitKilledSystem : IExecuteSystem
     {
         private readonly IGroup<Entity<GameScope>> _abilities
             = GroupBuilder<GameScope>
                 .With<AbilityOf>()
                 .And<CooldownUp>()
-                .And<CastOnOpponent>()
-                .And<Range>()
+                .And<CastWhenKilledUnit>()
                 .Build();
 
         private static IAffectFactory AffectFactory => ServiceLocator.Resolve<IAffectFactory>();

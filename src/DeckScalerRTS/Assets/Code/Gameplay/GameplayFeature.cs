@@ -64,6 +64,7 @@ namespace DeckScaler
 #region Ability
             Add(new CoolDownAbilitiesSystem());
             Add(new UseCooledDownAbilitiesOnOpponentSystem());
+            Add(new UseCooledDownAbilitiesOnUnitKilledSystem());
 
             Add(new ApplyDealDamageAffectsSystem());
             Add(new PlayUnitAttackAnimationSystem());
@@ -99,12 +100,13 @@ namespace DeckScaler
             Add(new RestockShopsSystem());
             Add(new MakeStocksVisibleOnShopRestock());
 
-            Add(new SpendMoneyOnItemBoughtSystem());
+            Add(new SendSpendMoneyOnItemBoughtSystem());
             Add(new OnBuyStockButtonClickedSystem());
 
             Add(new OnUnitJustPurchasedSystem());
 #endregion
 
+            Add(new GainMoneySystem());
             Add(new SpendMoneySystem());
 
             // view

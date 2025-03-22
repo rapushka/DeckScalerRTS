@@ -4,7 +4,7 @@ using Entitas.Generic;
 
 namespace DeckScaler
 {
-    public sealed class SpendMoneyOnItemBoughtSystem : IExecuteSystem
+    public sealed class SendSpendMoneyOnItemBoughtSystem : IExecuteSystem
     {
         private readonly IGroup<Entity<GameScope>> _buyStockButtons
             = GroupBuilder<GameScope>
@@ -20,8 +20,7 @@ namespace DeckScaler
             foreach (var stock in _buyStockButtons.GetEntities(_buffer))
             {
                 var price = stock.Get<Price>().Value;
-                CreateEntity.OneFrame()
-                    .Add<SpendMoneyEvent, int>(price);
+                MoneyUtils.SpendMoney(price);
             }
         }
     }

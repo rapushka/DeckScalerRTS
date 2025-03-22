@@ -21,7 +21,7 @@ MonoBehaviour:
   <MaxHealth>k__BackingField: 25
   <Price>k__BackingField: 0
   <Abilities>k__BackingField:
-  - <TargetType>k__BackingField: 1
+  - <TriggerType>k__BackingField: 1
     <Range>k__BackingField: 1.5
     <Cooldown>k__BackingField: 1
     <Affect>k__BackingField:
