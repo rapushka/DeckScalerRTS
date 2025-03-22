@@ -49,6 +49,7 @@ namespace DeckScaler
                 .Add<DebugName, string>("shop stock")
                 .Add<BuyStockButton>()
                 .Add<Clickable>()
+                .Add<ItemForSale>()
                 .Add<Visible, bool>(true)
                 .Add<StockInShop, EntityID>(shopID)
                 .Add<ChildOf, EntityID>(shopID);
@@ -72,6 +73,7 @@ namespace DeckScaler
                 .Add<RestockButton, EntityID>(shopID)
                 .Add<Price, int>(ShopConfig.RestockPrice)
                 .Add<Available>()
+                .Add<ItemForSale>()
                 ;
         }
     }

@@ -8,7 +8,8 @@ namespace DeckScaler
     {
         private readonly IGroup<Entity<GameScope>> _buyStockButtons
             = GroupBuilder<GameScope>
-                .With<Price>()
+                .With<ItemForSale>()
+                .And<Price>()
                 .And<Clicked>()
                 .And<Available>()
                 .Build();
