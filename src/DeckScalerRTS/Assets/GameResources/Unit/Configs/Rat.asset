@@ -20,6 +20,7 @@ MonoBehaviour:
   <MovementSpeed>k__BackingField: 2
   <MaxHealth>k__BackingField: 5
   <Price>k__BackingField: 2
+  <Range>k__BackingField: 1
   <Abilities>k__BackingField:
   - <TriggerType>k__BackingField: 1
     <Range>k__BackingField: 1

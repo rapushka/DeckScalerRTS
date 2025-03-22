@@ -27,7 +27,7 @@ namespace DeckScaler
                 entity.Add<CastOnOpponent>();
 
             if (config.TriggerType is AbilityTriggerType.OnKilledUnit)
-                entity.Add<CastWhenKilledUnit>();
+                entity.Add<CastWhenOwnerKilledUnit>();
 
             return entity;
         }

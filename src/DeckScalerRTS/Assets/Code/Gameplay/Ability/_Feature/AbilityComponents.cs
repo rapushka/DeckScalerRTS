@@ -23,5 +23,5 @@ namespace DeckScaler
     // # Trigger Types
     public sealed class CastOnOpponent : FlagComponent, IInScope<GameScope> { }
 
-    public sealed class CastWhenKilledUnit : FlagComponent, IInScope<GameScope> { }
+    public sealed class CastWhenOwnerKilledUnit : FlagComponent, IInScope<GameScope> { }
 }

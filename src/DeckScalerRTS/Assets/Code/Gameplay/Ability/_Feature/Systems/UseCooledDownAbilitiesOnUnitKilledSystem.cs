@@ -9,7 +9,7 @@ namespace DeckScaler
             = GroupBuilder<GameScope>
                 .With<AbilityOwner>()
                 .And<CooldownUp>()
-                .And<CastWhenKilledUnit>()
+                .And<CastWhenOwnerKilledUnit>()
                 .Build();
 
         private readonly IGroup<Entity<GameScope>> _deadUnits
@@ -29,9 +29,10 @@ namespace DeckScaler
                 var ownerID = ability.Get<AbilityOwner, EntityID>();
                 var owner = ownerID.GetEntity();
 
-                if (!owner.Is<OnPlayerSide>()
-                    || !deadUnit.TryGet<LastHitFrom>(out var lastAttacker)
-                    || lastAttacker.Value != ownerID)
+                var isKilledByOwner = deadUnit.TryGet<LastHitFrom, EntityID>(out var lastAttackerID)
+                    && lastAttackerID == ownerID;
+
+                if (!isKilledByOwner)
                     continue;
 
                 var affectConfig = ability.Get<AbilityAffectConfig, AffectConfig>();

@@ -18,8 +18,9 @@ MonoBehaviour:
   <Head>k__BackingField: {fileID: 21300000, guid: e1ee02cd40663356f85d29ea1cbef6a1, type: 3}
   <Portrait>k__BackingField: {fileID: 21300000, guid: c86a4e1c2fbf91f33bf6f1702fdbb426, type: 3}
   <MovementSpeed>k__BackingField: 2
-  <MaxHealth>k__BackingField: 5
+  <MaxHealth>k__BackingField: 10
   <Price>k__BackingField: 2
+  <Range>k__BackingField: 1
   <Abilities>k__BackingField:
   - <TriggerType>k__BackingField: 1
     <Range>k__BackingField: 1

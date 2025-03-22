@@ -13,5 +13,6 @@ namespace DeckScaler
     // # Types
 
     public sealed class DealDamageAffect : FlagComponent, IInScope<GameScope> { }
+
     public sealed class GainMoneyAffect : FlagComponent, IInScope<GameScope> { }
 }
