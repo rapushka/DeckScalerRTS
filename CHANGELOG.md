@@ -6,6 +6,8 @@
   - [spawn units in shops](https://github.com/rapushka/DeckScalerRTS/pull/59)
   - [you can hire units in shop! yay!!](https://github.com/rapushka/DeckScalerRTS/pull/63)
   - [restock shop (yet for free)](https://github.com/rapushka/DeckScalerRTS/pull/64)
+  - [no more free restocks haha!](https://github.com/rapushka/DeckScalerRTS/pull/66)
+- [added Ewe Unit: gain for player $1 after they killed the enemy](https://github.com/rapushka/DeckScalerRTS/pull/74)
 - bugfix:
   - [fix cooldowns – now they won't constantly reset themselves](https://github.com/rapushka/DeckScalerRTS/tree/38-bug-cooldown-constantly-resetsz)
 
