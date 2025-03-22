@@ -8,7 +8,8 @@ namespace DeckScaler
 
     public sealed class BaseCooldown : ValueComponent<float>, IInScope<GameScope> { }
 
-    public sealed class AbilityOf : IndexComponent<EntityID>, IInScope<GameScope> { }
+    // Ability -> Unit (this Ability belongs to)
+    public sealed class AbilityOwner : IndexComponent<EntityID>, IInScope<GameScope> { }
 
     public sealed class CooldownTimer : ValueComponent<Timer>, IInScope<GameScope> { }
 

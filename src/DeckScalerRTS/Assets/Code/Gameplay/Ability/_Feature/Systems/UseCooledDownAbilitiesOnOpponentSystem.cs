@@ -8,7 +8,7 @@ namespace DeckScaler
     {
         private readonly IGroup<Entity<GameScope>> _abilities
             = GroupBuilder<GameScope>
-                .With<AbilityOf>()
+                .With<AbilityOwner>()
                 .And<CooldownUp>()
                 .And<CastOnOpponent>()
                 .And<Range>()
@@ -20,7 +20,7 @@ namespace DeckScaler
         {
             foreach (var ability in _abilities)
             {
-                var owner = ability.Get<AbilityOf, EntityID>().GetEntity();
+                var owner = ability.Get<AbilityOwner, EntityID>().GetEntity();
 
                 if (!owner.TryGet<Opponent, EntityID>(out var opponentID))
                     continue;

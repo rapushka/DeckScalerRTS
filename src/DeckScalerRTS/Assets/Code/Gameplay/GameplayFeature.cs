@@ -67,6 +67,7 @@ namespace DeckScaler
             Add(new UseCooledDownAbilitiesOnUnitKilledSystem());
 
             Add(new ApplyDealDamageAffectsSystem());
+            Add(new ApplyGainMoneyAffectsSystem());
             Add(new PlayUnitAttackAnimationSystem());
 
             Add(new ResetUsedAbilitiesSystem());

@@ -15,7 +15,7 @@ namespace DeckScaler
 
             var entity = CreateEntity.Empty()
                     .Add<DebugName, string>("ability")
-                    .Add<AbilityOf, EntityID>(ownerID)
+                    .Add<AbilityOwner, EntityID>(ownerID)
                     .Add<ChildOf, EntityID>(ownerID)
                     .Add<AbilityAffectConfig, AffectConfig>(config.Affect)
                     .Add<Range, float>(config.Range)

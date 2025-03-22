@@ -1,6 +1,5 @@
 using Entitas;
 using Entitas.Generic;
-using UnityEngine;
 
 namespace DeckScaler
 {
@@ -8,9 +7,16 @@ namespace DeckScaler
     {
         private readonly IGroup<Entity<GameScope>> _abilities
             = GroupBuilder<GameScope>
-                .With<AbilityOf>()
+                .With<AbilityOwner>()
                 .And<CooldownUp>()
                 .And<CastWhenKilledUnit>()
+                .Build();
+
+        private readonly IGroup<Entity<GameScope>> _deadUnits
+            = GroupBuilder<GameScope>
+                .With<UnitID>()
+                .And<Dead>()
+                .And<LastHitFrom>()
                 .Build();
 
         private static IAffectFactory AffectFactory => ServiceLocator.Resolve<IAffectFactory>();
@@ -18,23 +24,18 @@ namespace DeckScaler
         public void Execute()
         {
             foreach (var ability in _abilities)
+            foreach (var deadUnit in _deadUnits)
             {
-                var owner = ability.Get<AbilityOf, EntityID>().GetEntity();
+                var ownerID = ability.Get<AbilityOwner, EntityID>();
+                var owner = ownerID.GetEntity();
 
-                if (!owner.TryGet<Opponent, EntityID>(out var opponentID))
-                    continue;
-
-                var opponent = opponentID.GetEntity();
-                var opponentPosition = opponent.Get<WorldPosition, Vector2>();
-                var ownerPosition = owner.Get<WorldPosition, Vector2>();
-
-                var distance = opponentPosition.DistanceTo(ownerPosition);
-
-                if (ability.Get<Range, float>() < distance)
+                if (!owner.Is<OnPlayerSide>()
+                    || !deadUnit.TryGet<LastHitFrom>(out var lastAttacker)
+                    || lastAttacker.Value != ownerID)
                     continue;
 
                 var affectConfig = ability.Get<AbilityAffectConfig, AffectConfig>();
-                AffectFactory.Create(affectConfig, owner, opponent);
+                AffectFactory.Create(affectConfig, owner);
 
                 ability.Is<Used>(true);
             }

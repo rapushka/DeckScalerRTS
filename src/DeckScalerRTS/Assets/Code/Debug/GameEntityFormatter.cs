@@ -21,7 +21,7 @@ namespace DeckScaler
                 ToStringHealth(entity),
 
                 // ability
-                ToStringID<AbilityOf>(entity, prefix: "ability of: "),
+                ToStringID<AbilityOwner>(entity, prefix: "ability of: "),
                 entity.ToString<CooldownTimer, Timer>(prefix: "cd: "),
 
                 // tent

@@ -27,3 +27,9 @@ MonoBehaviour:
     <Affect>k__BackingField:
       <Value>k__BackingField: 1
       <Type>k__BackingField: 1
+  - <TriggerType>k__BackingField: 2
+    <Range>k__BackingField: 0
+    <Cooldown>k__BackingField: 0
+    <Affect>k__BackingField:
+      <Value>k__BackingField: 1
+      <Type>k__BackingField: 2
