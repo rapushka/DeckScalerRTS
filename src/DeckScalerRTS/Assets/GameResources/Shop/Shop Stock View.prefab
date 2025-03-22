@@ -239,8 +239,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 4219096505588581604}
-  _enabledColor: {r: 1, g: 1, b: 1, a: 1}
-  _disabledColor: {r: 0.4627451, g: 0.4627451, b: 0.4627451, a: 1}
+  _availableColor: {r: 1, g: 1, b: 1, a: 1}
+  _unavailableColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!1 &6197641792928567916
 GameObject:
   m_ObjectHideFlags: 0

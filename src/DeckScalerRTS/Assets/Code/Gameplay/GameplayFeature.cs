@@ -91,12 +91,15 @@ namespace DeckScaler
             Add(new GainMoneyOnTentFreedSystem());
 
 #region Shop
+            Add(new UpdateItemWithPriceInShopAvailabilitySystem());
+
             Add(new RequestShopRestockOnRestockButtonClickedSystem());
+            Add(new OnRestockIncreaseRestockPriceSystem());
 
             Add(new RestockShopsSystem());
             Add(new MakeStocksVisibleOnShopRestock());
 
-            Add(new UpdateBuyStockButtonEnabledSystem());
+            Add(new SpendMoneyOnItemBoughtSystem());
             Add(new OnBuyStockButtonClickedSystem());
 
             Add(new OnUnitJustPurchasedSystem());
@@ -145,7 +148,7 @@ namespace DeckScaler
             Add(new SelfEventSystem<GameScope, WorldPosition>(contexts));
             Add(new SelfEventSystem<GameScope, Price>(contexts));
             Add(new SelfEventSystem<GameScope, Visible>(contexts));
-            Add(new SelfFlagEventSystem<GameScope, Disabled>(contexts));
+            Add(new SelfFlagEventSystem<GameScope, Available>(contexts));
             Add(new AnyEventSystem<GameScope, MaxHealth>(contexts)); // TODO: are these need to be Any??
             Add(new AnyEventSystem<GameScope, Health>(contexts));    // TODO: are these need to be Any??
             Add(new SelfFlagEventSystem<GameScope, OnEnemySide>(contexts));

@@ -3,11 +3,11 @@ using Entitas.Generic;
 
 namespace DeckScaler
 {
-    public sealed class UpdateBuyStockButtonEnabledSystem : IExecuteSystem
+    public sealed class UpdateItemWithPriceInShopAvailabilitySystem : IExecuteSystem
     {
-        private readonly IGroup<Entity<GameScope>> _buyStockButtons
+        private readonly IGroup<Entity<GameScope>> _entitiesWithPrice
             = GroupBuilder<GameScope>
-                .With<BuyStockButton>()
+                .With<Price>()
                 .Build();
 
         private readonly IGroup<Entity<GameScope>> _playerWallets
@@ -18,13 +18,13 @@ namespace DeckScaler
 
         public void Execute()
         {
-            foreach (var stock in _buyStockButtons)
+            foreach (var item in _entitiesWithPrice)
             foreach (var wallet in _playerWallets)
             {
                 var money = wallet.Get<Money>().Value;
-                var price = stock.Get<Price>().Value;
+                var price = item.Get<Price>().Value;
 
-                stock.Is<Disabled>(money < price);
+                item.Is<Available>(money >= price);
             }
         }
     }

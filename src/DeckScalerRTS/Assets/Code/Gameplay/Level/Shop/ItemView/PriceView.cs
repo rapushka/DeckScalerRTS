@@ -7,6 +7,7 @@ namespace DeckScaler
     public class PriceView : BaseListener<GameScope, Price>
     {
         [SerializeField] private TMP_Text _textMesh;
+        [Multiline]
         [SerializeField] private string _format = "${0}";
 
         public override void OnValueChanged(Entity<GameScope> entity, Price component)

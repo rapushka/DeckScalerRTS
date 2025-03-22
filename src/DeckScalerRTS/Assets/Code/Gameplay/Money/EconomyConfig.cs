@@ -21,8 +21,11 @@ namespace DeckScaler
             [field: SerializeField] public EntityBehaviour ViewPrefab { get; private set; }
             [field: SerializeField] public int             UnitSlots  { get; private set; } = 2;
 
-            [field: SerializeField] public EntityBehaviour StockViewPrefab { get; private set; }
+            [field: SerializeField] public EntityBehaviour StockViewPrefab     { get; private set; }
             [field: SerializeField] public EntityBehaviour RestockButtonPrefab { get; private set; }
+
+            [field: SerializeField] public int RestockPrice        { get; private set; } = 10;
+            [field: SerializeField] public int PerRestockIncrement { get; private set; } = 1;
 
             public UnitIDRef IssueRandomUnit() => Random.SelectRandom(_possibleUnitsInShop);
         }
