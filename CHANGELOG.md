@@ -8,6 +8,7 @@
   - [restock shop (yet for free)](https://github.com/rapushka/DeckScalerRTS/pull/64)
   - [no more free restocks haha!](https://github.com/rapushka/DeckScalerRTS/pull/66)
 - [added Ewe Unit: gain for player $1 after they killed the enemy](https://github.com/rapushka/DeckScalerRTS/pull/74)
+- [map shrinked](https://github.com/rapushka/DeckScalerRTS/pull/77)
 - bugfix:
   - [fix cooldowns – now they won't constantly reset themselves](https://github.com/rapushka/DeckScalerRTS/tree/38-bug-cooldown-constantly-resetsz)
   - [bug: money was spending after each unit selection](https://github.com/rapushka/DeckScalerRTS/pull/76)
