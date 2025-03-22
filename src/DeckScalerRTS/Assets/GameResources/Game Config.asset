@@ -18,6 +18,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 3c9e935fa8ccf985c8a1f53d61758ef7, type: 2}
     - {fileID: 11400000, guid: c9fa2fd62804212fda4473072e77f4a7, type: 2}
     - {fileID: 11400000, guid: c03d7ef05a9e61fa980ed11397f66d90, type: 2}
+    - {fileID: 11400000, guid: 7706ea37d522cd09f878ac5c1316f426, type: 2}
     <Common>k__BackingField:
       <AttackTriggerRadius>k__BackingField: 3
     <UI>k__BackingField:
@@ -36,8 +37,10 @@ MonoBehaviour:
     <Shop>k__BackingField:
       _possibleUnitsInShop:
       - Value: Unit/Crook
-      - Value: Unit/Rat
+      - Value: Unit/Ewe
       <ViewPrefab>k__BackingField: {fileID: 2847599483410041787, guid: d8227b357189dfd2cb393e1dcd732d87, type: 3}
       <UnitSlots>k__BackingField: 2
       <StockViewPrefab>k__BackingField: {fileID: 2829874252000347537, guid: 1bb75c037f53754439df3c241ec04cd9, type: 3}
       <RestockButtonPrefab>k__BackingField: {fileID: 6900871599718100828, guid: 9725edc5cf2653f77a92c5183578eb3c, type: 3}
+      <RestockPrice>k__BackingField: 10
+      <PerRestockIncrement>k__BackingField: 1
