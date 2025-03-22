@@ -7,6 +7,7 @@ namespace DeckScaler
         public static class TableID
         {
             public const string Units = "Unit/";
+            public const string Items = "Item/";
         }
 
         public static class InputBindings

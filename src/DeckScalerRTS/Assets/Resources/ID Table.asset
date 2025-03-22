@@ -13,12 +13,22 @@ MonoBehaviour:
   m_Name: ID Table
   m_EditorClassIdentifier: 
   _idList:
+  - Item
+  - Item/Wine
   - Unit
   - Unit/Crook
   - Unit/Ewe
   - Unit/HeartsLead
   - Unit/Rat
   _idDefinitions:
+  - _id: Item
+    _assetRefs: []
+  - _id: Item/Wine
+    _assetRefs:
+    - _objectPath: 45dd46de52cdf76d683afb1da02d9c3f||11400000
+      _targetRefType: 0
+      _apiVersion: 1
+      _propertyPath: <ID>k__BackingField.Value
   - _id: Unit
     _assetRefs: []
   - _id: Unit/Crook

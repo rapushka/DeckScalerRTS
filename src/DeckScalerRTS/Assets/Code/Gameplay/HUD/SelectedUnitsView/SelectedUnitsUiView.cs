@@ -16,11 +16,16 @@ namespace DeckScaler
         [SerializeField] private Button _autoAttackButton;
         [SerializeField] private TMP_Text _autoAttackTextMesh;
 
+        [Header("Inventory")]
+        [SerializeField] private InventoryUI _inventory;
+
         public SingleUnitUiView    SingleView   => _singleView;
         public MultipleUnitsUiView MultipleView => _multipleView;
 
         public ProgressBar HealthBar          => _healthBar;
         public TMP_Text    AutoAttackTextMesh => _autoAttackTextMesh;
+
+        public InventoryUI Inventory => _inventory;
 
         public AutoAttackState AutoAttackState
         {
