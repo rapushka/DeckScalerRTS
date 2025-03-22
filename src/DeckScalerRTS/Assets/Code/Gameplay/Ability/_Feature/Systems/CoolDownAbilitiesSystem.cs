@@ -8,7 +8,7 @@ namespace DeckScaler
     {
         private readonly IGroup<Entity<GameScope>> _abilities
             = GroupBuilder<GameScope>
-                .With<AbilityOf>()
+                .With<AbilityOwner>()
                 .And<BaseCooldown>()
                 .Without<CooldownUp>()
                 .Build();

@@ -4,5 +4,6 @@ namespace DeckScaler
     {
         Unknown = 0,
         DealDamage = 1,
+        GainMoney = 2,
     }
 }

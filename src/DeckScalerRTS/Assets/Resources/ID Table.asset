@@ -15,6 +15,7 @@ MonoBehaviour:
   _idList:
   - Unit
   - Unit/Crook
+  - Unit/Ewe
   - Unit/HeartsLead
   - Unit/Rat
   _idDefinitions:
@@ -34,6 +35,16 @@ MonoBehaviour:
       _targetRefType: 0
       _apiVersion: 1
       _propertyPath: <Economy>k__BackingField.<Shop>k__BackingField._possibleUnitsInShop.Array.data[0].Value
+  - _id: Unit/Ewe
+    _assetRefs:
+    - _objectPath: 7706ea37d522cd09f878ac5c1316f426||11400000
+      _targetRefType: 0
+      _apiVersion: 1
+      _propertyPath: <ID>k__BackingField.Value
+    - _objectPath: 7d5c0f68a26302bbcaf14c09218b17a6||11400000
+      _targetRefType: 0
+      _apiVersion: 1
+      _propertyPath: <Economy>k__BackingField.<Shop>k__BackingField._possibleUnitsInShop.Array.data[1].Value
   - _id: Unit/HeartsLead
     _assetRefs:
     - _objectPath: c03d7ef05a9e61fa980ed11397f66d90||11400000
@@ -62,7 +73,3 @@ MonoBehaviour:
       _targetRefType: 3
       _apiVersion: 1
       _propertyPath: _levelData.<UnitSpawnsTMP>k__BackingField.Array.data[0].<UnitID>k__BackingField.Value
-    - _objectPath: 7d5c0f68a26302bbcaf14c09218b17a6||11400000
-      _targetRefType: 0
-      _apiVersion: 1
-      _propertyPath: <Economy>k__BackingField.<Shop>k__BackingField._possibleUnitsInShop.Array.data[1].Value

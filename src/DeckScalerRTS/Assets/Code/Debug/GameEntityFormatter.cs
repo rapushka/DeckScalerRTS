@@ -15,19 +15,20 @@ namespace DeckScaler
                 $"{entity.GetName()} |",
 
                 // unit
-                entity.ToString<OnSide, Side>(prefix: "on side: "),
-                entity.Is<SelectedUnit>() ? "<- selected" : string.Empty,
-                ToStringID<OnTent>(entity, prefix: "on tent: "),
+                entity.ToString<OnSide, Side>(prefix: "on: "),
+                ToStringID<OnTent>(entity, prefix: "tent: "),
                 ToStringHealth(entity),
 
                 // ability
-                ToStringID<AbilityOf>(entity, prefix: "ability of: "),
+                ToStringID<AbilityOwner>(entity, prefix: "ability of: "),
                 entity.ToString<CooldownTimer, Timer>(prefix: "cd: "),
 
                 // tent
                 entity.ToString<Tent>(),
 
                 $"{entity.ToString<WorldPosition, Vector2>(),20}",
+
+                entity.Is<SelectedUnit>() ? "<- selected" : string.Empty,
             };
 
             stringBuilder.AppendJoin(separator: "  ", buffer.Where(s => !s.IsEmpty()));

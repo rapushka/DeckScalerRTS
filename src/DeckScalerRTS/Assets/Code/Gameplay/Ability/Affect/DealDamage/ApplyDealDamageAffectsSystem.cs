@@ -17,6 +17,7 @@ namespace DeckScaler
         {
             foreach (var affect in _affects)
             {
+                var sender = affect.Get<AffectSender, EntityID>();
                 var target = affect.Get<AffectTarget, EntityID>().GetEntity();
 
                 if (!target.TryGet<Health, float>(out var health))
@@ -25,7 +26,10 @@ namespace DeckScaler
                 var affectValue = affect.Get<AffectValue, float>();
                 health = (health - affectValue).Clamp(min: 0);
 
-                target.Set<Health, float>(health);
+                target
+                    .Set<Health, float>(health)
+                    .Set<LastHitFrom, EntityID>(sender)
+                    ;
             }
         }
     }

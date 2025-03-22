@@ -15,7 +15,7 @@ namespace DeckScaler
 
             var entity = CreateEntity.Empty()
                     .Add<DebugName, string>("ability")
-                    .Add<AbilityOf, EntityID>(ownerID)
+                    .Add<AbilityOwner, EntityID>(ownerID)
                     .Add<ChildOf, EntityID>(ownerID)
                     .Add<AbilityAffectConfig, AffectConfig>(config.Affect)
                     .Add<Range, float>(config.Range)
@@ -23,8 +23,11 @@ namespace DeckScaler
                     .Add<CooldownTimer, Timer>(new(0f))
                 ;
 
-            if (config.TargetType is AbilityTriggerType.HasOpponent)
-                entity.Add<UseOnOpponent>();
+            if (config.TriggerType is AbilityTriggerType.HasOpponent)
+                entity.Add<CastOnOpponent>();
+
+            if (config.TriggerType is AbilityTriggerType.OnKilledUnit)
+                entity.Add<CastWhenOwnerKilledUnit>();
 
             return entity;
         }

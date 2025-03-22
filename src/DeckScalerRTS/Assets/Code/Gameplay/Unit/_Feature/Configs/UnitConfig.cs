@@ -20,6 +20,7 @@ namespace DeckScaler
 
         [field: SerializeField] public int Price { get; private set; }
 
+        [field: SerializeField] public float           Range     { get; private set; }
         [field: SerializeField] public AbilityConfig[] Abilities { get; private set; }
     }
 }

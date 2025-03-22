@@ -8,7 +8,8 @@ namespace DeckScaler
 
     public sealed class BaseCooldown : ValueComponent<float>, IInScope<GameScope> { }
 
-    public sealed class AbilityOf : IndexComponent<EntityID>, IInScope<GameScope> { }
+    // Ability -> Unit (this Ability belongs to)
+    public sealed class AbilityOwner : IndexComponent<EntityID>, IInScope<GameScope> { }
 
     public sealed class CooldownTimer : ValueComponent<Timer>, IInScope<GameScope> { }
 
@@ -19,6 +20,8 @@ namespace DeckScaler
     /// The shortest range of all offencive abilities of the Unit
     public sealed class EffectiveRange : ValueComponent<float>, IInScope<GameScope> { }
 
-    // # Target Types
-    public sealed class UseOnOpponent : FlagComponent, IInScope<GameScope> { }
+    // # Trigger Types
+    public sealed class CastOnOpponent : FlagComponent, IInScope<GameScope> { }
+
+    public sealed class CastWhenOwnerKilledUnit : FlagComponent, IInScope<GameScope> { }
 }

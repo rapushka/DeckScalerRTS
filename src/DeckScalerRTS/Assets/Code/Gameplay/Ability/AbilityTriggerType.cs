@@ -4,5 +4,6 @@ namespace DeckScaler
     {
         Unknown = 0,
         HasOpponent = 1,
+        OnKilledUnit = 2,
     }
 }

@@ -51,17 +51,10 @@ namespace DeckScaler
                 .Add<Price, int>(unitConfig.Price)
                 ;
 
-            var shortestRange = (float?)null;
             foreach (var abilityConfig in unitConfig.Abilities)
-            {
                 AbilityFactory.Create(unit, abilityConfig);
 
-                if (!shortestRange.HasValue || shortestRange.Value > abilityConfig.Range)
-                    shortestRange = abilityConfig.Range;
-            }
-
-            if (shortestRange.HasValue)
-                unit.Add<EffectiveRange, float>(shortestRange.Value);
+            unit.Add<EffectiveRange, float>(unitConfig.Range);
 
             if (unitConfig.IsLead)
                 unit.Add<Lead>();

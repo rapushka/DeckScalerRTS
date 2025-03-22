@@ -25,6 +25,7 @@ namespace DeckScaler
 #endregion
 
             Add(new TickLooseTimersSystem());
+            Add(new MarkDeadUnitsProcessed());
 
 #region Selection
             Add(new SelectLeaderOnStartSystem());
@@ -64,8 +65,10 @@ namespace DeckScaler
 #region Ability
             Add(new CoolDownAbilitiesSystem());
             Add(new UseCooledDownAbilitiesOnOpponentSystem());
+            Add(new UseCooledDownAbilitiesOnUnitKilledSystem());
 
             Add(new ApplyDealDamageAffectsSystem());
+            Add(new ApplyGainMoneyAffectsSystem());
             Add(new PlayUnitAttackAnimationSystem());
 
             Add(new ResetUsedAbilitiesSystem());
@@ -99,12 +102,13 @@ namespace DeckScaler
             Add(new RestockShopsSystem());
             Add(new MakeStocksVisibleOnShopRestock());
 
-            Add(new SpendMoneyOnItemBoughtSystem());
+            Add(new SendSpendMoneyOnItemBoughtSystem());
             Add(new OnBuyStockButtonClickedSystem());
 
             Add(new OnUnitJustPurchasedSystem());
 #endregion
 
+            Add(new GainMoneySystem());
             Add(new SpendMoneySystem());
 
             // view

@@ -13,7 +13,7 @@ namespace DeckScaler
 
             // Indexes
             Contexts.Instance.Get<GameScope>().GetPrimaryIndex<ID, EntityID>().Initialize();
-            Contexts.Instance.Get<GameScope>().GetIndex<AbilityOf, EntityID>().Initialize();
+            Contexts.Instance.Get<GameScope>().GetIndex<AbilityOwner, EntityID>().Initialize();
             Contexts.Instance.Get<GameScope>().GetIndex<ChildOf, EntityID>().Initialize();
             Contexts.Instance.Get<GameScope>().GetIndex<OnTent, EntityID>().Initialize();
             Contexts.Instance.Get<GameScope>().GetIndex<StockInShop, EntityID>().Initialize();
