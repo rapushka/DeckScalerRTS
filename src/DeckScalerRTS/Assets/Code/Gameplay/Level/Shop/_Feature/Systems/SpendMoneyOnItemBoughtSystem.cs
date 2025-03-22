@@ -4,13 +4,12 @@ using Entitas.Generic;
 
 namespace DeckScaler
 {
-    public sealed class OnBuyStockButtonClickedSystem : IExecuteSystem
+    public sealed class SpendMoneyOnItemBoughtSystem : IExecuteSystem
     {
         private readonly IGroup<Entity<GameScope>> _buyStockButtons
             = GroupBuilder<GameScope>
-                .With<BuyStockButton>()
+                .With<Price>()
                 .And<Clicked>()
-                .And<IssuedItem>()
                 .And<Available>()
                 .Build();
 
@@ -20,14 +19,9 @@ namespace DeckScaler
         {
             foreach (var stock in _buyStockButtons.GetEntities(_buffer))
             {
-                var item = stock.Pop<IssuedItem, EntityID>().GetEntity();
-
-                item
-                    .Add<JustPurchased>()
-                    .Remove<ChildOf>()
-                    ;
-
-                stock.Set<Visible, bool>(false);
+                var price = stock.Get<Price>().Value;
+                CreateEntity.OneFrame()
+                    .Add<SpendMoneyEvent, int>(price);
             }
         }
     }

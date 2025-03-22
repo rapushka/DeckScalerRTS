@@ -70,6 +70,8 @@ namespace DeckScaler
             var restockButtonPosition = shopPosition.Add(x: -1.8f, y: 2.17f);
             ViewFactory.CreateShopRestockButtonPrefab(restockButtonPosition).Entity
                 .Add<RestockButton, EntityID>(shopID)
+                .Add<Price, int>(ShopConfig.RestockPrice)
+                .Add<Available>()
                 ;
         }
     }
