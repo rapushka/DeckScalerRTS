@@ -13,7 +13,7 @@ namespace DeckScaler
 
     public class ShopFactory : IShopFactory
     {
-        private static IEntityBehaviourFactory ViewFactory => ServiceLocator.Resolve<IEntityBehaviourFactory>();
+        private static IViewFactory ViewFactory => ServiceLocator.Resolve<IViewFactory>();
 
         private static IUnitFactory UnitFactory => ServiceLocator.Resolve<IUnitFactory>();
 
@@ -21,7 +21,7 @@ namespace DeckScaler
 
         public Entity<GameScope> Create(Vector2 position)
         {
-            var view = ViewFactory.CreateShopView(position);
+            var view = ViewFactory.CreateInWorld(ShopConfig.ViewPrefab, position);
             var shop = view.Entity
                     .Add<DebugName, string>("Shop")
                     .Add<Shop>()
@@ -45,7 +45,7 @@ namespace DeckScaler
         }
 
         public Entity<GameScope> CreateShopStock(Vector2 position, EntityID shopID)
-            => ViewFactory.CreateShopStockView(position).Entity
+            => ViewFactory.CreateInWorld(ShopConfig.StockViewPrefab, position).Entity
                 .Add<DebugName, string>("shop stock")
                 .Add<BuyStockButton>()
                 .Add<Clickable>()
@@ -69,7 +69,7 @@ namespace DeckScaler
         private static void SetupRestockButton(Vector2 shopPosition, EntityID shopID)
         {
             var restockButtonPosition = shopPosition.Add(x: -1.8f, y: 2.17f);
-            ViewFactory.CreateShopRestockButtonPrefab(restockButtonPosition).Entity
+            ViewFactory.CreateInWorld(ShopConfig.RestockButtonPrefab, restockButtonPosition).Entity
                 .Add<DebugName, string>("Restock Shop Button")
                 .Add<RestockButton, EntityID>(shopID)
                 .Add<Price, int>(ShopConfig.RestockPrice)

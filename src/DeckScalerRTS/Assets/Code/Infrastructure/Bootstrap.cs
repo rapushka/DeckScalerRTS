@@ -54,7 +54,7 @@ namespace DeckScaler
             ServiceLocator.Register<IRandomService>(new RandomService());
 
             // Factories
-            ServiceLocator.Register<IEntityBehaviourFactory>(new EntityBehaviourFactory());
+            ServiceLocator.Register<IViewFactory>(new ViewFactory());
             ServiceLocator.Register<IUnitFactory>(new UnitFactory());
             ServiceLocator.Register<IAbilityFactory>(new AbilityFactory());
             ServiceLocator.Register<IAffectFactory>(new AffectFactory());

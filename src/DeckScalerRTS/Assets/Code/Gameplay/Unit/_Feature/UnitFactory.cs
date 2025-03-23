@@ -15,7 +15,7 @@ namespace DeckScaler
     {
         private static UnitsConfig UnitsConfig => ServiceLocator.Resolve<IGameConfig>().Units;
 
-        private static IEntityBehaviourFactory EntityBehaviourFactory => ServiceLocator.Resolve<IEntityBehaviourFactory>();
+        private static IViewFactory ViewFactory => ServiceLocator.Resolve<IViewFactory>();
 
         private static IAbilityFactory AbilityFactory => ServiceLocator.Resolve<IAbilityFactory>();
 
@@ -36,7 +36,7 @@ namespace DeckScaler
         {
             var unitConfig = UnitsConfig.GetConfig(id);
 
-            var unit = EntityBehaviourFactory.CreateUnitView(position).Entity;
+            var unit = ViewFactory.CreateInWorld(UnitsConfig.UnitViewPrefab, position).Entity;
             unit
                 .Add<DebugName, string>($"unit {TrimUniID(id.Value)}")
                 .Add<UnitID, UnitIDRef>(id)

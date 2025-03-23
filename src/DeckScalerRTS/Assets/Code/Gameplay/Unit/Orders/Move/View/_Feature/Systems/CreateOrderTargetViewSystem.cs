@@ -14,7 +14,9 @@ namespace DeckScaler
                 .And<Processed>()
                 .Build();
 
-        private static IEntityBehaviourFactory Factory => ServiceLocator.Resolve<IEntityBehaviourFactory>();
+        private static IViewFactory ViewFactory => ServiceLocator.Resolve<IViewFactory>();
+
+        private static UnitsConfig.UiConfig Config => ServiceLocator.Resolve<IGameConfig>().Units.UI;
 
         public void Execute()
         {
@@ -26,7 +28,7 @@ namespace DeckScaler
                     ? GetOpponentPosition(e)
                     : e.Get<OrderOnPositionEvent, Vector2>();
 
-                var view = Factory.CreateOrderView(targetPosition).Entity;
+                var view = ViewFactory.CreateInWorld(Config.TargetViewPrefab, targetPosition).Entity;
                 var animation = (BaseEntityAnimation)view.Get<Animator>().Value;
 
                 var tween = animation.Play(e);
