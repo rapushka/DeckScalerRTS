@@ -44,3 +44,6 @@ MonoBehaviour:
       <RestockButtonPrefab>k__BackingField: {fileID: 6900871599718100828, guid: 9725edc5cf2653f77a92c5183578eb3c, type: 3}
       <RestockPrice>k__BackingField: 10
       <PerRestockIncrement>k__BackingField: 1
+  <Inventory>k__BackingField:
+    <Items>k__BackingField:
+    - {fileID: 11400000, guid: 45dd46de52cdf76d683afb1da02d9c3f, type: 2}

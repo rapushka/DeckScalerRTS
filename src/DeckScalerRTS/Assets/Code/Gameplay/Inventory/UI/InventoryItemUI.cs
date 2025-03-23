@@ -12,7 +12,7 @@ namespace DeckScaler
         public void Initialize(ItemIDRef itemID)
         {
             var itemConfig = InventoryConfig.GetItemConfig(itemID);
-            _image.sprite = itemConfig.View;
+            _image.sprite = itemConfig.Icon;
         }
     }
 }

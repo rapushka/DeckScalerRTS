@@ -6,6 +6,10 @@ using UnityEngine;
 [AttributeUsage(AttributeTargets.Field)]
 public class UnitIDAttribute : PropertyAttribute { }
 
+/// Lil Attribute for cases where I need <c>ItemIDRef</c> but can't use it:)
+[AttributeUsage(AttributeTargets.Field)]
+public class ItemIDAttribute : PropertyAttribute { }
+
 namespace DeckScaler
 {
     [Serializable]

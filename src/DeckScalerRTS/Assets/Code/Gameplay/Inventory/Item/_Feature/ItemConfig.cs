@@ -8,6 +8,6 @@ namespace DeckScaler
         [field: SerializeField] public ItemIDRef ID { get; private set; }
 
         [field: NaughtyAttributes.ShowAssetPreview]
-        [field: SerializeField] public Sprite View { get; private set; }
+        [field: SerializeField] public Sprite Icon { get; private set; }
     }
 }
