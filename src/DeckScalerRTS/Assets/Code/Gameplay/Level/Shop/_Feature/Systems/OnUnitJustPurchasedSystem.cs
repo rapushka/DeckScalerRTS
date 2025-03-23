@@ -14,7 +14,7 @@ namespace DeckScaler
         public void Execute()
         {
             foreach (var unit in _justPurchasedUnits)
-                UnitUtils.Hire(unit);
+                UnitUtils.IntoFella(unit);
         }
     }
 }

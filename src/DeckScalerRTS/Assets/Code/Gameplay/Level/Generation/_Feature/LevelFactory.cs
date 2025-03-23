@@ -13,6 +13,7 @@ namespace DeckScaler
         private static IUnitFactory UnitFactory => ServiceLocator.Resolve<IUnitFactory>();
         private static ITentFactory TentFactory => ServiceLocator.Resolve<ITentFactory>();
         private static IShopFactory ShopFactory => ServiceLocator.Resolve<IShopFactory>();
+        private static IItemFactory ItemFactory => ServiceLocator.Resolve<IItemFactory>();
 
         public Entity<GameScope> Create(LevelData data)
         {
@@ -23,6 +24,7 @@ namespace DeckScaler
             var tents = SpawnTents(data, levelID);
             SpawnUnits(data, tents);
             SpawnShops(data, levelID);
+            SpawnItems(data, levelID);
 
             return levelEntity;
         }
@@ -70,6 +72,15 @@ namespace DeckScaler
             {
                 var spawnPosition = setup.SpawnPoint.position;
                 ShopFactory.Create(spawnPosition)
+                    .Add<ChildOf, EntityID>(levelID);
+            }
+        }
+
+        private void SpawnItems(LevelData data, EntityID levelID)
+        {
+            foreach (var setup in data.ItemSpawns)
+            {
+                ItemFactory.Create(setup)
                     .Add<ChildOf, EntityID>(levelID);
             }
         }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace DeckScaler
 {
@@ -15,5 +16,13 @@ namespace DeckScaler
         }
 
         public static T[] AsSingleItemArray<T>(this T @this) => new[] { @this };
+
+        public static void DestroyAll<T>(this List<T> @this)
+            where T : MonoBehaviour
+        {
+            foreach (var monoBehaviour in @this)
+                monoBehaviour.DestroyObject();
+            @this.Clear();
+        }
     }
 }

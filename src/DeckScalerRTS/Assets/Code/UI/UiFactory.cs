@@ -10,11 +10,13 @@ namespace DeckScaler
 
     public class UiFactory : IUiFactory
     {
-        private static IEntityBehaviourFactory EntityBehaviourFactory => ServiceLocator.Resolve<IEntityBehaviourFactory>();
+        private static IViewFactory ViewFactory => ServiceLocator.Resolve<IViewFactory>();
+
+        private static UnitsConfig.UiConfig UnitsUIConfig => ServiceLocator.Resolve<IGameConfig>().Units.UI;
 
         public Entity<GameScope> CreateSelectionView()
         {
-            var selection = EntityBehaviourFactory.CreateSelectionView().Entity
+            var selection = ViewFactory.CreateInUI(UnitsUIConfig.SelectionViewPrefab).Entity
                     .Add<DebugName, string>("selection view")
                     .Add<SelectionRect, Rect>(new())
                 ;

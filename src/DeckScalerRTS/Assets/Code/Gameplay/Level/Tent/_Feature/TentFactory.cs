@@ -10,10 +10,12 @@ namespace DeckScaler
 
     public class TentFactory : ITentFactory
     {
-        private static IEntityBehaviourFactory ViewFactory => ServiceLocator.Resolve<IEntityBehaviourFactory>();
+        private static IViewFactory ViewFactory => ServiceLocator.Resolve<IViewFactory>();
+
+        private static LevelsConfig LevelConfig => ServiceLocator.Resolve<IGameConfig>().Levels;
 
         public Entity<GameScope> Create(Vector2 position)
-            => ViewFactory.CreateTentView(position).Entity
+            => ViewFactory.CreateInWorld(LevelConfig.TentView, position).Entity
                 .Add<DebugName, string>("tent")
                 .Is<Tent>(true)
                 .Add<WorldPosition, Vector2>(position)

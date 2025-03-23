@@ -13,7 +13,7 @@ namespace DeckScaler
 
         private static SelectedUnitsUiView SelectedUnitView => UiMediator.GetPage<GameplayHUDPage>().SelectedUnitView;
 
-        private static IEntityBehaviourFactory ViewFactory => ServiceLocator.Resolve<IEntityBehaviourFactory>();
+        private static IViewFactory ViewFactory => ServiceLocator.Resolve<IViewFactory>();
 
         public void OnEnter(GameStateMachine stateMachine)
         {
