@@ -15,19 +15,15 @@ namespace DeckScaler
     {
         private static UnitsConfig UnitsConfig => ServiceLocator.Resolve<IGameConfig>().Units;
 
-        private static IViewFactory ViewFactory => ServiceLocator.Resolve<IViewFactory>();
-
-        private static IAbilityFactory AbilityFactory => ServiceLocator.Resolve<IAbilityFactory>();
+        private static IViewFactory      ViewFactory      => ServiceLocator.Resolve<IViewFactory>();
+        private static IAbilityFactory   AbilityFactory   => ServiceLocator.Resolve<IAbilityFactory>();
+        private static IInventoryFactory InventoryFactory => ServiceLocator.Resolve<IInventoryFactory>();
 
         public Entity<GameScope> CreateOnPlayerSide(UnitIDRef id, Vector2 position)
-            => UnitUtils.Hire(CreateUnit(id, position));
+            => UnitUtils.IntoFella(CreateUnit(id, position));
 
         public Entity<GameScope> CreateOnEnemySide(UnitIDRef id, Vector2 position, EntityID tent)
-            => CreateUnit(id, position)
-                .Add<OnSide, Side>(Side.Enemy)
-                .Add<OnEnemySide>()
-                .Add<OnTent, EntityID>(tent)
-                .Add<ChildOf, EntityID>(tent);
+            => UnitUtils.IntoEnemy(CreateUnit(id, position), tent);
 
         public Entity<GameScope> CreateInShop(UnitIDRef id, Vector2 position)
             => CreateUnit(id, position);
@@ -49,17 +45,27 @@ namespace DeckScaler
                 .Add<MaxHealth, float>(unitConfig.MaxHealth)
                 .Add<Health, float>(unitConfig.MaxHealth)
                 .Add<Price, int>(unitConfig.Price)
+                .Is<Lead>(unitConfig.IsLead)
+                .Add<EffectiveRange, float>(unitConfig.Range)
+                .Is<HasInventory>(unitConfig.InventorySlots > 0)
                 ;
 
-            foreach (var abilityConfig in unitConfig.Abilities)
-                AbilityFactory.Create(unit, abilityConfig);
-
-            unit.Add<EffectiveRange, float>(unitConfig.Range);
-
-            if (unitConfig.IsLead)
-                unit.Add<Lead>();
+            CreateAbilities(unit, unitConfig);
+            CreateInventorySlots(unit, unitConfig);
 
             return unit;
+        }
+
+        private static void CreateAbilities(Entity<GameScope> unit, UnitConfig unitConfig)
+        {
+            foreach (var abilityConfig in unitConfig.Abilities)
+                AbilityFactory.Create(unit, abilityConfig);
+        }
+
+        private void CreateInventorySlots(Entity<GameScope> unit, UnitConfig unitConfig)
+        {
+            for (var i = 0; i < unitConfig.InventorySlots; i++)
+                InventoryFactory.CreateSlot(unit.ID());
         }
 
         private string TrimUniID(string source)

@@ -63,6 +63,7 @@ namespace DeckScaler
             ServiceLocator.Register<ILevelFactory>(new LevelFactory());
             ServiceLocator.Register<IShopFactory>(new ShopFactory());
             ServiceLocator.Register<IItemFactory>(new ItemFactory());
+            ServiceLocator.Register<IInventoryFactory>(new InventoryFactory());
         }
 
         private void Update()
