@@ -20,7 +20,11 @@ namespace DeckScaler
         [NaughtyAttributes.BoxGroup("Level")]
         [SerializeField] private TemporaryLevelGenerator _levelGenerator;
 
+        [NaughtyAttributes.BoxGroup("Debug")]
+        [SerializeField] private DebugSettings _debugSettings;
+
         private InputService _inputService;
+        private DebugService _debugger;
 
         [NaughtyAttributes.Button]
         public void CollectSpawnMarkers()
@@ -64,6 +68,14 @@ namespace DeckScaler
             ServiceLocator.Register<IShopFactory>(new ShopFactory());
             ServiceLocator.Register<IItemFactory>(new ItemFactory());
             ServiceLocator.Register<IInventoryFactory>(new InventoryFactory());
+
+            // Debug
+#if UNITY_EDITOR
+            _debugger = new(_debugSettings);
+            ServiceLocator.Register<IDebugService>(_debugger);
+#else
+            ServiceLocator.Register<IDebugService>(new MockDebugService());
+#endif
         }
 
         private void Update()
@@ -71,6 +83,7 @@ namespace DeckScaler
             var deltaTime = ServiceLocator.Resolve<ITimeService>().Delta;
 
             ((IUpdatable)_inputService).OnUpdate(deltaTime);
+            (_debugger as IUpdatable)?.OnUpdate(deltaTime);
         }
     }
 }

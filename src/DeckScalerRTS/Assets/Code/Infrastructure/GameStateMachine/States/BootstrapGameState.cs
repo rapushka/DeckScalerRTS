@@ -4,6 +4,10 @@ namespace DeckScaler
 {
     public class BootstrapGameState : IState
     {
+        private static IDebugService Debugger => ServiceLocator.Resolve<IDebugService>();
+
+        private static IPagesService Pages => ServiceLocator.Resolve<IPagesService>();
+
         public void OnEnter(GameStateMachine stateMachine)
         {
             // Scopes
@@ -18,12 +22,8 @@ namespace DeckScaler
             Contexts.Instance.Get<GameScope>().GetIndex<OnTent, EntityID>().Initialize();
             Contexts.Instance.Get<GameScope>().GetIndex<StockInShop, EntityID>().Initialize();
 
-#if UNITY_EDITOR
-            Entity<GameScope>.Formatter = new GameEntityFormatter();
-            Entity<UiScope>.Formatter = new UiEntityFormatter();
-#endif
-
-            ServiceLocator.Resolve<IPagesService>().Initialize();
+            Debugger.Initialize();
+            Pages.Initialize();
 
             stateMachine.ToState<MainMenuGameState>();
         }
