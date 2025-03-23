@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace DeckScaler
+namespace DeckScaler.Editor
 {
     [CustomPropertyDrawer(typeof(UnitIDRef))]
     public class UnitIDRefDrawer : PropertyDrawer

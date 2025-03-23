@@ -2,16 +2,16 @@ using System;
 using SmartIdTable;
 using UnityEngine;
 
-/// Lil Attribute for cases where I need <c>UnitIDRef</c> but can't use it:)
-[AttributeUsage(AttributeTargets.Field)]
-public class UnitIDAttribute : PropertyAttribute { }
-
-/// Lil Attribute for cases where I need <c>ItemIDRef</c> but can't use it:)
-[AttributeUsage(AttributeTargets.Field)]
-public class ItemIDAttribute : PropertyAttribute { }
-
 namespace DeckScaler
 {
+    /// Lil Attribute for cases where I need <c>UnitIDRef</c> but can't use it:)
+    [AttributeUsage(AttributeTargets.Field)]
+    public class UnitIDAttribute : PropertyAttribute { }
+
+    /// Lil Attribute for cases where I need <c>ItemIDRef</c> but can't use it:)
+    [AttributeUsage(AttributeTargets.Field)]
+    public class ItemIDAttribute : PropertyAttribute { }
+
     [Serializable]
     public struct UnitIDRef : IEquatable<UnitIDRef>
     {

@@ -72,6 +72,7 @@ namespace DeckScaler
             ViewFactory.CreateInWorld(ShopConfig.RestockButtonPrefab, restockButtonPosition).Entity
                 .Add<DebugName, string>("Restock Shop Button")
                 .Add<RestockButton, EntityID>(shopID)
+                .Add<ChildOf, EntityID>(shopID)
                 .Add<Price, int>(ShopConfig.RestockPrice)
                 .Add<Available>()
                 .Add<ItemForSale>()
