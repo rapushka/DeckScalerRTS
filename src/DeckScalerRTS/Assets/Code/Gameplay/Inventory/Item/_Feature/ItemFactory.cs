@@ -26,6 +26,7 @@ namespace DeckScaler
                     .Add<ItemID, ItemIDRef>(itemID)
                     .Add<ItemSprite, Sprite>(config.Icon)
                     .Add<WorldPosition, Vector2>(position)
+                    .Add<Clickable>()
                 ;
         }
 
