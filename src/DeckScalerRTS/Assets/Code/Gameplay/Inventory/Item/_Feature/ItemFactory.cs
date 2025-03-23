@@ -12,6 +12,8 @@ namespace DeckScaler
     {
         private static InventoryConfig InventoryConfig => ServiceLocator.Resolve<IGameConfig>().Inventory;
 
+        private static IViewFactory ViewFactory => ServiceLocator.Resolve<IViewFactory>();
+
         public Entity<GameScope> Create(ItemSpawnSetup setup)
         {
             var itemID = setup.ID;
@@ -19,7 +21,7 @@ namespace DeckScaler
 
             var config = InventoryConfig.GetItemConfig(itemID);
 
-            return CreateEntity.Empty()
+            return ViewFactory.CreateInWorld(InventoryConfig.ItemView, position).Entity
                     .Add<DebugName, string>(TrimItemID(itemID))
                     .Add<ItemID, ItemIDRef>(itemID)
                     .Add<ItemSprite, Sprite>(config.Icon)
