@@ -53,7 +53,12 @@ namespace DeckScaler
 
             if (!entity.IsAlive() || !entity.TryGet<ChildOf, EntityID>(out var parentID))
             {
-                _processedEntities.Remove(entityID);
+                if (_processedEntities.ContainsKey(entityID))
+                {
+                    childDebugger.SetParent(ContextBehaviour.transform);
+                    _processedEntities.Remove(entityID);
+                }
+
                 return;
             }
 
