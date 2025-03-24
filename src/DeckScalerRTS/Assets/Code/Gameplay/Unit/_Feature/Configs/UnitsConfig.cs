@@ -18,6 +18,7 @@ namespace DeckScaler
         public class CommonBalance
         {
             [field: SerializeField] public float AttackTriggerRadius { get; private set; }
+            [field: SerializeField] public float ItemsInteractRadius { get; private set; }
         }
 
         [Serializable]

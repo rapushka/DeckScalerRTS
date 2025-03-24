@@ -80,7 +80,7 @@ namespace DeckScaler
         {
             foreach (var setup in data.ItemSpawns)
             {
-                ItemFactory.Create(setup)
+                ItemFactory.CreateOnGround(setup)
                     .Add<ChildOf, EntityID>(levelID);
             }
         }

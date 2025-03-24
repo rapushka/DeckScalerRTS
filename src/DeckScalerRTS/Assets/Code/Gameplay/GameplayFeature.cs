@@ -49,17 +49,25 @@ namespace DeckScaler
 
 #region Orders
             Add(new EmitUnitOrderSystem());
+
             Add(new HandleAttackUnitOrderSystem());
+            Add(new HandlePickUpItemOrderSystem());
             Add(new HandleMoveToPositionOrderSystem());
+
             Add(new CreateOrderTargetViewSystem());
 
             Add(new MoveToPositionSystem());
+
+            Add(new PickUpItemWhenUnitCloseEnoughSystem());
+            Add(new UnitTakesItemSystem());
 
             Add(new TriggerAutoAttackSystem());
             Add(new FlipAutoAttackOnSelectedUnitsSystem());
             Add(new RemoveOpponentIfOutOfRangeSystem());
 
             Add(new MoveToOpponentSystem());
+
+            Add(new RemoveComponentSystem<TakeItemEvent>());
 #endregion
 
 #region Ability

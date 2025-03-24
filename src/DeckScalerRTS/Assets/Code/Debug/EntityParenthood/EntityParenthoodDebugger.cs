@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Entitas.Generic;
 using Entitas.VisualDebugging.Unity;
 using UnityEngine;
@@ -8,24 +9,13 @@ namespace DeckScaler
 {
     public class EntityParenthoodDebugger
     {
-        // key: entity, value: its parent
         private readonly Dictionary<EntityID, EntityID> _processedEntities = new();
-
         private ContextObserverBehaviour ContextBehaviour { get; set; }
-
-        private IEnumerable<EntityDebugger> EntityDebuggers
-            => ContextBehaviour.GetComponentsInChildren<EntityDebugger>();
 
         public void Initialize()
         {
             var contexts = Object.FindObjectsByType<ContextObserverBehaviour>(FindObjectsSortMode.None);
-
-            foreach (var context in contexts)
-            {
-                // if (context.contextObserver.context is Context<Entity<GameScope>>)
-                if (context.name.Contains(nameof(GameScope)))
-                    ContextBehaviour = context;
-            }
+            ContextBehaviour = contexts.FirstOrDefault(c => c.name.Contains(nameof(GameScope)));
         }
 
         public void OnUpdate(float _)
@@ -33,44 +23,64 @@ namespace DeckScaler
             if (ContextBehaviour is null)
                 return;
 
-            foreach (Transform child in ContextBehaviour.transform)
+            foreach (var entityDebugger in ContextBehaviour.GetComponentsInChildren<EntityDebugger>())
             {
-                if (TryGetEntity(child.gameObject, out var entity) && entity.isEnabled)
-                    HandleEntity(entity, child);
+                var entity = entityDebugger.entity;
+
+                if (entity.isEnabled)
+                    HandleEntity((Entity<GameScope>)entity, entityDebugger.transform);
             }
         }
 
         private bool TryGetEntity(GameObject gameObject, out Entity<GameScope> entity)
         {
-            var isEntityBehaviour = gameObject.TryGetComponent<EntityDebugger>(out var entityBehaviour);
-            entity = isEntityBehaviour ? (Entity<GameScope>)entityBehaviour.entity : null;
-            return isEntityBehaviour;
+            if (gameObject.TryGetComponent<EntityDebugger>(out var entityBehaviour))
+            {
+                entity = (Entity<GameScope>)entityBehaviour.entity;
+                return true;
+            }
+
+            entity = null;
+            return false;
         }
 
-        private void HandleEntity(Entity<GameScope> entity, Transform childDebugger)
+        private void HandleEntity(Entity<GameScope> child, Transform childDebugger)
         {
-            var entityID = entity.ID();
+            var entityID = child.ID();
 
-            if (!entity.IsAlive() || !entity.TryGet<ChildOf, EntityID>(out var parentID))
+            if (!child.IsAlive() || !child.TryGet<ChildOf, EntityID>(out var parentID))
             {
-                _processedEntities.Remove(entityID);
+                if (_processedEntities.ContainsKey(entityID))
+                {
+                    childDebugger.SetParent(ContextBehaviour.transform);
+                    _processedEntities.Remove(entityID);
+                }
+
                 return;
             }
 
-            if (_processedEntities.TryGetValue(entityID, out var cashedParentID)
-                && cashedParentID == parentID)
+            if (_processedEntities.TryGetValue(entityID, out var cachedParentID)
+                && cachedParentID == parentID)
                 return;
 
-            foreach (var debugger in EntityDebuggers)
+            var parentDebugger = FindParentDebugger(parentID);
+            if (parentDebugger is not null)
             {
-                var parent = (Entity<GameScope>)debugger.entity;
-
-                if (parent.isEnabled && parentID == parent.ID())
-                {
-                    childDebugger.SetParent(debugger.transform);
-                    _processedEntities[entityID] = parent.ID();
-                }
+                childDebugger.SetParent(parentDebugger.transform);
+                _processedEntities[entityID] = parentID;
+            }
+            else
+            {
+                childDebugger.SetParent(ContextBehaviour.transform);
+                _processedEntities.Remove(entityID);
             }
         }
+
+        private EntityDebugger FindParentDebugger(EntityID parentID)
+            => ContextBehaviour.GetComponentsInChildren<EntityDebugger>()
+                .FirstOrDefault(
+                    debugger => debugger.entity.isEnabled
+                        && parentID == ((Entity<GameScope>)debugger.entity).ID()
+                );
     }
 }
