@@ -49,8 +49,11 @@ namespace DeckScaler
 
 #region Orders
             Add(new EmitUnitOrderSystem());
+
             Add(new HandleAttackUnitOrderSystem());
+            Add(new HandlePickUpItemOrderSystem());
             Add(new HandleMoveToPositionOrderSystem());
+
             Add(new CreateOrderTargetViewSystem());
 
             Add(new MoveToPositionSystem());

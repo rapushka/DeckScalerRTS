@@ -5,7 +5,7 @@ namespace DeckScaler
 {
     public interface IItemFactory : IService
     {
-        Entity<GameScope> Create(ItemSpawnSetup setup);
+        Entity<GameScope> CreateOnGround(ItemSpawnSetup setup);
     }
 
     public class ItemFactory : IItemFactory
@@ -14,7 +14,7 @@ namespace DeckScaler
 
         private static IViewFactory ViewFactory => ServiceLocator.Resolve<IViewFactory>();
 
-        public Entity<GameScope> Create(ItemSpawnSetup setup)
+        public Entity<GameScope> CreateOnGround(ItemSpawnSetup setup)
         {
             var itemID = setup.ID;
             var position = setup.SpawnPoint.position;
@@ -27,6 +27,7 @@ namespace DeckScaler
                     .Add<ItemSprite, Sprite>(config.Icon)
                     .Add<WorldPosition, Vector2>(position)
                     .Add<Clickable>()
+                    .Add<LyingOnGround>()
                 ;
         }
 
