@@ -1,3 +1,9 @@
+# v0.0.27
+- Items:
+  - [Units can Pick Up Items now](https://github.com/rapushka/DeckScalerRTS/pull/87)
+- bugfix:
+  - [Parenthood Hierarchy Debugger now works properly](https://github.com/rapushka/DeckScalerRTS/pull/87)
+
 # v0.0.26
 - [Zoom Camera](https://github.com/rapushka/DeckScalerRTS/issues/48)
 - [gain gold for freed tents](https://github.com/rapushka/DeckScalerRTS/issues/51) 
