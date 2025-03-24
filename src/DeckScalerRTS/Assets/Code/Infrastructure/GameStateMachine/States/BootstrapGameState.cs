@@ -21,6 +21,7 @@ namespace DeckScaler
             Contexts.Instance.Get<GameScope>().GetIndex<ChildOf, EntityID>().Initialize();
             Contexts.Instance.Get<GameScope>().GetIndex<OnTent, EntityID>().Initialize();
             Contexts.Instance.Get<GameScope>().GetIndex<StockInShop, EntityID>().Initialize();
+            Contexts.Instance.Get<GameScope>().GetIndex<InventorySlot, EntityID>().Initialize();
 
             Debugger.Initialize();
             Pages.Initialize();

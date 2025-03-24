@@ -28,6 +28,7 @@ namespace DeckScaler
                     .Add<WorldPosition, Vector2>(position)
                     .Add<Clickable>()
                     .Add<LyingOnGround>()
+                    .Add<Visible, bool>(true)
                 ;
         }
 

@@ -18,6 +18,7 @@ namespace DeckScaler
             = GroupBuilder<GameScope>
                 .With<ItemID>()
                 .And<LyingOnGround>()
+                .And<Visible>()
                 .And<WorldPosition>()
                 .And<Collider>()
                 .Build();
@@ -27,15 +28,7 @@ namespace DeckScaler
         public void Execute()
         {
             foreach (var e in _events.GetEntities(_buffer))
-            foreach (var item in _items)
             {
-                var targetPosition = e.Get<OrderOnPositionEvent, Vector2>();
-                var itemCollider = item.Get<Collider>().Value;
-                var isClickOnItem = itemCollider.OverlapPoint(targetPosition);
-
-                if (!isClickOnItem)
-                    continue;
-
                 var listener = e.Get<OrderListener, EntityID>().GetEntity();
 
                 if (!listener.Is<HasAnyFreeInventorySlot>())
@@ -47,20 +40,30 @@ namespace DeckScaler
                     continue;
                 }
 
-                var itemPosition = item.Get<WorldPosition>().Value;
+                foreach (var item in _items)
+                {
+                    var targetPosition = e.Get<OrderOnPositionEvent, Vector2>();
+                    var itemCollider = item.Get<Collider>().Value;
+                    var isClickOnItem = itemCollider.OverlapPoint(targetPosition);
 
-                listener
-                    .Set<PickUpItemOrder, EntityID>(item.ID())
-                    .Set<MoveToPosition, Vector2>(itemPosition)
-                    .Is<InAutoAttackState>(false)
-                    .RemoveSafely<Opponent>()
-                    ;
+                    if (!isClickOnItem)
+                        continue;
 
-                e.Is<Processed>(true)
-                    .Is<ProcessedAsAttackOrder>(false)
-                    ;
+                    var itemPosition = item.Get<WorldPosition>().Value;
 
-                break;
+                    listener
+                        .Set<PickUpItemOrder, EntityID>(item.ID())
+                        .Set<MoveToPosition, Vector2>(itemPosition)
+                        .Is<InAutoAttackState>(false)
+                        .RemoveSafely<Opponent>()
+                        ;
+
+                    e.Is<Processed>(true)
+                        .Is<ProcessedAsAttackOrder>(false)
+                        ;
+
+                    break;
+                }
             }
         }
     }

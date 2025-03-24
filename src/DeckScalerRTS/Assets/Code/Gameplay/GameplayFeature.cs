@@ -58,11 +58,16 @@ namespace DeckScaler
 
             Add(new MoveToPositionSystem());
 
+            Add(new PickUpItemWhenUnitCloseEnoughSystem());
+            Add(new UnitTakesItemSystem());
+
             Add(new TriggerAutoAttackSystem());
             Add(new FlipAutoAttackOnSelectedUnitsSystem());
             Add(new RemoveOpponentIfOutOfRangeSystem());
 
             Add(new MoveToOpponentSystem());
+
+            Add(new RemoveComponentSystem<TakeItemEvent>());
 #endregion
 
 #region Ability

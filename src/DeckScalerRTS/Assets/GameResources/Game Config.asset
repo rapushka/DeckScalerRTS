@@ -21,6 +21,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 7706ea37d522cd09f878ac5c1316f426, type: 2}
     <Common>k__BackingField:
       <AttackTriggerRadius>k__BackingField: 3
+      <ItemsInteractRadius>k__BackingField: 1
     <UI>k__BackingField:
       <TargetViewPrefab>k__BackingField: {fileID: 658107085581909783, guid: a43b7e46c2cef95cd9b1399bf0256827, type: 3}
       <SelectionViewPrefab>k__BackingField: {fileID: 2268241796083505887, guid: 3467df2c3fe40b2f49f6983eaa9e356d, type: 3}
