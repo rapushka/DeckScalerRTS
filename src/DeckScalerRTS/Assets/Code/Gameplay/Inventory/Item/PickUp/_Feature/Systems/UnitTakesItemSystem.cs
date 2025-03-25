@@ -13,8 +13,8 @@ namespace DeckScaler
                 .And<TakeItemEvent>()
                 .Build();
 
-        private static EntityIndex<GameScope, InventorySlot, EntityID> Index
-            => Contexts.Instance.Get<GameScope>().GetIndex<InventorySlot, EntityID>();
+        private static EntityIndex<GameScope, InventorySlotOfUnit, EntityID> Index
+            => Contexts.Instance.Get<GameScope>().GetIndex<InventorySlotOfUnit, EntityID>();
 
         public void Execute()
         {

@@ -12,7 +12,7 @@ namespace DeckScaler
         public Entity<GameScope> CreateSlot(EntityID unit)
             => CreateEntity.Empty()
                 .Add<DebugName, string>("inventory slot")
-                .Add<InventorySlot, EntityID>(unit)
+                .Add<InventorySlotOfUnit, EntityID>(unit)
                 .Add<ChildOf, EntityID>(unit);
     }
 }

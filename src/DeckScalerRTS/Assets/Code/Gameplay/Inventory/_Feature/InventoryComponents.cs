@@ -3,7 +3,9 @@ using Entitas.Generic;
 namespace DeckScaler
 {
     ///  InventorySlot -> Unit
-    public sealed class InventorySlot : IndexComponent<EntityID>, IInScope<GameScope> { }
+    public sealed class InventorySlotOfUnit : IndexComponent<EntityID>, IInScope<GameScope> { }
+
+    public sealed class InventorySlotIndex : ValueComponent<int>, IInScope<GameScope> { }
 
     public sealed class HasInventory : FlagComponent, IInScope<GameScope> { }
 
