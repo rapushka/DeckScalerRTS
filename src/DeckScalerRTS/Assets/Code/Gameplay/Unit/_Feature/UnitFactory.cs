@@ -66,7 +66,9 @@ namespace DeckScaler
         private void CreateInventorySlots(Entity<GameScope> unit, UnitConfig unitConfig)
         {
             for (var i = 0; i < unitConfig.InventorySlots; i++)
-                InventoryFactory.CreateSlot(unit.ID());
+            {
+                InventoryFactory.CreateSlot(unit.ID(), i);
+            }
         }
 
         private string TrimUniID(string source)

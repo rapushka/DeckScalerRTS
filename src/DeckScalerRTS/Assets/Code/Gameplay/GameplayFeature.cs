@@ -60,6 +60,7 @@ namespace DeckScaler
 
             Add(new PickUpItemWhenUnitCloseEnoughSystem());
             Add(new UnitTakesItemSystem());
+            Add(new UpdateFreeSlotsAvailabilitySystem());
 
             Add(new TriggerAutoAttackSystem());
             Add(new FlipAutoAttackOnSelectedUnitsSystem());

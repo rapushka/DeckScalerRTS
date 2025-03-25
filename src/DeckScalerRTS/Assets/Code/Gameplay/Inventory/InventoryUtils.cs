@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Entitas.Generic;
 
 namespace DeckScaler
@@ -9,6 +10,9 @@ namespace DeckScaler
 
         private static EntityIndex<GameScope, InventorySlotOfUnit, EntityID> Index
             => Contexts.Instance.Get<GameScope>().GetIndex<InventorySlotOfUnit, EntityID>();
+
+        public static Entity<GameScope> GetFirstFreeSlotOrDefault(EntityID unitID)
+            => GetSlotsInOrder(unitID).FirstOrDefault(s => !s.Has<ItemInSlot>());
 
         public static IEnumerable<Entity<GameScope>> GetSlotsInOrder(EntityID unitID)
         {
