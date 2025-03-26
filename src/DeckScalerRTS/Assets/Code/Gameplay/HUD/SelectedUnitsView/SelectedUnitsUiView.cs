@@ -66,6 +66,12 @@ namespace DeckScaler
             _multipleView.Show();
         }
 
+        public void Dispose()
+        {
+            _singleView.Dispose();
+            _multipleView.Dispose();
+        }
+
         public void Hide()
         {
             _singleView.Hide();

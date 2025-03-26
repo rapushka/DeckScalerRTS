@@ -23,12 +23,14 @@ namespace DeckScaler
 
             foreach (var ui in _uiEntities)
             {
-                ui
+                var view = ui
                     .Is<DisplayingSingleUnitSelected>(false)
                     .Is<DisplayingMultipleUnitsSelected>(false)
                     .Is<UiVisible>(false)
-                    .Get<SelectedUnitUi>().Value.Hide()
-                    ;
+                    .Get<SelectedUnitUi>().Value;
+
+                view.Dispose();
+                view.Hide();
             }
         }
     }

@@ -57,12 +57,6 @@ namespace DeckScaler
                 => unit.Is<InAutoAttackState>(!unit.Is<InAutoAttackState>());
         }
 
-        public void Dispose()
-        {
-            ForEachUnit(u => u.Release(this));
-            _retainedUnits = null;
-        }
-
         public void UpdateValues()
         {
             FlushInvalidUnits();

@@ -4,15 +4,16 @@ namespace DeckScaler
 {
     public interface IInventoryFactory : IService
     {
-        Entity<GameScope> CreateSlot(EntityID unit);
+        Entity<GameScope> CreateSlot(EntityID unit, int slotIndex);
     }
 
     public class InventoryFactory : IInventoryFactory
     {
-        public Entity<GameScope> CreateSlot(EntityID unit)
+        public Entity<GameScope> CreateSlot(EntityID unit, int slotIndex)
             => CreateEntity.Empty()
                 .Add<DebugName, string>("inventory slot")
-                .Add<InventorySlot, EntityID>(unit)
-                .Add<ChildOf, EntityID>(unit);
+                .Add<InventorySlotOfUnit, EntityID>(unit)
+                .Add<ChildOf, EntityID>(unit)
+                .Add<InventorySlotIndex, int>(slotIndex);
     }
 }

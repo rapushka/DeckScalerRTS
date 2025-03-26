@@ -24,5 +24,13 @@ namespace DeckScaler
                 monoBehaviour.DestroyObject();
             @this.Clear();
         }
+
+        public static void DestroyValues<TKey, TValue>(this Dictionary<TKey, TValue> @this)
+            where TValue : MonoBehaviour
+        {
+            foreach (var monoBehaviour in @this.Values)
+                monoBehaviour.DestroyObject();
+            @this.Clear();
+        }
     }
 }

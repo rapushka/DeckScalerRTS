@@ -32,18 +32,6 @@ namespace DeckScaler
             }
         }
 
-        private bool TryGetEntity(GameObject gameObject, out Entity<GameScope> entity)
-        {
-            if (gameObject.TryGetComponent<EntityDebugger>(out var entityBehaviour))
-            {
-                entity = (Entity<GameScope>)entityBehaviour.entity;
-                return true;
-            }
-
-            entity = null;
-            return false;
-        }
-
         private void HandleEntity(Entity<GameScope> child, Transform childDebugger)
         {
             var entityID = child.ID();

@@ -1,4 +1,3 @@
-using System.Linq;
 using Entitas;
 using Entitas.Generic;
 using UnityEngine;
@@ -13,17 +12,14 @@ namespace DeckScaler
                 .And<TakeItemEvent>()
                 .Build();
 
-        private static EntityIndex<GameScope, InventorySlot, EntityID> Index
-            => Contexts.Instance.Get<GameScope>().GetIndex<InventorySlot, EntityID>();
-
         public void Execute()
         {
             foreach (var unit in _units)
             {
                 var itemID = unit.Get<TakeItemEvent, EntityID>();
 
-                var inventory = Index.GetEntities(unit.ID());
-                var itemSlot = inventory.FirstOrDefault(s => !s.Has<ItemInSlot>());
+                var unitID = unit.ID();
+                var itemSlot = InventoryUtils.GetFirstFreeSlotOrDefault(unitID);
 
                 if (itemSlot is null)
                 {
