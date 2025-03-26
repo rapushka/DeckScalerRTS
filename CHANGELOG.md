@@ -1,6 +1,7 @@
 # v0.0.27
 - Items:
   - [Units can Pick Up Items now](https://github.com/rapushka/DeckScalerRTS/pull/87)
+  - [Inventory UI (not interactable yet)](https://github.com/rapushka/DeckScalerRTS/pull/89)
 - bugfix:
   - [Parenthood Hierarchy Debugger now works properly](https://github.com/rapushka/DeckScalerRTS/pull/87)
 
