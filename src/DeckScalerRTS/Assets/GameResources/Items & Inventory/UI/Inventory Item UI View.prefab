@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5406557497356584902}
-  - component: {fileID: 5509218031760809928}
+  - component: {fileID: 2825365161574222247}
+  - component: {fileID: 6701610050784229489}
   m_Layer: 5
   m_Name: Inventory Item UI View
   m_TagString: Untagged
@@ -38,7 +39,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &5509218031760809928
+--- !u!114 &2825365161574222247
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -47,7 +48,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 2087942148961846282}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76fd7aa25e4b4f58ad28f46abb1b430c, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e9ac6028dcc4f9d89426e5406f1a283, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentBehaviours: []
+  _listeners:
+  - {fileID: 6701610050784229489}
+  _subEntities: []
+  _ensureComponentsCountOnAwake: 1
+  _forceSubEntitiesAutoCollect: 1
+--- !u!114 &6701610050784229489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2087942148961846282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d45519831d246589e30c8042bd7fbb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _image: {fileID: 807519740376753145}

@@ -129,19 +129,25 @@ namespace DeckScaler
             Add(new DisposeSelectedUnitUiOnUnitsSelectedSystem());
             Add(new UpdateSelectionUiPartVisibilityOnUnitsSelectedSystem());
 
-            // single
+#region Single Unit
             Add(new LoadSingleSelectedUnitPortraitSystem());
-            Add(new LoadSingleSelectedUnitInventorySystem());
 
             Add(new UpdateSingleSelectedUnitHealthBarSystem());
             Add(new UpdateSingleSelectedUnitAutoAttackStateSystem());
-            Add(new UpdateSingleSelectedUnitInventorySystem());
 
-            // multiple
+#region Inventory
+            Add(new LoadSingleSelectedUnitInventorySystem());
+            Add(new UpdateSingleSelectedUnitInventorySystem());
+            Add(new UpdateInventoryItemSpriteUiViewSystem());
+#endregion
+#endregion
+
+#region Multiple Units
             Add(new UpdateMultipleSelectedUnitsHealthBarSystem());
             Add(new UpdateMultipleSelectedUnitsAutoAttackStateSystem());
 
             Add(new ShowSelectionUiPartSystem());
+#endregion
 #endregion
 #endregion
 #endregion
@@ -162,6 +168,7 @@ namespace DeckScaler
             var contexts = Contexts.Instance;
             Add(new SelfEventSystem<GameScope, HeadSprite>(contexts));
             Add(new SelfEventSystem<GameScope, ItemSprite>(contexts));
+            Add(new SelfEventSystem<UiScope, ItemSprite>(contexts));
             Add(new SelfFlagEventSystem<GameScope, SelectedUnit>(contexts));
             Add(new SelfEventSystem<GameScope, WorldPosition>(contexts));
             Add(new SelfEventSystem<GameScope, Price>(contexts));

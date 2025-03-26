@@ -7,5 +7,5 @@ namespace DeckScaler
 
     public sealed class LyingOnGround : FlagComponent, IInScope<GameScope> { }
 
-    public sealed class ItemSprite : ValueComponent<Sprite>, IInScope<GameScope>, IEvent<Self> { }
+    public sealed class ItemSprite : ValueComponent<Sprite>, IInScope<GameScope>, IInScope<UiScope>, IEvent<Self> { }
 }

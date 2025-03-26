@@ -11,6 +11,8 @@ namespace DeckScaler
 
         private readonly Dictionary<int, InventoryItemUI> _slotsMap = new();
 
+        public Transform Root => _itemsRoot;
+
         public void CreateInventory(Entity<GameScope> unit)
         {
             foreach (var slot in InventoryUtils.GetSlotsInOrder(unit.ID()))
