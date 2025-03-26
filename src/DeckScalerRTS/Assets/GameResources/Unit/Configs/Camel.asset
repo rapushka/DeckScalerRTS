@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 18f631a22e6d454aa360cc1f7e19d0b0, type: 3}
-  m_Name: HeartsLead
+  m_Name: Camel
   m_EditorClassIdentifier: 
   <ID>k__BackingField:
-    Value: Unit/HeartsLead
-  <IsLead>k__BackingField: 1
-  <Head>k__BackingField: {fileID: 21300000, guid: 76737f6b70089e1b2a7f25122a8638ac, type: 3}
-  <Portrait>k__BackingField: {fileID: 21300000, guid: cae78299608895bc29adbfe4b49f0fc6, type: 3}
-  <MovementSpeed>k__BackingField: 3
-  <MaxHealth>k__BackingField: 25
-  <Price>k__BackingField: 0
-  <Range>k__BackingField: 1.5
+    Value: Unit/Camel
+  <IsLead>k__BackingField: 0
+  <Head>k__BackingField: {fileID: 21300000, guid: 0b54a1194f0da34179d5ebcaa6c502a3, type: 3}
+  <Portrait>k__BackingField: {fileID: 21300000, guid: b59a45975fb6b2bb2a9c525e06a1eddd, type: 3}
+  <MovementSpeed>k__BackingField: 1
+  <MaxHealth>k__BackingField: 15
+  <Price>k__BackingField: 3
+  <Range>k__BackingField: 1
   <Abilities>k__BackingField:
   - <TriggerType>k__BackingField: 1
-    <Range>k__BackingField: 1.5
-    <Cooldown>k__BackingField: 1
+    <Range>k__BackingField: 1
+    <Cooldown>k__BackingField: 2
     <Affect>k__BackingField:
       <Value>k__BackingField: 1
       <Type>k__BackingField: 1
-  <InventorySlots>k__BackingField: 3
+  <InventorySlots>k__BackingField: 5
