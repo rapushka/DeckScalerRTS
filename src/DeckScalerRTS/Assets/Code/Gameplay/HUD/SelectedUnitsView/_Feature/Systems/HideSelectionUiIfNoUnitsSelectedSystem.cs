@@ -29,7 +29,6 @@ namespace DeckScaler
                     .Is<UiVisible>(false)
                     .Get<SelectedUnitUi>().Value;
 
-                view.Dispose();
                 view.Hide();
             }
         }

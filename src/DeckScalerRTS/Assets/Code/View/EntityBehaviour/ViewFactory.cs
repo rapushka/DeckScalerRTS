@@ -57,14 +57,18 @@ namespace DeckScaler
             view.transform.position = position;
             view.Register(entity);
 
-            if (entity is Entity<GameScope> gameEntity)
-            {
-                gameEntity
-                    .Add<View, EntityBehaviour>(view as EntityBehaviour)
-                    ;
-            }
+            BindView(entity, view);
 
             return view;
+        }
+
+        private static void BindView<TScope>(Entity<TScope> entity, EntityBehaviour<TScope> view) where TScope : IScope
+        {
+            if (entity is Entity<GameScope> gameEntity)
+                gameEntity.Add<View, EntityBehaviour>(view as EntityBehaviour);
+
+            else if (entity is Entity<UiScope> uiEntity)
+                uiEntity.Add<UiView, UiEntityBehaviour>(view as UiEntityBehaviour);
         }
     }
 }

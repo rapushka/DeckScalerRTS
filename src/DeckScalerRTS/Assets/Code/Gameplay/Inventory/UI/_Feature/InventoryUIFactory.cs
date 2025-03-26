@@ -5,7 +5,7 @@ namespace DeckScaler
 {
     public interface IInventoryUIFactory : IService
     {
-        Entity<UiScope> Create(Entity<GameScope> slot);
+        Entity<UiScope> CreateSlotView(Entity<GameScope> slot);
     }
 
     public class InventoryUIFactory : IInventoryUIFactory
@@ -18,7 +18,7 @@ namespace DeckScaler
 
         private static GameplayHUDPage HUD => ServiceLocator.Resolve<IUiMediator>().GetPage<GameplayHUDPage>();
 
-        public Entity<UiScope> Create(Entity<GameScope> slot)
+        public Entity<UiScope> CreateSlotView(Entity<GameScope> slot)
         {
             var sprite = slot.GetItemSpriteOrDefault();
 

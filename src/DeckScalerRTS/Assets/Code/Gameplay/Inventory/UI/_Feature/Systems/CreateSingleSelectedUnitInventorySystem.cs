@@ -3,13 +3,13 @@ using Entitas.Generic;
 
 namespace DeckScaler
 {
-    public sealed class UpdateSingleSelectedUnitInventorySystem : IExecuteSystem
+    public sealed class CreateSingleSelectedUnitInventorySystem : IExecuteSystem
     {
         private readonly IGroup<Entity<UiScope>> _uiEntities
             = GroupBuilder<UiScope>
                 .With<SelectedUnitUi>()
                 .And<DisplayingSingleUnitSelected>()
-                .And<UiVisible>()
+                .Without<UiVisible>()
                 .Build();
 
         private readonly IGroup<Entity<GameScope>> _selectedUnits
@@ -18,14 +18,16 @@ namespace DeckScaler
                 .And<SelectedUnit>()
                 .Build();
 
+        private static IInventoryUIFactory Factory => ServiceLocator.Resolve<IInventoryUIFactory>();
+
         public void Execute()
         {
-            foreach (var uiEntity in _uiEntities)
+            foreach (var _ in _uiEntities)
             {
                 var unit = _selectedUnits.GetSingleEntity();
 
-                var view = uiEntity.Get<SelectedUnitUi>().Value.SingleView;
-                view.UpdateInventory(unit);
+                foreach (var slot in InventoryUtils.GetSlotsInOrder(unit.ID()))
+                    Factory.CreateSlotView(slot);
             }
         }
     }

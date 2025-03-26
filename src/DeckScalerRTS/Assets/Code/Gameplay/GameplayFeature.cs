@@ -126,7 +126,6 @@ namespace DeckScaler
 
 #region Selection UI
             Add(new HideSelectionUiIfNoUnitsSelectedSystem());
-            Add(new DisposeSelectedUnitUiOnUnitsSelectedSystem());
             Add(new UpdateSelectionUiPartVisibilityOnUnitsSelectedSystem());
 
 #region Single Unit
@@ -136,8 +135,8 @@ namespace DeckScaler
             Add(new UpdateSingleSelectedUnitAutoAttackStateSystem());
 
 #region Inventory
-            Add(new LoadSingleSelectedUnitInventorySystem());
-            Add(new UpdateSingleSelectedUnitInventorySystem());
+            Add(new DestroyInventorySlotsViewOnUnitSelectedSystem());
+            Add(new CreateSingleSelectedUnitInventorySystem());
             Add(new UpdateInventoryItemSpriteUiViewSystem());
 #endregion
 #endregion
@@ -145,9 +144,9 @@ namespace DeckScaler
 #region Multiple Units
             Add(new UpdateMultipleSelectedUnitsHealthBarSystem());
             Add(new UpdateMultipleSelectedUnitsAutoAttackStateSystem());
+#endregion
 
             Add(new ShowSelectionUiPartSystem());
-#endregion
 #endregion
 #endregion
 #endregion
@@ -162,6 +161,7 @@ namespace DeckScaler
 
             Add(new DestroyWithChildrenSystem());
             Add(new DestroyEntitiesSystem());
+            Add(new DestroyUiEntitiesSystem());
 #endregion
 
 #region Boilerplate

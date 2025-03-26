@@ -14,13 +14,6 @@ namespace DeckScaler
 
         public void UpdateInventory(Entity<GameScope> unit) => _inventory.UpdateView(unit);
 
-        public override void Dispose()
-        {
-            base.Dispose();
-
-            _inventory.Clear();
-        }
-
         public override void Hide()
         {
             base.Hide();
