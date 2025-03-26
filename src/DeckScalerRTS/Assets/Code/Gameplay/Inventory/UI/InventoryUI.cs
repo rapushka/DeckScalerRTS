@@ -15,33 +15,31 @@ namespace DeckScaler
         {
             foreach (var slot in InventoryUtils.GetSlotsInOrder(unit.ID()))
             {
-                var itemView = slot.TryGet<ItemInSlot, EntityID>(out var itemInSlot)
-                    ? AddSlotWithItem(itemInSlot.GetEntity())
-                    : AddEmptySlot();
+                var itemView = CreateSlotView(slot);
 
                 var index = slot.Get<InventorySlotIndex, int>();
                 _slotsMap.Add(index, itemView);
             }
         }
 
+        public void UpdateView(Entity<GameScope> unit)
+        {
+            foreach (var slot in InventoryUtils.GetInventory(unit.ID()))
+            {
+                var index = slot.Get<InventorySlotIndex, int>();
+                _slotsMap[index].UpdateView(slot);
+            }
+        }
+
         public void Clear()
         {
-            Debug.Log("clear");
             _slotsMap.DestroyValues();
         }
 
-        private InventoryItemUI AddSlotWithItem(Entity<GameScope> item)
+        private InventoryItemUI CreateSlotView(Entity<GameScope> slot)
         {
             var itemView = Instantiate(_itemPrefab, _itemsRoot);
-            itemView.SetItem(item);
-
-            return itemView;
-        }
-
-        private InventoryItemUI AddEmptySlot()
-        {
-            var itemView = Instantiate(_itemPrefab, _itemsRoot);
-            itemView.SetEmpty();
+            itemView.UpdateView(slot);
 
             return itemView;
         }

@@ -10,10 +10,9 @@ namespace DeckScaler
 
         [field: SerializeField] public Image PortraitView { get; private set; }
 
-        public void CreateInventoryFor(Entity<GameScope> unit)
-        {
-            _inventory.CreateInventory(unit);
-        }
+        public void CreateInventoryFor(Entity<GameScope> unit) => _inventory.CreateInventory(unit);
+
+        public void UpdateInventory(Entity<GameScope> unit) => _inventory.UpdateView(unit);
 
         public override void Dispose()
         {

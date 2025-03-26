@@ -132,8 +132,10 @@ namespace DeckScaler
             // single
             Add(new LoadSingleSelectedUnitPortraitSystem());
             Add(new LoadSingleSelectedUnitInventorySystem());
+
             Add(new UpdateSingleSelectedUnitHealthBarSystem());
             Add(new UpdateSingleSelectedUnitAutoAttackStateSystem());
+            Add(new UpdateSingleSelectedUnitInventorySystem());
 
             // multiple
             Add(new UpdateMultipleSelectedUnitsHealthBarSystem());
