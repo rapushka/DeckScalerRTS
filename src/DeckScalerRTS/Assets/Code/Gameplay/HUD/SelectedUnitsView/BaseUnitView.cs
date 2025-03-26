@@ -9,5 +9,7 @@ namespace DeckScaler
         public virtual void Show() => _root.SetActive(true);
 
         public virtual void Hide() => _root.SetActive(false);
+
+        public virtual void Dispose() { } // TODO: when to dispose this shi????
     }
 }

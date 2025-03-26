@@ -126,10 +126,12 @@ namespace DeckScaler
 
 #region Selection UI
             Add(new HideSelectionUiIfNoUnitsSelectedSystem());
+            Add(new DisposeSelectedUnitUiOnUnitsSelectedSystem());
             Add(new UpdateSelectionUiPartVisibilityOnUnitsSelectedSystem());
 
             // single
             Add(new LoadSingleSelectedUnitPortraitSystem());
+            Add(new LoadSingleSelectedUnitInventorySystem());
             Add(new UpdateSingleSelectedUnitHealthBarSystem());
             Add(new UpdateSingleSelectedUnitAutoAttackStateSystem());
 
