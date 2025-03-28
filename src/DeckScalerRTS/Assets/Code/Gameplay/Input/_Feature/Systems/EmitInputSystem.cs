@@ -25,6 +25,7 @@ namespace DeckScaler
 
                 inputEntity
                     .Set<MouseWorldPosition, Vector2>(mouseWorldPosition)
+                    .Set<MouseScreenPosition, Vector2>(mouseScreenPosition)
                     .Is<SelectClicked>(Input.SelectButton is ButtonState.Clicked)
                     .Is<SelectJustDown>(Input.SelectButton is ButtonState.JustDown)
                     .Is<SelectDown>(Input.SelectButton is ButtonState.Down)

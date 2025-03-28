@@ -45,8 +45,8 @@ namespace DeckScaler
 
         public override void Unregister()
         {
-            _entity.AddListener<Health>(this);
-            _entity.AddListener<MaxHealth>(this);
+            _entity.RemoveListener<Health>(this);
+            _entity.RemoveListener<MaxHealth>(this);
 
             _entity.Release(this);
             _entity = null;
