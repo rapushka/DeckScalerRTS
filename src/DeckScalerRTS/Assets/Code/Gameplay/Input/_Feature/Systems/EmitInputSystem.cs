@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace DeckScaler
 {
-    public sealed class EmitMousePositionSystem : IExecuteSystem
+    public sealed class EmitInputSystem : IExecuteSystem
     {
         private readonly IGroup<Entity<InputScope>> _inputs
             = GroupBuilder<InputScope>
@@ -29,6 +29,7 @@ namespace DeckScaler
                     .Is<SelectJustDown>(Input.SelectButton is ButtonState.JustDown)
                     .Is<SelectDown>(Input.SelectButton is ButtonState.Down)
                     .Is<SelectJustUp>(Input.SelectButton is ButtonState.JustUp)
+                    .Is<OverUI>(Input.IsMouseOverUI)
                     ;
             }
         }

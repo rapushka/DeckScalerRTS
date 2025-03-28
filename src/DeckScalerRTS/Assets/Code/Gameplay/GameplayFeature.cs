@@ -15,7 +15,7 @@ namespace DeckScaler
 
 #region Update
 #region Input
-            Add(new EmitMousePositionSystem());
+            Add(new EmitInputSystem());
             Add(new EmitMouseOrdersSystem());
 
             Add(new ReadClicksOnEntitySystem());

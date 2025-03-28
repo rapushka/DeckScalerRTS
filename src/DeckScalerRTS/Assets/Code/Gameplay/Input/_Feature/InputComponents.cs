@@ -9,6 +9,8 @@ namespace DeckScaler
 
     public sealed class OrderClicked : FlagComponent, IInScope<InputScope> { }
 
+    public sealed class OverUI : FlagComponent, IInScope<InputScope> { }
+
     // Select
     public sealed class SelectClicked : FlagComponent, IInScope<InputScope> { }
 

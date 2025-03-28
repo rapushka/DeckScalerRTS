@@ -11,6 +11,7 @@ namespace DeckScaler
                 .With<PlayerInput>()
                 .And<MouseWorldPosition>()
                 .And<SelectJustDown>()
+                .Without<OverUI>()
                 .Build();
 
         private readonly IGroup<Entity<GameScope>> _selectionViews
