@@ -6,7 +6,10 @@ namespace DeckScaler
     public sealed class PlayerInput : FlagComponent, IInScope<InputScope> { }
 
     public sealed class MouseWorldPosition : ValueComponent<Vector2>, IInScope<InputScope> { }
+
     public sealed class MouseScreenPosition : ValueComponent<Vector2>, IInScope<InputScope> { }
+
+    public sealed class PreviousMouseScreenPosition : ValueComponent<Vector2>, IInScope<InputScope> { }
 
     public sealed class OrderClicked : FlagComponent, IInScope<InputScope> { }
 

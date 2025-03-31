@@ -26,7 +26,7 @@ namespace DeckScaler
 
         public void Init()
         {
-            _uiRoot = Ui.Canvas;
+            _uiRoot = Ui.CanvasTransform;
             _worldRoot = new GameObject("[Entity Behaviours]").transform;
         }
 

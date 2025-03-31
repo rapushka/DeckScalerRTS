@@ -23,6 +23,9 @@ namespace DeckScaler
                 var mouseScreenPosition = Input.MouseScreenPosition;
                 var mouseWorldPosition = Camera.ScreenToWorld(mouseScreenPosition);
 
+                if (inputEntity.TryGet<MouseScreenPosition, Vector2>(out var prevPosition))
+                    inputEntity.Set<PreviousMouseScreenPosition, Vector2>(prevPosition);
+
                 inputEntity
                     .Set<MouseWorldPosition, Vector2>(mouseWorldPosition)
                     .Set<MouseScreenPosition, Vector2>(mouseScreenPosition)

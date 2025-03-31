@@ -9,23 +9,29 @@ namespace DeckScaler
         private readonly IGroup<Entity<InputScope>> _inputs
             = GroupBuilder<InputScope>
                 .With<PlayerInput>()
-                .And<OverUI>()
                 .And<SelectDown>()
+                .And<MouseScreenPosition>()
+                .And<PreviousMouseScreenPosition>()
                 .Build();
 
-        private readonly IGroup<Entity<UiScope>> _slotUIs
+        private readonly IGroup<Entity<UiScope>> _draggables
             = GroupBuilder<UiScope>
                 .With<Dragging>()
+                .And<ScreenPosition>()
                 .Build();
 
         public void Execute()
         {
             foreach (var input in _inputs)
-            foreach (var slot in _slotUIs)
+            foreach (var draggable in _draggables)
             {
+                var draggablePosition = draggable.Get<ScreenPosition, Vector2>();
+
+                var prevMousePosition = input.Get<PreviousMouseScreenPosition>().Value;
                 var mousePosition = input.Get<MouseScreenPosition>().Value;
 
-                slot.Set<ScreenPosition, Vector2>(mousePosition);
+                var delta = mousePosition - prevMousePosition;
+                draggable.Set<ScreenPosition, Vector2>(draggablePosition + delta);
             }
         }
     }

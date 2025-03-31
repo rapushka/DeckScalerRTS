@@ -4,16 +4,32 @@ namespace DeckScaler
 {
     public interface IUiService : IService
     {
-        RectTransform Canvas { get; }
+        RectTransform CanvasTransform { get; }
+
+        Vector2 GetPositionOnCanvas(Vector2 screenPosition);
     }
 
     public class UiService : IUiService
     {
+        private readonly Canvas _canvas;
+
         public UiService(Canvas canvas)
         {
-            Canvas = (RectTransform)canvas.transform;
+            _canvas = canvas;
+            CanvasTransform = (RectTransform)canvas.transform;
         }
 
-        public RectTransform Canvas { get; }
+        public RectTransform CanvasTransform { get; }
+
+        public Vector2 GetPositionOnCanvas(Vector2 screenPosition)
+        {
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                CanvasTransform,
+                screenPosition,
+                _canvas.worldCamera,
+                out var localPoint
+            );
+            return localPoint;
+        }
     }
 }
