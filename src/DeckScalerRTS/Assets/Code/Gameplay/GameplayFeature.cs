@@ -141,9 +141,14 @@ namespace DeckScaler
 
 #region Drag'n'Drop
             Add(new StartDraggingUiEntitiesSystem());
-            Add(new DragUiEntitiesSystem());
             Add(new DropUiEntitiesSystem());
+            Add(new DragUiEntitiesSystem());
+
+            Add(new MoveDraggingItemSlotsToContainerSystem());
+            Add(new MoveDraggingItemSlotsBackOnDroppedSystem());
+
             Add(new CleanupDroppedSystem());
+            Add(new CleanupStartDraggingSystem());
 #endregion
 #endregion
 #endregion
@@ -185,8 +190,7 @@ namespace DeckScaler
             Add(new AnyEventSystem<GameScope, MaxHealth>(contexts)); // TODO: are these need to be Any??
             Add(new AnyEventSystem<GameScope, Health>(contexts));    // TODO: are these need to be Any??
             Add(new SelfFlagEventSystem<GameScope, OnEnemySide>(contexts));
-
-            Add(new SelfFlagEventSystem<UiScope, Dragging>(contexts));
+            Add(new SelfEventSystem<UiScope, UiParent>(contexts));
 
             Add(new RemoveComponentsSystem<GameScope, Clicked>(contexts));
 #endregion

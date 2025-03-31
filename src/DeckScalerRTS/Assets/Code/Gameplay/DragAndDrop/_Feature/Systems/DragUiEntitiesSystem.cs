@@ -19,12 +19,15 @@ namespace DeckScaler
                 .With<Dragging>()
                 .Build();
 
+        private static IUiService UI => ServiceLocator.Resolve<IUiService>();
+
         public void Execute()
         {
             foreach (var input in _inputs)
             foreach (var draggable in _draggables)
             {
                 var mousePosition = input.Get<MouseScreenPosition>().Value;
+                // var positionOnCanvas = UI.GetPositionOnCanvas(mousePosition);
 
                 draggable.Set<ScreenPosition, Vector2>(mousePosition);
             }
