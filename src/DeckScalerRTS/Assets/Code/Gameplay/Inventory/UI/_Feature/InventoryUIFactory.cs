@@ -23,12 +23,10 @@ namespace DeckScaler
             var sprite = slot.GetItemSpriteOrDefault();
 
             var view = ViewFactory.CreateInUI(Config.SlotViewPrefab, InventoryView.Root);
-            var rectTransform = (RectTransform)view.transform;
             return view.Entity
                     .Add<DebugName, string>("Inventory Slot UI")
                     .Add<InventoryItemSlotUiView, EntityID>(slot.ID())
                     .Add<ItemSprite, Sprite>(sprite)
-                    .Add<ScreenPosition, Vector2>(rectTransform.anchoredPosition)
                     .Add<Draggable>()
                 ;
         }

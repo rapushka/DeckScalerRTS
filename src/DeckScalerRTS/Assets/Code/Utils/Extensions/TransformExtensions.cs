@@ -14,6 +14,21 @@ namespace DeckScaler
             );
         }
 
+        public static RectTransform SetupToParent(this RectTransform @this, RectTransform parent)
+        {
+            @this.SetParent(parent);
+            return @this.Reset();
+        }
+
+        public static RectTransform Reset(this RectTransform @this)
+        {
+            @this.anchoredPosition = Vector3.zero;
+            @this.localRotation = Quaternion.identity;
+            @this.localScale = Vector3.one;
+
+            return @this;
+        }
+
         public static Transform SetupToParent(this Transform @this, Transform parent)
         {
             @this.SetParent(parent);

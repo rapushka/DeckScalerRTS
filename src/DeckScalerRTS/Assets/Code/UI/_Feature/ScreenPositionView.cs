@@ -9,7 +9,7 @@ namespace DeckScaler
 
         public override void OnValueChanged(Entity<UiScope> entity, ScreenPosition component)
         {
-            _target.position = component.Value;
+            _target.anchoredPosition = component.Value;
         }
     }
 }

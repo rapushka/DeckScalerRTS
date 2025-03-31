@@ -17,7 +17,6 @@ namespace DeckScaler
         private readonly IGroup<Entity<UiScope>> _draggables
             = GroupBuilder<UiScope>
                 .With<Dragging>()
-                .And<ScreenPosition>()
                 .Build();
 
         public void Execute()
@@ -25,13 +24,9 @@ namespace DeckScaler
             foreach (var input in _inputs)
             foreach (var draggable in _draggables)
             {
-                var draggablePosition = draggable.Get<ScreenPosition, Vector2>();
-
-                var prevMousePosition = input.Get<PreviousMouseScreenPosition>().Value;
                 var mousePosition = input.Get<MouseScreenPosition>().Value;
 
-                var delta = mousePosition - prevMousePosition;
-                draggable.Set<ScreenPosition, Vector2>(draggablePosition + delta);
+                draggable.Set<ScreenPosition, Vector2>(mousePosition);
             }
         }
     }

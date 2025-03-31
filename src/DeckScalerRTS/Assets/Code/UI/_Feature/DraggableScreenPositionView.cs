@@ -13,6 +13,11 @@ namespace DeckScaler
 
         private Entity<UiScope> _entity;
 
+        private static IUiMediator UiMediator => ServiceLocator.Resolve<IUiMediator>();
+        private static IUiService  Ui         => ServiceLocator.Resolve<IUiService>();
+
+        private static GameplayHUDPage HUD => UiMediator.GetPage<GameplayHUDPage>();
+
         public override void Register(Entity<UiScope> entity)
         {
             _entity = entity;
@@ -46,7 +51,14 @@ namespace DeckScaler
                 return;
             }
 
-            _target.anchoredPosition = entity.Get<ScreenPosition, Vector2>();
+            if (!_entity.Has<ScreenPosition>())
+                return;
+
+            var container = HUD.Inventory.DraggingContainer;
+            _target.SetupToParent(container);
+
+            var canvasPosition = Ui.GetPositionOnCanvas(entity.Get<ScreenPosition, Vector2>());
+            _target.anchoredPosition = canvasPosition;
         }
     }
 }
