@@ -150,6 +150,8 @@ namespace DeckScaler
             Add(new DisableRaycastForDraggingItemsSystem());
 
             Add(new HighlightHoveredInventorySlotsOnDraggingItemSystem());
+
+            Add(new PlaceItemInHighlightedSlotOnDropSystem());
             Add(new UnHighlightAllInventorySlotsOnItemDroppedSystem());
 
             Add(new CleanupDroppedSystem());
