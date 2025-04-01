@@ -1,3 +1,7 @@
+# v0.0.28
+- Items:
+  - Working Drag'n'Drop Inventory Items (finally) [#84](https://github.com/rapushka/DeckScalerRTS/issues/84)
+
 # v0.0.27
 - Items:
   - [Units can Pick Up Items now](https://github.com/rapushka/DeckScalerRTS/pull/87)
