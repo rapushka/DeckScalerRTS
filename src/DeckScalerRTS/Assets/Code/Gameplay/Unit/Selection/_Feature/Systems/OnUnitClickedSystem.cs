@@ -16,6 +16,7 @@ namespace DeckScaler
             foreach (var unit in _clickedUnits)
             {
                 UnitUtils.Select(unit);
+
                 // if somehow clicked on multiple units – select only one
                 break;
             }

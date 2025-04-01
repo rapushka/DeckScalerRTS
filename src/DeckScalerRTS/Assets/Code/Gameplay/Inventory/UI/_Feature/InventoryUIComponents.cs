@@ -7,7 +7,7 @@ namespace DeckScaler
     public sealed class InventoryPart : FlagComponent, IInScope<UiScope> { }
 
     // Slot UI -> Slot Model
-    public sealed class UiOfInventorySlot : PrimaryIndexComponent<EntityID>, IInScope<UiScope> { }
+    public sealed class UiOfInventorySlot : IndexComponent<EntityID>, IInScope<UiScope> { }
 
     public sealed class ItemUI : FlagComponent, IInScope<UiScope> { }
 
