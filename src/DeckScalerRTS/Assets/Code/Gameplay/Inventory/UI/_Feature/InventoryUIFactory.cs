@@ -47,6 +47,7 @@ namespace DeckScaler
                     .Add<Draggable>()
                     .Add<UiParent, RectTransform>(parent)
                     .Add<InitUiParent, RectTransform>(parent)
+                    .Add<RaycastTarget, bool>(true)
                 ;
         }
     }

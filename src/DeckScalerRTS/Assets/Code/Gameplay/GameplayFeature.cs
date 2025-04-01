@@ -147,6 +147,11 @@ namespace DeckScaler
             Add(new MoveDraggingItemsToContainerSystem());
             Add(new MoveDroppedItemSlotsBackSystem());
 
+            Add(new DisableRaycastForDraggingItemsSystem());
+
+            Add(new HighlightHoveredInventorySlotsOnDraggingItemSystem());
+            Add(new UnHighlightAllInventorySlotsOnItemDroppedSystem());
+
             Add(new CleanupDroppedSystem());
             Add(new CleanupStartDraggingSystem());
 #endregion
@@ -192,6 +197,8 @@ namespace DeckScaler
             Add(new AnyEventSystem<GameScope, Health>(contexts));    // TODO: are these need to be Any??
             Add(new SelfFlagEventSystem<GameScope, OnEnemySide>(contexts));
             Add(new SelfEventSystem<UiScope, UiParent>(contexts));
+            Add(new SelfFlagEventSystem<UiScope, Highlight>(contexts));
+            Add(new SelfEventSystem<UiScope, RaycastTarget>(contexts));
 
             Add(new RemoveComponentsSystem<GameScope, Clicked>(contexts));
 #endregion

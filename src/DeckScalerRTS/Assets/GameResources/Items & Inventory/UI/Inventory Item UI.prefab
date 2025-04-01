@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 7017791500238977580}
   - component: {fileID: 1314544442689749291}
   - component: {fileID: 5122549067804267334}
+  - component: {fileID: 4857835451113247133}
   m_Layer: 5
   m_Name: Inventory Item UI
   m_TagString: Untagged
@@ -133,6 +134,7 @@ MonoBehaviour:
   - {fileID: 3666802495346464295}
   - {fileID: 7017791500238977580}
   - {fileID: 5122549067804267334}
+  - {fileID: 4857835451113247133}
   _subEntities: []
   _ensureComponentsCountOnAwake: 1
   _forceSubEntitiesAutoCollect: 1
@@ -188,3 +190,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 6909888438038732660}
+--- !u!114 &4857835451113247133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6637050091289438610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cb99440c2df409d921ba2b4654561cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _image: {fileID: 4587842771133863428}
