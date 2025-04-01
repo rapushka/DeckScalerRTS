@@ -20,7 +20,7 @@ namespace DeckScaler
 
         private static UiConfig Config => ServiceLocator.Resolve<IGameConfig>().UI;
 
-        private static RectTransform UiCanvas => ServiceLocator.Resolve<IUiService>().Canvas;
+        private static RectTransform UiCanvas => ServiceLocator.Resolve<IUiService>().CanvasTransform;
 
         public void Initialize()
         {

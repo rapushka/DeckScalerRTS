@@ -14,6 +14,7 @@ namespace DeckScaler
         public static Entity<GameScope> GetFirstFreeSlotOrDefault(EntityID unitID)
             => GetSlotsInOrder(unitID).FirstOrDefault(s => !s.Has<ItemInSlot>());
 
+        /// Returns Slots of the Unit not in order
         public static IEnumerable<Entity<GameScope>> GetInventory(EntityID unitID)
             => Index.GetEntities(unitID);
 

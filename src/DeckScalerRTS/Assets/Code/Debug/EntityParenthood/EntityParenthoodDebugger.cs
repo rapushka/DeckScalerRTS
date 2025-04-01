@@ -10,6 +10,7 @@ namespace DeckScaler
     public class EntityParenthoodDebugger
     {
         private readonly Dictionary<EntityID, EntityID> _processedEntities = new();
+
         private ContextObserverBehaviour ContextBehaviour { get; set; }
 
         public void Initialize()

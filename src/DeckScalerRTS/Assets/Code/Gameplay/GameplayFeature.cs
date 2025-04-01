@@ -15,7 +15,7 @@ namespace DeckScaler
 
 #region Update
 #region Input
-            Add(new EmitMousePositionSystem());
+            Add(new EmitInputSystem());
             Add(new EmitMouseOrdersSystem());
 
             Add(new ReadClicksOnEntitySystem());
@@ -126,20 +126,37 @@ namespace DeckScaler
 
 #region Selection UI
             Add(new HideSelectionUiIfNoUnitsSelectedSystem());
-            Add(new DisposeSelectedUnitUiOnUnitsSelectedSystem());
             Add(new UpdateSelectionUiPartVisibilityOnUnitsSelectedSystem());
 
-            // single
+#region Single Unit
             Add(new LoadSingleSelectedUnitPortraitSystem());
-            Add(new LoadSingleSelectedUnitInventorySystem());
 
             Add(new UpdateSingleSelectedUnitHealthBarSystem());
             Add(new UpdateSingleSelectedUnitAutoAttackStateSystem());
-            Add(new UpdateSingleSelectedUnitInventorySystem());
 
-            // multiple
+#region Inventory
+            Add(new DestroyInventoryUIOnUnitSelectedSystem());
+            Add(new CreateSingleSelectedUnitInventorySystem());
+            Add(new CreateItemsInInventoryOnSelectedOrItemPickedUpSystem());
+
+#region Drag'n'Drop
+            Add(new StartDraggingUiEntitiesSystem());
+            Add(new DragUiEntitiesSystem());
+            Add(new DropUiEntitiesSystem());
+
+            Add(new MoveDraggingItemsToContainerSystem());
+            Add(new MoveDroppedItemSlotsBackSystem());
+
+            Add(new CleanupDroppedSystem());
+            Add(new CleanupStartDraggingSystem());
+#endregion
+#endregion
+#endregion
+
+#region Multiple Units
             Add(new UpdateMultipleSelectedUnitsHealthBarSystem());
             Add(new UpdateMultipleSelectedUnitsAutoAttackStateSystem());
+#endregion
 
             Add(new ShowSelectionUiPartSystem());
 #endregion
@@ -156,20 +173,25 @@ namespace DeckScaler
 
             Add(new DestroyWithChildrenSystem());
             Add(new DestroyEntitiesSystem());
+            Add(new DestroyUiEntitiesSystem());
 #endregion
 
 #region Boilerplate
             var contexts = Contexts.Instance;
             Add(new SelfEventSystem<GameScope, HeadSprite>(contexts));
             Add(new SelfEventSystem<GameScope, ItemSprite>(contexts));
+            Add(new SelfEventSystem<UiScope, ItemSprite>(contexts));
             Add(new SelfFlagEventSystem<GameScope, SelectedUnit>(contexts));
             Add(new SelfEventSystem<GameScope, WorldPosition>(contexts));
+            Add(new SelfEventSystem<UiScope, ScreenPosition>(contexts));
             Add(new SelfEventSystem<GameScope, Price>(contexts));
             Add(new SelfEventSystem<GameScope, Visible>(contexts));
+            Add(new SelfEventSystem<UiScope, Visible>(contexts));
             Add(new SelfFlagEventSystem<GameScope, Available>(contexts));
             Add(new AnyEventSystem<GameScope, MaxHealth>(contexts)); // TODO: are these need to be Any??
             Add(new AnyEventSystem<GameScope, Health>(contexts));    // TODO: are these need to be Any??
             Add(new SelfFlagEventSystem<GameScope, OnEnemySide>(contexts));
+            Add(new SelfEventSystem<UiScope, UiParent>(contexts));
 
             Add(new RemoveComponentsSystem<GameScope, Clicked>(contexts));
 #endregion

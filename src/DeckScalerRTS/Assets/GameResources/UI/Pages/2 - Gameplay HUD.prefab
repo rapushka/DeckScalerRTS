@@ -54,6 +54,7 @@ MonoBehaviour:
   _leaveGameButton: {fileID: 6813463450242192763}
   _moneyTextMesh: {fileID: 6606787896979012912}
   <SelectedUnitView>k__BackingField: {fileID: 6584682545701661763}
+  <Inventory>k__BackingField: {fileID: 6883614379958205565}
 --- !u!1001 &158837911893270812
 PrefabInstance:
   m_ObjectHideFlags: 0

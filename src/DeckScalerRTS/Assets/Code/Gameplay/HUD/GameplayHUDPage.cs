@@ -10,6 +10,7 @@ namespace DeckScaler
         [SerializeField] private TMP_Text _moneyTextMesh;
 
         [field: SerializeField] public SelectedUnitsUiView SelectedUnitView { get; private set; }
+        [field: SerializeField] public InventoryUI         Inventory        { get; private set; }
 
         public int Money { set => _moneyTextMesh.text = $"${value}"; }
 

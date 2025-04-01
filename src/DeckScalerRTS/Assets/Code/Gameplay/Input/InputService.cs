@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using InputConstants = DeckScaler.Constants.InputBindings;
 
 namespace DeckScaler
@@ -11,6 +12,8 @@ namespace DeckScaler
 
         Vector2 MouseScreenPosition { get; }
         float   WheelScroll         { get; }
+
+        bool IsMouseOverUI { get; }
     }
 
     public class InputService : IInputService, IUpdatable
@@ -22,6 +25,8 @@ namespace DeckScaler
         public ButtonState SelectButton     => _selectButton.State;
         public ButtonState OrderButton      => _orderButton.State;
         public ButtonState DragCameraButton => _dragButton.State;
+
+        public bool IsMouseOverUI => EventSystem.current.IsPointerOverGameObject();
 
         public Vector2 MouseScreenPosition => Input.mousePosition;
 

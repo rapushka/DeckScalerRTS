@@ -68,6 +68,7 @@ namespace DeckScaler
             ServiceLocator.Register<IShopFactory>(new ShopFactory());
             ServiceLocator.Register<IItemFactory>(new ItemFactory());
             ServiceLocator.Register<IInventoryFactory>(new InventoryFactory());
+            ServiceLocator.Register<IInventoryUIFactory>(new InventoryUIFactory());
 
             // Debug
 #if UNITY_EDITOR

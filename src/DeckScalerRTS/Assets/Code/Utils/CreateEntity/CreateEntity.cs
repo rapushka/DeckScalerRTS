@@ -8,12 +8,24 @@ namespace DeckScaler
 
         private static IIdentifiesService Identifies => ServiceLocator.Resolve<IIdentifiesService>();
 
+        public static Entity<TScope> ScopeBased<TScope>()
+            where TScope : IScope
+        {
+            var entity = Contexts.Instance.Get<TScope>().CreateEntity();
+
+            if (entity is Entity<GameScope> gameEntity)
+                Identify(gameEntity);
+
+            return entity;
+        }
+
         public static Entity<GameScope> OneFrame()
             => Empty().Add<Destroy>();
 
-        public static Entity<GameScope> Empty()
-            => Context.CreateEntity()
-                .Add<ID, EntityID>(new(Identifies.Next()));
+        public static Entity<GameScope> Empty() => Identify(Context.CreateEntity());
+
+        private static Entity<GameScope> Identify(Entity<GameScope> entity) => entity
+            .Add<ID, EntityID>(new(Identifies.Next()));
     }
 
     public static class CreateInputEntity

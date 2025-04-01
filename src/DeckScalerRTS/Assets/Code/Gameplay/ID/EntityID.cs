@@ -18,13 +18,11 @@ namespace DeckScaler
             => this.TryGetEntity(out var entity) ? $"{ID} {entity.GetName()}" : "DESTROYED";
 
 #region Boilerplate
-
         public override bool Equals(object obj) => obj is EntityID other && Equals(other);
 
         public bool Equals(EntityID other) => GetHashCode() == other.GetHashCode();
 
         public override int GetHashCode() => ID;
-
 #endregion
     }
 }

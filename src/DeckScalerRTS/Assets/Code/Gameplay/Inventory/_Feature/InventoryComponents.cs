@@ -11,6 +11,6 @@ namespace DeckScaler
 
     public sealed class HasAnyFreeInventorySlot : FlagComponent, IInScope<GameScope> { }
 
-    /// InventorySlot -> Item
-    public sealed class ItemInSlot : ValueComponent<EntityID>, IInScope<GameScope> { }
+    /// InventorySlot or InventorySlotUI-> Item
+    public sealed class ItemInSlot : ValueComponent<EntityID>, IInScope<GameScope>, IInScope<UiScope> { }
 }
