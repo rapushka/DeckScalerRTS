@@ -5,8 +5,6 @@ namespace DeckScaler
 {
     public interface IInventoryUIFactory : IService
     {
-        Entity<UiScope> CreateDraggingItemBuffer(); // TODO: later
-
         Entity<UiScope> CreateSlotView(Entity<GameScope> slot);
         Entity<UiScope> CreateItemInSlot(Entity<GameScope> item, Entity<UiScope> slotView);
     }
@@ -20,15 +18,6 @@ namespace DeckScaler
         private static InventoryUI InventoryView => HUD.SelectedUnitView.Inventory;
 
         private static GameplayHUDPage HUD => ServiceLocator.Resolve<IUiMediator>().GetPage<GameplayHUDPage>();
-
-        public Entity<UiScope> CreateDraggingItemBuffer()
-        {
-            return ViewFactory.CreateInUI(Config.DraggingItemBuffer, HUD.transform).Entity // TODO: on HUD??
-                    .Add<DebugName, string>("Dragging Item Buffer")
-                    .Add<ScreenPosition, Vector2>(Vector2.zero)
-                    .Add<Visible, bool>(false)
-                ;
-        }
 
         public Entity<UiScope> CreateSlotView(Entity<GameScope> slot)
         {
