@@ -9,7 +9,8 @@ namespace DeckScaler
         private readonly IGroup<Entity<InputScope>> _inputs
             = GroupBuilder<InputScope>
                 .With<PlayerInput>()
-                .And<SelectJustUp>()
+                .Without<SelectDown>()
+                .Without<SelectJustDown>()
                 .Build();
 
         private readonly IGroup<Entity<UiScope>> _uis

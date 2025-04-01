@@ -53,3 +53,5 @@ MonoBehaviour:
     <ItemView>k__BackingField: {fileID: 739669060682926128, guid: c68df71193dcca44e8c77b482180236c, type: 3}
     <UI>k__BackingField:
       <SlotViewPrefab>k__BackingField: {fileID: 2825365161574222247, guid: 04d29698669503b2bb668b925ae06c94, type: 3}
+      <ItemViewPrefab>k__BackingField: {fileID: 6375412238991667739, guid: c1f04f6fb530c60dcbcfa5d38e252aaa, type: 3}
+      <DraggingItemBuffer>k__BackingField: {fileID: 0}

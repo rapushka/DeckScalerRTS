@@ -9,7 +9,7 @@ namespace DeckScaler
             = GroupBuilder<UiScope>
                 .With<SelectedUnitUi>()
                 .And<DisplayingSingleUnitSelected>()
-                .Without<UiVisible>()
+                .Without<Displaying>()
                 .Build();
 
         private readonly IGroup<Entity<GameScope>> _selectedUnits

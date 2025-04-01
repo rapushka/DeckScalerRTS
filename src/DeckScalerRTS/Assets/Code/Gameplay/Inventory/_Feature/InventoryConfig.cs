@@ -18,6 +18,8 @@ namespace DeckScaler
         public class UiConfig
         {
             [field: SerializeField] public UiEntityBehaviour SlotViewPrefab { get; private set; }
+            [field: SerializeField] public UiEntityBehaviour ItemViewPrefab { get; private set; }
+            [field: SerializeField] public UiEntityBehaviour DraggingItemBuffer { get; private set; }
         }
     }
 }

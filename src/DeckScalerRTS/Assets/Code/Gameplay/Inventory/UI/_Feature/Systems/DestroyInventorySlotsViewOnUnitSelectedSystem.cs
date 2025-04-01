@@ -12,7 +12,7 @@ namespace DeckScaler
 
         private readonly IGroup<Entity<UiScope>> _slotViews
             = GroupBuilder<UiScope>
-                .With<InventoryItemSlotUiView>()
+                .With<InventorySlotModel>()
                 .And<ItemSprite>()
                 .Build();
 

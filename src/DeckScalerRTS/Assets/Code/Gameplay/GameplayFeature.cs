@@ -137,15 +137,15 @@ namespace DeckScaler
 #region Inventory
             Add(new DestroyInventorySlotsViewOnUnitSelectedSystem());
             Add(new CreateSingleSelectedUnitInventorySystem());
-            Add(new UpdateInventoryItemSpriteUiViewSystem());
+            Add(new CreateItemsInInventoryOnItemPickedUpSystem());
 
 #region Drag'n'Drop
             Add(new StartDraggingUiEntitiesSystem());
-            Add(new DropUiEntitiesSystem());
             Add(new DragUiEntitiesSystem());
+            Add(new DropUiEntitiesSystem());
 
-            Add(new MoveDraggingItemSlotsToContainerSystem());
-            Add(new MoveDraggingItemSlotsBackOnDroppedSystem());
+            Add(new MoveDraggingItemsToContainerSystem());
+            Add(new MoveDroppedItemSlotsBackSystem());
 
             Add(new CleanupDroppedSystem());
             Add(new CleanupStartDraggingSystem());
@@ -186,6 +186,7 @@ namespace DeckScaler
             Add(new SelfEventSystem<UiScope, ScreenPosition>(contexts));
             Add(new SelfEventSystem<GameScope, Price>(contexts));
             Add(new SelfEventSystem<GameScope, Visible>(contexts));
+            Add(new SelfEventSystem<UiScope, Visible>(contexts));
             Add(new SelfFlagEventSystem<GameScope, Available>(contexts));
             Add(new AnyEventSystem<GameScope, MaxHealth>(contexts)); // TODO: are these need to be Any??
             Add(new AnyEventSystem<GameScope, Health>(contexts));    // TODO: are these need to be Any??

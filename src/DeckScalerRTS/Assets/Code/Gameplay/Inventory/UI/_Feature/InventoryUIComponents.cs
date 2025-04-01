@@ -4,7 +4,9 @@ using UnityEngine;
 namespace DeckScaler
 {
     // Slot UI -> Slot Model
-    public sealed class InventoryItemSlotUiView : ValueComponent<EntityID>, IInScope<UiScope> { }
+    public sealed class InventorySlotModel : PrimaryIndexComponent<EntityID>, IInScope<UiScope> { }
+
+    public sealed class ItemUI : FlagComponent, IInScope<UiScope> { }
 
     public sealed class UiParent : ValueComponent<RectTransform>, IInScope<UiScope>, IEvent<Self> { }
 

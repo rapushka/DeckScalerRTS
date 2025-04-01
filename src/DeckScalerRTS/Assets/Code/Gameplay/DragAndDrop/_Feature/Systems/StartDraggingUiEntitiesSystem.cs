@@ -8,7 +8,6 @@ namespace DeckScaler
         private readonly IGroup<Entity<InputScope>> _inputs
             = GroupBuilder<InputScope>
                 .With<PlayerInput>()
-                // .And<OverUI>()
                 .And<SelectJustDown>()
                 .Build();
 
@@ -23,7 +22,10 @@ namespace DeckScaler
             foreach (var _ in _inputs)
             foreach (var ui in _uis)
             {
-                ui.Is<Dragging>(true);
+                ui
+                    .Is<Dragging>(true)
+                    .Is<StartDragging>(true)
+                    ;
             }
         }
     }

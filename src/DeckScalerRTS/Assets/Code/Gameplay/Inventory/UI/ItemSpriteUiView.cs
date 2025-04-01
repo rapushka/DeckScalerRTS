@@ -11,9 +11,7 @@ namespace DeckScaler
         public override void OnValueChanged(Entity<UiScope> entity, ItemSprite component)
         {
             var sprite = component.Value;
-
             _image.sprite = sprite;
-            _image.color = sprite is not null ? Color.white : Color.clear;
         }
     }
 }

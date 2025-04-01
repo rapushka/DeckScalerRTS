@@ -6,7 +6,7 @@ namespace DeckScaler
     {
         RectTransform CanvasTransform { get; }
 
-        Vector2 GetPositionOnCanvas(Vector2 screenPosition);
+        Vector2 GetPositionOnCanvas(Vector2 screenPosition, RectTransform parent = null);
     }
 
     public class UiService : IUiService
@@ -21,10 +21,10 @@ namespace DeckScaler
 
         public RectTransform CanvasTransform { get; }
 
-        public Vector2 GetPositionOnCanvas(Vector2 screenPosition)
+        public Vector2 GetPositionOnCanvas(Vector2 screenPosition, RectTransform parent = null)
         {
             RectTransformUtility.ScreenPointToLocalPointInRectangle(
-                CanvasTransform,
+                parent ?? CanvasTransform,
                 screenPosition,
                 _canvas.worldCamera,
                 out var localPoint
