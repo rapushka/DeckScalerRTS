@@ -3,24 +3,23 @@ using Entitas.Generic;
 
 namespace DeckScaler
 {
-    public sealed class DestroyInventorySlotsViewOnUnitSelectedSystem : IExecuteSystem
+    public sealed class DestroyInventoryUIOnUnitSelectedSystem : IExecuteSystem
     {
         private readonly IGroup<Entity<GameScope>> _events
             = GroupBuilder<GameScope>
                 .With<SelectUnitEvent>()
                 .Build();
 
-        private readonly IGroup<Entity<UiScope>> _slotViews
+        private readonly IGroup<Entity<UiScope>> _inventoryParts
             = GroupBuilder<UiScope>
-                .With<InventorySlotModel>()
-                .And<ItemSprite>()
+                .With<InventoryPart>()
                 .Build();
 
         public void Execute()
         {
             foreach (var _ in _events)
-            foreach (var slotView in _slotViews)
-                slotView.Is<Destroy>(true);
+            foreach (var inventoryPart in _inventoryParts)
+                inventoryPart.Is<Destroy>(true);
         }
     }
 }

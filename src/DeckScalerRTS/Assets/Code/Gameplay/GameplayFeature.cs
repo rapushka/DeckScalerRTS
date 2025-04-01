@@ -135,9 +135,9 @@ namespace DeckScaler
             Add(new UpdateSingleSelectedUnitAutoAttackStateSystem());
 
 #region Inventory
-            Add(new DestroyInventorySlotsViewOnUnitSelectedSystem());
+            Add(new DestroyInventoryUIOnUnitSelectedSystem());
             Add(new CreateSingleSelectedUnitInventorySystem());
-            Add(new CreateItemsInInventoryOnItemPickedUpSystem());
+            Add(new CreateItemsInInventoryOnSelectedOrItemPickedUpSystem());
 
 #region Drag'n'Drop
             Add(new StartDraggingUiEntitiesSystem());

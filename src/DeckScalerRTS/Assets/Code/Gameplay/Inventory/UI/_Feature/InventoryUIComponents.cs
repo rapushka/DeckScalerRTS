@@ -3,8 +3,11 @@ using UnityEngine;
 
 namespace DeckScaler
 {
+    /// Slots & Items
+    public sealed class InventoryPart : FlagComponent, IInScope<UiScope> { }
+
     // Slot UI -> Slot Model
-    public sealed class InventorySlotModel : PrimaryIndexComponent<EntityID>, IInScope<UiScope> { }
+    public sealed class UiOfInventorySlot : PrimaryIndexComponent<EntityID>, IInScope<UiScope> { }
 
     public sealed class ItemUI : FlagComponent, IInScope<UiScope> { }
 

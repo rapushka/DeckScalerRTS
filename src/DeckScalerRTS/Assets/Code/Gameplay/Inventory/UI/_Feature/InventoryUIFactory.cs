@@ -34,7 +34,8 @@ namespace DeckScaler
         {
             var view = ViewFactory.CreateInUI(Config.SlotViewPrefab, InventoryView.Root).Entity
                 .Add<DebugName, string>("Inventory Slot UI")
-                .Add<InventorySlotModel, EntityID>(slot.ID());
+                .Add<InventoryPart>()
+                .Add<UiOfInventorySlot, EntityID>(slot.ID());
 
             return view;
         }
@@ -51,6 +52,7 @@ namespace DeckScaler
 
             return view.Entity
                     .Add<DebugName, string>("Item UI")
+                    .Add<InventoryPart>()
                     .Add<ItemUI>()
                     .Add<ItemSprite, Sprite>(sprite)
                     .Add<Draggable>()

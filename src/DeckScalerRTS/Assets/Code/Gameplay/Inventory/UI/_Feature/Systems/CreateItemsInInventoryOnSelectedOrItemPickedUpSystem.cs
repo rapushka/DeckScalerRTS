@@ -3,16 +3,17 @@ using Entitas.Generic;
 
 namespace DeckScaler
 {
-    public sealed class CreateItemsInInventoryOnItemPickedUpSystem : IExecuteSystem
+    public sealed class CreateItemsInInventoryOnSelectedOrItemPickedUpSystem : IExecuteSystem
     {
         private readonly IGroup<Entity<GameScope>> _units
             = GroupBuilder<GameScope>
                 .With<UnitID>()
-                .And<TakeItemEvent>()
+                .Or<TakeItemEvent>()
+                .Or<SelectedUnit>()
                 .Build();
 
-        private static PrimaryEntityIndex<UiScope, InventorySlotModel, EntityID> InventorySlotIndex
-            => Contexts.Instance.Get<UiScope>().GetPrimaryIndex<InventorySlotModel, EntityID>();
+        private static PrimaryEntityIndex<UiScope, UiOfInventorySlot, EntityID> InventorySlotIndex
+            => Contexts.Instance.Get<UiScope>().GetPrimaryIndex<UiOfInventorySlot, EntityID>();
 
         private static IInventoryUIFactory UIFactory => ServiceLocator.Resolve<IInventoryUIFactory>();
 
