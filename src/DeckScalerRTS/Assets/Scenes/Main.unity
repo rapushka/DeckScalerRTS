@@ -2768,7 +2768,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4df93bb2b384547be1d913d6540b8da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <ID>k__BackingField: Item/Wine
+  <ID>k__BackingField: Item/Beer
 --- !u!1 &781780806
 GameObject:
   m_ObjectHideFlags: 0
@@ -3403,7 +3403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4df93bb2b384547be1d913d6540b8da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <ID>k__BackingField: Item/Wine
+  <ID>k__BackingField: Item/Beer
 --- !u!1 &888898670
 GameObject:
   m_ObjectHideFlags: 0
@@ -6327,7 +6327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4df93bb2b384547be1d913d6540b8da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <ID>k__BackingField: Item/Wine
+  <ID>k__BackingField: Item/Beer
 --- !u!1 &1928550766
 GameObject:
   m_ObjectHideFlags: 0
