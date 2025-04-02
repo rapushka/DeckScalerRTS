@@ -8,7 +8,7 @@ namespace DeckScaler
     {
         private readonly IGroup<Entity<UiScope>> _draggingSlots
             = GroupBuilder<UiScope>
-                .With<ItemUI>()
+                .With<UiOfItem>()
                 .And<StartDragging>()
                 .Build();
 

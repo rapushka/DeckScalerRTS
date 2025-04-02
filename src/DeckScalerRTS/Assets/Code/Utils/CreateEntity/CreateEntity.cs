@@ -15,6 +15,8 @@ namespace DeckScaler
 
             if (entity is Entity<GameScope> gameEntity)
                 Identify(gameEntity);
+            if (entity is Entity<UiScope> uiEntity)
+                Identify(uiEntity);
 
             return entity;
         }
@@ -26,6 +28,10 @@ namespace DeckScaler
 
         private static Entity<GameScope> Identify(Entity<GameScope> entity) => entity
             .Add<ID, EntityID>(new(Identifies.Next()));
+
+        // ReSharper disable once UnusedMethodReturnValue.Local - don't mind my business
+        private static Entity<UiScope> Identify(Entity<UiScope> entity) => entity
+            .Add<UiID, UiEntityID>(new(Identifies.Next()));
     }
 
     public static class CreateInputEntity
@@ -39,6 +45,15 @@ namespace DeckScaler
     {
         private static ScopeContext<UiScope> Context => Contexts.Instance.Get<UiScope>();
 
-        public static Entity<UiScope> Empty() => Context.CreateEntity();
+        private static IIdentifiesService Identifies => ServiceLocator.Resolve<IIdentifiesService>();
+
+        public static Entity<UiScope> OneFrame()
+            => Empty().Add<Destroy>();
+
+        public static Entity<UiScope> Empty() => Identify(Context.CreateEntity());
+
+        // ReSharper disable once UnusedMethodReturnValue.Local - don't mind my business
+        private static Entity<UiScope> Identify(Entity<UiScope> entity) => entity
+            .Add<UiID, UiEntityID>(new(Identifies.Next()));
     }
 }

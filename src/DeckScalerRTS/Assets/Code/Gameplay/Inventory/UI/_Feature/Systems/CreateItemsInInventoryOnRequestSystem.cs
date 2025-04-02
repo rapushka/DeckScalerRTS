@@ -3,17 +3,17 @@ using Entitas.Generic;
 
 namespace DeckScaler
 {
-    public sealed class CreateItemsInInventoryOnSelectedOrItemPickedUpSystem : IExecuteSystem
+    public sealed class CreateItemsInInventoryOnRequestSystem : IExecuteSystem
     {
         private readonly IGroup<Entity<GameScope>> _units
             = GroupBuilder<GameScope>
                 .With<UnitID>()
-                .Or<TakeItemEvent>()
-                .Or<SelectedUnit>()
+                .And<RequestUpdateInventoryUI>()
+                .And<SelectedUnit>()
                 .Build();
 
-        private static PrimaryEntityIndex<UiScope, UiOfInventorySlot, EntityID> InventorySlotIndex
-            => Contexts.Instance.Get<UiScope>().GetPrimaryIndex<UiOfInventorySlot, EntityID>();
+        private static EntityIndex<UiScope, UiOfInventorySlot, EntityID> InventorySlotIndex
+            => Contexts.Instance.Get<UiScope>().GetIndex<UiOfInventorySlot, EntityID>();
 
         private static IInventoryUIFactory UIFactory => ServiceLocator.Resolve<IInventoryUIFactory>();
 
@@ -27,11 +27,12 @@ namespace DeckScaler
                     if (!slot.TryGet<ItemInSlot, EntityID>(out var itemID))
                         continue;
 
-                    var slotView = InventorySlotIndex.GetEntity(slot.ID());
-                    if (slotView.Has<ItemInSlot>())
-                        continue;
-
-                    UIFactory.CreateItemInSlot(itemID.GetEntity(), slotView);
+                    var slots = InventorySlotIndex.GetEntities(slot.ID());
+                    foreach (var slotView in slots)
+                    {
+                        if (!slotView.Has<ItemInSlot>() && !slotView.Is<Destroy>())
+                            UIFactory.CreateItemInSlot(itemID.GetEntity(), slotView);
+                    }
                 }
             }
         }

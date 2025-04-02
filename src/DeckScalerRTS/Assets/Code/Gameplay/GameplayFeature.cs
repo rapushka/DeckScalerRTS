@@ -135,9 +135,7 @@ namespace DeckScaler
             Add(new UpdateSingleSelectedUnitAutoAttackStateSystem());
 
 #region Inventory
-            Add(new DestroyInventoryUIOnUnitSelectedSystem());
-            Add(new CreateSingleSelectedUnitInventorySystem());
-            Add(new CreateItemsInInventoryOnSelectedOrItemPickedUpSystem());
+            Add(new RequestUpdateInventoryUiOnUnitSelected());
 
 #region Drag'n'Drop
             Add(new StartDraggingUiEntitiesSystem());
@@ -147,9 +145,23 @@ namespace DeckScaler
             Add(new MoveDraggingItemsToContainerSystem());
             Add(new MoveDroppedItemSlotsBackSystem());
 
+            Add(new DisableRaycastForDraggingItemsSystem());
+
+            Add(new HighlightHoveredInventorySlotsOnDraggingItemSystem());
+
+            Add(new PlaceItemInHighlightedSlotOnDropSystem());
+            Add(new UnHighlightAllInventorySlotsOnItemDroppedSystem());
+
             Add(new CleanupDroppedSystem());
             Add(new CleanupStartDraggingSystem());
 #endregion
+
+            Add(new DestroyInventoryUIOnUnitSelectedSystem());
+            Add(new CreateSingleSelectedUnitInventorySystem());
+            Add(new DestroyOldInventoryItemsUIOnUpdateRequestedSystem());
+            Add(new CreateItemsInInventoryOnRequestSystem());
+
+            Add(new RemoveComponentSystem<RequestUpdateInventoryUI>());
 #endregion
 #endregion
 
@@ -192,6 +204,8 @@ namespace DeckScaler
             Add(new AnyEventSystem<GameScope, Health>(contexts));    // TODO: are these need to be Any??
             Add(new SelfFlagEventSystem<GameScope, OnEnemySide>(contexts));
             Add(new SelfEventSystem<UiScope, UiParent>(contexts));
+            Add(new SelfFlagEventSystem<UiScope, Highlight>(contexts));
+            Add(new SelfEventSystem<UiScope, RaycastTarget>(contexts));
 
             Add(new RemoveComponentsSystem<GameScope, Clicked>(contexts));
 #endregion

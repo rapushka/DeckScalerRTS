@@ -19,24 +19,16 @@ namespace DeckScaler
                 var itemID = unit.Get<TakeItemEvent, EntityID>();
 
                 var unitID = unit.ID();
-                var itemSlot = InventoryUtils.GetFirstFreeSlotOrDefault(unitID);
+                var slot = InventoryUtils.GetFirstFreeSlotOrDefault(unitID);
 
-                if (itemSlot is null)
+                if (slot is null)
                 {
                     Debug.LogError("TODO: how to deal when trying to take an Item with no free Inventory Slots??");
                     continue;
                 }
 
-                itemSlot
-                    .Add<ItemInSlot, EntityID>(itemID)
-                    ;
-
                 var item = itemID.GetEntity();
-                item
-                    .Is<LyingOnGround>(false)
-                    .Set<Visible, bool>(false)
-                    .Set<ChildOf, EntityID>(itemSlot.ID())
-                    ;
+                InventoryUtils.TakeItemToSlot(item, slot);
             }
         }
     }

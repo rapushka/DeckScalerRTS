@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6603249941982162794}
   - component: {fileID: 2497150587913207057}
   - component: {fileID: 9050149537275888428}
+  - component: {fileID: 8655065065844280664}
   m_Layer: 5
   m_Name: Inventory Slot UI
   m_TagString: Untagged
@@ -58,6 +59,7 @@ MonoBehaviour:
   - {fileID: 6701610050784229489}
   - {fileID: 2497150587913207057}
   - {fileID: 9050149537275888428}
+  - {fileID: 8655065065844280664}
   _subEntities: []
   _ensureComponentsCountOnAwake: 1
   _forceSubEntitiesAutoCollect: 1
@@ -100,7 +102,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
-  _parent: {fileID: 5406557497356584902}
 --- !u!114 &9050149537275888428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,6 +115,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
+--- !u!114 &8655065065844280664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2087942148961846282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12feac9a94c849f2b75eb553ed487ec3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 8482551917353592009}
+  _defaultColor: {r: 0.39607844, g: 0.39607844, b: 0.39607844, a: 1}
+  _highlightColor: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 1}
 --- !u!1 &3125228142277713791
 GameObject:
   m_ObjectHideFlags: 0
