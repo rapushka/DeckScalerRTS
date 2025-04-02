@@ -135,9 +135,7 @@ namespace DeckScaler
             Add(new UpdateSingleSelectedUnitAutoAttackStateSystem());
 
 #region Inventory
-            Add(new DestroyInventoryUIOnUnitSelectedSystem());
-            Add(new CreateSingleSelectedUnitInventorySystem());
-            Add(new CreateItemsInInventoryOnSelectedOrItemPickedUpSystem());
+            Add(new RequestUpdateInventoryUiOnUnitSelected());
 
 #region Drag'n'Drop
             Add(new StartDraggingUiEntitiesSystem());
@@ -157,6 +155,13 @@ namespace DeckScaler
             Add(new CleanupDroppedSystem());
             Add(new CleanupStartDraggingSystem());
 #endregion
+
+            Add(new DestroyInventoryUIOnUnitSelectedSystem());
+            Add(new CreateSingleSelectedUnitInventorySystem());
+            Add(new DestroyOldInventoryItemsUIOnUpdateRequestedSystem());
+            Add(new CreateItemsInInventoryOnRequestSystem());
+
+            Add(new RemoveComponentSystem<RequestUpdateInventoryUI>());
 #endregion
 #endregion
 

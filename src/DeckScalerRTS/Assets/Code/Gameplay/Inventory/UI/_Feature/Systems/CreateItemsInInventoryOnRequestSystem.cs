@@ -3,13 +3,13 @@ using Entitas.Generic;
 
 namespace DeckScaler
 {
-    public sealed class CreateItemsInInventoryOnSelectedOrItemPickedUpSystem : IExecuteSystem
+    public sealed class CreateItemsInInventoryOnRequestSystem : IExecuteSystem
     {
         private readonly IGroup<Entity<GameScope>> _units
             = GroupBuilder<GameScope>
                 .With<UnitID>()
-                .Or<TakeItemEvent>()
-                .Or<SelectedUnit>()
+                .And<RequestUpdateInventoryUI>()
+                .And<SelectedUnit>()
                 .Build();
 
         private static EntityIndex<UiScope, UiOfInventorySlot, EntityID> InventorySlotIndex

@@ -9,7 +9,8 @@ namespace DeckScaler
     // Slot UI -> Slot Model
     public sealed class UiOfInventorySlot : IndexComponent<EntityID>, IInScope<UiScope> { }
 
-    public sealed class ItemUI : FlagComponent, IInScope<UiScope> { }
+    // Item UI -> Item Model
+    public sealed class UiOfItem : IndexComponent<EntityID>, IInScope<UiScope> { }
 
     public sealed class UiParent : ValueComponent<RectTransform>, IInScope<UiScope>, IEvent<Self> { }
 

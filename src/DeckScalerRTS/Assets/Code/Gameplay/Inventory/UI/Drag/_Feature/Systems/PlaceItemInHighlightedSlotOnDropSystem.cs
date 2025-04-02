@@ -1,6 +1,5 @@
 using Entitas;
 using Entitas.Generic;
-using UnityEngine;
 
 namespace DeckScaler
 {
@@ -8,7 +7,7 @@ namespace DeckScaler
     {
         private readonly IGroup<Entity<UiScope>> _draggedItems
             = GroupBuilder<UiScope>
-                .With<ItemUI>()
+                .With<UiOfItem>()
                 .And<Dropped>()
                 .Build();
 
@@ -20,15 +19,13 @@ namespace DeckScaler
 
         public void Execute()
         {
-            foreach (var item in _draggedItems)
-            foreach (var slot in _highlightedSlots)
+            foreach (var itemUI in _draggedItems)
+            foreach (var slotUI in _highlightedSlots)
             {
-                var rectTransform = (RectTransform)slot.Get<UiView>().Value.transform;
+                var itemID = itemUI.Get<UiOfItem>().Value;
+                var slotID = slotUI.Get<UiOfInventorySlot>().Value;
 
-                item
-                    .Set<UiParent, RectTransform>(rectTransform)
-                    .Set<InitUiParent, RectTransform>(rectTransform)
-                    ;
+                InventoryUtils.ReparentItemToSlot(itemID, slotID);
             }
         }
     }

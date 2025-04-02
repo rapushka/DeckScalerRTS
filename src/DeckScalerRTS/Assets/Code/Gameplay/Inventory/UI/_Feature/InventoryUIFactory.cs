@@ -32,8 +32,9 @@ namespace DeckScaler
         public Entity<UiScope> CreateItemInSlot(Entity<GameScope> item, Entity<UiScope> slotView)
         {
             var sprite = item.Get<ItemSprite>().Value;
+            var itemID = item.ID();
 
-            slotView.Add<ItemInSlot, EntityID>(item.ID());
+            slotView.Add<ItemInSlot, EntityID>(itemID);
             var slotMonoBehaviour = slotView.Get<UiView>().Value;
             var parent = (RectTransform)slotMonoBehaviour.transform;
             var view = ViewFactory.CreateInUI(Config.ItemViewPrefab, parent);
@@ -42,7 +43,7 @@ namespace DeckScaler
             return view.Entity
                     .Add<DebugName, string>("Item UI")
                     .Add<InventoryPart>()
-                    .Add<ItemUI>()
+                    .Add<UiOfItem, EntityID>(itemID)
                     .Add<ItemSprite, Sprite>(sprite)
                     .Add<Draggable>()
                     .Add<UiParent, RectTransform>(parent)

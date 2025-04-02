@@ -7,4 +7,7 @@ namespace DeckScaler
 
     // Unit -> Item "Take the Item to your Inventory rn"
     public sealed class TakeItemEvent : ValueComponent<EntityID>, IInScope<GameScope> { }
+
+    // Fort this unit (to Which this component is attached to)
+    public sealed class RequestUpdateInventoryUI : FlagComponent, IInScope<GameScope> { }
 }

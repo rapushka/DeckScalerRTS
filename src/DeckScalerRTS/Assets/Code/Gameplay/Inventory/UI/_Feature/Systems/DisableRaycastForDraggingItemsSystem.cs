@@ -7,7 +7,7 @@ namespace DeckScaler
     {
         private readonly IGroup<Entity<UiScope>> _draggedItems
             = GroupBuilder<UiScope>
-                .With<ItemUI>()
+                .With<UiOfItem>()
                 .And<RaycastTarget>()
                 .Build();
 
