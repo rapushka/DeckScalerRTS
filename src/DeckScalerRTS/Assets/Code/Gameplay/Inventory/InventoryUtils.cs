@@ -43,31 +43,44 @@ namespace DeckScaler
                 return;
             }
 
-            fromSlot.Remove<ItemInSlot>();
-
-            TakeItemToSlot(item, toSlot);
+            if (!toSlot.Has<ItemInSlot>())
+            {
+                fromSlot.Remove<ItemInSlot>();
+                TakeItemToSlot(item, toSlot);
+            }
+            else
+                SwapItemsInSlots(fromSlot, toSlot);
 
             fromSlotOwnerID.GetEntity().AddSafely<RequestUpdateInventoryUI>();
             toSlotOwnerID.GetEntity().AddSafely<RequestUpdateInventoryUI>();
         }
 
-        public static void TakeItemToSlot(Entity<GameScope> item, Entity<GameScope> itemSlot)
+        public static void TakeItemToSlot(Entity<GameScope> item, Entity<GameScope> slot)
         {
             var itemID = item.ID();
 
-            itemSlot
+            slot
                 .Add<ItemInSlot, EntityID>(itemID)
                 ;
 
             item
                 .Is<LyingOnGround>(false)
                 .Set<Visible, bool>(false)
-                .Set<ChildOf, EntityID>(itemSlot.ID())
+                .Set<ChildOf, EntityID>(slot.ID())
                 ;
 
-            var slotOwner = itemSlot.Get<InventorySlotOfUnit>().Value.GetEntity();
+            var slotOwner = slot.Get<InventorySlotOfUnit>().Value.GetEntity();
             slotOwner
                 .AddSafely<RequestUpdateInventoryUI>();
+        }
+
+        private static void SwapItemsInSlots(Entity<GameScope> firstSlot, Entity<GameScope> secondSlot)
+        {
+            var firstItem = firstSlot.Pop<ItemInSlot, EntityID>().GetEntity();
+            var secondItem = secondSlot.Pop<ItemInSlot, EntityID>().GetEntity();
+
+            TakeItemToSlot(firstItem, secondSlot);
+            TakeItemToSlot(secondItem, firstSlot);
         }
     }
 }
