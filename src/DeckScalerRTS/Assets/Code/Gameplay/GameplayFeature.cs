@@ -60,7 +60,6 @@ namespace DeckScaler
 
             Add(new PickUpItemWhenUnitCloseEnoughSystem());
             Add(new UnitTakesItemSystem());
-            Add(new UpdateFreeSlotsAvailabilitySystem());
 
             Add(new TriggerAutoAttackSystem());
             Add(new FlipAutoAttackOnSelectedUnitsSystem());
@@ -163,6 +162,8 @@ namespace DeckScaler
             Add(new CreateSingleSelectedUnitInventorySystem());
             Add(new DestroyOldInventoryItemsUIOnUpdateRequestedSystem());
             Add(new CreateItemsInInventoryOnRequestSystem());
+
+            Add(new UpdateFreeSlotsAvailabilitySystem());
 
             Add(new RemoveComponentSystem<RequestUpdateInventoryUI>());
 #endregion
