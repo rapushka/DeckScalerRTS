@@ -25,6 +25,9 @@ namespace DeckScaler
 
         private readonly List<Entity<GameScope>> _buffer = new(16);
 
+        private static Entity<GameScope> CurrentLevel
+            => Contexts.Instance.Get<GameScope>().Unique.GetEntity<CurrentLevel>();
+
         public void Execute()
         {
             foreach (var unit in _units.GetEntities(_buffer))
@@ -71,7 +74,7 @@ namespace DeckScaler
                 .Is<LyingOnGround>(true)
                 .Set<Visible, bool>(true)
                 .Set<WorldPosition, Vector2>(targetPosition)
-                .Remove<ChildOf>() // TODO: child of wha?
+                .Set<ChildOf, EntityID>(CurrentLevel.ID())
                 ;
 
             unit.AddSafely<RequestUpdateInventoryUI>();
