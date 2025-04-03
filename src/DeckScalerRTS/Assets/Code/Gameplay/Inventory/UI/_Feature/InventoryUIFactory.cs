@@ -49,6 +49,8 @@ namespace DeckScaler
                     .Add<UiParent, RectTransform>(parent)
                     .Add<InitUiParent, RectTransform>(parent)
                     .Add<RaycastTarget, bool>(true)
+                    .Add<UseComment, string>(string.Empty)
+                    .Add<ValidUsage, bool>(true)
                 ;
         }
     }
