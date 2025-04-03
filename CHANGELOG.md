@@ -1,7 +1,8 @@
 # v0.0.28
 - Items:
   - Working Drag'n'Drop Inventory Items (finally) [#84](https://github.com/rapushka/DeckScalerRTS/issues/84)
-  - You can now swap items between slots [#94](https://github.com/rapushka/DeckScalerRTS/issues/94)
+  - from slot to slot [#94](https://github.com/rapushka/DeckScalerRTS/issues/94)
+  - from slot to world [#95](https://github.com/rapushka/DeckScalerRTS/issues/95)
 
 # v0.0.27
 - Items:
