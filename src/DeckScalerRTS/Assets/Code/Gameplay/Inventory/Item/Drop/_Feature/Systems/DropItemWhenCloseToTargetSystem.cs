@@ -15,6 +15,12 @@ namespace DeckScaler
                 .And<DropItemOnPositionOrder>()
                 .Build();
 
+        private static EntityIndex<UiScope, UiOfInventorySlot, EntityID> InventorySlotIndex
+            => Contexts.Instance.Get<UiScope>().GetIndex<UiOfInventorySlot, EntityID>();
+
+        private static EntityIndex<UiScope, UiOfItem, EntityID> UiOfItemIndex
+            => Contexts.Instance.Get<UiScope>().GetIndex<UiOfItem, EntityID>();
+
         private static UnitsConfig.CommonBalance UnitsConfig => ServiceLocator.Resolve<IGameConfig>().Units.Common;
 
         private readonly List<Entity<GameScope>> _buffer = new(16);
@@ -37,7 +43,8 @@ namespace DeckScaler
 
         private static void DropItem(Entity<GameScope> unit, Vector2 targetPosition)
         {
-            var itemToDrop = unit.Get<DropItemToWorldOrder>().Value.GetEntity();
+            var itemID = unit.Get<DropItemToWorldOrder>().Value;
+            var itemToDrop = itemID.GetEntity();
 
             unit
                 .Remove<MoveToPosition>()
@@ -46,14 +53,19 @@ namespace DeckScaler
                 ;
 
             CreateEntity.OneFrame()
-                .Add<ItemDroppedEvent>()
+                .Add<ItemDroppedEvent, EntityID>(itemID)
                 ;
 
             var slot = itemToDrop.GetSlotOfItem().GetEntity();
+            slot.Remove<ItemInSlot>();
 
-            slot
-                .Remove<ItemInSlot>()
-                ;
+            var slotUIs = InventorySlotIndex.GetEntities(slot.ID());
+            foreach (var slotUI in slotUIs)
+                slotUI.Remove<ItemInSlot>();
+
+            var itemUIs = UiOfItemIndex.GetEntities(itemID);
+            foreach (var itemUI in itemUIs)
+                itemUI.Is<Destroy>(true);
 
             itemToDrop
                 .Is<LyingOnGround>(true)
