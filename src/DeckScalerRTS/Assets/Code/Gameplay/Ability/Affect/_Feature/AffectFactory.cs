@@ -15,7 +15,7 @@ namespace DeckScaler
                 .Add<AffectTarget, EntityID>(target.ID());
 
         public Entity<GameScope> Create(AffectConfig ability, Entity<GameScope> sender)
-            => CreateEntity.OneFrame()
+            => CreateEntity.Empty()
                 .Add<DebugName, string>("ability")
                 .Add<Affect>()
                 .Add<AffectValue, float>(ability.Value)
@@ -23,6 +23,7 @@ namespace DeckScaler
                 .Is<OnPlayerSide>(sender.Is<OnPlayerSide>())
                 .Is<OnEnemySide>(sender.Is<OnEnemySide>())
                 .Is<DealDamageAffect>(ability.Type is AffectType.DealDamage)
-                .Is<GainMoneyAffect>(ability.Type is AffectType.GainMoney);
+                .Is<GainMoneyAffect>(ability.Type is AffectType.GainMoney)
+                .Is<HealAffect>(ability.Type is AffectType.HealTarget);
     }
 }

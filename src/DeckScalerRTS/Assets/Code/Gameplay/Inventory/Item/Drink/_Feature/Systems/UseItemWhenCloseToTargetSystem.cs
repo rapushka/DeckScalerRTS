@@ -23,6 +23,8 @@ namespace DeckScaler
 
         private static UnitsConfig.CommonBalance UnitsConfig => ServiceLocator.Resolve<IGameConfig>().Units.Common;
 
+        private static IAffectFactory AffectFactory => ServiceLocator.Resolve<IAffectFactory>();
+
         private readonly List<Entity<GameScope>> _buffer = new(16);
 
         public void Execute()
@@ -42,7 +44,7 @@ namespace DeckScaler
             }
         }
 
-        private static void DropItem(Entity<GameScope> ownerUnit, Entity<GameScope> targetPosition)
+        private static void DropItem(Entity<GameScope> ownerUnit, Entity<GameScope> targetUnit)
         {
             var itemID = ownerUnit.Get<DropItemToWorldOrder>().Value;
             var itemToUse = itemID.GetEntity();
@@ -68,7 +70,8 @@ namespace DeckScaler
                 .Is<Destroy>(true)
                 ;
 
-            Debug.Log("item used");
+            var affectConfig = itemToUse.Get<AffectOnUsed>().Value;
+            AffectFactory.Create(affectConfig, ownerUnit, targetUnit);
 
             ownerUnit.AddSafely<RequestUpdateInventoryUI>();
         }

@@ -78,6 +78,9 @@ namespace DeckScaler
 
             Add(new ApplyDealDamageAffectsSystem());
             Add(new ApplyGainMoneyAffectsSystem());
+            Add(new ApplyHealAffectsSystem());
+            Add(new DestroyAffectsSystem());
+
             Add(new PlayUnitAttackAnimationSystem());
 
             Add(new ResetUsedAbilitiesSystem());

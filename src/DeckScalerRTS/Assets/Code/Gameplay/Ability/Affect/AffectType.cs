@@ -5,6 +5,6 @@ namespace DeckScaler
         Unknown = 0,
         DealDamage = 1,
         GainMoney = 2,
-        HealSelf = 3,
+        HealTarget = 3,
     }
 }
