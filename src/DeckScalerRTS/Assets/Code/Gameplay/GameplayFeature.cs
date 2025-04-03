@@ -157,7 +157,11 @@ namespace DeckScaler
 
             Add(new DropItemIntoWorldOnDropWithoutUISystem());
             Add(new OrderUseItemOnUnitIfDropOnUnitSystem());
+            Add(new DiscardUseItemOnEnemySystem());
             Add(new OrderDropItemOnGroundSystem());
+
+            Add(new UpdateDraggingItemUseCommentSystem());
+            Add(new ClearItemUseCommentIfNotDraggingSystem());
 
             Add(new DropItemWhenCloseToTargetSystem());
             Add(new UseItemWhenCloseToTargetSystem());
@@ -218,6 +222,7 @@ namespace DeckScaler
             Add(new SelfEventSystem<UiScope, UiParent>(contexts));
             Add(new SelfFlagEventSystem<UiScope, Highlight>(contexts));
             Add(new SelfEventSystem<UiScope, RaycastTarget>(contexts));
+            Add(new SelfEventSystem<UiScope, UseComment>(contexts));
 
             Add(new RemoveComponentsSystem<GameScope, Clicked>(contexts));
 #endregion
