@@ -3,6 +3,7 @@
   - Working Drag'n'Drop Inventory Items (finally) [#84](https://github.com/rapushka/DeckScalerRTS/issues/84)
   - from slot to slot [#94](https://github.com/rapushka/DeckScalerRTS/issues/94)
   - from slot to world [#95](https://github.com/rapushka/DeckScalerRTS/issues/95)
+  - drinks added [#70](https://github.com/rapushka/DeckScalerRTS/issues/70)
 
 # v0.0.27
 - Items:
