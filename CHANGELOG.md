@@ -4,6 +4,7 @@
   - from slot to slot [#94](https://github.com/rapushka/DeckScalerRTS/issues/94)
   - from slot to world [#95](https://github.com/rapushka/DeckScalerRTS/issues/95)
   - drinks added [#70](https://github.com/rapushka/DeckScalerRTS/issues/70)
+  - item usage hint – when player drags item from inventory – there appears text about what exactly will happen [#102](https://github.com/rapushka/DeckScalerRTS/issues/102)
 
 # v0.0.27
 - Items:
