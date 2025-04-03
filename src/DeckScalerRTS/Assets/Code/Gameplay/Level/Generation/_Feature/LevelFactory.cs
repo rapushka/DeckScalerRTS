@@ -18,7 +18,10 @@ namespace DeckScaler
         public Entity<GameScope> Create(LevelData data)
         {
             var levelEntity = CreateEntity.Empty()
-                .Add<DebugName, string>("Level");
+                    .Add<DebugName, string>("Level")
+                    .Add<Level>()
+                    .Add<CurrentLevel>()
+                ;
             var levelID = levelEntity.ID();
 
             var tents = SpawnTents(data, levelID);

@@ -34,6 +34,9 @@ namespace DeckScaler
 
             var fromSlot = item.Get<ChildOf>().Value.GetEntity();
 
+            if (fromSlot.ID() == slotID)
+                return;
+
             var fromSlotOwnerID = fromSlot.Get<InventorySlotOfUnit>().Value;
             var toSlotOwnerID = toSlot.Get<InventorySlotOfUnit>().Value;
 
@@ -82,5 +85,19 @@ namespace DeckScaler
             TakeItemToSlot(firstItem, secondSlot);
             TakeItemToSlot(secondItem, firstSlot);
         }
+    }
+
+    public static class InventoryExtensions
+    {
+        public static EntityID GetOwnerUnitOfItem(this Entity<GameScope> item)
+        {
+            var slot = item.GetSlotOfItem().GetEntity();
+            var ownerID = slot.Get<InventorySlotOfUnit>().Value;
+
+            return ownerID;
+        }
+
+        public static EntityID GetSlotOfItem(this Entity<GameScope> item)
+            => item.Get<ChildOf>().Value;
     }
 }

@@ -9,7 +9,7 @@ namespace DeckScaler
         private readonly IGroup<Entity<GameScope>> _units
             = GroupBuilder<GameScope>
                 .With<UnitID>()
-                .And<TakeItemEvent>()
+                .And<RequestUpdateInventoryUI>()
                 .Build();
 
         private static EntityIndex<GameScope, InventorySlotOfUnit, EntityID> Index
