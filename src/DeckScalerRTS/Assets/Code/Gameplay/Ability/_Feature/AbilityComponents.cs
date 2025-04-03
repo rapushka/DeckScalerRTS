@@ -2,7 +2,7 @@ using Entitas.Generic;
 
 namespace DeckScaler
 {
-    public sealed class AbilityAffectConfig : ValueComponent<AffectConfig>, IInScope<GameScope> { }
+    public sealed class AffectOnUsed : ValueComponent<AffectConfig>, IInScope<GameScope> { }
 
     public sealed class Range : ValueComponent<float>, IInScope<GameScope> { }
 

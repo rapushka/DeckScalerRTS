@@ -35,7 +35,7 @@ namespace DeckScaler
                 if (!isKilledByOwner)
                     continue;
 
-                var affectConfig = ability.Get<AbilityAffectConfig, AffectConfig>();
+                var affectConfig = ability.Get<AffectOnUsed, AffectConfig>();
                 AffectFactory.Create(affectConfig, owner);
 
                 ability.Is<Used>(true);

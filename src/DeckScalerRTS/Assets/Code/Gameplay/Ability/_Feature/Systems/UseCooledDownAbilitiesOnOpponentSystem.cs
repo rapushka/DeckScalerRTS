@@ -34,7 +34,7 @@ namespace DeckScaler
                 if (ability.Get<Range, float>() < distance)
                     continue;
 
-                var affectConfig = ability.Get<AbilityAffectConfig, AffectConfig>();
+                var affectConfig = ability.Get<AffectOnUsed, AffectConfig>();
                 AffectFactory.Create(affectConfig, owner, opponent);
 
                 ability.Is<Used>(true);
