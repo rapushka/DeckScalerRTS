@@ -11,4 +11,6 @@ namespace DeckScaler
 
     /// Event -> Item
     public sealed class ItemDroppedEvent : ValueComponent<EntityID>, IInScope<GameScope> { }
+
+    public sealed class ProcessingItemDrop : FlagComponent, IInScope<GameScope> { }
 }

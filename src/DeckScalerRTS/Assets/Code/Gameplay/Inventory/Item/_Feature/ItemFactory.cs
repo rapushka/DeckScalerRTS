@@ -21,15 +21,24 @@ namespace DeckScaler
 
             var config = InventoryConfig.GetItemConfig(itemID);
 
-            return ViewFactory.CreateInWorld(InventoryConfig.ItemView, position).Entity
-                    .Add<DebugName, string>(TrimItemID(itemID))
-                    .Add<ItemID, ItemIDRef>(itemID)
-                    .Add<ItemSprite, Sprite>(config.Icon)
-                    .Add<WorldPosition, Vector2>(position)
-                    .Add<Clickable>()
-                    .Add<LyingOnGround>()
-                    .Add<Visible, bool>(true)
-                ;
+            var item = ViewFactory.CreateInWorld(InventoryConfig.ItemView, position).Entity
+                .Add<DebugName, string>(TrimItemID(itemID))
+                .Add<ItemID, ItemIDRef>(itemID)
+                .Add<ItemSprite, Sprite>(config.Icon)
+                .Add<WorldPosition, Vector2>(position)
+                .Add<Clickable>()
+                .Add<LyingOnGround>()
+                .Add<Visible, bool>(true)
+                .Is<Drink>(config.IsDrink);
+
+            if (config.IsDrink)
+            {
+                item
+                    .Add<AffectOnUsed, AffectConfig>(config.DrinkAffect)
+                    ;
+            }
+
+            return item;
         }
 
         private string TrimItemID(string source)

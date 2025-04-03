@@ -17,7 +17,7 @@ namespace DeckScaler
                     .Add<DebugName, string>("ability")
                     .Add<AbilityOwner, EntityID>(ownerID)
                     .Add<ChildOf, EntityID>(ownerID)
-                    .Add<AbilityAffectConfig, AffectConfig>(config.Affect)
+                    .Add<AffectOnUsed, AffectConfig>(config.Affect)
                     .Add<Range, float>(config.Range)
                     .Add<BaseCooldown, float>(config.Cooldown)
                     .Add<CooldownTimer, Timer>(new(0f))

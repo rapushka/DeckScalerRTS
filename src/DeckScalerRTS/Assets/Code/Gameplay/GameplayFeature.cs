@@ -19,6 +19,7 @@ namespace DeckScaler
             Add(new EmitMouseOrdersSystem());
 
             Add(new ReadClicksOnEntitySystem());
+            Add(new ReadHoverOnEntitySystem());
             Add(new StartDraggingCameraSystem());
             Add(new DragCameraSystem());
             Add(new ZoomCameraSystem());
@@ -152,7 +153,11 @@ namespace DeckScaler
             Add(new UnHighlightAllInventorySlotsOnItemDroppedSystem());
 
             Add(new DropItemIntoWorldOnDropWithoutUISystem());
+            Add(new OrderUseItemOnUnitIfDropOnUnitSystem());
+            Add(new OrderDropItemOnGroundSystem());
+
             Add(new DropItemWhenCloseToTargetSystem());
+            Add(new UseItemWhenCloseToTargetSystem());
 
             Add(new CleanupDroppedSystem());
             Add(new CleanupStartDraggingSystem());

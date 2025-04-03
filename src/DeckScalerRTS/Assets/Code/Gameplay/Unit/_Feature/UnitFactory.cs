@@ -49,6 +49,7 @@ namespace DeckScaler
                 .Add<EffectiveRange, float>(unitConfig.Range)
                 .Is<HasInventory>(unitConfig.InventorySlots > 0)
                 .Is<HasAnyFreeInventorySlot>(unitConfig.InventorySlots > 0)
+                .Add<Hoverable>()
                 ;
 
             CreateAbilities(unit, unitConfig);

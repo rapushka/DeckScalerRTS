@@ -9,5 +9,10 @@ namespace DeckScaler
 
         [field: NaughtyAttributes.ShowAssetPreview]
         [field: SerializeField] public Sprite Icon { get; private set; }
+
+        [field: SerializeField] public bool IsDrink { get; private set; }
+
+        [field: NaughtyAttributes.ShowIf(nameof(IsDrink))]
+        [field: SerializeField] public AffectConfig DrinkAffect { get; private set; }
     }
 }

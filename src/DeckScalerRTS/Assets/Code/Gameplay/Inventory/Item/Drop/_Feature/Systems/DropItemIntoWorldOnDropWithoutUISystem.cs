@@ -1,6 +1,5 @@
 using Entitas;
 using Entitas.Generic;
-using UnityEngine;
 
 namespace DeckScaler
 {
@@ -21,19 +20,16 @@ namespace DeckScaler
 
         public void Execute()
         {
-            foreach (var input in _inputs)
+            foreach (var _ in _inputs)
             foreach (var itemUI in _draggedItems)
             {
-                var targetPosition = input.Get<MouseWorldPosition>().Value;
-
                 var itemID = itemUI.Get<UiOfItem>().Value;
                 var item = itemID.GetEntity();
                 var unit = item.GetOwnerUnitOfItem().GetEntity();
 
                 unit
                     .Add<DropItemToWorldOrder, EntityID>(itemID)
-                    .Add<DropItemOnPositionOrder, Vector2>(targetPosition)
-                    .Add<MoveToPosition, Vector2>(targetPosition)
+                    .Add<ProcessingItemDrop>()
                     ;
             }
         }
