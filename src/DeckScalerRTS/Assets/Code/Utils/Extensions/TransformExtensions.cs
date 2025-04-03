@@ -4,6 +4,25 @@ namespace DeckScaler
 {
     public static class TransformExtensions
     {
+        public static void AddPosition(this RectTransform @this, float? x = null, float? y = null)
+        {
+            var position = @this.position;
+            @this.anchoredPosition = new(
+                x: position.x + (x ?? 0),
+                y: position.y + (y ?? 0)
+            );
+        }
+
+        public static void AddPosition(this Transform @this, float? x = null, float? y = null, float? z = null)
+        {
+            var position = @this.position;
+            @this.position = new(
+                x: position.x + (x ?? 0),
+                y: position.y + (y ?? 0),
+                z: position.z + (z ?? 0)
+            );
+        }
+
         public static void SetPosition(this Transform @this, float? x = null, float? y = null, float? z = null)
         {
             var position = @this.position;

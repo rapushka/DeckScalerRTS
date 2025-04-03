@@ -152,6 +152,8 @@ namespace DeckScaler
             Add(new PlaceItemInHighlightedSlotOnDropSystem());
             Add(new UnHighlightAllInventorySlotsOnItemDroppedSystem());
 
+            Add(new DropItemIntoWorldOnDropWithoutUISystem());
+
             Add(new CleanupDroppedSystem());
             Add(new CleanupStartDraggingSystem());
 #endregion

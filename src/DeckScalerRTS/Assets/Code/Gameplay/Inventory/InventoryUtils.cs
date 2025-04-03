@@ -34,6 +34,9 @@ namespace DeckScaler
 
             var fromSlot = item.Get<ChildOf>().Value.GetEntity();
 
+            if (fromSlot.ID() == slotID)
+                return;
+
             var fromSlotOwnerID = fromSlot.Get<InventorySlotOfUnit>().Value;
             var toSlotOwnerID = toSlot.Get<InventorySlotOfUnit>().Value;
 
