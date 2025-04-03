@@ -86,4 +86,18 @@ namespace DeckScaler
             TakeItemToSlot(secondItem, firstSlot);
         }
     }
+
+    public static class InventoryExtensions
+    {
+        public static EntityID GetOwnerUnitOfItem(this Entity<GameScope> item)
+        {
+            var slot = item.GetSlotOfItem().GetEntity();
+            var ownerID = slot.Get<InventorySlotOfUnit>().Value;
+
+            return ownerID;
+        }
+
+        public static EntityID GetSlotOfItem(this Entity<GameScope> item)
+            => item.Get<ChildOf>().Value;
+    }
 }
