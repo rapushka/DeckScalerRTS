@@ -48,6 +48,8 @@ namespace DeckScaler
             Add(new CleanupSelectionEndedSystem());
 #endregion
 
+            Add(new UpdateStatsSystem());
+
 #region Orders
             Add(new EmitUnitOrderSystem());
 

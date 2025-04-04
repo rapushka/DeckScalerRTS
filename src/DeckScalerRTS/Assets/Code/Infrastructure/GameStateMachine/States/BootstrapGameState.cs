@@ -22,6 +22,7 @@ namespace DeckScaler
             Contexts.Instance.Get<GameScope>().GetIndex<OnTent, EntityID>().Initialize();
             Contexts.Instance.Get<GameScope>().GetIndex<StockInShop, EntityID>().Initialize();
             Contexts.Instance.Get<GameScope>().GetIndex<InventorySlotOfUnit, EntityID>().Initialize();
+            Contexts.Instance.Get<GameScope>().GetIndex<InfluenceTarget, EntityID>().Initialize();
 
             Contexts.Instance.Get<UiScope>().GetIndex<UiOfInventorySlot, EntityID>().Initialize();
             Contexts.Instance.Get<UiScope>().GetIndex<UiOfItem, EntityID>().Initialize();

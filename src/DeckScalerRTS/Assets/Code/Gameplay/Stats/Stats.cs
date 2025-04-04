@@ -6,14 +6,14 @@ namespace DeckScaler
 {
     public class TypeStats<T>
     {
-        private readonly Dictionary<StatID, T> _dictionary;
+        protected readonly Dictionary<StatID, T> Dictionary;
 
-        protected TypeStats(Dictionary<StatID, T> dictionary) => _dictionary = dictionary;
+        protected TypeStats(Dictionary<StatID, T> dictionary) => Dictionary = dictionary;
 
         public T this[StatID id]
         {
-            get => _dictionary[id];
-            set => _dictionary[id] = value;
+            get => Dictionary[id];
+            set => Dictionary[id] = value;
         }
 
         protected static Dictionary<StatID, T> EmptyDictionary(Func<T> create)
@@ -22,7 +22,7 @@ namespace DeckScaler
                 .Except(new[] { StatID.Unknown })
                 .ToDictionary(x => x, _ => create.Invoke());
 
-        public override string ToString() => _dictionary.JoinToString();
+        public override string ToString() => Dictionary.JoinToString();
     }
 
     public class Stats : TypeStats<float>
@@ -43,5 +43,13 @@ namespace DeckScaler
         private StatMods(Dictionary<StatID, Modifier> dictionary) : base(dictionary) { }
 
         public static StatMods Empty() => new(EmptyDictionary(() => new()));
+
+        public StatMods Reset()
+        {
+            foreach (var (_, modifier) in Dictionary)
+                modifier.Reset();
+
+            return this;
+        }
     }
 }

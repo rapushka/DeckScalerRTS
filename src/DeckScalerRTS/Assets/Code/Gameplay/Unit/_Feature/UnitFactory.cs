@@ -42,7 +42,7 @@ namespace DeckScaler
                 .Set<HeadSprite, Sprite>(config.Head)
                 .Is<Clickable>(true)
                 .Add<WorldPosition, Vector2>(position)
-                .Add<MovementSpeed, float>(config.MovementSpeed)
+                .Add<MovementSpeed, float>(baseStats[StatID.MovementSpeed])
                 .Add<AgroTriggerRadius, float>(UnitsConfig.Common.AttackTriggerRadius)
                 .Add<InAutoAttackState>()
                 .Add<MaxHealth, float>(config.MaxHealth)
