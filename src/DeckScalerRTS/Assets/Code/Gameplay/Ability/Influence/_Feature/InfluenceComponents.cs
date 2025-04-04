@@ -6,7 +6,7 @@ namespace DeckScaler
 
     public sealed class TargetStat : ValueComponent<StatID>, IInScope<GameScope> { }
 
-    public sealed class InfluenceValue : ValueComponent<Modifier>, IInScope<GameScope> { }
+    public sealed class InfluenceModifier : ValueComponent<Modifier>, IInScope<GameScope> { }
 
     public sealed class InfluenceOwner : IndexComponent<EntityID>, IInScope<GameScope> { }
 

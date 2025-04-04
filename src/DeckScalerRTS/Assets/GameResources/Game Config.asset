@@ -51,6 +51,7 @@ MonoBehaviour:
     <Items>k__BackingField:
     - {fileID: 11400000, guid: 45dd46de52cdf76d683afb1da02d9c3f, type: 2}
     - {fileID: 11400000, guid: ec4375d896d0bc47ca13774bd4be8ad0, type: 2}
+    - {fileID: 11400000, guid: 0337ca73ae99f6748ab701399e1c7f72, type: 2}
     <ItemView>k__BackingField: {fileID: 739669060682926128, guid: c68df71193dcca44e8c77b482180236c, type: 3}
     <UI>k__BackingField:
       <SlotViewPrefab>k__BackingField: {fileID: 2825365161574222247, guid: 04d29698669503b2bb668b925ae06c94, type: 3}

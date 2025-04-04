@@ -44,6 +44,12 @@ namespace DeckScaler
 
         public static StatMods Empty() => new(EmptyDictionary(() => new()));
 
+        public StatMods With(StatID key, Modifier value)
+        {
+            this[key] = value;
+            return this;
+        }
+
         public StatMods Reset()
         {
             foreach (var (_, modifier) in Dictionary)

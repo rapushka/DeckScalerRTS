@@ -14,5 +14,10 @@ namespace DeckScaler
 
         [field: NaughtyAttributes.ShowIf(nameof(IsDrink))]
         [field: SerializeField] public AffectConfig DrinkAffect { get; private set; }
+
+        [field: NaughtyAttributes.ShowIf(nameof(IsTrinket))]
+        [field: SerializeField] public ModifiersSetup TrinketModifiers { get; private set; }
+
+        public bool IsTrinket => !IsDrink;
     }
 }

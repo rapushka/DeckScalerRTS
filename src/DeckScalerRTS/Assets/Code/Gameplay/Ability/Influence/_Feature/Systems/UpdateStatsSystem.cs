@@ -26,7 +26,7 @@ namespace DeckScaler
                     var stat = influence.Get<TargetStat>().Value;
                     var modifier = modifiers[stat];
 
-                    var influenceValue = influence.Get<InfluenceValue>().Value;
+                    var influenceValue = influence.Get<InfluenceModifier>().Value;
                     modifier.Combine(influenceValue);
                 }
 
