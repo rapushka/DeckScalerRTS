@@ -8,6 +8,7 @@ namespace DeckScaler
     {
         [SerializeField] private Button _leaveGameButton;
         [SerializeField] private TMP_Text _moneyTextMesh;
+        [SerializeField] private TimeManipulationUI _timeUI;
 
         [field: SerializeField] public SelectedUnitsUiView SelectedUnitView { get; private set; }
         [field: SerializeField] public InventoryUI         Inventory        { get; private set; }
@@ -17,6 +18,7 @@ namespace DeckScaler
         public override void Initialize()
         {
             _leaveGameButton.onClick.AddListener(LeftRun);
+            _timeUI.Initialize();
         }
 
         private void LeftRun()

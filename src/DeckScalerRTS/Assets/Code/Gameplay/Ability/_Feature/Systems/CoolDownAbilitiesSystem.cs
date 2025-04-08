@@ -22,7 +22,7 @@ namespace DeckScaler
             foreach (var ability in _abilities.GetEntities(_buffer))
             {
                 var cooldownTimer = ability.Get<CooldownTimer, Timer>();
-                cooldownTimer.Tick(Time.Delta);
+                cooldownTimer.Tick(Time.GameplayDelta);
 
                 if (cooldownTimer.IsElapsed)
                     ability.Is<CooldownUp>(true);

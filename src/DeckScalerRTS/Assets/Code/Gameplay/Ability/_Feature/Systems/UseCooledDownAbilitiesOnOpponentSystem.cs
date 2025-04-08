@@ -16,8 +16,13 @@ namespace DeckScaler
 
         private static IAffectFactory AffectFactory => ServiceLocator.Resolve<IAffectFactory>();
 
+        private static ITimeService TimeService => ServiceLocator.Resolve<ITimeService>();
+
         public void Execute()
         {
+            if (TimeService.IsTimeStopped)
+                return;
+
             foreach (var ability in _abilities)
             {
                 var owner = ability.Get<AbilityOwner, EntityID>().GetEntity();

@@ -17,7 +17,7 @@ namespace DeckScaler
             foreach (var entity in _looseTimers)
             {
                 var timer = entity.Get<LooseAfterTimer, Timer>();
-                timer.Tick(Time.Delta);
+                timer.Tick(Time.GameplayDelta);
 
                 if (!timer.IsElapsed)
                     continue;

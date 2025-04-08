@@ -26,7 +26,7 @@ namespace DeckScaler
                 var position = entity.Get<WorldPosition>().Value;
                 var speed = entity.Get<MovementSpeed>().Value;
 
-                var scaledSpeed = speed * Time.Delta;
+                var scaledSpeed = speed * Time.GameplayDelta;
                 var direction = (target - position).normalized;
 
                 var distance = position.DistanceTo(target);
