@@ -11,8 +11,8 @@ namespace DeckScaler
                 .And<LyingOnGround>()
                 .Build();
 
-        private static EntityIndex<GameScope, InfluenceTarget, EntityID> Index
-            => Contexts.Instance.Get<GameScope>().GetIndex<InfluenceTarget, EntityID>();
+        private static EntityIndex<GameScope, InfluenceOwner, EntityID> Index
+            => Contexts.Instance.Get<GameScope>().GetIndex<InfluenceOwner, EntityID>();
 
         public void Execute()
         {
