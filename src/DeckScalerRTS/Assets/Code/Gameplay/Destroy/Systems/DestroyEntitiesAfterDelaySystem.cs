@@ -17,7 +17,7 @@ namespace DeckScaler
             foreach (var entity in _entities)
             {
                 var timer = entity.Get<DestroyAfterDelay, Timer>();
-                timer.Tick(Time.Delta);
+                timer.Tick(Time.GameplayDelta);
 
                 if (timer.IsElapsed)
                     entity.Add<Destroy>();

@@ -82,7 +82,7 @@ namespace DeckScaler
 
         private void Update()
         {
-            var deltaTime = ServiceLocator.Resolve<ITimeService>().Delta;
+            var deltaTime = ServiceLocator.Resolve<ITimeService>().GameplayDelta;
 
             ((IUpdatable)_inputService).OnUpdate(deltaTime);
             (_debugger as IUpdatable)?.OnUpdate(deltaTime);
