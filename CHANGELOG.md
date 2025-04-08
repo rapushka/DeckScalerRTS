@@ -1,3 +1,6 @@
+# v0.0.29
+- Trinkets Implemented [#68](https://github.com/rapushka/DeckScalerRTS/issues/68)
+
 # v0.0.28
 - Items:
   - Working Drag'n'Drop Inventory Items (finally) [#84](https://github.com/rapushka/DeckScalerRTS/issues/84)
