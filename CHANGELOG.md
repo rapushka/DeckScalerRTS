@@ -1,5 +1,6 @@
 # v0.0.29
 - Trinkets Implemented [#68](https://github.com/rapushka/DeckScalerRTS/issues/68)
+- Time Manipulation [#93](https://github.com/rapushka/DeckScalerRTS/issues/93)
 
 # v0.0.28
 - Items:
