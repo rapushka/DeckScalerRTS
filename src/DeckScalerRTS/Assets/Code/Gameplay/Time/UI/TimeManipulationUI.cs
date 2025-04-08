@@ -1,19 +1,18 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace DeckScaler
 {
     public class TimeManipulationUI : MonoBehaviour
     {
-        [SerializeField] private Button _pauseButton;
-        [SerializeField] private Button _speedupButton;
+        [SerializeField] private ToggleButton _pauseToggle;
+        [SerializeField] private ToggleButton _speedupToggle;
 
         private static ITimeService TimeService => ServiceLocator.Resolve<ITimeService>();
 
         public void Initialize()
         {
-            _pauseButton.onClick.AddListener(TogglePause);
-            _speedupButton.onClick.AddListener(ToggleSpeedup);
+            _pauseToggle.Clicked += TogglePause;
+            _speedupToggle.Clicked += ToggleSpeedup;
         }
 
         private void TogglePause() => TimeService.ToggleTimeStop();
