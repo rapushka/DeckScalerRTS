@@ -164,6 +164,7 @@ namespace DeckScaler
             Add(new DropItemIntoWorldOnDropWithoutUISystem());
             Add(new OrderUseItemOnUnitIfDropOnUnitSystem());
             Add(new DiscardUseItemOnEnemySystem());
+            Add(new DiscardUseTrinketOnUnitSystem());
             Add(new OrderDropItemOnGroundSystem());
 
             Add(new UpdateDraggingItemUseCommentSystem());

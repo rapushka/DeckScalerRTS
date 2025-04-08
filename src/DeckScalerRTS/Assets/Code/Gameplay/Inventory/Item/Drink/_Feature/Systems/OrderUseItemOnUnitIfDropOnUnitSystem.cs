@@ -11,6 +11,7 @@ namespace DeckScaler
             = GroupBuilder<GameScope>
                 .With<UnitID>()
                 .And<DropItemToWorldOrder>()
+                .And<DroppingDrink>()
                 .And<ProcessingItemDrop>()
                 .Build();
 

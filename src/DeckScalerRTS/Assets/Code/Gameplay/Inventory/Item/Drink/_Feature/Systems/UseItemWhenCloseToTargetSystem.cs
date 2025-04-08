@@ -53,6 +53,7 @@ namespace DeckScaler
                 .Remove<MoveToPosition>()
                 .Remove<DropItemToWorldOrder>()
                 .Remove<UseDrinkOn>()
+                .Is<DroppingDrink>(false)
                 ;
 
             var slot = itemToUse.GetSlotOfItem().GetEntity();
