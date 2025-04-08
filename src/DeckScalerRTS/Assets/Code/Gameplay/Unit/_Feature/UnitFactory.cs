@@ -30,30 +30,35 @@ namespace DeckScaler
 
         private Entity<GameScope> CreateUnit(UnitIDRef id, Vector2 position)
         {
-            var unitConfig = UnitsConfig.GetConfig(id);
+            var config = UnitsConfig.GetConfig(id);
+
+            var baseStats = Stats.Empty()
+                .With(StatID.MovementSpeed, config.MovementSpeed);
 
             var unit = ViewFactory.CreateInWorld(UnitsConfig.UnitViewPrefab, position).Entity;
             unit
                 .Add<DebugName, string>($"unit {TrimUniID(id.Value)}")
                 .Add<UnitID, UnitIDRef>(id)
-                .Set<HeadSprite, Sprite>(unitConfig.Head)
+                .Set<HeadSprite, Sprite>(config.Head)
                 .Is<Clickable>(true)
                 .Add<WorldPosition, Vector2>(position)
-                .Add<MovementSpeed, float>(unitConfig.MovementSpeed)
+                .Add<MovementSpeed, float>(baseStats[StatID.MovementSpeed])
                 .Add<AgroTriggerRadius, float>(UnitsConfig.Common.AttackTriggerRadius)
                 .Add<InAutoAttackState>()
-                .Add<MaxHealth, float>(unitConfig.MaxHealth)
-                .Add<Health, float>(unitConfig.MaxHealth)
-                .Add<Price, int>(unitConfig.Price)
-                .Is<Lead>(unitConfig.IsLead)
-                .Add<EffectiveRange, float>(unitConfig.Range)
-                .Is<HasInventory>(unitConfig.InventorySlots > 0)
-                .Is<HasAnyFreeInventorySlot>(unitConfig.InventorySlots > 0)
+                .Add<MaxHealth, float>(config.MaxHealth)
+                .Add<Health, float>(config.MaxHealth)
+                .Add<Price, int>(config.Price)
+                .Is<Lead>(config.IsLead)
+                .Add<EffectiveRange, float>(config.Range)
+                .Is<HasInventory>(config.InventorySlots > 0)
+                .Is<HasAnyFreeInventorySlot>(config.InventorySlots > 0)
                 .Add<Hoverable>()
+                .Add<BaseStats, Stats>(baseStats)
+                .Add<StatModifiers, StatMods>(StatMods.Empty())
                 ;
 
-            CreateAbilities(unit, unitConfig);
-            CreateInventorySlots(unit, unitConfig);
+            CreateAbilities(unit, config);
+            CreateInventorySlots(unit, config);
 
             return unit;
         }

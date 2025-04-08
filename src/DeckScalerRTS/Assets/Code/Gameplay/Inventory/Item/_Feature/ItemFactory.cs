@@ -14,6 +14,8 @@ namespace DeckScaler
 
         private static IViewFactory ViewFactory => ServiceLocator.Resolve<IViewFactory>();
 
+        private static IInfluenceFactory InfluenceFactory => ServiceLocator.Resolve<IInfluenceFactory>();
+
         public Entity<GameScope> CreateOnGround(ItemSpawnSetup setup)
         {
             var itemID = setup.ID;
@@ -22,20 +24,28 @@ namespace DeckScaler
             var config = InventoryConfig.GetItemConfig(itemID);
 
             var item = ViewFactory.CreateInWorld(InventoryConfig.ItemView, position).Entity
-                .Add<DebugName, string>(TrimItemID(itemID))
-                .Add<ItemID, ItemIDRef>(itemID)
-                .Add<ItemSprite, Sprite>(config.Icon)
-                .Add<WorldPosition, Vector2>(position)
-                .Add<Clickable>()
-                .Add<LyingOnGround>()
-                .Add<Visible, bool>(true)
-                .Is<Drink>(config.IsDrink);
+                    .Add<DebugName, string>(TrimItemID(itemID))
+                    .Add<ItemID, ItemIDRef>(itemID)
+                    .Add<ItemSprite, Sprite>(config.Icon)
+                    .Add<WorldPosition, Vector2>(position)
+                    .Add<Clickable>()
+                    .Add<LyingOnGround>()
+                    .Add<Visible, bool>(true)
+                    .Is<Drink>(config.IsDrink)
+                    .Is<Trinket>(config.IsTrinket)
+                ;
 
             if (config.IsDrink)
             {
                 item
                     .Add<AffectOnUsed, AffectConfig>(config.DrinkAffect)
                     ;
+            }
+
+            if (config.IsTrinket)
+            {
+                foreach (var (statID, modifier) in config.TrinketModifiers.Modifiers)
+                    InfluenceFactory.Create(item, statID, modifier);
             }
 
             return item;

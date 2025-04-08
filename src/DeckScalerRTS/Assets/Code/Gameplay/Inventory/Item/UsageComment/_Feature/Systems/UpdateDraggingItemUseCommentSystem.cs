@@ -35,29 +35,35 @@ namespace DeckScaler
                     continue;
                 }
 
-                var hoveringUnits = _hoveredEntities.Any(e => e.Has<UnitID>());
-                var hoveringAlly = _hoveredEntities.Any(e => e.Is<OnPlayerSide>());
+                var isHoveringUnit = _hoveredEntities.Any(e => e.Has<UnitID>());
+                var isHoveringAlly = _hoveredEntities.Any(e => e.Is<OnPlayerSide>());
 
-                if (hoveringUnits && !hoveringAlly)
+                if (!isHoveringUnit)
                 {
-                    itemUI
-                        .Set<UseComment, string>("items can be used only on allies")
-                        .Set<ValidUsage, bool>(false)
-                        ;
+                    Set("drop");
+                    continue;
                 }
-                // ReSharper disable once ConditionIsAlwaysTrueOrFalse - it's here for vibes
-                else if (hoveringUnits && hoveringAlly)
+
+                if (!isHoveringAlly)
                 {
-                    itemUI
-                        .Set<UseComment, string>("use")
-                        .Set<ValidUsage, bool>(true)
-                        ;
+                    Set("items can be used only on allies", false);
+                    continue;
                 }
+
+                var item = itemUI.Get<UiOfItem>().Value.GetEntity();
+
+                if (item.Is<Drink>())
+                    Set("use");
                 else
+                    Set("trinkets can't be used", false);
+
+                continue;
+
+                void Set(string text, bool isValid = true)
                 {
                     itemUI
-                        .Set<UseComment, string>("drop")
-                        .Set<ValidUsage, bool>(true)
+                        .Set<UseComment, string>(text)
+                        .Set<ValidUsage, bool>(isValid)
                         ;
                 }
             }

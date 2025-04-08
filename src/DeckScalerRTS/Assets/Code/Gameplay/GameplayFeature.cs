@@ -48,6 +48,12 @@ namespace DeckScaler
             Add(new CleanupSelectionEndedSystem());
 #endregion
 
+            Add(new UpdateTrinketsInInventoryInfluenceSystem());
+            Add(new UpdateTrinketsOnGroundSystem());
+            Add(new ResetStatsSystem());
+            Add(new UpdateStatsSystem());
+            Add(new CalculateStatsSystem());
+
 #region Orders
             Add(new EmitUnitOrderSystem());
 
@@ -158,6 +164,7 @@ namespace DeckScaler
             Add(new DropItemIntoWorldOnDropWithoutUISystem());
             Add(new OrderUseItemOnUnitIfDropOnUnitSystem());
             Add(new DiscardUseItemOnEnemySystem());
+            Add(new DiscardUseTrinketOnUnitSystem());
             Add(new OrderDropItemOnGroundSystem());
 
             Add(new UpdateDraggingItemUseCommentSystem());

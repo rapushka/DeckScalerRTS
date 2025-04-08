@@ -4,20 +4,20 @@ using Entitas.Generic;
 
 namespace DeckScaler
 {
-    public sealed class DiscardUseItemOnEnemySystem : IExecuteSystem
+    public sealed class DiscardUseTrinketOnUnitSystem : IExecuteSystem
     {
         private readonly IGroup<Entity<GameScope>> _unitsDroppingItems
             = GroupBuilder<GameScope>
                 .With<UnitID>()
                 .And<DropItemToWorldOrder>()
                 .And<ProcessingItemDrop>()
+                .Without<DroppingDrink>()
                 .Build();
 
         private readonly IGroup<Entity<GameScope>> _hoveredUnits
             = GroupBuilder<GameScope>
                 .With<UnitID>()
                 .And<Hovered>()
-                .Without<OnPlayerSide>()
                 .Build();
 
         private readonly List<Entity<GameScope>> _buffer = new(4);
@@ -30,7 +30,6 @@ namespace DeckScaler
                 unit
                     .Remove<DropItemToWorldOrder>()
                     .Remove<ProcessingItemDrop>()
-                    .Is<DroppingDrink>(false)
                     ;
 
                 break;

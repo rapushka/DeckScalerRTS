@@ -29,6 +29,7 @@ namespace DeckScaler
 
                 unit
                     .Add<DropItemToWorldOrder, EntityID>(itemID)
+                    .Is<DroppingDrink>(item.Is<Drink>())
                     .Add<ProcessingItemDrop>()
                     ;
             }

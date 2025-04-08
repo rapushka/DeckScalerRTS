@@ -15,6 +15,7 @@ MonoBehaviour:
   _idList:
   - Item
   - Item/Beer
+  - Item/Pen
   - Item/Wine
   - Unit
   - Unit/Camel
@@ -28,6 +29,12 @@ MonoBehaviour:
   - _id: Item/Beer
     _assetRefs:
     - _objectPath: ec4375d896d0bc47ca13774bd4be8ad0||11400000
+      _targetRefType: 0
+      _apiVersion: 1
+      _propertyPath: <ID>k__BackingField.Value
+  - _id: Item/Pen
+    _assetRefs:
+    - _objectPath: 0337ca73ae99f6748ab701399e1c7f72||11400000
       _targetRefType: 0
       _apiVersion: 1
       _propertyPath: <ID>k__BackingField.Value

@@ -6,6 +6,8 @@ namespace DeckScaler
     /// Event -> Item Model
     public sealed class DropItemToWorldOrder : ValueComponent<EntityID>, IInScope<GameScope> { }
 
+    public sealed class DroppingDrink : FlagComponent, IInScope<GameScope> { }
+
     // "Go there and drop item in that place"
     public sealed class DropItemOnPositionOrder : ValueComponent<Vector2>, IInScope<GameScope> { }
 

@@ -4,6 +4,9 @@ namespace EnlitGames.ScriptableObjectTable
     {
         internal static string ToColumnName(this string source)
         {
+            if (source is null)
+                return source;
+
             if (!source.EndsWith("k__BackingField"))
                 return source;
 

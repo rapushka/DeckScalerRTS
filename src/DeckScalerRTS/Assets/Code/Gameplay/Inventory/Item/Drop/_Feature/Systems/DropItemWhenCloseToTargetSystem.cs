@@ -53,6 +53,7 @@ namespace DeckScaler
                 .Remove<MoveToPosition>()
                 .Remove<DropItemToWorldOrder>()
                 .Remove<DropItemOnPositionOrder>()
+                .Is<DroppingDrink>(false)
                 ;
 
             CreateEntity.OneFrame()

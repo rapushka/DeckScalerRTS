@@ -89,6 +89,21 @@ namespace DeckScaler
 
     public static class InventoryExtensions
     {
+        public static bool TryGetOwnerUnitOfItem(this Entity<GameScope> item, out EntityID? unitID)
+        {
+            unitID = null;
+
+            if (!item.TryGet<ChildOf, EntityID>(out var parentID))
+                return false;
+
+            var parent = parentID.GetEntity();
+            if (!parent.TryGet<InventorySlotOfUnit, EntityID>(out var tmp))
+                return false;
+
+            unitID = tmp;
+            return true;
+        }
+
         public static EntityID GetOwnerUnitOfItem(this Entity<GameScope> item)
         {
             var slot = item.GetSlotOfItem().GetEntity();
