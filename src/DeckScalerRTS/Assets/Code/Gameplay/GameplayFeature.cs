@@ -48,7 +48,11 @@ namespace DeckScaler
             Add(new CleanupSelectionEndedSystem());
 #endregion
 
+            Add(new UpdateTrinketsInInventoryInfluenceSystem());
+            Add(new UpdateTrinketsOnGroundSystem());
+            Add(new ResetStatsSystem());
             Add(new UpdateStatsSystem());
+            Add(new CalculateStatsSystem());
 
 #region Orders
             Add(new EmitUnitOrderSystem());

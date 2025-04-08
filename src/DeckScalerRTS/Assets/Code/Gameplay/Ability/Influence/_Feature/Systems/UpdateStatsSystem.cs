@@ -5,32 +5,24 @@ namespace DeckScaler
 {
     public class UpdateStatsSystem : IExecuteSystem
     {
-        private readonly IGroup<Entity<GameScope>> _units
+        private readonly IGroup<Entity<GameScope>> _influences
             = GroupBuilder<GameScope>
-                .With<BaseStats>()
-                .And<StatModifiers>()
+                .With<Influence>()
+                .And<InfluenceTarget>()
+                .And<TargetStat>()
+                .And<InfluenceModifier>()
                 .Build();
-
-        private static EntityIndex<GameScope, InfluenceTarget, EntityID> Index
-            => Contexts.Instance.Get<GameScope>().GetIndex<InfluenceTarget, EntityID>();
 
         public void Execute()
         {
-            foreach (var unit in _units)
+            foreach (var influence in _influences)
             {
-                var modifiers = unit.Get<StatModifiers>().Value;
-                modifiers.Reset();
+                var stat = influence.Get<TargetStat>().Value;
+                var target = influence.Get<InfluenceTarget>().Value.GetEntity();
+                var modifiers = target.Get<StatModifiers>().Value;
+                var influenceValue = influence.Get<InfluenceModifier>().Value;
 
-                foreach (var influence in Index.GetEntities(unit.ID()))
-                {
-                    var stat = influence.Get<TargetStat>().Value;
-                    var modifier = modifiers[stat];
-
-                    var influenceValue = influence.Get<InfluenceModifier>().Value;
-                    modifier.Combine(influenceValue);
-                }
-
-                unit.Set<StatModifiers, StatMods>(modifiers);
+                target.Set<StatModifiers, StatMods>(modifiers.Add(stat, influenceValue));
             }
         }
     }

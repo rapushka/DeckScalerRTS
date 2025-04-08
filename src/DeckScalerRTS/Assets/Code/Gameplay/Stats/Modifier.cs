@@ -17,16 +17,20 @@ namespace DeckScaler
 
         public float Apply(float baseValue) => (baseValue + Addition) * Multiplier;
 
-        public void Reset()
+        public Modifier Reset()
         {
-            Addition = 1f;
-            Multiplier = 0f;
+            Addition = 0f;
+            Multiplier = 1f;
+
+            return this;
         }
 
-        public void Combine(Modifier other)
+        public Modifier Combine(Modifier other)
         {
             Addition += other.Addition;
             Multiplier *= other.Multiplier;
+
+            return this;
         }
 
         public override string ToString() => $"(+{Addition} *{Multiplier})";

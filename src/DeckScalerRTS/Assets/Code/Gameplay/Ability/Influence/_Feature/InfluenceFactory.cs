@@ -17,6 +17,7 @@ namespace DeckScaler
                     .Add<DebugName, string>("influence")
                     .Is<Influence>(true)
                     .Add<ChildOf, EntityID>(ownerID)
+                    .Add<InfluenceOwner, EntityID>(ownerID)
                     .Add<InfluenceModifier, Modifier>(modifier)
                     .Add<TargetStat, StatID>(stat)
                 ;

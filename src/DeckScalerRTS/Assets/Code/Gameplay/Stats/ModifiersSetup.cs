@@ -16,7 +16,7 @@ namespace DeckScaler
         {
             var modifiers = StatMods.Empty();
             foreach (var modifier in _modifiers)
-                modifiers.With(modifier.Stat, modifier.Modifier);
+                modifiers.Set(modifier.Stat, modifier.Modifier);
 
             return modifiers;
         }

@@ -44,7 +44,13 @@ namespace DeckScaler
 
         public static StatMods Empty() => new(EmptyDictionary(() => new()));
 
-        public StatMods With(StatID key, Modifier value)
+        public StatMods Add(StatID key, Modifier value)
+        {
+            this[key] = this[key].Combine(value);
+            return this;
+        }
+
+        public StatMods Set(StatID key, Modifier value)
         {
             this[key] = value;
             return this;
