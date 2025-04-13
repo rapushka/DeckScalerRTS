@@ -5,13 +5,9 @@ using UnityEngine;
 
 namespace DeckScaler
 {
-    public sealed class RequestPathTo : ValueComponent<Vector2>, IInScope<GameScope> { }
-
     public sealed class Path : ValueComponent<Queue<Vector2>>, IInScope<GameScope> { }
 
     public sealed class PathSeeker : ValueComponent<Seeker>, IInScope<GameScope> { }
 
     public sealed class CalculatingPath : FlagComponent, IInScope<GameScope> { }
-
-    public sealed class GoingToPoint : ValueComponent<Vector2>, IInScope<GameScope> { }
 }

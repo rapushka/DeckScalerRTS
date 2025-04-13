@@ -28,7 +28,7 @@ namespace DeckScaler
 
                 if (!path.Any())
                 {
-                    RemoveComponents(entity);
+                    entity.Remove<MoveToPosition>();
                     continue;
                 }
 
@@ -43,7 +43,7 @@ namespace DeckScaler
                 if (!path.Any())
                 {
                     entity.Set<WorldPosition, Vector2>(nextPosition);
-                    RemoveComponents(entity);
+                    entity.Remove<MoveToPosition>();
 
                     continue;
                 }
@@ -52,14 +52,9 @@ namespace DeckScaler
                 entity.Set<WorldPosition, Vector2>(nextPosition);
 
                 if (!path.Any())
-                    RemoveComponents(entity);
+                    entity.Remove<MoveToPosition>();
             }
         }
-
-        private void RemoveComponents(Entity<GameScope> entity)
-            => entity.Remove<Path>()
-                .RemoveSafely<GoingToPoint>()
-                .Is<CalculatingPath>(false);
 
         private bool IsOutreachNextWaypoint(Entity<GameScope> entity, out Vector2 nextPosition)
         {

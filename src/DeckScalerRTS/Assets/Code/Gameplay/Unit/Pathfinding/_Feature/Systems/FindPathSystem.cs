@@ -10,7 +10,7 @@ namespace DeckScaler
     {
         private readonly IGroup<Entity<GameScope>> _entities
             = GroupBuilder<GameScope>
-                .With<GoingToPoint>()
+                .With<MoveToPosition>()
                 .And<PathSeeker>()
                 .And<WorldPosition>()
                 .Without<CalculatingPath>()
@@ -27,11 +27,17 @@ namespace DeckScaler
                 entity.Add<CalculatingPath>();
                 seeker.StartPath(
                     entity.Get<WorldPosition>().Value,
-                    entity.Get<GoingToPoint>().Value,
+                    entity.Get<MoveToPosition>().Value,
                     (path) =>
                     {
-                        if (!entity.Has<GoingToPoint>())
+                        if (!entity.Has<MoveToPosition>())
+                        {
+                            entity
+                                .RemoveSafely<Path>()
+                                .RemoveSafely<CalculatingPath>()
+                                ;
                             return;
+                        }
 
                         var waypoints = new Queue<Vector2>(path.vectorPath.Skip(1).Select(v3 => v3.Truncate()));
                         entity
