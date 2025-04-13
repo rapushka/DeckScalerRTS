@@ -4157,6 +4157,93 @@ MonoBehaviour:
   <UnitID>k__BackingField: Unit/Rat
   <Side>k__BackingField: 2
   <TentSpawn>k__BackingField: {fileID: 280286664}
+--- !u!1 &1184406210
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1184406211}
+  - component: {fileID: 1184406212}
+  m_Layer: 0
+  m_Name: A*
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1184406211
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1184406210}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1184406212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1184406210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78396926cbbfc4ac3b48fc5fc34a87d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  data:
+    dataString: UEsDBBQAAAgIAAAYIezYa3X4cAIAAC4FAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVF1zojAU/StOnlcHkam6b7vU2n1o69Tt9IWXmFwkY0iYfFRtx/++SYhCWV6Ac+7HOTcXvhATugFipForRp8kBfRzhPwz+jHqyEc44b0UW/YJ15h3Rk3lg3CIecWGSYdPfZqWNRjFyC+x5z44caAVrJSqXtE95FIb7eAScw2OUtL4bOGgrxE6udt46VPOMfXT30cX90RAGFBd3HQ6yZbums1ieJZM/PsyzWJeOsmy2XyxmC1X4+QuFLGCcFw3QL2dXq1kHotMkywECmc1xnhbRHLOdNSJzLkJc8hxo61z6QIow8530OfjK2D7yngN/eSXstRgojOFz/dMufG1VdFv2c60xvrQKvvA3MLNf1vy6T92PA10qWT9eO06TXwHUzFyeMVngrXpjbwP33+XbcUR8wPecXivQDzLtZJWUEcaZX2q1ZDed683Y3kF5NDhrdQBaJtu3sMT9h4uwfsp56zeeWqStcCWyzDtsBag3Ln8cYLD0uhYwqFexZuGv3jf365IPDCljaOiS+Hl7aRVPhStwsy8G2tyqQQEOIpuQGBuzhtXxgwPcMD12g6YB+y/o9g8ctfPY5AS4C4+SQbURh5vh6UreXwCXb1Yw5mATrQnnt2ccilEu1/9mVzTtlaVmPTS9pbR76uF8IzMymyRZumSlmR6N17gRXpH8Lzc0V2awByF3WPC+cR80wqN43GnJrriwu3Z9fcyWivchF2nCh/X7LOWvZEzUcotUQDipa1wEw7KNXHfJF1R5ga0BWOYCOeNvgrEJTkALW6FiuB0dTIKF12VAjXsQxqPFCgPv5QCefi2yxsFHwyOvvm12AVd/gFQSwMEFAAACAgAABgh7AaqKAZtAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTXUVBKL0osyCgGihiCOKWZKSB2tFKicbJxmomFkYmRZUpasqGZrkWihZFZcqJ5WlJKkpFBqrlSLFB9SWVBql9ibipET0BiSUZaZl5KZl66nntRZoo7yGil2FoAUEsBAi0AFAAACAgAABgh7NhrdfhwAgAALgUAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAABgh7AaqKAZtAAAAeAAAAAkAJAAAAAAAAAAAAAAAvQIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAAB1AwAAAAA=
+    upgradeData: 
+    file_cachedStartup: {fileID: 0}
+    data_cachedStartup: 
+    cacheStartup: 0
+  showNavGraphs: 1
+  showUnwalkableNodes: 1
+  debugMode: 0
+  debugFloor: 0
+  debugRoof: 1
+  manualDebugFloorRoof: 0
+  showSearchTree: 0
+  unwalkableNodeDebugSize: 0.3
+  logPathResults: 1
+  maxNearestNodeDistance: 100
+  scanOnStartup: 1
+  fullGetNearestSearch: 0
+  prioritizeGraphs: 0
+  prioritizeGraphsLimit: 1
+  colorSettings:
+    _SolidColor: {r: 0.11764706, g: 0.4, b: 0.7882353, a: 0.9}
+    _UnwalkableNode: {r: 1, g: 0, b: 0, a: 0.5}
+    _BoundsHandles: {r: 0.29, g: 0.454, b: 0.741, a: 0.9}
+    _ConnectionLowLerp: {r: 0, g: 1, b: 0, a: 0.5}
+    _ConnectionHighLerp: {r: 1, g: 0, b: 0, a: 0.5}
+    _MeshEdgeColor: {r: 0, g: 0, b: 0, a: 0.5}
+    _AreaColors:
+    - {r: 0, g: 0, b: 0, a: 0}
+  tagNames: []
+  heuristic: 2
+  heuristicScale: 1
+  threadCount: 1
+  maxFrameTime: 1
+  batchGraphUpdates: 0
+  graphUpdateBatchingInterval: 0.2
+  euclideanEmbedding:
+    mode: 0
+    seed: 0
+    pivotPointRoot: {fileID: 0}
+    spreadOutCount: 1
+  showGraphs: 1
 --- !u!1 &1186899477
 GameObject:
   m_ObjectHideFlags: 0
@@ -7394,3 +7481,4 @@ SceneRoots:
   - {fileID: 1424068382}
   - {fileID: 7886140369778256872}
   - {fileID: 1838587496}
+  - {fileID: 1184406211}
