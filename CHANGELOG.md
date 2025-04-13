@@ -1,6 +1,9 @@
 # v0.0.29
 - Trinkets Implemented [#68](https://github.com/rapushka/DeckScalerRTS/issues/68)
 - Time Manipulation [#93](https://github.com/rapushka/DeckScalerRTS/issues/93)
+- Pathfinding:
+  - imported A* Pathfinding Project [#108](https://github.com/rapushka/DeckScalerRTS/issues/108)
+  - make units move using pathfinding [#108](https://github.com/rapushka/DeckScalerRTS/issues/108)
 
 # v0.0.28
 - Items:
