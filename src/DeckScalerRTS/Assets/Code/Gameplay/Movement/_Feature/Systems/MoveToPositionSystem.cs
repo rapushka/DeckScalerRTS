@@ -12,6 +12,7 @@ namespace DeckScaler
                 .With<MoveToPosition>()
                 .And<WorldPosition>()
                 .And<MovementSpeed>()
+                .Without<PathSeeker>()
                 .Build();
 
         private static ITimeService Time => ServiceLocator.Resolve<ITimeService>();
