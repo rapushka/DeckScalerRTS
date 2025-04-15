@@ -61,9 +61,11 @@ namespace DeckScaler
             Add(new HandlePickUpItemOrderSystem());
             Add(new HandleMoveToPositionOrderSystem());
 
+#region Pathfinding
             Add(new FindPathSystem());
             Add(new MoveToNextWaypointSystem());
             Add(new CleanupCompletedPathSystem());
+#endregion
 
             Add(new CreateOrderTargetViewSystem());
 
