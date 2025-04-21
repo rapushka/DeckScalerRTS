@@ -1,3 +1,6 @@
+# v0.0.30
+- Added Obstacles & Squeeze out for units [#111](https://github.com/rapushka/DeckScalerRTS/issues/111)
+
 # v0.0.29
 - Trinkets Implemented [#68](https://github.com/rapushka/DeckScalerRTS/issues/68)
 - Time Manipulation [#93](https://github.com/rapushka/DeckScalerRTS/issues/93)
