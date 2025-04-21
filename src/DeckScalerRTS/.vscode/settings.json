@@ -56,5 +56,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "DeckScalerRTS.sln"
+    "dotnet.defaultSolution": "DeckScalerRTS.sln",
+    "dotnet.preferCSharpExtension": true
 }

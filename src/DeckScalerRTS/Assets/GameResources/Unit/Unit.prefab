@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 742616172961051631}
   - component: {fileID: 8469967024349311245}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3682532746315969300}
   - component: {fileID: 633436574558228556}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,7 +183,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1919351684329445355}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 8409859691240819501}
   - component: {fileID: 1790096149149894729}
   - component: {fileID: 8651962542838324352}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Healthbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -279,7 +279,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6260703080496828672}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fill Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -320,7 +320,7 @@ GameObject:
   - component: {fileID: 3815615003436072787}
   - component: {fileID: 3318955653934430835}
   - component: {fileID: 8665463375005776256}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Unit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -505,7 +505,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2484415348715955101}
   - component: {fileID: 7286122700976571968}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Head Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -592,9 +592,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8102051667952033567}
   - component: {fileID: 961084773500492853}
-  - component: {fileID: 7925549667639871771}
-  m_Layer: 0
-  m_Name: Collider
+  m_Layer: 6
+  m_Name: Click Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -651,19 +650,3 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
---- !u!114 &7925549667639871771
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8212042962691569741}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 183748dd497aa473a98ff0cd8cb67fc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
-  uniqueID: 1254138741827575103
-  updateError: 0.1
-  checkTime: 0.2
