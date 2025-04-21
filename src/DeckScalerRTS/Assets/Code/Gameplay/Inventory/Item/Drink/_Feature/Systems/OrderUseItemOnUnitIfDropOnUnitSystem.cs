@@ -32,8 +32,8 @@ namespace DeckScaler
                 var targetPosition = hovered.Get<WorldPosition>().Value;
 
                 unit
-                    .Add<UseDrinkOn, EntityID>(hovered.ID())
-                    .Add<MoveToPosition, Vector2>(targetPosition)
+                    .Set<UseDrinkOn, EntityID>(hovered.ID())
+                    .Set<MoveToPosition, Vector2>(targetPosition)
                     .Remove<ProcessingItemDrop>()
                     ;
 

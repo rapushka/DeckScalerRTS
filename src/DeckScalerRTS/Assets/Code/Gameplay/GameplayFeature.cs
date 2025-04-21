@@ -66,6 +66,7 @@ namespace DeckScaler
             Add(new MoveToNextWaypointSystem());
             Add(new CleanupCompletedPathSystem());
 #endregion
+            Add(new SqueezeOutSystem());
 
             Add(new CreateOrderTargetViewSystem());
 
